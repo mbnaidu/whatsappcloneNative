@@ -2,8 +2,8 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './pages/Home';
-import SecondPage from './pages/SecondPage';
 import { StatusBar } from 'react-native';
+import ChatPage from './pages/ChatPage';
 
 const Stack = createStackNavigator();
 
@@ -19,7 +19,7 @@ function App() {
 			component={Home}
 			options={{ headerShown: false }} 
 			/>
-			<Stack.Screen name="SecondPage" component={SecondPage} />
+			<Stack.Screen name="ChatPage" component={ChatPage} options={{ headerShown: false }} />
 		</Stack.Navigator>
 		</NavigationContainer>
 	);

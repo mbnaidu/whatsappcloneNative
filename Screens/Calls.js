@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, ListItem, Thumbnail, View, Fab } from 'native-base';
 import { ScrollView } from 'react-native';
-import styles from '../Styles';
+import styles from '../Styles/First';
 
 export default class Calls extends Component {
 	render() {
