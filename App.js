@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge } from 'native-base';
-import { AppState, StatusBar,Text } from 'react-native';
+import { StatusBar,Text } from 'react-native';
 import styles from './Styles';
 import Calls from './Screens/Calls';
 import Chats from './Screens/Chats';
