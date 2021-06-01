@@ -16,7 +16,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -33,7 +33,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -50,7 +50,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -67,7 +67,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -84,7 +84,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -101,7 +101,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -118,7 +118,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -135,7 +135,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -152,7 +152,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -169,7 +169,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -186,7 +186,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -203,7 +203,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
@@ -220,7 +220,7 @@ export default class Calls extends Component {
 						></Thumbnail>
 					</Left>
 					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
+						<Text>Hanuman</Text>
 						<Text note>Hi</Text>
 					</Body>
 					<Right>
