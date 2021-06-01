@@ -6,8 +6,7 @@ import Calls from './Screens/Calls';
 import Chats from './Screens/Chats';
 import Status from './Screens/Status';
 
-
-export default class App extends Component {
+export default class App extends Component{
 	constructor(props) {
 		super(props)
 		setTimeout(()=>{
@@ -19,7 +18,7 @@ export default class App extends Component {
 		<Container>
 			<Header noLeft style={styles.headerBackgroundColor}>
 				<Body>
-					<Title style={styles.appTitle}>WhatsApp</Title>
+					<Title style={styles.appTitle} button onPress={()=>{navigation.navigate('Trail')}}>WhatsApp</Title>
 				</Body>
 				<Right>
 					<Button transparent>
