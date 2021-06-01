@@ -15,6 +15,7 @@ export default StyleSheet.create({
     // first Text
     firstText:{
         marginTop:5,
+        fontWeight:"bold"
     },
     // tabColorText
     textColor:{
