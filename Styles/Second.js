@@ -19,15 +19,17 @@ export default StyleSheet.create({
     },
     // Chat Footer
     chatFooter:{
+        width:"100%",
+        height:"100%",
         backgroundColor:'#BFA5A5',
-        marginLeft:40,
     },
     // search bar
     searchSection: {
+        marginTop:"157%",
         width:300,
         height:50,
         alignSelf:"stretch",
-        marginRight:110,
+        marginRight:80,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -53,7 +55,7 @@ export default StyleSheet.create({
     },
     // speaker
     speaker:{
-        marginBottom:-15,
+        marginBottom: 45,
         backgroundColor:"#075E54"
     },
     attachment:{
