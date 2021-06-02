@@ -81,11 +81,10 @@ export default StyleSheet.create({
     justifyContent: "flex-start",
     },
     modalView: {
-        margin: 20,
+        margin: 5,
         backgroundColor: "white",
-        borderRadius: 20,
-        padding: 35,
-        alignItems: "center",
+        borderRadius:5,
+        padding: 15,
         shadowColor: "#000",
         shadowOffset: {
         width: 0,
@@ -96,23 +95,24 @@ export default StyleSheet.create({
         elevation: 5
     },
     button: {
-        borderRadius: 20,
-        padding: 10,
-        elevation: 2
+        elevation: 0
     },
     buttonOpen: {
         backgroundColor: "#F194FF",
     },
-    buttonClose: {
-        backgroundColor: "#2196F3",
-    },
     textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center"
+        color: "#000000",
+        textAlign: "left",
+        fontSize:17,
     },
     modalText: {
         marginBottom: 15,
         textAlign: "center",
     },
+    // moreicon
+    moreIcon: {
+        fontWeight: 'bold',
+        fontSize:30,
+        color:"#000000"
+    }
 })

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View } from 'native-base';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem } from 'native-base';
 import { StatusBar, Text, TextInput,Image, TouchableOpacity, Modal,Pressable, TouchableWithoutFeedback } from 'react-native';
 import styles from '../Styles/Second';
 
@@ -53,13 +53,29 @@ export default class ChatPage extends Component {
 								>
 								<View style={styles.centeredView}>
 									<View style={styles.modalView}>
-									<Text style={styles.modalText}>Hello World!</Text>
-									<Pressable
-										style={[styles.button, styles.buttonClose]}
-										onPress={() => this.setModalVisible(!modalVisible)}
-									>
-										<Text style={styles.textStyle}>Hide Modal</Text>
-									</Pressable>
+										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+											<Text style={styles.textStyle}>View contact</Text>
+										</ListItem>
+										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+											<Text style={styles.textStyle}>Media, links, and docs</Text>
+										</ListItem>
+										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+											<Text style={styles.textStyle}>Search</Text>
+										</ListItem>
+										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+											<Text style={styles.textStyle}>Unmute notifications</Text>
+										</ListItem>
+										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+											<Text style={styles.textStyle}>Wallpaper</Text>
+										</ListItem>
+										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+											<Left>
+												<Text style={styles.textStyle}>More</Text>
+											</Left>
+										<Right>
+											<Icon name="arrow-right" type="MaterialIcons" style={styles.moreIcon}/>
+										</Right>
+										</ListItem>
 									</View>
 								</View>
 								</Modal>
