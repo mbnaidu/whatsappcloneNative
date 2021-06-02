@@ -49,6 +49,9 @@ export default StyleSheet.create({
     },
     badgeChatsText:{
         fontSize:14,
+        justifyContent:"center",
+        alignSelf:"center",
+        textAlign:"center",
         color:"snow"
     },
     // Status Page

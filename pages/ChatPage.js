@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab } from 'native-base';
-import { StatusBar, Text } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View } from 'native-base';
+import { StatusBar, Text, TextInput,Image } from 'react-native';
 import styles from '../Styles/Second';
 
 export default class ChatPage extends Component {
@@ -38,11 +38,19 @@ export default class ChatPage extends Component {
 			</Header>
 			<Content style={{backgroundColor: '#BFA5A5'}}/>
 			<Footer style={styles.chatFooter}>
-				<Left>
-					<Fab>
-						<Input placeholder="Search" style={styles.searchBar}/>
-					</Fab>
-				</Left>
+				<View style={styles.searchSection}>
+					<Image style={styles.searchIcon} source={require('../Assets/smile.png')}/>
+					<TextInput
+						style={styles.input}
+						placeholder="Type a message"
+						underlineColorAndroid="transparent"
+					/>
+					<Icon style={styles.attachment} type="Entypo" name='attachment'/>
+					<Icon style={styles.cameraalt} type="MaterialIcons" name='camera-alt'/>
+				</View>
+				<Fab style={styles.speaker}>
+					<Icon name='keyboard-voice' type="MaterialIcons" style={{fontSize: 28}} />
+				</Fab>
 			</Footer>
 		</Container>
 		);
