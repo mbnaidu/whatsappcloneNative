@@ -36,18 +36,30 @@ export default class ChatPage extends Component {
 					</Button>
 				</Right>
 			</Header>
+			{/* <Header searchBar rounded>
+			<Item>
+				<Icon name="ios-search" />
+				<Input placeholder="Search" />
+				<Icon name="ios-people" />
+			</Item>
+			<Button transparent>
+				<Text>Search</Text>
+			</Button>
+			</Header> */}
 			<Content style={{backgroundColor: '#BFA5A5'}}/>
 			<Footer style={styles.chatFooter}>
-				<View style={styles.searchSection}>
-					<Image style={styles.searchIcon} source={require('../Assets/smile.png')}/>
-					<TextInput
-						style={styles.input}
-						placeholder="Type a message"
-						underlineColorAndroid="transparent"
-					/>
-					<Icon style={styles.attachment} type="Entypo" name='attachment'/>
-					<Icon style={styles.cameraalt} type="MaterialIcons" name='camera-alt'/>
-				</View>
+				<Fab style={styles.searchSection} Input>
+					<View style={styles.arrange}>
+						<Image style={styles.searchIcon} source={require('../Assets/smile.png')}/>
+						<TextInput
+							style={styles.input}
+							placeholder="Type a message"
+							underlineColorAndroid="transparent"
+						/>
+						<Icon style={styles.attachment} type="Entypo" name='attachment'/>
+						<Icon style={styles.cameraalt} type="MaterialIcons" name='camera-alt'/>
+					</View>
+				</Fab>
 				<Fab style={styles.speaker}>
 					<Icon name='keyboard-voice' type="MaterialIcons" style={{fontSize: 28}} />
 				</Fab>

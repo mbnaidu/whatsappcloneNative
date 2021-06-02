@@ -25,11 +25,11 @@ export default StyleSheet.create({
     },
     // search bar
     searchSection: {
-        marginTop:"157%",
+        marginBottom:50,
+        right:60,
         width:300,
         height:50,
         alignSelf:"stretch",
-        marginRight:80,
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
@@ -66,5 +66,12 @@ export default StyleSheet.create({
     cameraalt:{
         marginRight:-20,
         color:"#AEA3A3",
+    },
+    // arrange
+    arrange:{
+        alignSelf:"stretch",
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
     }
 })
