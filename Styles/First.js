@@ -71,4 +71,12 @@ export default StyleSheet.create({
     viewedUpdate:{
         marginTop:10,
     },
+    // bothheaders
+    mediaHeader:{
+        backgroundColor:"#ffffff",
+        alignSelf:"flex-start"
+    },
+    mediaSubHeaderText:{
+        color:"#075E54",fontSize:16,fontWeight:'bold',
+    }
 })

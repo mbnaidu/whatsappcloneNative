@@ -27,7 +27,7 @@ export default class ChatPage extends Component {
 		return (
 		<TouchableWithoutFeedback onPress={()=>{this.setModalVisible(false)}}>
 			<Container >
-				<Header style={styles.headerBackgroundColor} button onPress={()=>{console.log('hi')}}>
+				<Header style={styles.headerBackgroundColor} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Home')}}>
 							<Icon name='arrow-back' />
@@ -65,7 +65,7 @@ export default class ChatPage extends Component {
 										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
 											<Text style={styles.textStyle}>View contact</Text>
 										</ListItem>
-										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+										<ListItem noBorder button onPress={()=>{this.setModalVisible(!modalVisible);navigate('MediaPage')}}>
 											<Text style={styles.textStyle}>Media, links, and docs</Text>
 										</ListItem>
 										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
