@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
     // Chat Header
     chatBody:{
-        marginLeft:40,
+        paddingLeft:30,
     },
     chatBodyTextHeading1:{
         color:"snow",
@@ -114,5 +114,27 @@ export default StyleSheet.create({
         fontWeight: 'bold',
         fontSize:30,
         color:"#000000"
+    },
+    // bioHeader
+    bioHeader: {
+        backgroundColor:"#075E54"
+    },
+    // Bio Page
+    MainContainer :{
+        justifyContent: 'center',
+        flex:1,
+        paddingTop: (Platform.OS === 'iOS') ? 20 : 0
+    },
+    FlatList_Item: {
+        padding: 10,
+        fontSize: 18,
+        height: 44,
+    },
+    header_style:{
+        width: '100%',
+        height:400,
+        backgroundColor: '#00BCD4', 
+        alignItems: 'center', 
+        justifyContent: 'center'
     }
 })
