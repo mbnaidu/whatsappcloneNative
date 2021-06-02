@@ -5,14 +5,23 @@ import styles from '../Styles/Second';
 
 export default class ChatPage extends Component {
 	state = {
-    modalVisible: false
-  };
-
-  setModalVisible = (visible) => {
-    this.setState({ modalVisible: visible });
-  }
+		modalVisible: false,
+		modalVisible2: false,
+	};
+	setModalVisible = (visible) => {
+		this.setState({ modalVisible: visible });
+	};
+	setModalVisible2 = (visible) => {
+		this.setState({ modalVisible2: visible });
+	}
+	swapModals = () =>{
+		this.setState({
+			modalVisible2: true,
+		});
+	}
 	render() {
 		const { modalVisible } = this.state;
+		const { modalVisible2 } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
@@ -68,12 +77,42 @@ export default class ChatPage extends Component {
 										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
 											<Text style={styles.textStyle}>Wallpaper</Text>
 										</ListItem>
-										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+										<ListItem noBorder button onPress={() => {this.swapModals();this.setModalVisible2(!modalVisible2)}}>
 											<Left>
 												<Text style={styles.textStyle}>More</Text>
 											</Left>
 										<Right>
 											<Icon name="arrow-right" type="MaterialIcons" style={styles.moreIcon}/>
+										<View style={styles.centeredView}>
+											<Modal
+											animationType="fade"
+											transparent={true}
+											visible={modalVisible2}
+											onRequestClose={() => {
+												this.setModalVisible2(!modalVisible2);
+											}}
+											>
+											<View style={styles.centeredView}>
+												<View style={styles.modalView}>
+													<ListItem noBorder button onPress={() => this.setModalVisible2(!modalVisible2)}>
+														<Text style={styles.textStyle}>Report</Text>
+													</ListItem>
+													<ListItem noBorder button onPress={() => this.setModalVisible2(!modalVisible2)}>
+														<Text style={styles.textStyle}>Block</Text>
+													</ListItem>
+													<ListItem noBorder button onPress={() => this.setModalVisible2(!modalVisible2)}>
+														<Text style={styles.textStyle}>Clear chat</Text>
+													</ListItem>
+													<ListItem noBorder button onPress={() => this.setModalVisible2(!modalVisible2)}>
+														<Text style={styles.textStyle}>Export chat</Text>
+													</ListItem>
+													<ListItem noBorder button onPress={() => this.setModalVisible2(!modalVisible2)}>
+														<Text style={styles.textStyle}>Add shortcut</Text>
+													</ListItem>
+												</View>
+											</View>
+											</Modal>
+										</View>
 										</Right>
 										</ListItem>
 									</View>
