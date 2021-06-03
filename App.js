@@ -6,6 +6,7 @@ import { StatusBar } from 'react-native';
 import ChatPage from './pages/ChatPage';
 import MediaPage from './pages/MediaPage';
 import BioPage from './pages/BioPage';
+import NewGroup from './Contents/NewGroup';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ function App() {
 			<Stack.Screen name="ChatPage" component={ChatPage} options={{ headerShown: false }} />
 			<Stack.Screen name="MediaPage" component={MediaPage} options={{ headerShown: false }} />
 			<Stack.Screen name="BioPage" component={BioPage} options={{ headerShown: false }} />
+			<Stack.Screen name="NewGroup" component={NewGroup} options={{ headerShown: false }} />
 		</Stack.Navigator>
 		</NavigationContainer>
 	);

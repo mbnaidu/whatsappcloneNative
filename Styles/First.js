@@ -104,6 +104,30 @@ export default StyleSheet.create({
         fontSize:23,
         marginBottom:10,
     },
+    remove: {
+        color:"#ffffff",
+        alignSelf:"flex-end",
+        position:"absolute",
+        marginLeft:40,
+        bottom:-20,
+        width:25,
+        height:25,
+        fontSize:23,
+        marginBottom:10,
+        borderRadius:50,
+        backgroundColor:"#828385",
+        borderWidth:2,
+        borderColor:'#ffffff'
+    },
+    removeText:{
+        color:"#000000",
+        marginTop: 10,
+        fontWeight:"bold",
+    },
+    // listitem
+    listitem:{
+        width:"100%",
+    },
     recentUpdate:{
         marginTop:10,
     },
@@ -117,5 +141,12 @@ export default StyleSheet.create({
     },
     mediaSubHeaderText:{
         color:"#075E54",fontSize:16,fontWeight:'bold',
-    }
+    },
+    // newGroup Header  
+    newgroupheader:{
+        height:100,
+        backgroundColor:"#ffffff"
+    },
+    // select photo
+    selectPhoto:{}
 })
