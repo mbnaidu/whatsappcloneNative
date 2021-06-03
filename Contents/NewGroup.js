@@ -71,11 +71,9 @@ export default class NewGroup extends Component {
 							</Right>
 							</ListItem>
 						<Text style={{marginLeft:90,fontSize:12,marginTop:-10}}>Provide a group subject and optional icon</Text>
-						<View style={{marginTop:80}}>
-							<Fab position="bottomRight" style={{backgroundColor:"#25D366"}}>
-								<Icon name="check" type="MaterialIcons" style={{fontSize: 36}}/>
-							</Fab>
-						</View>
+							<Button style={{height:70,width:70,borderRadius:50,backgroundColor:"#075E54",marginLeft:300}} onPress={()=>{navigate('Home')}}>
+								<Icon name="check" type="MaterialIcons" style={{fontSize: 36}} />
+							</Button>
 					</Card>
 						<View style={{marginLeft:10}}>
 							<Text>Paritcipants : 1</Text>
