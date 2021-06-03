@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge, Thumbnail, ListItem, Fab } from 'native-base';
+import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge, Thumbnail, ListItem, Fab, View } from 'native-base';
 import { ScrollView, StatusBar, Text,Image } from 'react-native';
 import styles from '../Styles/First';
 import Calls from '../Screens/Calls';
@@ -11,40 +11,107 @@ export default class Home extends Component {
 		const { navigate } = this.props.navigation;
 		return (
 		<Container>
-			<Header noLeft style={styles.headerBackgroundColor}>
-				<Body>
-					<Title style={styles.appTitle} >PIGEON</Title>
-				</Body>
-				<Right>
-					<Button transparent>
-						<Image style={styles.searchIcon} source={require('../Assets/pigeon.png')} style={styles.pigeon}/>
-					</Button>
-					<Button transparent>
-						<Image style={styles.searchIcon} source={require('../Assets/status.png')} style={styles.status}/>
-					</Button>
-					<Button transparent>
-						<Image style={styles.searchIcon} source={require('../Assets/moreVert.png')} style={styles.moreVert}/>
-					</Button>
-				</Right>
-			</Header>
-			<Tabs initialPage={1}
+			<View >
+				<Header noLeft style={styles.headerBackgroundColor} noBorder>
+					<Body>
+						<Title style={styles.appTitle} >PIGEON</Title>
+					</Body>
+					<Right>
+						<Button transparent>
+							<Image style={styles.searchIcon} source={require('../Assets/pigeon.png')} style={styles.pigeon}/>
+						</Button>
+						<Button transparent>
+							<Image style={styles.searchIcon} source={require('../Assets/status.png')} style={styles.status}/>
+						</Button>
+						<Button transparent>
+							<Image style={styles.searchIcon} source={require('../Assets/moreVert.png')} style={styles.status}/>
+						</Button>
+					</Right>
+				</Header>
+			</View>
+			<View>
+				<ScrollView horizontal={true}>
+					<Header noLeft style={styles.chatPageSecondHeader} noBorder>
+					<Body>
+						<Thumbnail
+							square
+							style={{width: 55, height: 55,marginLeft: 13,marginBottom:4}}
+							source={require('../Assets/addGroup.png')}
+						>
+						</Thumbnail>
+						{/* <Text style={{color:"snow",fontSize: 16}}>Add Group</Text> */}
+					</Body>
+					<Body>
+						<Thumbnail
+							square
+							style={{width: 50, height: 50,marginLeft: 20,marginBottom:4}}
+							source={require('../Assets/addContact.png')}
+						>
+						</Thumbnail>
+						{/* <Text style={{color:"snow",fontSize: 15,marginRight:5}}>Add Contact</Text> */}
+					</Body>
+					<Body>
+						<Thumbnail
+							square
+							style={{width: 60, height: 60,marginLeft: 25}}
+							source={require('../Assets/flight.png')}
+						>
+						</Thumbnail>
+						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:12}}>Flight Mode</Text> */}
+					</Body>
+					<Body>
+						<Thumbnail
+							square
+							style={{width: 45, height: 45,marginLeft: 30}}
+							source={require('../Assets/search.png')}
+						>
+						</Thumbnail>
+						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
+					</Body>
+					<Body>
+						<Thumbnail
+							square
+							style={{width: 50, height: 50,marginLeft: 28,marginBottom:4,marginRight:10}}
+							source={require('../Assets/reminder.png')}
+						>
+						</Thumbnail>
+						{/* <Text style={{color:"snow",fontSize: 16}}>Reminder</Text> */}
+					</Body>
+					<Body>
+						<Thumbnail
+							square
+							style={{width: 55, height: 55,marginLeft: 20,marginBottom:4}}
+							source={require('../Assets/message.png')}
+						>
+						</Thumbnail>
+						{/* <Text style={{color:"snow",fontSize: 15,marginRight:5}}>Add Contact</Text> */}
+					</Body>
+					<Body>
+						<Thumbnail
+							square
+							style={{width: 50, height: 50,marginLeft: 25}}
+							source={require('../Assets/general.png')}
+						>
+						</Thumbnail>
+						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:12}}>Flight Mode</Text> */}
+					</Body>
+					<Body>
+						<Thumbnail
+							square
+							style={{width: 45, height: 45,marginLeft: 30}}
+							source={require('../Assets/bluetooth.png')}
+						>
+						</Thumbnail>
+						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
+					</Body>
+				</Header>
+				</ScrollView>
+			</View>
+			<Tabs initialPage={0}
 				tabBarBackgroundColor="#075E54"
 				tabContainerStyle={{elevation:0}}
 				tabBarUnderlineStyle={styles.tabBarUnderline}
 			>
-				<Tab 
-					heading={
-						<TabHeading style={{backgroundColor:"#075E54"}}>
-							<Icon name="photo-camera" type="MaterialIcons" style={{color:"snow"}}/>
-						</TabHeading>}>
-					<Text style={{
-						textAlign:"center",
-						textAlignVertical:"center",
-						flex:1
-						}}>
-						Camera
-					</Text>
-				</Tab>
 				<Tab 
 					heading={
 						<TabHeading style={{backgroundColor:"#075E54"}}>

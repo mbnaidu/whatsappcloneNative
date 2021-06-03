@@ -9,6 +9,10 @@ export default StyleSheet.create({
     headerBackgroundColor:{
         backgroundColor:"#075E54"
     },
+    chatPageSecondHeader:{
+        backgroundColor:"#075E54",
+        height:80,
+    },
     tabBarUnderline:{
         height:2
     },
