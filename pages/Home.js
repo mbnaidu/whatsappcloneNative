@@ -1,12 +1,56 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge, Thumbnail, ListItem, Fab, View } from 'native-base';
-import { ScrollView, StatusBar, Text,Image } from 'react-native';
+import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge, Thumbnail, ListItem, Fab, View, Card, CardItem, Item, Picker, Form, Label, Input, DatePicker } from 'native-base';
+import { ScrollView, StatusBar, Text,Image, Modal } from 'react-native';
 import styles from '../Styles/First';
 import Calls from '../Screens/Calls';
 import Status from '../Screens/Status';
 
 export default class Home extends Component {
+	constructor(props) {
+    super(props);
+    this.state = { chosenDate: new Date() };
+    this.setDate = this.setDate.bind(this);
+  }
+	state = {
+		modalVisible: false,
+		modalVisible2: false,
+		selected2: undefined,
+		selected: undefined,
+		selected3: undefined,
+		selected4: undefined,
+	};
+	setDate(newDate) {
+    this.setState({ chosenDate: newDate });
+  }
+	setModalVisible = (visible) => {
+		this.setState({ modalVisible: visible });
+	};
+	setModalVisible2 = (visible) => {
+		this.setState({ modalVisible2: visible });
+	};
+	onValueChange2(value) {
+		this.setState({
+		selected2: value
+		});
+	}
+	onValueChange(value) {
+		this.setState({
+		selected: value
+		});
+	}
+	onValueChange3(value) {
+		this.setState({
+		selected3: value
+		});
+	}
+	onValueChange4(value) {
+		this.setState({
+		selected4: value
+		});
+	}
 	render() {
+		const { modalVisible } = this.state;
+		const { modalVisible2 } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
@@ -43,13 +87,216 @@ export default class Home extends Component {
 						</Button>
 						{/* <Text style={{color:"snow",fontSize: 16}}>Add Group</Text> */}
 					</Body>
-					<Body>
-						<Thumbnail
-							square
-							style={{width: 50, height: 50,marginLeft: 20,marginBottom:4}}
-							source={require('../Assets/addContact.png')}
-						>
-						</Thumbnail>
+					<Body onPress={() =>{this.setModalVisible(!modalVisible)}} >
+						<Button transparent onPress={() =>{this.setModalVisible(!modalVisible)}} style={{marginTop:19}}>
+							<Thumbnail
+								square
+								style={{width: 50, height: 50,marginLeft: 20}}
+								source={require('../Assets/addContact.png')}
+							>
+							</Thumbnail>
+						</Button>
+						<View style={styles.centeredView}>
+							<Modal
+								animationType="fade"
+								transparent={true}
+								visible={modalVisible}
+								onRequestClose={() => {
+									this.setModalVisible(!modalVisible);
+								}}
+							>
+								<View style={styles.centeredView}>
+									<View style={styles.modalView}>
+										<Header style={{backgroundColor:"#ffffff"}} noBorder>
+											<Left>
+												<Button transparent onPress={()=>{this.setModalVisible(!modalVisible)}}>
+													<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+												</Button>
+											</Left>
+											<Body>
+												<Title style={styles.createContact}>Create Contact</Title>
+											</Body>
+											<Right>
+												<Button transparent>
+													<Image source={require('../Assets/ellipsis.png')} style={styles.ellipsis}/>
+												</Button>
+											</Right>
+										</Header>
+										<Body>
+											<Modal
+												animationType="fade"
+												transparent={true}
+												visible={modalVisible2}
+												onRequestClose={() => {
+													this.setModalVisible2(!modalVisible2);
+												}}
+											>
+												<View style={styles.dropdown}>
+													<View style={styles.dropdownmodel}>
+														<ListItem button onPress={() =>{this.setModalVisible2(!modalVisible2)}}>
+															<Title style={styles.createContact}>Device</Title>
+														</ListItem>
+														<ListItem button onPress={() =>{this.setModalVisible2(!modalVisible2)}}>
+															<Title style={styles.createContact} scrollX>madhucharliehash@gmail.com</Title>
+														</ListItem>
+													</View>
+												</View>
+											</Modal>
+											<Item picker>
+												<Text>Save contact to ...</Text>
+												<Picker
+													mode="dropdown"
+													iosIcon={<Icon name="arrow-down" />}
+													style={{ width: undefined }}
+													placeholder="Select your SIM"
+													placeholderStyle={{ color: "#bfc6ea" }}
+													placeholderIconColor="#007aff"
+													selectedValue={this.state.selected2}
+													onValueChange={this.onValueChange2.bind(this)}
+												>
+													<Picker.Item label="Device" value="key0" />
+													<Picker.Item label="madhucharliehash@gmail.com" value="key2" />
+													<Picker.Item label="18pa1a1213@vishnu.edu.in" value="key3" />
+													<Picker.Item label="madhubabu@gmail.com" value="key4" />
+												</Picker>
+											</Item>
+											<ScrollView>
+												<Header noBorder transparent style={{width:"100%",marginRight:150}}>
+													<Icon name="person" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
+													<Input placeholder="First Name" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+												</Header>
+												<Header noBorder transparent style={{width:"100%",marginRight:150}}>
+													<Icon name="person" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
+													<Input placeholder="Last Name" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+												</Header>
+												<Header noBorder transparent style={{width:"100%",marginRight:150}}>
+													<Icon name="apartment" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
+													<Input placeholder="Company" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+												</Header>
+												<Header noBorder transparent style={{width:"100%",marginRight:150}}>
+													<Icon name="call" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
+													<Input placeholder="Contact Number" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+												</Header>
+												<View>
+													<Item picker style={{marginTop:10,borderBottomWidth: 2,borderBottomColor:"#000000"}}>
+														<Icon name="place" type="MaterialIcons" style={{fontSize:28,marginTop:10,marginLeft:10}}/>
+														<Picker
+															mode="dropdown"
+															iosIcon={<Icon name="arrow-down" />}
+															style={{ width: undefined }}
+															placeholder="Select your SIM"
+															placeholderStyle={{ color: "#bfc6ea" }}
+															placeholderIconColor="#007aff"
+															selectedValue={this.state.selected}
+															onValueChange={this.onValueChange.bind(this)}
+														>
+															<Picker.Item label="Place" value="key0" />
+															<Picker.Item label="Home" value="key1" />
+															<Picker.Item label="Pager" value="key2" />
+															<Picker.Item label="Home pager" value="key3" />
+															<Picker.Item label="Office pager" value="key4" />
+														</Picker>
+													</Item>
+												</View>
+												<Header noBorder transparent style={{width:"100%",marginRight:150}}>
+													<Icon name="email" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
+													<Input placeholder="E-mail" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+												</Header>
+												<View>
+													<Item picker style={{marginTop:10,borderBottomWidth: 2,borderBottomColor:"#000000"}}>
+														<Icon name="place" type="MaterialIcons" style={{fontSize:28,marginTop:10,marginLeft:10}}/>
+														<Picker
+															mode="dropdown"
+															iosIcon={<Icon name="arrow-down" />}
+															style={{ width: undefined }}
+															placeholder="Select your SIM"
+															placeholderStyle={{ color: "#bfc6ea" }}
+															placeholderIconColor="#007aff"
+															selectedValue={this.state.selected3}
+															onValueChange={this.onValueChange3.bind(this)}
+														>
+															<Picker.Item label="Place" value="key0" />
+															<Picker.Item label="Home" value="key1" />
+															<Picker.Item label="Pager" value="key2" />
+															<Picker.Item label="Home pager" value="key3" />
+															<Picker.Item label="Office pager" value="key4" />
+														</Picker>
+													</Item>
+												</View>
+												<Header noBorder transparent style={{width:"100%",marginRight:150}}>
+													<Icon name="add-location" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
+													<Input placeholder="Address" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+												</Header>
+												<View>
+													<Item picker style={{marginTop:10,borderBottomWidth: 2,borderBottomColor:"#000000"}}>
+														<Icon name="place" type="MaterialIcons" style={{fontSize:28,marginTop:10,marginLeft:10}}/>
+														<Picker
+															mode="dropdown"
+															iosIcon={<Icon name="arrow-down" />}
+															style={{ width: undefined }}
+															placeholder="Select your SIM"
+															placeholderStyle={{ color: "#bfc6ea" }}
+															placeholderIconColor="#007aff"
+															selectedValue={this.state.selected4}
+															onValueChange={this.onValueChange4.bind(this)}
+														>
+															<Picker.Item label="Work" value="key0" />
+															<Picker.Item label="Home" value="key1" />
+															<Picker.Item label="Other" value="key2" />
+														</Picker>
+													</Item>
+												</View>
+												<Header noBorder transparent style={{width:"100%",marginRight:150}}>
+													<Icon name="vpn-lock" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
+													<Input placeholder="Website" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+												</Header>
+												<Header noBorder transparent>
+													<Icon name="calendar-today" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
+													<DatePicker
+														defaultDate={new Date(2018, 4, 4)}
+														minimumDate={new Date(2018, 1, 1)}
+														maximumDate={new Date(2018, 12, 31)}
+														locale={"en"}
+														timeZoneOffsetInMinutes={undefined}
+														modalTransparent={false}
+														animationType={"fade"}
+														androidMode={"default"}
+														placeHolderText="Select date"
+														textStyle={{ color: "green" }}
+														placeHolderTextStyle={{ color: "#000000" }}
+														onDateChange={this.setDate}
+														disabled={false}
+														/>
+												</Header>
+												<View>
+													<Item picker style={{marginTop:10,borderBottomWidth: 2,borderBottomColor:"#000000"}}>
+														<Icon name="place" type="MaterialIcons" style={{fontSize:28,marginTop:10,marginLeft:10}}/>
+														<Picker
+															mode="dropdown"
+															iosIcon={<Icon name="arrow-down" />}
+															style={{ width: undefined }}
+															placeholder="Select your SIM"
+															placeholderStyle={{ color: "#bfc6ea" }}
+															placeholderIconColor="#007aff"
+															selectedValue={this.state.selected4}
+															onValueChange={this.onValueChange4.bind(this)}
+														>
+															<Picker.Item label="Birthday" value="key0" />
+															<Picker.Item label="Marriage Anniversary" value="key1" />
+															<Picker.Item label="Death Anniversary" value="key2" />
+															<Picker.Item label="Other" value="key3" />
+														</Picker>
+													</Item>
+												</View>
+											</ScrollView>
+											<Button full light success onPress={() =>{this.setModalVisible(!modalVisible)}}>
+												<Text>Save</Text>
+											</Button>
+										</Body>
+									</View>
+								</View>
+							</Modal>
+						</View>
 						{/* <Text style={{color:"snow",fontSize: 15,marginRight:5}}>Add Contact</Text> */}
 					</Body>
 					<Body>

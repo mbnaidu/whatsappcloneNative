@@ -6,6 +6,14 @@ export default StyleSheet.create({
         fontSize:22,
         color:"snow"
     },
+    createContact:{
+        fontSize:18,
+        color:"#075E54"
+    },
+    createContactSearchIcon:{
+        fontSize:18,
+        color:"#075E54"
+    },
     headerBackgroundColor:{
         backgroundColor:"#075E54"
     },
@@ -34,6 +42,11 @@ export default StyleSheet.create({
     },
     // status png
     status:{
+        width:24,
+        height:24,
+    },
+    // ellipsis
+    ellipsis:{
         width:24,
         height:24,
     },
@@ -148,5 +161,63 @@ export default StyleSheet.create({
         backgroundColor:"#ffffff"
     },
     // select photo
-    selectPhoto:{}
+    selectPhoto:{},
+    // modals
+    centeredView: {
+        width:"100%",
+        flex: 1,
+        alignSelf:"flex-end",
+        justifyContent: "flex-start",
+    },
+    modalView: {
+        margin: 5,
+        height:"100%",
+        backgroundColor: "white",
+        borderRadius:5,
+        padding: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+        width: 0,
+        height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    button: {
+        elevation: 0
+    },
+    buttonOpen: {
+        backgroundColor: "#F194FF",
+    },
+    textStyle: {
+        color: "#000000",
+        textAlign: "left",
+        fontSize:17,
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center",
+    },
+    // drop down models
+    dropdown:{
+        flex: 1,
+        alignSelf:"flex-end",
+        justifyContent: "flex-start",
+    },
+    dropdownmodel:{
+        marginTop: 130,
+        marginRight: 170,
+        backgroundColor: "white",
+        borderRadius:5,
+        padding: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+        width: 0,
+        height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
 })
