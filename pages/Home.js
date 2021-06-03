@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge, Thumbnail, ListItem, Fab } from 'native-base';
-import { ScrollView, StatusBar, Text } from 'react-native';
+import { ScrollView, StatusBar, Text,Image } from 'react-native';
 import styles from '../Styles/First';
 import Calls from '../Screens/Calls';
 import Status from '../Screens/Status';
@@ -13,14 +13,17 @@ export default class Home extends Component {
 		<Container>
 			<Header noLeft style={styles.headerBackgroundColor}>
 				<Body>
-					<Title style={styles.appTitle} >WhatsApp</Title>
+					<Title style={styles.appTitle} >PIGEON</Title>
 				</Body>
 				<Right>
 					<Button transparent>
-						<Icon type="MaterialIcons" name="search"/>
+						<Image style={styles.searchIcon} source={require('../Assets/pigeon.png')} style={styles.pigeon}/>
 					</Button>
 					<Button transparent>
-						<Icon type="MaterialIcons" name="more-vert"/>
+						<Image style={styles.searchIcon} source={require('../Assets/status.png')} style={styles.status}/>
+					</Button>
+					<Button transparent>
+						<Image style={styles.searchIcon} source={require('../Assets/moreVert.png')} style={styles.moreVert}/>
 					</Button>
 				</Right>
 			</Header>

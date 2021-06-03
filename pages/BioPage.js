@@ -26,7 +26,9 @@ export default class BioPage extends Component {
         <View style={styles.scrollViewContent}>
             <Card>
                 <CardItem bordered>
-                    <Text style={{color:"#075E54",fontWeight:"bold"}}>Media, links, and docs</Text>
+                    <Body>
+                        <Text style={{color:"#075E54",fontWeight:"bold"}}>Media, links, and docs</Text>
+                    </Body>
                     <Right>
                         <Text>666<Icon name="arrow-forward" type="MaterialIcons" style={{fontSize:25,color:"#000000"}}/></Text>
                     </Right>

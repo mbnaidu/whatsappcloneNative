@@ -23,6 +23,21 @@ export default StyleSheet.create({
         color:"snow",
         fontSize:15,
     },
+    // pigeon png
+    pigeon:{
+        width:30,
+        height:30,
+    },
+    // status png
+    status:{
+        width:24,
+        height:24,
+    },
+    // moreVert
+    moreVert:{
+        width:22,
+        height:22,
+    },
     // badge
     badge: {
         height:24,
