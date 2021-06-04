@@ -42,7 +42,7 @@ export default class Chat extends Component {
 						<Button transparent onPress={() =>{navigate('Group')}}>
 							<Thumbnail
 							square
-							style={{width: 55, height: 55,marginLeft: 13,marginBottom:4}}
+							style={{width: 55, height: 55,marginLeft: 13}}
 							source={require('../Assets/addGroup.png')}
 						>
 						</Thumbnail>
@@ -83,10 +83,10 @@ export default class Chat extends Component {
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:12}}>Flight Mode</Text> */}
 					</Body>
 					<Body onPress={() =>{navigate('Search')}} >
-						<Button transparent onPress={() =>{navigate('Search')}} style={{marginTop:19}}>
+						<Button transparent onPress={() =>{navigate('Search')}}>
 							<Thumbnail
 								square
-								style={{width: 50, height: 50,marginLeft: 20}}
+								style={{width: 47, height: 47,marginLeft: 20}}
 								source={require('../Assets/search.png')}
 							>
 							</Thumbnail>
@@ -94,7 +94,7 @@ export default class Chat extends Component {
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body onPress={() =>{navigate('Reminder')}} >
-						<Button transparent onPress={() =>{navigate('Reminder')}} style={{marginTop:19}}>
+						<Button transparent onPress={() =>{navigate('Reminder')}}>
 							<Thumbnail
 								square
 								style={{width: 50, height: 50,marginLeft: 20}}
@@ -105,7 +105,7 @@ export default class Chat extends Component {
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body onPress={() =>{navigate('Schedule')}} >
-						<Button transparent onPress={() =>{navigate('Schedule')}} style={{marginTop:19}}>
+						<Button transparent onPress={() =>{navigate('Schedule')}}>
 							<Thumbnail
 								square
 								style={{width: 50, height: 50,marginLeft: 20}}
@@ -116,7 +116,7 @@ export default class Chat extends Component {
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body onPress={() =>{navigate('Message')}} >
-						<Button transparent onPress={() =>{navigate('Message')}} style={{marginTop:19}}>
+						<Button transparent onPress={() =>{navigate('Message')}}>
 							<Thumbnail
 								square
 								style={{width: 50, height: 50,marginLeft: 20}}
@@ -127,7 +127,7 @@ export default class Chat extends Component {
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body onPress={() =>{navigate('Bluetooth')}}>
-						<Button transparent onPress={() =>{navigate('Bluetooth')}} style={{marginTop:19}}>
+						<Button transparent onPress={() =>{navigate('Bluetooth')}}>
 							<Thumbnail
 								square
 								style={{width: 45, height: 45,marginLeft: 30}}
