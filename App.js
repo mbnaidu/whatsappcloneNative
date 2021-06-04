@@ -19,6 +19,7 @@ import Chat from './pages/Chat';
 import ChatPage from './pages/ChatPage';
 import MediaPage from './pages/MediaPage';
 import BioPage from './pages/BioPage';
+import Settings from './Settings/Settings';
 
 
 const Stack = createStackNavigator();
@@ -59,6 +60,7 @@ export default class App extends React.Component {
 				<Stack.Screen name="Schedule" component={Schedule} options={{ headerShown: false }} />
 				<Stack.Screen name="Message" component={Message} options={{ headerShown: false }} />
 				<Stack.Screen name="Bluetooth" component={Bluetooth} options={{ headerShown: false }} />
+				<Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

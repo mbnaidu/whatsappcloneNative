@@ -168,14 +168,13 @@ export default StyleSheet.create({
     selectPhoto:{},
     // modals
     centeredView: {
-        width:"100%",
+        width:"70%",
         flex: 1,
         alignSelf:"flex-end",
         justifyContent: "flex-start",
     },
     modalView: {
         margin: 5,
-        height:"100%",
         backgroundColor: "white",
         borderRadius:5,
         padding: 15,
@@ -224,4 +223,13 @@ export default StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
+    // gradient
+    homecontainer: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    tabBarOptions: {
+            backgroundColor: 'transparent',
+        }
 })
