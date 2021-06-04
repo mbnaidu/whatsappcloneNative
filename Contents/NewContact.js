@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker } from 'native-base';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label } from 'native-base';
 import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import styles from '../Styles/First';
 
@@ -77,25 +77,38 @@ export default class NewContact extends Component {
                     </Picker>
                 </Item>
 					<ScrollView vertical={true}>
-						<Header noLeft style={styles.newcontactheader} noBorder>
-							<Icon name="person" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
-							<Input placeholder="First Name" style={{borderBottomWidth: 2,borderBottomColor: '#000000'}}/>
+                        <Header noLeft style={styles.newcontactheader} noBorder>
+							<Item stackedLabel>
+                                <Icon name='person' type="MaterialIcons" style={{fontSize: 28}}/>
+                                <Label style={{fontWeight:"bold"}}>First Name</Label>
+                                <Input placeholder="Enter First name"/>
+                            </Item>
                         </Header>
                         <Header noLeft style={styles.newcontactheader} noBorder>
-                            <Icon name="person" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
-							<Input placeholder="Last Name" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+							<Item stackedLabel>
+                                <Icon name='person' type="MaterialIcons" style={{fontSize: 28}}/>
+                                <Label style={{fontWeight:"bold"}}>Last Name</Label>
+                                <Input placeholder="Enter Last name"/>
+                            </Item>
                         </Header>
                         <Header noLeft style={styles.newcontactheader} noBorder>
-							<Icon name="apartment" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
-                            <Input placeholder="Company" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
-						</Header>
+							<Item stackedLabel>
+                                <Icon name='apartment' type="MaterialIcons" style={{fontSize: 28}}/>
+                                <Label style={{fontWeight:"bold"}}>Company</Label>
+                                <Input placeholder="Enter Company name"/>
+                            </Item>
+                        </Header>
                         <Header noLeft style={styles.newcontactheader} noBorder>
-							<Icon name="call" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
-                            <Input placeholder="Contact Number" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
-						</Header>
-                        <View style={{height:60}}>
-                            <Item picker style={{borderBottomWidth: 0,borderBottomColor:"#000000"}}>
-                                <Icon name="place" type="MaterialIcons" style={{fontSize:28,marginTop:10,marginLeft:10}}/>
+							<Item stackedLabel>
+                                <Icon name='call' type="MaterialIcons" style={{fontSize: 28}}/>
+                                <Label style={{fontWeight:"bold"}}>Contact</Label>
+                                <Input placeholder="Contact Number"/>
+                            </Item>
+                        </Header>
+                        <View>
+                            <Item picker>
+                                <Icon name='place' type="MaterialIcons" style={{fontSize: 28,marginLeft:10}}/>
+                                <Text style={{fontSize:15,fontWeight:"bold"}}> Place : </Text>
                                 <Picker
                                     mode="dropdown"
                                     iosIcon={<Icon name="arrow-down" />}
@@ -113,14 +126,18 @@ export default class NewContact extends Component {
                                     <Picker.Item label="Office pager" value="key4" />
                                 </Picker>
                             </Item>
-						</View>
+                        </View>
                         <Header noLeft style={styles.newcontactheader} noBorder>
-							<Icon name="email" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
-                            <Input placeholder="E-mail" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+							<Item stackedLabel>
+                                <Icon name='email' type="MaterialIcons" style={{fontSize: 28}}/>
+                                <Label style={{fontWeight:"bold"}}>E-mail</Label>
+                                <Input placeholder="E-mail"/>
+                            </Item>
                         </Header>
-                        <View style={{height:60}}>
-                            <Item picker style={{borderBottomWidth: 0,borderBottomColor:"#000000"}}>
-                                <Icon name="place" type="MaterialIcons" style={{fontSize:28,marginTop:10,marginLeft:10}}/>
+                        <View>
+                            <Item picker>
+                                <Icon name='place' type="MaterialIcons" style={{fontSize: 28,marginLeft:10}}/>
+                                <Text style={{fontSize:15,fontWeight:"bold"}}> Place : </Text>
                                 <Picker
                                     mode="dropdown"
                                     iosIcon={<Icon name="arrow-down" />}
@@ -128,8 +145,8 @@ export default class NewContact extends Component {
                                     placeholder="Select your SIM"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
-                                    selectedValue={this.state.selected3}
-                                    onValueChange={this.onValueChange3.bind(this)}
+                                    selectedValue={this.state.selected}
+                                    onValueChange={this.onValueChange.bind(this)}
                                 >
                                     <Picker.Item label="Place" value="key0" />
                                     <Picker.Item label="Home" value="key1" />
@@ -138,14 +155,18 @@ export default class NewContact extends Component {
                                     <Picker.Item label="Office pager" value="key4" />
                                 </Picker>
                             </Item>
-						</View>
+                        </View>
                         <Header noLeft style={styles.newcontactheader} noBorder>
-							<Icon name="add-location" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
-								<Input placeholder="Address" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
-						</Header>
-                        <View style={{height:60}}>
-                            <Item picker style={{borderBottomWidth: 0,borderBottomColor:"#000000"}}>
-                                <Icon name="place" type="MaterialIcons" style={{fontSize:28,marginTop:10,marginLeft:10}}/>
+							<Item stackedLabel>
+                                <Icon name='add-location' type="MaterialIcons" style={{fontSize: 28}}/>
+                                <Label style={{fontWeight:"bold"}}>Address</Label>
+                                <Input placeholder="Address"/>
+                            </Item>
+                        </Header>
+                        <View>
+                            <Item picker>
+                                <Icon name='place' type="MaterialIcons" style={{fontSize: 28,marginLeft:10}}/>
+                                <Text style={{fontSize:15,fontWeight:"bold"}}> Place : </Text>
                                 <Picker
                                     mode="dropdown"
                                     iosIcon={<Icon name="arrow-down" />}
@@ -161,10 +182,13 @@ export default class NewContact extends Component {
                                     <Picker.Item label="Other" value="key2" />
                                 </Picker>
                             </Item>
-						</View>
+                        </View>
                         <Header noLeft style={styles.newcontactheader} noBorder>
-							<Icon name="vpn-lock" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
-                            <Input placeholder="Website" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+							<Item stackedLabel>
+                                <Icon name="globe" type="Entypo" style={{fontSize: 28}}/>
+                                <Label style={{fontWeight:"bold"}}>Website</Label>
+                                <Input placeholder="Website Link"/>
+                            </Item>
                         </Header>
                         <Header noLeft style={styles.newcontactheader} noBorder>
                             <Icon name="calendar-today" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
@@ -184,9 +208,10 @@ export default class NewContact extends Component {
                                 disabled={false}
                             />
                         </Header>
-                        <View style={{height:60}}>
-                            <Item picker style={{borderBottomWidth: 0,borderBottomColor:"#000000"}}>
-                                <Icon name="place" type="MaterialIcons" style={{fontSize:28,marginTop:10,marginLeft:10}}/>
+                        <View>
+                            <Item picker>
+                                <Icon name='place' type="MaterialIcons" style={{fontSize: 28,marginLeft:10}}/>
+                                <Text style={{fontSize:15,fontWeight:"bold"}}> Occasion : </Text>
                                 <Picker
                                     mode="dropdown"
                                     iosIcon={<Icon name="arrow-down" />}
@@ -203,7 +228,7 @@ export default class NewContact extends Component {
                                     <Picker.Item label="Other" value="key3" />
                                 </Picker>
                             </Item>
-						</View>
+                        </View>
                     </ScrollView>
                 <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('Home')}}>
                     <Text style={{color:"#ffffff"}}>Save</Text>
