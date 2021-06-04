@@ -211,8 +211,8 @@ export default class Chat extends Component {
 						</Button>
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
-					<Body onPress={() =>{this.setGeneralModalVisible(!generalmodalvisible)}} >
-						<Button transparent onPress={() =>{this.setGeneral();this.setGeneralModalVisible(!generalmodalvisible)}} style={{marginTop:19}}>
+					<Body onPress={() =>{navigate('Message')}} >
+						<Button transparent onPress={() =>{navigate('Message')}} style={{marginTop:19}}>
 							<Thumbnail
 								square
 								style={{width: 50, height: 50,marginLeft: 20}}
