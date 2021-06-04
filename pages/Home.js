@@ -19,9 +19,13 @@ export default class Home extends Component {
 		selected3: undefined,
 		selected4: undefined,
 		contact:false,
+		aeroplanemode:false,
 	};
 	setDate(newDate) {
 		this.setState({ chosenDate: newDate });
+	}
+	setAeroplanemode = () =>{
+		this.setState({aeroplanemode:!this.state.aeroplanemode})
 	}
 	setModalVisible = (visible) => {
 		this.setState({ modalVisible: visible });
@@ -306,12 +310,25 @@ export default class Home extends Component {
 						{/* <Text style={{color:"snow",fontSize: 15,marginRight:5}}>Add Contact</Text> */}
 					</Body>
 					<Body>
-						<Thumbnail
-							square
-							style={{width: 60, height: 60,marginLeft: 25}}
-							source={require('../Assets/flight.png')}
-						>
-						</Thumbnail>
+						{!this.state.aeroplanemode ? (
+							<Button transparent onPress={() =>{this.setAeroplanemode()}}>
+								<Thumbnail
+									square
+									style={{width: 60, height: 60,marginLeft: 25}}
+									source={require('../Assets/flight.png')}
+								>
+								</Thumbnail>
+							</Button>
+							) : (
+							<Button transparent onPress={() =>{this.setAeroplanemode()}}>
+								<Thumbnail
+									square
+									style={{width: 60, height: 60,marginLeft: 25}}
+									source={require('../Assets/flightOff.png')}
+								>
+								</Thumbnail>
+							</Button>
+						)}
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:12}}>Flight Mode</Text> */}
 					</Body>
 					<Body>
