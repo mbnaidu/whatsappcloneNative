@@ -36,7 +36,7 @@ export default class Group extends Component {
 					<Header style={styles.headerBackgroundColor} button>
 						<Left>
 							<Button transparent onPress={()=>{this.setShow()}}>
-								<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+								<Icon name='close' type="MaterialIcons" style={{fontSize: 28}}/>
 							</Button>
 						</Left>
 						<Body>
