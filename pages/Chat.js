@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge, Thumbnail, ListItem, Fab, View, Card, CardItem, Item, Picker, Form, Label, Input, DatePicker } from 'native-base';
-import { ScrollView, StatusBar, Text,Image, Modal } from 'react-native';
+import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge, Thumbnail, ListItem, Fab, View} from 'native-base';
+import { ScrollView, StatusBar, Text,Image } from 'react-native';
 import styles from '../Styles/First';
 import Calls from '../Screens/Calls';
 import Status from '../Screens/Status';
