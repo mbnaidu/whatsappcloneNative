@@ -146,7 +146,7 @@ export default class Home extends Component {
 						{/* <Text style={{color:"snow",fontSize: 16}}>Add Group</Text> */}
 					</Body>
 					<Body>
-						<Button transparent onPress={() =>{navigate('NewContact')}}>
+						<Button transparent onPress={() =>{navigate('Contact')}}>
 							<Thumbnail
 								square
 								style={{width: 50, height: 50,marginLeft: 20}}

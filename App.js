@@ -7,7 +7,7 @@ import ChatPage from './pages/ChatPage';
 import MediaPage from './pages/MediaPage';
 import BioPage from './pages/BioPage';
 import Group from './Contents/Group';
-import NewContact from './Contents/NewContact';
+import Contact from './Contents/Contact';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import Search from './Contents/Search';
@@ -45,7 +45,7 @@ export default class App extends React.Component {
 				<Stack.Screen name="MediaPage" component={MediaPage} options={{ headerShown: false }} />
 				<Stack.Screen name="BioPage" component={BioPage} options={{ headerShown: false }} />
 				<Stack.Screen name="Group" component={Group} options={{ headerShown: false }} />
-				<Stack.Screen name="NewContact" component={NewContact} options={{ headerShown: false }} />
+				<Stack.Screen name="Contact" component={Contact} options={{ headerShown: false }} />
 				<Stack.Screen name="Search" component={Search} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
