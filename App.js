@@ -12,6 +12,7 @@ import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import Search from './Contents/Search';
 import Reminder from './Contents/Reminder';
+import Schedule from './Contents/Schedule';
 
 
 const Stack = createStackNavigator();
@@ -49,6 +50,7 @@ export default class App extends React.Component {
 				<Stack.Screen name="Contact" component={Contact} options={{ headerShown: false }} />
 				<Stack.Screen name="Search" component={Search} options={{ headerShown: false }} />
 				<Stack.Screen name="Reminder" component={Reminder} options={{ headerShown: false }} />
+				<Stack.Screen name="Schedule" component={Schedule} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

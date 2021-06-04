@@ -200,8 +200,8 @@ export default class Chat extends Component {
 						</Button>
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
-					<Body onPress={() =>{this.setScheduleModalVisible(!schedulemodalvisible)}} >
-						<Button transparent onPress={() =>{this.setSchedule();this.setScheduleModalVisible(!schedulemodalvisible)}} style={{marginTop:19}}>
+					<Body onPress={() =>{navigate('Schedule')}} >
+						<Button transparent onPress={() =>{navigate('Schedule')}} style={{marginTop:19}}>
 							<Thumbnail
 								square
 								style={{width: 50, height: 50,marginLeft: 20}}
