@@ -6,7 +6,7 @@ import {  View } from 'react-native';
 import ChatPage from './pages/ChatPage';
 import MediaPage from './pages/MediaPage';
 import BioPage from './pages/BioPage';
-import NewGroup from './Contents/NewGroup';
+import Group from './Contents/Group';
 import NewContact from './Contents/NewContact';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
@@ -44,7 +44,7 @@ export default class App extends React.Component {
 				<Stack.Screen name="ChatPage" component={ChatPage} options={{ headerShown: false }} />
 				<Stack.Screen name="MediaPage" component={MediaPage} options={{ headerShown: false }} />
 				<Stack.Screen name="BioPage" component={BioPage} options={{ headerShown: false }} />
-				<Stack.Screen name="NewGroup" component={NewGroup} options={{ headerShown: false }} />
+				<Stack.Screen name="Group" component={Group} options={{ headerShown: false }} />
 				<Stack.Screen name="NewContact" component={NewContact} options={{ headerShown: false }} />
 				<Stack.Screen name="Search" component={Search} options={{ headerShown: false }} />
 			</Stack.Navigator>

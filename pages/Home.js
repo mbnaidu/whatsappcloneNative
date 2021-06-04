@@ -135,7 +135,7 @@ export default class Home extends Component {
 				<ScrollView horizontal={true}>
 					<Header noLeft style={styles.chatPageSecondHeader} noBorder>
 					<Body>
-						<Button transparent onPress={() =>{navigate('NewGroup')}}>
+						<Button transparent onPress={() =>{navigate('Group')}}>
 							<Thumbnail
 							square
 							style={{width: 55, height: 55,marginLeft: 13,marginBottom:4}}
