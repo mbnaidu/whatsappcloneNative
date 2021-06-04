@@ -432,7 +432,7 @@ export default class NewGroup extends Component {
 						
 					</ScrollView>
 				</Container>
-				<Fab position="bottomRight" style={{backgroundColor:"#25D366"}}>
+				<Fab position="bottomRight" style={{backgroundColor:"#25D366"}} button onPress={()=>{this.setShow()}}>
 					<Icon name="arrow-forward" type="MaterialIcons" button onPress={()=>{this.setShow()}}/>
 				</Fab>
 			</Container>
