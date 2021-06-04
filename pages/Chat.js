@@ -126,13 +126,15 @@ export default class Chat extends Component {
 						</Button>
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
-					<Body>
-						<Thumbnail
-							square
-							style={{width: 45, height: 45,marginLeft: 30}}
-							source={require('../Assets/bluetooth.png')}
-						>
-						</Thumbnail>
+					<Body onPress={() =>{navigate('Bluetooth')}}>
+						<Button transparent onPress={() =>{navigate('Bluetooth')}} style={{marginTop:19}}>
+							<Thumbnail
+								square
+								style={{width: 45, height: 45,marginLeft: 30}}
+								source={require('../Assets/bluetooth.png')}
+							>
+							</Thumbnail>
+						</Button>
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 				</Header>

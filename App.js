@@ -1,19 +1,24 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Chat from './pages/Chat';
-import {  View } from 'react-native';
-import ChatPage from './pages/ChatPage';
-import MediaPage from './pages/MediaPage';
-import BioPage from './pages/BioPage';
-import Group from './Contents/Group';
-import Contact from './Contents/Contact';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import {  View } from 'react-native';
+
+// CONTENTS
+import Group from './Contents/Group';
+import Contact from './Contents/Contact';
 import Search from './Contents/Search';
 import Reminder from './Contents/Reminder';
 import Schedule from './Contents/Schedule';
 import Message from './Contents/Message';
+import Bluetooth from './Contents/Bluetooth';
+
+// SCREENS
+import Chat from './pages/Chat';
+import ChatPage from './pages/ChatPage';
+import MediaPage from './pages/MediaPage';
+import BioPage from './pages/BioPage';
 
 
 const Stack = createStackNavigator();
@@ -53,6 +58,7 @@ export default class App extends React.Component {
 				<Stack.Screen name="Reminder" component={Reminder} options={{ headerShown: false }} />
 				<Stack.Screen name="Schedule" component={Schedule} options={{ headerShown: false }} />
 				<Stack.Screen name="Message" component={Message} options={{ headerShown: false }} />
+				<Stack.Screen name="Bluetooth" component={Bluetooth} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
