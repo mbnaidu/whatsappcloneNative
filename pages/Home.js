@@ -155,8 +155,8 @@ export default class Home extends Component {
 						</Button>
 						{/* <Text style={{color:"snow",fontSize: 16}}>Add Group</Text> */}
 					</Body>
-					<Body onPress={() =>{this.setModalVisible(!modalVisible)}} >
-						<Button transparent onPress={() =>{this.setContact();this.setModalVisible(!modalVisible)}} style={{marginTop:19}}>
+					<Body>
+						<Button transparent onPress={() =>{navigate('NewContact')}}>
 							<Thumbnail
 								square
 								style={{width: 50, height: 50,marginLeft: 20}}

@@ -160,6 +160,10 @@ export default StyleSheet.create({
         height:100,
         backgroundColor:"#ffffff"
     },
+    newcontactheader:{
+        height:80,
+        backgroundColor:"#ffffff"
+    },
     // select photo
     selectPhoto:{},
     // modals
