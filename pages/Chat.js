@@ -5,7 +5,7 @@ import styles from '../Styles/First';
 import Calls from '../Screens/Calls';
 import Status from '../Screens/Status';
 
-export default class Home extends Component {
+export default class Chat extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { chosenDate: new Date() };

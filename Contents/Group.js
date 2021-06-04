@@ -71,7 +71,7 @@ export default class Group extends Component {
 							</Right>
 						</ListItem>
 						<Text style={{marginLeft:90,fontSize:12,marginTop:-10}}>Provide a group subject and optional icon</Text>
-							<Button style={{height:70,width:70,borderRadius:50,backgroundColor:"#075E54",marginLeft:300}} onPress={()=>{navigate('Home')}}>
+							<Button style={{height:70,width:70,borderRadius:50,backgroundColor:"#075E54",marginLeft:300}} onPress={()=>{navigate('Chat')}}>
 								<Icon name="check" type="MaterialIcons" style={{fontSize: 36}} />
 							</Button>
 					</Card>
@@ -93,12 +93,12 @@ export default class Group extends Component {
 			<Container >
 				<Header style={styles.headerBackgroundColor} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('Home')}}>
+						<Button transparent onPress={()=>{navigate('Chat')}}>
 							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 					</Left>
 					<Body>
-						<ListItem noBorder button onPress={()=>{navigate('Home')}}>
+						<ListItem noBorder button onPress={()=>{navigate('Chat')}}>
 							<View>
 								<Text style={{color:"#ffffff",fontSize:17}}>
 									New Group

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from './pages/Home';
+import Chat from './pages/Chat';
 import {  View } from 'react-native';
 import ChatPage from './pages/ChatPage';
 import MediaPage from './pages/MediaPage';
@@ -11,6 +11,7 @@ import Contact from './Contents/Contact';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
 import Search from './Contents/Search';
+import Reminder from './Contents/Reminder';
 
 
 const Stack = createStackNavigator();
@@ -37,8 +38,8 @@ export default class App extends React.Component {
 		<NavigationContainer>
 			<Stack.Navigator>
 				<Stack.Screen
-				name="Home"
-				component={Home}
+				name="Chat"
+				component={Chat}
 				options={{ headerShown: false }} 
 				/>
 				<Stack.Screen name="ChatPage" component={ChatPage} options={{ headerShown: false }} />
@@ -47,6 +48,7 @@ export default class App extends React.Component {
 				<Stack.Screen name="Group" component={Group} options={{ headerShown: false }} />
 				<Stack.Screen name="Contact" component={Contact} options={{ headerShown: false }} />
 				<Stack.Screen name="Search" component={Search} options={{ headerShown: false }} />
+				<Stack.Screen name="Reminder" component={Reminder} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

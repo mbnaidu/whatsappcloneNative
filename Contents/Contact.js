@@ -45,7 +45,7 @@ export default class Contact extends Component {
 			<Container>
 				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('Home')}}>
+						<Button transparent onPress={()=>{navigate('Chat')}}>
 							<Icon name='close' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 					</Left>
@@ -230,7 +230,7 @@ export default class Contact extends Component {
                             </Item>
                         </View>
                     </ScrollView>
-                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('Home')}}>
+                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('Chat')}}>
                     <Text style={{color:"#ffffff"}}>Save</Text>
                 </Button>
 			</Container>

@@ -29,7 +29,7 @@ export default class ChatPage extends Component {
 			<Container >
 				<Header style={styles.headerBackgroundColor} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('Home')}}>
+						<Button transparent onPress={()=>{navigate('Chat')}}>
 							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 							<Thumbnail
 								style={{width: 45, height: 45,}}
