@@ -14,10 +14,12 @@ export default class Home extends Component {
 	state = {
 		modalVisible: false,
 		modalVisible2: false,
+		searchmodalvisible:false,
 		selected2: undefined,
 		selected: undefined,
 		selected3: undefined,
 		selected4: undefined,
+		search:false,
 		contact:false,
 		aeroplanemode:false,
 	};
@@ -32,6 +34,12 @@ export default class Home extends Component {
 	};
 	setModalVisible2 = (visible) => {
 		this.setState({ modalVisible2: visible });
+	};
+	setSearch = () =>{
+		this.setState({search:!this.state.search})
+	}
+	setSearchModalVisible = (visible) => {
+		this.setState({ searchmodalvisible: visible });
 	};
 	onValueChange2(value) {
 		this.setState({
@@ -59,6 +67,7 @@ export default class Home extends Component {
 	render() {
 		const { modalVisible } = this.state;
 		const { modalVisible2 } = this.state;
+		const { searchmodalvisible } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
@@ -331,13 +340,102 @@ export default class Home extends Component {
 						)}
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:12}}>Flight Mode</Text> */}
 					</Body>
-					<Body>
-						<Thumbnail
-							square
-							style={{width: 45, height: 45,marginLeft: 30}}
-							source={require('../Assets/search.png')}
-						>
-						</Thumbnail>
+					<Body onPress={() =>{this.setSearchModalVisible(!searchmodalvisible)}} >
+						<Button transparent onPress={() =>{this.setSearch();this.setSearchModalVisible(!searchmodalvisible)}} style={{marginTop:19}}>
+							<Thumbnail
+								square
+								style={{width: 50, height: 50,marginLeft: 20}}
+								source={require('../Assets/search.png')}
+							>
+							</Thumbnail>
+						</Button>
+						{!this.state.search ? (<View></View>) : (
+							<View style={styles.centeredView}>
+							<Modal
+								animationType="fade"
+								transparent={true}
+								visible={searchmodalvisible}
+								onRequestClose={() => {
+									this.setSearchModalVisible(!searchmodalvisible)
+								}}
+							>
+								<View style={styles.centeredView}>
+									<View style={styles.modalView}>
+										<Header style={{backgroundColor:"#ffffff"}} noBorder>
+											<Left>
+												<Button transparent onPress={()=>{this.setSearch();this.setSearchModalVisible(!searchmodalvisible)}}>
+													<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+												</Button>
+											</Left>
+											<Body>
+												<Title style={styles.createContact}>Search</Title>
+											</Body>
+											<Right>
+												<Button transparent>
+													<Image source={require('../Assets/ellipsis.png')} style={styles.ellipsis}/>
+												</Button>
+											</Right>
+										</Header>
+										<Body>
+											<ScrollView>
+												<Header noBorder transparent style={{width:"100%",marginRight:150}}>
+													<Icon name="person" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
+													<Input placeholder="Contact" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+												</Header>
+												<Header noBorder transparent style={{width:"100%",marginRight:150}}>
+													<Icon name="insert-drive-file" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
+													<Input placeholder="File Name" style={{borderBottomWidth: 2,borderBottomColor: '#000000',width:200}}/>
+												</Header>
+												<View>
+													<Item picker style={{marginTop:10,borderBottomWidth: 2,borderBottomColor:"#000000"}}>
+														<Text style={{fontSize:20}}>Format : </Text>
+														<Picker
+															mode="dropdown"
+															iosIcon={<Icon name="arrow-down" />}
+															style={{ width: undefined }}
+															placeholder="Select your format"
+															placeholderStyle={{ color: "#bfc6ea" }}
+															placeholderIconColor="#007aff"
+															selectedValue={this.state.selected}
+															onValueChange={this.onValueChange.bind(this)}
+														>
+															<Picker.Item label="PDF" value="key0" />
+															<Picker.Item label="PNG" value="key1" />
+															<Picker.Item label="JPG" value="key2" />
+															<Picker.Item label="DOC" value="key3" />
+															<Picker.Item label="XLSX" value="key4" />
+														</Picker>
+													</Item>
+												</View>
+												<View>
+													<Item picker style={{marginTop:10,borderBottomWidth: 2,borderBottomColor:"#000000"}}>
+														<Text style={{fontSize:20}}>Contains : </Text>
+														<Picker
+															mode="dropdown"
+															iosIcon={<Icon name="arrow-down" />}
+															style={{ width: undefined }}
+															placeholder="Select your SIM"
+															placeholderStyle={{ color: "#bfc6ea" }}
+															placeholderIconColor="#007aff"
+															selectedValue={this.state.selected3}
+															onValueChange={this.onValueChange3.bind(this)}
+														>
+															<Picker.Item label="Starts with" value="key0" />
+															<Picker.Item label="Contains" value="key1" />
+															<Picker.Item label="Ends with" value="key2" />
+														</Picker>
+													</Item>
+												</View>
+											</ScrollView>
+											<Button full light success onPress={() =>{this.setSearch();this.setSearchModalVisible(!searchmodalvisible)}}>
+												<Text>Search</Text>
+											</Button>
+										</Body>
+									</View>
+								</View>
+							</Modal>
+						</View>
+						)}
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body>
