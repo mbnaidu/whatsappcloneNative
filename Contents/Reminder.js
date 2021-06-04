@@ -104,7 +104,7 @@ export default class Reminder extends Component {
 						</Item>
 					</View>
 					<Fab position="bottomRight" style={{backgroundColor:"#075E54"}}>
-						<Icon name="check" type="MaterialIcons" style={{fontSize:28}} onPress={()=>{navigate('Chat')}}/>
+						<Icon name="check" type="MaterialIcons" style={{fontSize:28}}  onPress={()=>{this.setShow()}}/>
 					</Fab>
 				</Container>
 			</>) : (
