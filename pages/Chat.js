@@ -220,57 +220,6 @@ export default class Chat extends Component {
 							>
 							</Thumbnail>
 						</Button>
-						{!this.state.general ? (<View></View>) : (
-							<View style={styles.centeredView}>
-							<Modal
-								animationType="fade"
-								transparent={true}
-								visible={generalmodalvisible}
-								onRequestClose={() => {
-									this.setGeneralModalVisible(!generalmodalvisible)
-								}}
-							>
-								<View style={styles.centeredView}>
-									<View style={styles.modalView}>
-										<Header style={{backgroundColor:"#ffffff"}} noBorder>
-											<Left>
-												<Button transparent onPress={()=>{this.setGeneral();this.setGeneralModalVisible(!generalmodalvisible)}}>
-													<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
-												</Button>
-											</Left>
-											<Body>
-												<Title style={styles.createContact}>Send Message</Title>
-											</Body>
-											<Right>
-												<Button transparent>
-													<Image source={require('../Assets/ellipsis.png')} style={styles.ellipsis}/>
-												</Button>
-											</Right>
-										</Header>
-										<Body>
-											<ScrollView>
-												<ListItem noBorder button>
-													<Item stackedLabel>
-														<Label>Contact</Label>
-														<Input placeholder="Enter contact name"/>
-													</Item>
-												</ListItem>
-												<ListItem noBorder button>
-													<Item stackedLabel>
-														<Label>Message</Label>
-														<Input placeholder="Type messagae here . . ."/>
-													</Item>
-												</ListItem>
-											</ScrollView>
-											<Button full light success onPress={() =>{this.setGeneral();this.setGeneralModalVisible(!generalmodalvisible)}}>
-												<Text>SEND</Text>
-											</Button>
-										</Body>
-									</View>
-								</View>
-							</Modal>
-						</View>
-						)}
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body>
