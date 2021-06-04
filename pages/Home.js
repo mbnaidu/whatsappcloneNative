@@ -17,6 +17,8 @@ export default class Home extends Component {
 		searchmodalvisible:false,
 		remindermodalvisible:false,
 		quickremindermodalvisible:false,
+		schedulemodalvisible:false,
+		quickschedulemodalvisible:false,
 		selected2: undefined,
 		selected: undefined,
 		selected3: undefined,
@@ -26,6 +28,8 @@ export default class Home extends Component {
 		reminder:false,
 		aeroplanemode:false,
 		quickreminder:false,
+		schedule:false,
+		quickschedule:false,
 	};
 	setDate(newDate) {
 		this.setState({ chosenDate: newDate });
@@ -60,6 +64,20 @@ export default class Home extends Component {
 	setQuickReminder = () => {
 		this.setState({quickreminder:!this.state.quickreminder});
 	}
+	// Schedule
+	setSchedule = () =>{
+		this.setState({schedule:!this.state.schedule})
+	}
+	setScheduleModalVisible = (visible) => {
+		this.setState({ schedulemodalvisible: visible });
+	};
+	// quick reminder
+	setQuickScheduleModalVisble = (visible) => {
+		this.setState({ quickschedulemodalvisible: visible });
+	};
+	setQuickSchedule = () => {
+		this.setState({quickschedule:!this.state.quickschedule});
+	}
 	onValueChange2(value) {
 		this.setState({
 		selected2: value
@@ -89,6 +107,8 @@ export default class Home extends Component {
 		const { searchmodalvisible } = this.state;
 		const { remindermodalvisible } = this.state;
 		const { quickremindermodalvisible } = this.state;
+		const { schedulemodalvisible } = this.state;
+		const { quickschedulemodalvisible } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
@@ -649,8 +669,8 @@ export default class Home extends Component {
 																	</Picker>
 																</Item>
 																<View style={{marginTop:100}}>
-																	<Fab style={{backgroundColor:"#075E54"}}>
-																	<Icon name="check" type="MaterialIcons" style={{fontSize:28}}/>
+																	<Fab style={{backgroundColor:"#075E54"}} onPress={() =>{this.setQuickReminder();this.setQuickReminderModalVisble(!quickremindermodalvisible)}}>
+																	<Icon name="check" type="MaterialIcons" style={{fontSize:28}} onPress={() =>{this.setQuickReminder();this.setQuickReminderModalVisble(!quickremindermodalvisible)}}/>
 																</Fab>
 																</View>
 															</View>
@@ -663,8 +683,8 @@ export default class Home extends Component {
 											<Fab position="bottomLeft" style={{backgroundColor:"#075E54"}}>
 												<Icon name="mic" type="MaterialIcons" style={{fontSize:28}}/>
 											</Fab>
-											<Fab position="bottomRight" style={{backgroundColor:"#075E54"}}>
-												<Icon name="add" type="MaterialIcons" style={{fontSize:28}}/>
+											<Fab position="bottomRight" style={{backgroundColor:"#075E54"}} onPress={() =>{this.setQuickReminder();this.setQuickReminderModalVisble(!quickremindermodalvisible)}}>
+												<Icon name="add" type="MaterialIcons" style={{fontSize:28}} onPress={() =>{this.setQuickReminder();this.setQuickReminderModalVisble(!quickremindermodalvisible)}}/>
 											</Fab>
 									</View>
 								</View>
@@ -673,14 +693,130 @@ export default class Home extends Component {
 						)}
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
-					<Body>
-						<Thumbnail
-							square
-							style={{width: 55, height: 55,marginLeft: 20,marginBottom:4}}
-							source={require('../Assets/message.png')}
-						>
-						</Thumbnail>
-						{/* <Text style={{color:"snow",fontSize: 15,marginRight:5}}>Add Contact</Text> */}
+					<Body onPress={() =>{this.setScheduleModalVisible(!schedulemodalvisible)}} >
+						<Button transparent onPress={() =>{this.setSchedule();this.setScheduleModalVisible(!schedulemodalvisible)}} style={{marginTop:19}}>
+							<Thumbnail
+								square
+								style={{width: 50, height: 50,marginLeft: 20}}
+								source={require('../Assets/message.png')}
+							>
+							</Thumbnail>
+						</Button>
+						{!this.state.schedule ? (<View></View>) : (
+							<View style={styles.centeredView}>
+							<Modal
+								animationType="fade"
+								transparent={true}
+								visible={schedulemodalvisible}
+								onRequestClose={() => {
+									this.setScheduleModalVisible(!schedulemodalvisible)
+								}}
+							>
+								<View style={styles.centeredView}>
+									<View style={styles.modalView}>
+										<Header style={{backgroundColor:"#ffffff"}} noBorder>
+											<Left>
+												<Button transparent onPress={()=>{this.setSchedule();this.setScheduleModalVisible(!schedulemodalvisible)}}>
+													<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#075E54",marginLeft: -10}}/>
+												</Button>
+											</Left>
+												<Text style={{color:"#075E54",fontSize: 17,fontWeight:"bold",marginTop:15}}>Scheduled Messages</Text>
+											<Right>
+												<Button transparent>
+													<Icon name='search' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+												</Button>
+											</Right>
+										</Header>
+											<ScrollView>
+												<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+													<Button transparent>
+														<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+													</Button>
+													<Body>
+														<Title>Reminder 1</Title>
+														<Text style={{color:"#ffffff"}}>Wednesday March 21 2020 </Text>
+													</Body>
+												</ListItem>
+											</ScrollView>
+											<Header noBorder transparent style={{marginBottom:8}}>
+												{!this.state.quickschedule ? (<View></View>) : (
+													<View style={styles.centeredView}>
+													<Modal
+														animationType="fade"
+														transparent={true}
+														visible={quickschedulemodalvisible}
+														onRequestClose={() => {
+															this.setQuickScheduleModalVisble(!quickschedulemodalvisible);
+														}}
+														>
+														<View style={styles.centeredView}>
+															<View style={styles.modalView}>
+																<Header style={{backgroundColor:"#ffffff"}} noBorder>
+																	<Left>
+																		<Button transparent onPress={() =>{this.setQuickSchedule();this.setQuickScheduleModalVisble(!quickschedulemodalvisible);}}>
+																			<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+																		</Button>
+																	</Left>
+																	<Body>
+																		<Title style={styles.createContact}>Quick Schedule</Title>
+																	</Body>
+																	<Right>
+																		<Button transparent>
+																			<Image source={require('../Assets/ellipsis.png')} style={styles.ellipsis}/>
+																		</Button>
+																	</Right>
+																</Header>
+																<ListItem noBorder button>
+																	<Item stackedLabel>
+																		<Label>Message</Label>
+																		<Input placeholder="Type messagae here . . ."/>
+																	</Item>
+																</ListItem>
+																<ListItem noBorder button>
+																	<Item stackedLabel>
+																		<Label>Contact</Label>
+																		<Input placeholder="Enter contact name"/>
+																	</Item>
+																</ListItem>
+																<View>
+																<Item picker style={{marginTop:10,borderBottomWidth: 2,borderBottomColor:"#000000"}}>
+																	<Text style={{fontSize:15}}>Contains : </Text>
+																	<Picker
+																		mode="dropdown"
+																		iosIcon={<Icon name="arrow-down" />}
+																		style={{ width: undefined }}
+																		placeholder="Select your SIM"
+																		placeholderStyle={{ color: "#bfc6ea" }}
+																		placeholderIconColor="#007aff"
+																		selectedValue={this.state.selected3}
+																		onValueChange={this.onValueChange3.bind(this)}
+																	>
+																		<Picker.Item label="Starts with" value="key0" />
+																		<Picker.Item label="Contains" value="key1" />
+																		<Picker.Item label="Ends with" value="key2" />
+																	</Picker>
+																</Item>
+																<View style={{marginTop:100}}>
+																	<Fab style={{backgroundColor:"#075E54"}} onPress={() =>{this.setQuickSchedule();this.setQuickScheduleModalVisble(!quickschedulemodalvisible);}}>
+																	<Icon name="check" type="MaterialIcons" style={{fontSize:28}} onPress={() =>{this.setQuickSchedule();this.setQuickScheduleModalVisble(!quickschedulemodalvisible);}}/>
+																</Fab>
+																</View>
+															</View>
+															</View>
+														</View>
+													</Modal>
+												</View>
+												)}
+											</Header>
+											<Fab position="bottomRight" style={{backgroundColor:"#075E54"}} onPress={() =>{this.setQuickSchedule();this.setQuickScheduleModalVisble(!quickschedulemodalvisible);}}>
+												<Icon name="add" type="MaterialIcons" style={{fontSize:28}} onPress={() =>{this.setQuickSchedule();this.setQuickScheduleModalVisble(!quickschedulemodalvisible);}}/>
+											</Fab>
+									</View>
+								</View>
+							</Modal>
+						</View>
+						)}
+						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body>
 						<Thumbnail
