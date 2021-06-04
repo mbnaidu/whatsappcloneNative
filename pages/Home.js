@@ -15,6 +15,7 @@ export default class Home extends Component {
 		modalVisible: false,
 		modalVisible2: false,
 		searchmodalvisible:false,
+		generalmodalvisible:false,
 		remindermodalvisible:false,
 		quickremindermodalvisible:false,
 		schedulemodalvisible:false,
@@ -24,6 +25,7 @@ export default class Home extends Component {
 		selected3: undefined,
 		selected4: undefined,
 		search:false,
+		general:false,
 		contact:false,
 		reminder:false,
 		aeroplanemode:false,
@@ -42,6 +44,13 @@ export default class Home extends Component {
 	};
 	setModalVisible2 = (visible) => {
 		this.setState({ modalVisible2: visible });
+	};
+	// Search
+	setGeneral = () =>{
+		this.setState({general:!this.state.general})
+	}
+	setGeneralModalVisible = (visible) => {
+		this.setState({ generalmodalvisible: visible });
 	};
 	// Search
 	setSearch = () =>{
@@ -102,14 +111,15 @@ export default class Home extends Component {
 		});
 	}
 	render() {
+		StatusBar.setBackgroundColor('#128C7E',true);
 		const { modalVisible } = this.state;
 		const { modalVisible2 } = this.state;
 		const { searchmodalvisible } = this.state;
+		const { generalmodalvisible } = this.state;
 		const { remindermodalvisible } = this.state;
 		const { quickremindermodalvisible } = this.state;
 		const { schedulemodalvisible } = this.state;
 		const { quickschedulemodalvisible } = this.state;
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 		<Container>
@@ -818,14 +828,67 @@ export default class Home extends Component {
 						)}
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
-					<Body>
-						<Thumbnail
-							square
-							style={{width: 50, height: 50,marginLeft: 25}}
-							source={require('../Assets/general.png')}
-						>
-						</Thumbnail>
-						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:12}}>Flight Mode</Text> */}
+					<Body onPress={() =>{this.setGeneralModalVisible(!generalmodalvisible)}} >
+						<Button transparent onPress={() =>{this.setGeneral();this.setGeneralModalVisible(!generalmodalvisible)}} style={{marginTop:19}}>
+							<Thumbnail
+								square
+								style={{width: 50, height: 50,marginLeft: 20}}
+								source={require('../Assets/general.png')}
+							>
+							</Thumbnail>
+						</Button>
+						{!this.state.general ? (<View></View>) : (
+							<View style={styles.centeredView}>
+							<Modal
+								animationType="fade"
+								transparent={true}
+								visible={generalmodalvisible}
+								onRequestClose={() => {
+									this.setGeneralModalVisible(!generalmodalvisible)
+								}}
+							>
+								<View style={styles.centeredView}>
+									<View style={styles.modalView}>
+										<Header style={{backgroundColor:"#ffffff"}} noBorder>
+											<Left>
+												<Button transparent onPress={()=>{this.setGeneral();this.setGeneralModalVisible(!generalmodalvisible)}}>
+													<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+												</Button>
+											</Left>
+											<Body>
+												<Title style={styles.createContact}>Send Message</Title>
+											</Body>
+											<Right>
+												<Button transparent>
+													<Image source={require('../Assets/ellipsis.png')} style={styles.ellipsis}/>
+												</Button>
+											</Right>
+										</Header>
+										<Body>
+											<ScrollView>
+												<ListItem noBorder button>
+													<Item stackedLabel>
+														<Label>Contact</Label>
+														<Input placeholder="Enter contact name"/>
+													</Item>
+												</ListItem>
+												<ListItem noBorder button>
+													<Item stackedLabel>
+														<Label>Message</Label>
+														<Input placeholder="Type messagae here . . ."/>
+													</Item>
+												</ListItem>
+											</ScrollView>
+											<Button full light success onPress={() =>{this.setGeneral();this.setGeneralModalVisible(!generalmodalvisible)}}>
+												<Text>SEND</Text>
+											</Button>
+										</Body>
+									</View>
+								</View>
+							</Modal>
+						</View>
+						)}
+						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body>
 						<Thumbnail
