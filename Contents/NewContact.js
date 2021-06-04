@@ -10,28 +10,11 @@ export default class NewContact extends Component {
 		this.setDate = this.setDate.bind(this);
 	}
 	state = {
-		modalVisible: false,
-		modalVisible2: false,
-		show: false,
         selected2: undefined,
 		selected: undefined,
 		selected3: undefined,
 		selected4: undefined,
 	};
-	setModalVisible = (visible) => {
-		this.setState({ modalVisible: visible });
-	};
-	setModalVisible2 = (visible) => {
-		this.setState({ modalVisible2: visible });
-	}
-	setShow = () =>{
-		this.setState({show:!this.state.show})
-	}
-	swapModals = () =>{
-		this.setState({
-			modalVisible2: true,
-		});
-	}
 	onValueChange(value) {
 		this.setState({
 		selected: value
@@ -56,9 +39,6 @@ export default class NewContact extends Component {
 		this.setState({ chosenDate: newDate });
 	}
 	render() {
-		const { modalVisible } = this.state;
-		const {show} = this.state;
-		const { modalVisible2 } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (

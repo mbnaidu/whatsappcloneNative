@@ -12,8 +12,6 @@ export default class Home extends Component {
 		this.setDate = this.setDate.bind(this);
 	}
 	state = {
-		modalVisible: false,
-		modalVisible2: false,
 		searchmodalvisible:false,
 		generalmodalvisible:false,
 		remindermodalvisible:false,
@@ -39,12 +37,6 @@ export default class Home extends Component {
 	setAeroplanemode = () =>{
 		this.setState({aeroplanemode:!this.state.aeroplanemode})
 	}
-	setModalVisible = (visible) => {
-		this.setState({ modalVisible: visible });
-	};
-	setModalVisible2 = (visible) => {
-		this.setState({ modalVisible2: visible });
-	};
 	// Search
 	setGeneral = () =>{
 		this.setState({general:!this.state.general})
@@ -112,8 +104,6 @@ export default class Home extends Component {
 	}
 	render() {
 		StatusBar.setBackgroundColor('#128C7E',true);
-		const { modalVisible } = this.state;
-		const { modalVisible2 } = this.state;
 		const { searchmodalvisible } = this.state;
 		const { generalmodalvisible } = this.state;
 		const { remindermodalvisible } = this.state;
@@ -188,8 +178,8 @@ export default class Home extends Component {
 						)}
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:12}}>Flight Mode</Text> */}
 					</Body>
-					<Body onPress={() =>{this.setSearchModalVisible(!searchmodalvisible)}} >
-						<Button transparent onPress={() =>{this.setSearch();this.setSearchModalVisible(!searchmodalvisible)}} style={{marginTop:19}}>
+					<Body onPress={() =>{navigate('Search')}} >
+						<Button transparent onPress={() =>{navigate('Search')}} style={{marginTop:19}}>
 							<Thumbnail
 								square
 								style={{width: 50, height: 50,marginLeft: 20}}

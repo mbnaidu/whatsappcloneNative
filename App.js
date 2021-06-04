@@ -10,6 +10,7 @@ import NewGroup from './Contents/NewGroup';
 import NewContact from './Contents/NewContact';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+import Search from './Contents/Search';
 
 
 const Stack = createStackNavigator();
@@ -45,6 +46,7 @@ export default class App extends React.Component {
 				<Stack.Screen name="BioPage" component={BioPage} options={{ headerShown: false }} />
 				<Stack.Screen name="NewGroup" component={NewGroup} options={{ headerShown: false }} />
 				<Stack.Screen name="NewContact" component={NewContact} options={{ headerShown: false }} />
+				<Stack.Screen name="Search" component={Search} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
