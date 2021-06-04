@@ -7,21 +7,25 @@ import Status from '../Screens/Status';
 
 export default class Home extends Component {
 	constructor(props) {
-    super(props);
-    this.state = { chosenDate: new Date() };
-    this.setDate = this.setDate.bind(this);
-  }
+		super(props);
+		this.state = { chosenDate: new Date() };
+		this.setDate = this.setDate.bind(this);
+	}
 	state = {
 		modalVisible: false,
 		modalVisible2: false,
 		searchmodalvisible:false,
+		remindermodalvisible:false,
+		quickremindermodalvisible:false,
 		selected2: undefined,
 		selected: undefined,
 		selected3: undefined,
 		selected4: undefined,
 		search:false,
 		contact:false,
+		reminder:false,
 		aeroplanemode:false,
+		quickreminder:false,
 	};
 	setDate(newDate) {
 		this.setState({ chosenDate: newDate });
@@ -35,12 +39,27 @@ export default class Home extends Component {
 	setModalVisible2 = (visible) => {
 		this.setState({ modalVisible2: visible });
 	};
+	// Search
 	setSearch = () =>{
 		this.setState({search:!this.state.search})
 	}
 	setSearchModalVisible = (visible) => {
 		this.setState({ searchmodalvisible: visible });
 	};
+	// Reminder
+	setReminder = () =>{
+		this.setState({reminder:!this.state.reminder})
+	}
+	setReminderModalVisible = (visible) => {
+		this.setState({ remindermodalvisible: visible });
+	};
+	// quick reminder
+	setQuickReminderModalVisble = (visible) => {
+		this.setState({ quickremindermodalvisible: visible });
+	};
+	setQuickReminder = () => {
+		this.setState({quickreminder:!this.state.quickreminder});
+	}
 	onValueChange2(value) {
 		this.setState({
 		selected2: value
@@ -68,6 +87,8 @@ export default class Home extends Component {
 		const { modalVisible } = this.state;
 		const { modalVisible2 } = this.state;
 		const { searchmodalvisible } = this.state;
+		const { remindermodalvisible } = this.state;
+		const { quickremindermodalvisible } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
@@ -438,14 +459,219 @@ export default class Home extends Component {
 						)}
 						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
-					<Body>
-						<Thumbnail
-							square
-							style={{width: 50, height: 50,marginLeft: 28,marginBottom:4,marginRight:10}}
-							source={require('../Assets/reminder.png')}
-						>
-						</Thumbnail>
-						{/* <Text style={{color:"snow",fontSize: 16}}>Reminder</Text> */}
+					<Body onPress={() =>{this.setReminderModalVisible(!remindermodalvisible)}} >
+						<Button transparent onPress={() =>{this.setReminder();this.setReminderModalVisible(!remindermodalvisible)}} style={{marginTop:19}}>
+							<Thumbnail
+								square
+								style={{width: 50, height: 50,marginLeft: 20}}
+								source={require('../Assets/reminder.png')}
+							>
+							</Thumbnail>
+						</Button>
+						{!this.state.reminder ? (<View></View>) : (
+							<View style={styles.centeredView}>
+							<Modal
+								animationType="fade"
+								transparent={true}
+								visible={remindermodalvisible}
+								onRequestClose={() => {
+									this.setReminderModalVisible(!remindermodalvisible)
+								}}
+							>
+								<View style={styles.centeredView}>
+									<View style={styles.modalView}>
+										<Header style={{backgroundColor:"#ffffff"}} noBorder>
+											<Left>
+												<Button transparent onPress={()=>{this.setReminder();this.setReminderModalVisible(!remindermodalvisible)}}>
+													<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#075E54",marginLeft: -10}}/>
+												</Button>
+											</Left>
+											<Body>
+												<Title style={styles.createContact}>Reminders</Title>
+											</Body>
+												<Item picker style={{marginTop:6,width:120,marginLeft:30}}>
+													<Picker
+														mode="dropdown"
+														iosIcon={<Icon name="arrow-down" />}
+														style={{ width: undefined }}
+														placeholder="Select your format"
+														placeholderStyle={{ color: "#bfc6ea" }}
+														placeholderIconColor="#007aff"
+														selectedValue={this.state.selected}
+														onValueChange={this.onValueChange.bind(this)}
+													>
+														<Picker.Item label="Default" value="key0" />
+														<Picker.Item label="Personal" value="key1" />
+														<Picker.Item label="Shopping" value="key2" />
+														<Picker.Item label="Work" value="key3" />
+														<Picker.Item label="Finished" value="key4" />
+													</Picker>
+												</Item>
+											<Right>
+												<Button transparent>
+													<Icon name='search' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+												</Button>
+											</Right>
+										</Header>
+											<ScrollView>
+												<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+													<Button transparent>
+														<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+													</Button>
+													<Body>
+														<Title>Reminder 1</Title>
+														<Text style={{color:"#ffffff"}}>Wednesday March 21 2020 </Text>
+													</Body>
+												</ListItem>
+												<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+													<Button transparent>
+														<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+													</Button>
+													<Body>
+														<Title>Reminder 2</Title>
+														<Text style={{color:"#ffffff"}}>Today</Text>
+													</Body>
+												</ListItem>
+												<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+													<Button transparent>
+														<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+													</Button>
+													<Body>
+														<Title>Reminder 1</Title>
+														<Text style={{color:"#ffffff"}}>Wednesday March 21 2020 </Text>
+													</Body>
+												</ListItem>
+												<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+													<Button transparent>
+														<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+													</Button>
+													<Body>
+														<Title>Reminder 2</Title>
+														<Text style={{color:"#ffffff"}}>Today</Text>
+													</Body>
+												</ListItem>
+												<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+													<Button transparent>
+														<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+													</Button>
+													<Body>
+														<Title>Reminder 1</Title>
+														<Text style={{color:"#ffffff"}}>Wednesday March 21 2020 </Text>
+													</Body>
+												</ListItem>
+												<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+													<Button transparent>
+														<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+													</Button>
+													<Body>
+														<Title>Reminder 2</Title>
+														<Text style={{color:"#ffffff"}}>Today</Text>
+													</Body>
+												</ListItem>
+												<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+													<Button transparent>
+														<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+													</Button>
+													<Body>
+														<Title>Reminder 1</Title>
+														<Text style={{color:"#ffffff"}}>Wednesday March 21 2020 </Text>
+													</Body>
+												</ListItem>
+												<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+													<Button transparent>
+														<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+													</Button>
+													<Body>
+														<Title>Reminder 2</Title>
+														<Text style={{color:"#ffffff"}}>Today</Text>
+													</Body>
+												</ListItem>
+											</ScrollView>
+											<Header noBorder transparent style={{marginBottom:8}}>
+												<Button transparent onPress={() =>{this.setQuickReminder();this.setQuickReminderModalVisble(!quickremindermodalvisible)}}>
+													<Text >Enter quick reminder here . . . </Text>
+												</Button>
+												{!this.state.quickreminder ? (<View></View>) : (
+													<View style={styles.centeredView}>
+													<Modal
+														animationType="fade"
+														transparent={true}
+														visible={quickremindermodalvisible}
+														onRequestClose={() => {
+															this.setQuickReminderModalVisble(!quickremindermodalvisible);
+														}}
+														>
+														<View style={styles.centeredView}>
+															<View style={styles.modalView}>
+																<Header style={{backgroundColor:"#ffffff"}} noBorder>
+																	<Left>
+																		<Button transparent onPress={() =>{this.setQuickReminder();this.setQuickReminderModalVisble(!quickremindermodalvisible)}}>
+																			<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+																		</Button>
+																	</Left>
+																	<Body>
+																		<Title style={styles.createContact}>Quick Reminder</Title>
+																	</Body>
+																	<Right>
+																		<Button transparent>
+																			<Image source={require('../Assets/ellipsis.png')} style={styles.ellipsis}/>
+																		</Button>
+																	</Right>
+																</Header>
+																<ListItem noBorder button>
+																	<Item stackedLabel>
+																		<Label>What is to be done . . .?</Label>
+																		<Input placeholder="Enter Task or Reminder"/>
+																	</Item>
+																</ListItem>
+																<ListItem noBorder button>
+																	<Item stackedLabel>
+																		<Label>Due date</Label>
+																		<Input placeholder="Enter due date"/>
+																	</Item>
+																</ListItem>
+																<View>
+																<Item picker style={{marginTop:10,borderBottomWidth: 2,borderBottomColor:"#000000"}}>
+																	<Text style={{fontSize:15}}>Add to list : </Text>
+																	<Picker
+																		mode="dropdown"
+																		iosIcon={<Icon name="arrow-down" />}
+																		style={{ width: undefined }}
+																		placeholder="Select your SIM"
+																		placeholderStyle={{ color: "#bfc6ea" }}
+																		placeholderIconColor="#007aff"
+																		selectedValue={this.state.selected3}
+																		onValueChange={this.onValueChange3.bind(this)}
+																	>
+																		<Picker.Item label="Personal" value="key0" />
+																		<Picker.Item label="Shopping" value="key1" />
+																		<Picker.Item label="Work" value="key2" />
+																	</Picker>
+																</Item>
+																<View style={{marginTop:100}}>
+																	<Fab style={{backgroundColor:"#075E54"}}>
+																	<Icon name="check" type="MaterialIcons" style={{fontSize:28}}/>
+																</Fab>
+																</View>
+															</View>
+															</View>
+														</View>
+													</Modal>
+												</View>
+												)}
+											</Header>
+											<Fab position="bottomLeft" style={{backgroundColor:"#075E54"}}>
+												<Icon name="mic" type="MaterialIcons" style={{fontSize:28}}/>
+											</Fab>
+											<Fab position="bottomRight" style={{backgroundColor:"#075E54"}}>
+												<Icon name="add" type="MaterialIcons" style={{fontSize:28}}/>
+											</Fab>
+									</View>
+								</View>
+							</Modal>
+						</View>
+						)}
+						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body>
 						<Thumbnail
