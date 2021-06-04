@@ -6,110 +6,14 @@ import Calls from '../Screens/Calls';
 import Status from '../Screens/Status';
 
 export default class Chat extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { chosenDate: new Date() };
-		this.setDate = this.setDate.bind(this);
-	}
 	state = {
-		searchmodalvisible:false,
-		generalmodalvisible:false,
-		remindermodalvisible:false,
-		quickremindermodalvisible:false,
-		schedulemodalvisible:false,
-		quickschedulemodalvisible:false,
-		selected2: undefined,
-		selected: undefined,
-		selected3: undefined,
-		selected4: undefined,
-		search:false,
-		general:false,
-		contact:false,
-		reminder:false,
 		aeroplanemode:false,
-		quickreminder:false,
-		schedule:false,
-		quickschedule:false,
 	};
-	setDate(newDate) {
-		this.setState({ chosenDate: newDate });
-	}
 	setAeroplanemode = () =>{
 		this.setState({aeroplanemode:!this.state.aeroplanemode})
 	}
-	// Search
-	setGeneral = () =>{
-		this.setState({general:!this.state.general})
-	}
-	setGeneralModalVisible = (visible) => {
-		this.setState({ generalmodalvisible: visible });
-	};
-	// Search
-	setSearch = () =>{
-		this.setState({search:!this.state.search})
-	}
-	setSearchModalVisible = (visible) => {
-		this.setState({ searchmodalvisible: visible });
-	};
-	// Reminder
-	setReminder = () =>{
-		this.setState({reminder:!this.state.reminder})
-	}
-	setReminderModalVisible = (visible) => {
-		this.setState({ remindermodalvisible: visible });
-	};
-	// quick reminder
-	setQuickReminderModalVisble = (visible) => {
-		this.setState({ quickremindermodalvisible: visible });
-	};
-	setQuickReminder = () => {
-		this.setState({quickreminder:!this.state.quickreminder});
-	}
-	// Schedule
-	setSchedule = () =>{
-		this.setState({schedule:!this.state.schedule})
-	}
-	setScheduleModalVisible = (visible) => {
-		this.setState({ schedulemodalvisible: visible });
-	};
-	// quick reminder
-	setQuickScheduleModalVisble = (visible) => {
-		this.setState({ quickschedulemodalvisible: visible });
-	};
-	setQuickSchedule = () => {
-		this.setState({quickschedule:!this.state.quickschedule});
-	}
-	onValueChange2(value) {
-		this.setState({
-		selected2: value
-		});
-	}
-	setContact = () =>{
-		this.setState({contact:!this.state.contact})
-	}
-	onValueChange(value) {
-		this.setState({
-		selected: value
-		});
-	}
-	onValueChange3(value) {
-		this.setState({
-		selected3: value
-		});
-	}
-	onValueChange4(value) {
-		this.setState({
-		selected4: value
-		});
-	}
 	render() {
 		StatusBar.setBackgroundColor('#128C7E',true);
-		const { searchmodalvisible } = this.state;
-		const { generalmodalvisible } = this.state;
-		const { remindermodalvisible } = this.state;
-		const { quickremindermodalvisible } = this.state;
-		const { schedulemodalvisible } = this.state;
-		const { quickschedulemodalvisible } = this.state;
 		const { navigate } = this.props.navigation;
 		return (
 		<Container>
