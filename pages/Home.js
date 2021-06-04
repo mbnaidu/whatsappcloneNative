@@ -18,10 +18,11 @@ export default class Home extends Component {
 		selected: undefined,
 		selected3: undefined,
 		selected4: undefined,
+		contact:false,
 	};
 	setDate(newDate) {
-    this.setState({ chosenDate: newDate });
-  }
+		this.setState({ chosenDate: newDate });
+	}
 	setModalVisible = (visible) => {
 		this.setState({ modalVisible: visible });
 	};
@@ -32,6 +33,9 @@ export default class Home extends Component {
 		this.setState({
 		selected2: value
 		});
+	}
+	setContact = () =>{
+		this.setState({contact:!this.state.contact})
 	}
 	onValueChange(value) {
 		this.setState({
@@ -88,7 +92,7 @@ export default class Home extends Component {
 						{/* <Text style={{color:"snow",fontSize: 16}}>Add Group</Text> */}
 					</Body>
 					<Body onPress={() =>{this.setModalVisible(!modalVisible)}} >
-						<Button transparent onPress={() =>{this.setModalVisible(!modalVisible)}} style={{marginTop:19}}>
+						<Button transparent onPress={() =>{this.setContact();this.setModalVisible(!modalVisible)}} style={{marginTop:19}}>
 							<Thumbnail
 								square
 								style={{width: 50, height: 50,marginLeft: 20}}
@@ -96,7 +100,8 @@ export default class Home extends Component {
 							>
 							</Thumbnail>
 						</Button>
-						<View style={styles.centeredView}>
+						{!this.state.contact ? (<View></View>) : (
+							<View style={styles.centeredView}>
 							<Modal
 								animationType="fade"
 								transparent={true}
@@ -109,7 +114,7 @@ export default class Home extends Component {
 									<View style={styles.modalView}>
 										<Header style={{backgroundColor:"#ffffff"}} noBorder>
 											<Left>
-												<Button transparent onPress={()=>{this.setModalVisible(!modalVisible)}}>
+												<Button transparent onPress={()=>{this.setContact();this.setModalVisible(!modalVisible)}}>
 													<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
 												</Button>
 											</Left>
@@ -289,7 +294,7 @@ export default class Home extends Component {
 													</Item>
 												</View>
 											</ScrollView>
-											<Button full light success onPress={() =>{this.setModalVisible(!modalVisible)}}>
+											<Button full light success onPress={() =>{this.setContact();this.setModalVisible(!modalVisible)}}>
 												<Text>Save</Text>
 											</Button>
 										</Body>
@@ -297,6 +302,7 @@ export default class Home extends Component {
 								</View>
 							</Modal>
 						</View>
+						)}
 						{/* <Text style={{color:"snow",fontSize: 15,marginRight:5}}>Add Contact</Text> */}
 					</Body>
 					<Body>
