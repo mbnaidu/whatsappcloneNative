@@ -76,10 +76,10 @@ export default class Status extends Component {
 								<Text style={{fontSize:17}}>My contacts except . . .</Text>
 							</Body>	
                         </ListItem>
-						<ListItem avatar noBorder button onPress={() => {this.setState({ aboutStatus: 'Only share with . . .' });this.setAboutModalVisible(!aboutModalVisible);}}>
+						<ListItem avatar noBorder button onPress={() => {navigate('Only');this.setState({ aboutStatus: 'Only share with . . .' });this.setAboutModalVisible(!aboutModalVisible);}}>
 							<Left>
 								<Radio
-									onPress={() => {this.setState({ aboutStatus: 'Only share with . . .' });this.setAboutModalVisible(!aboutModalVisible);}}
+									onPress={() => {navigate('Only');this.setState({ aboutStatus: 'Only share with . . .' });this.setAboutModalVisible(!aboutModalVisible);}}
 									color={"#808080"}
 									selectedColor={"#075E54"}
 									selected={this.state.aboutStatus == 'Only share with . . .'}

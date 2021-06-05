@@ -27,6 +27,7 @@ import Change from './Settings/Accounts/Change/Change';
 import Delete from './Settings/Accounts/Delete';
 import Status from './Settings/Accounts/Privacy/Status/Status';
 import Except from './Settings/Accounts/Privacy/Status/Except';
+import Only from './Settings/Accounts/Privacy/Status/Only';
 
 
 const Stack = createStackNavigator();
@@ -80,6 +81,7 @@ export default class App extends React.Component {
 						{/* STATUS */}
 							<Stack.Screen name="Status" component={Status} options={{ headerShown: false }} />
 							<Stack.Screen name="Except" component={Except} options={{ headerShown: false }} />
+							<Stack.Screen name="Only" component={Only} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
