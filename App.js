@@ -30,6 +30,9 @@ import StatusExcept from './Settings/Accounts/Privacy/Status/StatusExcept';
 import Only from './Settings/Accounts/Privacy/Status/Only';
 import GroupsExcept from './Settings/Accounts/Privacy/Groups/GroupsExcept';
 import Groups from './Settings/Accounts/Privacy/Groups/Groups'
+import Location from './Settings/Accounts/Privacy/Location';
+import Blocked from './Settings/Accounts/Privacy/Blocked';
+import Lock from './Settings/Accounts/Privacy/Lock';
 
 const Stack = createStackNavigator();
 
@@ -85,6 +88,9 @@ export default class App extends React.Component {
 							<Stack.Screen name="Only" component={Only} options={{ headerShown: false }} />
 							<Stack.Screen name="GroupsExcept" component={GroupsExcept} options={{ headerShown: false }} />
 							<Stack.Screen name="Groups" component={Groups} options={{ headerShown: false }} />
+							<Stack.Screen name="Location" component={Location} options={{ headerShown: false }} />
+							<Stack.Screen name="Blocked" component={Blocked} options={{ headerShown: false }} />
+							<Stack.Screen name="Lock" component={Lock} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

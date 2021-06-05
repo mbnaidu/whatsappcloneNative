@@ -270,6 +270,24 @@ export default class Privacy extends Component {
                             <Text note >Everyone</Text>
                         </Body>
                     </ListItem>
+                    <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Location')}}>
+                        <Body >
+                            <Text style={{fontSize:18,color:"#075E54"}}>Live Location</Text>
+                            <Text note >None</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Blocked')}}>
+                        <Body >
+                            <Text style={{fontSize:18,color:"#075E54"}}>Blocked Contacts</Text>
+                            <Text note >3</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Lock')}}>
+                        <Body >
+                            <Text style={{fontSize:18,color:"#075E54"}}>Fingerprint lock</Text>
+                            <Text note >Disabled</Text>
+                        </Body>
+                    </ListItem>
                 </ScrollView>
 			</Container>
 		);
