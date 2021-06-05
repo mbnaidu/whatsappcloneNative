@@ -19,18 +19,29 @@ export default class Location extends Component {
                     </Body>
 					<Right>
 						<Button transparent>
-							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 0}}/>
 						</Button>
 					</Right>
 				</Header>
 					<ScrollView>
-                        <ListItem noBorder button>
-                            <Item stackedLabel>
-                                <Icon name='person' type="MaterialIcons" style={{fontSize: 28}}/>
-                                <Label style={{fontWeight:"bold"}}>Contact</Label>
-                                <Input placeholder="Enter contact name"/>
-                            </Item>
-                        </ListItem>
+					<Body>
+						<Thumbnail
+								square
+								style={{width: 150, height: 150}}
+								source={require('../../../Assets/map.png')}
+							>
+							</Thumbnail>
+					</Body>
+                    <ListItem avatar button style={{marginTop:10}}>
+                        <Body>
+                            <Text style={{fontSize:18,color:"#075E54",marginBottom:5}}>You aren't sharing live location in any chats</Text>
+                        </Body>
+					</ListItem>
+					<ListItem avatar noBorder button style={{marginTop:10}}>
+                        <Body >
+                            <Text note>Live location requires background location. You{`\n`} can manage this in your device settings.</Text>
+                        </Body>
+					</ListItem>
 				</ScrollView>
 			</Container>
 		);
