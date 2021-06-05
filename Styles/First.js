@@ -172,6 +172,12 @@ export default StyleSheet.create({
     // select photo
     selectPhoto:{},
     // modals
+    privacycenteredView: {
+        width:"70%",
+        flex: 1,
+        alignSelf:"center",
+        justifyContent: "center",
+    },
     centeredView: {
         width:"70%",
         flex: 1,

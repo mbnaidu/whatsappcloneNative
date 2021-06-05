@@ -25,6 +25,8 @@ import Privacy from './Settings/Accounts/Privacy/Privacy';
 import Verification from './Settings/Accounts/Verification/Verification';
 import Change from './Settings/Accounts/Change/Change';
 import Delete from './Settings/Accounts/Delete';
+import Status from './Settings/Accounts/Privacy/Status/Status';
+import Except from './Settings/Accounts/Privacy/Status/Except';
 
 
 const Stack = createStackNavigator();
@@ -68,13 +70,16 @@ export default class App extends React.Component {
 				<Stack.Screen name="Message" component={Message} options={{ headerShown: false }} />
 				<Stack.Screen name="Bluetooth" component={Bluetooth} options={{ headerShown: false }} />
 				{/* SETTINGS */}
-				<Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
-				{/* ACCOUNTS */}
-					<Stack.Screen name="Accounts" component={Accounts} options={{ headerShown: false }} />
-					<Stack.Screen name="Privacy" component={Privacy} options={{ headerShown: false }} />
-					<Stack.Screen name="Verification" component={Verification} options={{ headerShown: false }} />
-					<Stack.Screen name="Change" component={Change} options={{ headerShown: false }} />
-					<Stack.Screen name="Delete" component={Delete} options={{ headerShown: false }} />
+					<Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
+					{/* ACCOUNTS */}
+						<Stack.Screen name="Accounts" component={Accounts} options={{ headerShown: false }} />
+						<Stack.Screen name="Privacy" component={Privacy} options={{ headerShown: false }} />
+						<Stack.Screen name="Verification" component={Verification} options={{ headerShown: false }} />
+						<Stack.Screen name="Change" component={Change} options={{ headerShown: false }} />
+						<Stack.Screen name="Delete" component={Delete} options={{ headerShown: false }} />
+						{/* STATUS */}
+							<Stack.Screen name="Status" component={Status} options={{ headerShown: false }} />
+							<Stack.Screen name="Except" component={Except} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
