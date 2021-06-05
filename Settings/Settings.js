@@ -97,9 +97,9 @@ export default class Settings extends Component {
                             <Text note>Theme, wallpapers, chat history</Text>
                         </Body>
 					</ListItem>
-                    <ListItem avatar noBorder button>
+                    <ListItem avatar noBorder button onPress={()=>{navigate('Notifications')}}>
                         <Left>
-                            <Button transparent>
+                            <Button transparent >
                                 <Icon name='notifications-sharp' type="Ionicons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
