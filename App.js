@@ -31,8 +31,8 @@ import Only from './Settings/Accounts/Privacy/Status/Only';
 import GroupsExcept from './Settings/Accounts/Privacy/Groups/GroupsExcept';
 import Groups from './Settings/Accounts/Privacy/Groups/Groups'
 import Location from './Settings/Accounts/Privacy/Location';
-import Blocked from './Settings/Accounts/Privacy/Blocked';
 import Lock from './Settings/Accounts/Privacy/Lock';
+import Blocked from './Settings/Accounts/Privacy/Blocked/Blocked';
 
 const Stack = createStackNavigator();
 
