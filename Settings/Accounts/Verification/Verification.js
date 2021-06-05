@@ -14,57 +14,28 @@ export default class Verification extends Component {
 							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 					</Left>
-					<Body>
-                        <Title>Verifications</Title>
+					<Body  style={{marginRight:108}}>
+                        <Title>Two-step verification</Title>
                     </Body>
-					<Right>
-						<Button transparent>
-							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 0}}/>
-						</Button>
-					</Right>
 				</Header>
 					<ScrollView>
-                    <ListItem avatar noBorder button onPress={() =>{navigate('Accounts')}}>
-                        <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
-                                <Icon name='security' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
-                            </Button>
-                        </Left>
-                        <Body style={{marginTop:10}}>
-                            <Text style={{fontSize:18}}>Privacy</Text>
-                        </Body>
-					</ListItem>
-                    <ListItem avatar noBorder button onPress={() =>{navigate('Accounts')}}>
-                        <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
-                                <Icon name='verified-user' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
-                            </Button>
-                        </Left>
-                        <Body style={{marginTop:10}}>
-                            <Text style={{fontSize:18}}>Two-step verification</Text>
-                        </Body>
-					</ListItem>
-                    <ListItem avatar noBorder button onPress={() =>{navigate('Accounts')}}>
-                        <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
-                                <Icon name='exchange' type="FontAwesome" style={{fontSize: 28,color:"#075E54"}}/>
-                            </Button>
-                        </Left>
-                        <Body style={{marginTop:10}}>
-                            <Text style={{fontSize:18}}>Change number</Text>
-                        </Body>
-					</ListItem>
-                    <ListItem avatar noBorder button onPress={() =>{navigate('Accounts')}}>
-                        <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
-                                <Icon name='delete-alert' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#075E54"}}/>
-                            </Button>
-                        </Left>
-                        <Body style={{marginTop:10}}>
-                            <Text style={{fontSize:18}}>Delete my account</Text>
+					<Body>
+						<Thumbnail
+								square
+								style={{width: 150, height: 150,marginTop:30}}
+								source={require('../../../Assets/verification.png')}
+							>
+							</Thumbnail>
+					</Body>
+                    <ListItem avatar button style={{marginTop:10}}>
+                        <Body>
+                            <Text style={{fontSize:16}}>For added security, enable two-step verification,{`\n`}which will require a PIN when registering your{`\n`}phone number with Piegeon again</Text>
                         </Body>
 					</ListItem>
 				</ScrollView>
+                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('TwoStep')}}>
+                    <Text style={{color:"#ffffff",letterSpacing:3}}>ENABLE</Text>
+                </Button>
 			</Container>
 		);
 	}

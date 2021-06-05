@@ -33,6 +33,9 @@ import Groups from './Settings/Accounts/Privacy/Groups/Groups'
 import Location from './Settings/Accounts/Privacy/Location';
 import Lock from './Settings/Accounts/Privacy/Lock';
 import Blocked from './Settings/Accounts/Privacy/Blocked/Blocked';
+import TwoStep from './Settings/Accounts/Verification/TwoStep';
+import Number from './Settings/Accounts/Change/NewNumber';
+import NewNumber from './Settings/Accounts/Change/NewNumber';
 
 const Stack = createStackNavigator();
 
@@ -91,6 +94,8 @@ export default class App extends React.Component {
 							<Stack.Screen name="Location" component={Location} options={{ headerShown: false }} />
 							<Stack.Screen name="Blocked" component={Blocked} options={{ headerShown: false }} />
 							<Stack.Screen name="Lock" component={Lock} options={{ headerShown: false }} />
+							<Stack.Screen name="TwoStep" component={TwoStep} options={{ headerShown: false }} />
+							<Stack.Screen name="NewNumber" component={NewNumber} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

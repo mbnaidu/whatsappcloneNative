@@ -11,7 +11,7 @@ export default class Location extends Component {
 				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Privacy')}}>
-							<Icon name='close' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 					</Left>
 					<Body>
