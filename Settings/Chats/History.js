@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label, Radio } from 'native-base';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label, Radio, CheckBox } from 'native-base';
 import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import styles from '../../Styles/First';
 
@@ -70,19 +70,28 @@ export default class History extends Component {
 					</Right>
 				</Header>
 				<ScrollView>
-                    <Text style={{fontSize: 18,color:"#075E54",margin:10,fontWeight:"bold"}}>Display</Text>
-                    <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ displayShow: true });this.setDisplayModalVisible(!displayModalVisible);}}>
+                    <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Choose')}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='send' type="FontAwesome" style={{fontSize: 30,color:"#128C7E"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Display</Text>
-                            <Text note >{this.state.displayStatus}</Text>
-                            {!this.state.displayShow ? (<View></View>) : (
-                                <View style={styles.centeredView}>
-                                    <Modal
+                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Export Chat</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ displayShow: true });this.setDisplayModalVisible(!displayModalVisible);}}>
+                        <Left>
+                            <Button transparent>
+                                <Icon name='delete-alert' type="MaterialCommunityIcons" style={{fontSize: 30,color:"#128C7E"}}/>
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Delete all chats</Text>
+                        </Body>
+                        {!this.state.displayShow ? (<View></View>) : (
+                            <View style={styles.centeredView}>
+                                <Modal
                                     animationType="fade"
                                     transparent={true}
                                     visible={displayModalVisible}
@@ -90,112 +99,26 @@ export default class History extends Component {
                                         this.setDisplayModalVisible(!displayModalVisible);
                                     }}
                                     >
-                                    <View style={styles.privacycenteredView}>
+                                    <View>
                                         <View style={styles.modalView}>
-                                            <ListItem avatar noBorder button onPress={() => {this.setState({ displayStatus: 'Light' });this.setDisplayModalVisible(!displayModalVisible);}}>
-                                                <Left>
-                                                    <Radio
-                                                        onPress={() => {this.setDisplayModalVisible(!displayModalVisible);this.setState({ displayStatus: 'Light' });}}
-                                                        color={"#808080"}
-                                                        selectedColor={"#075E54"}
-                                                        selected={this.state.displayStatus == 'Light'}
-                                                    />
-                                                </Left>
+                                            <ListItem avatar noBorder button>
                                                 <Body>
-                                                    <Text style={{fontSize:17}}>Light</Text>
+                                                    <Text style={{fontSize:18,marginBottom:10}}>Are you sure you want to delete ALL chats and their messages?</Text><CheckBox color="green" checked/>
+                                                    <Text style={{fontSize:16,marginLeft:50,marginTop:-23}}>Delete media in chats</Text>
                                                 </Body>
                                             </ListItem>
-                                            <ListItem avatar noBorder button onPress={() => {this.setState({ displayStatus: 'Dark' });this.setDisplayModalVisible(!displayModalVisible);}}>
-                                                <Left>
-                                                    <Radio
-                                                        onPress={() => {this.setState({ displayStatus: 'Dark' });this.setDisplayModalVisible(!displayModalVisible);}}
-                                                        color={"#808080"}
-                                                        selectedColor={"#075E54"}
-                                                        selected={this.state.displayStatus == 'Dark'}
-                                                    />
-                                                </Left>
-                                                <Body>
-                                                    <Text style={{fontSize:17}}>Dark</Text>
-                                                </Body>
-                                            </ListItem>
+                                            <Fab position="bottomRight" style={{backgroundColor:"#25D366"}}>
+                                                <Icon name="delete" type="MaterialIcons"/>
+                                            </Fab>
                                         </View>
                                     </View>
+                                    <Footer style={{backgroundColor:"#ffffff"}} button onPress={() =>{this.setDisplayModalVisible(!displayModalVisible);}}>
+                                        <Text style={{fontSize:16,marginTop:10,marginLeft:300,width:"100%"}} onPress={() =>{this.setDisplayModalVisible(!displayModalVisible);}}>Cancel</Text>
+                                    </Footer>
                                 </Modal>
 							</View>
-                            )}
-                        </Body>
+                        )}
 					</ListItem>
-                    <ListItem avatar button>
-                        <Left>
-                            <Button transparent>
-                                <Icon name='wallpaper' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
-                            </Button>
-                        </Left>
-                        <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Wallpaper</Text>
-                        </Body>
-                    </ListItem>
-                    <Text style={{fontSize: 18,color:"#075E54",margin:10,fontWeight:"bold"}}>Chat settings</Text>
-                    <ListItem avatar noBorder button>
-                        <Left>
-                            <Button transparent>
-                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 0,color:"#128C7E"}}/>
-                            </Button>
-                        </Left>
-                        <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Enter is send</Text>
-                            <Text note>Enter key will send your message</Text>
-                        </Body>
-                        <Right>
-                        <Switch
-                            trackColor={{false:'#767577', true:"#128C7E"}}
-                            thumbColor={this.state.isEnabled ? '#075E54' : "#767577"}
-                            value={this.state.isEnabled}
-                            onChange={this.call}
-                        >
-                        </Switch>
-                    </Right>
-                    </ListItem>
-                    <ListItem avatar button>
-                        <Left>
-                            <Button transparent>
-                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 0,color:"#128C7E"}}/>
-                            </Button>
-                        </Left>
-                        <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Media visibility</Text>
-                            <Text note>Show newly downloaded media {`\n`} in your's phone gallery.</Text>
-                        </Body>
-                        <Right>
-                            <Switch
-                                trackColor={{false:'#767577', true:"#128C7E"}}
-                                thumbColor={this.state.isEnabled2 ? '#075E54' : "#767577"}
-                                value={this.state.isEnabled2}
-                                onChange={this.call2}
-                            >
-                            </Switch>
-                        </Right>
-                    </ListItem>
-                    <ListItem avatar noBorder button>
-                        <Left>
-                            <Button transparent>
-                                <Icon name='backup' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
-                            </Button>
-                        </Left>
-                        <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Chat Backup</Text>
-                        </Body>
-                    </ListItem>
-                    <ListItem avatar noBorder button>
-                        <Left>
-                            <Button transparent>
-                                <Icon name='history' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
-                            </Button>
-                        </Left>
-                        <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Chat History</Text>
-                        </Body>
-                    </ListItem>
 				</ScrollView>
 			</Container>
 		);
