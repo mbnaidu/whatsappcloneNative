@@ -164,6 +164,11 @@ export default StyleSheet.create({
         height:80,
         backgroundColor:"#ffffff"
     },
+    accountHeader:{
+        height:70,
+        marginBottom:10,
+        backgroundColor:"#ffffff"
+    },
     // select photo
     selectPhoto:{},
     // modals
@@ -223,13 +228,4 @@ export default StyleSheet.create({
         shadowRadius: 4,
         elevation: 5
     },
-    // gradient
-    homecontainer: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    tabBarOptions: {
-            backgroundColor: 'transparent',
-        }
 })

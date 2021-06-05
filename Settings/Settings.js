@@ -52,6 +52,11 @@ export default class Settings extends Component {
 					<Body>
                         <Title>Settings</Title>
                     </Body>
+                    <Right>
+						<Button transparent>
+							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 0}}/>
+						</Button>
+					</Right>
 				</Header>
 				<ScrollView>
                     <ListItem avatar noBorder button style={{marginBottom: 20}}>
@@ -70,14 +75,14 @@ export default class Settings extends Component {
                             </Button>
                         </Right>
 					</ListItem>
-                    <ListItem avatar noBorder button>
+                    <ListItem avatar noBorder button onPress={() =>{navigate('Accounts')}}>
                         <Left>
                             <Button transparent onPress={()=>{navigate('Chat')}}>
                                 <Icon name='account-cog' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize:18}}>Account</Text>
+                            <Text style={{fontSize:18}}>Accounts</Text>
                             <Text note>Privacy, security, change number</Text>
                         </Body>
 					</ListItem>
