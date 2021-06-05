@@ -26,9 +26,10 @@ import Verification from './Settings/Accounts/Verification/Verification';
 import Change from './Settings/Accounts/Change/Change';
 import Delete from './Settings/Accounts/Delete';
 import Status from './Settings/Accounts/Privacy/Status/Status';
-import Except from './Settings/Accounts/Privacy/Status/Except';
+import StatusExcept from './Settings/Accounts/Privacy/Status/StatusExcept';
 import Only from './Settings/Accounts/Privacy/Status/Only';
-
+import GroupsExcept from './Settings/Accounts/Privacy/Groups/GroupsExcept';
+import Groups from './Settings/Accounts/Privacy/Groups/Groups'
 
 const Stack = createStackNavigator();
 
@@ -80,8 +81,10 @@ export default class App extends React.Component {
 						<Stack.Screen name="Delete" component={Delete} options={{ headerShown: false }} />
 						{/* STATUS */}
 							<Stack.Screen name="Status" component={Status} options={{ headerShown: false }} />
-							<Stack.Screen name="Except" component={Except} options={{ headerShown: false }} />
+							<Stack.Screen name="StatusExcept" component={StatusExcept} options={{ headerShown: false }} />
 							<Stack.Screen name="Only" component={Only} options={{ headerShown: false }} />
+							<Stack.Screen name="GroupsExcept" component={GroupsExcept} options={{ headerShown: false }} />
+							<Stack.Screen name="Groups" component={Groups} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

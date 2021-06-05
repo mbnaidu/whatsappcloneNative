@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label, Radio } from 'native-base';
 import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
 
-export default class Status extends Component {
+export default class Groups extends Component {
 	constructor() {
         super();
             this.state = {
                 // About
-                    aboutStatus: 'My contacts',
+                    aboutStatus: 'Everyone',
         }
     }
 	state = {
@@ -36,7 +36,7 @@ export default class Status extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Status privacy</Title>
+                        <Title>Groups</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -50,10 +50,23 @@ export default class Status extends Component {
 								<Text style={{fontSize:16,color:"#075E54",marginBottom:5}}>Who can see my status updates</Text>
 							</Body>
 						</ListItem>
+						<ListItem avatar noBorder button onPress={() => {this.setState({ aboutStatus: 'Everyone' });this.setAboutModalVisible(!aboutModalVisible);}}>
+							<Left>
+								<Radio
+									onPress={() => {this.setAboutModalVisible(!aboutModalVisible);this.setState({ aboutStatus: 'Everyone' });}}
+									color={"#808080"}
+									selectedColor={"#075E54"}
+									selected={this.state.aboutStatus == 'Everyone'}
+								/>
+							</Left>
+							<Body>
+								<Text style={{fontSize:17}}>Everyone</Text>
+							</Body>
+						</ListItem>
 						<ListItem avatar noBorder button onPress={() => {this.setState({ aboutStatus: 'My contacts' });this.setAboutModalVisible(!aboutModalVisible);}}>
 							<Left>
 								<Radio
-									onPress={() => {this.setAboutModalVisible(!aboutModalVisible);this.setState({ aboutStatus: 'My contacts' });}}
+									onPress={() => {this.setState({ aboutStatus: 'My contacts' });this.setAboutModalVisible(!aboutModalVisible);}}
 									color={"#808080"}
 									selectedColor={"#075E54"}
 									selected={this.state.aboutStatus == 'My contacts'}
@@ -61,32 +74,19 @@ export default class Status extends Component {
 							</Left>
 							<Body>
 								<Text style={{fontSize:17}}>My contacts</Text>
-							</Body>
-						</ListItem>
-						<ListItem avatar noBorder button onPress={() => {navigate('StatusExcept');this.setState({ aboutStatus: 'My contacts except . . .' });this.setAboutModalVisible(!aboutModalVisible);}}>
-							<Left>
-								<Radio
-									onPress={() => {this.setState({ aboutStatus: 'My contacts except . . .' });this.setAboutModalVisible(!aboutModalVisible);}}
-									color={"#808080"}
-									selectedColor={"#075E54"}
-									selected={this.state.aboutStatus == 'My contacts except . . .'}
-								/>
-							</Left>
-							<Body>
-								<Text style={{fontSize:17}}>My contacts except . . .</Text>
 							</Body>	
                         </ListItem>
-						<ListItem avatar noBorder button onPress={() => {navigate('Only');this.setState({ aboutStatus: 'Only share with . . .' });this.setAboutModalVisible(!aboutModalVisible);}}>
+						<ListItem avatar noBorder button onPress={() => {navigate('GroupsExcept');this.setState({ aboutStatus: 'My Contacts except . . . ' });this.setAboutModalVisible(!aboutModalVisible);}}>
 							<Left>
 								<Radio
-									onPress={() => {navigate('Only');this.setState({ aboutStatus: 'Only share with . . .' });this.setAboutModalVisible(!aboutModalVisible);}}
+									onPress={() => {navigate('GroupsExcept');this.setState({ aboutStatus: 'My Contacts except . . . ' });this.setAboutModalVisible(!aboutModalVisible);}}
 									color={"#808080"}
 									selectedColor={"#075E54"}
-									selected={this.state.aboutStatus == 'Only share with . . .'}
+									selected={this.state.aboutStatus == 'My Contacts except . . . '}
 								/>
 							</Left>
 							<Body>
-								<Text style={{fontSize:17}}>Only share with . . .</Text>
+								<Text style={{fontSize:17}}>My Contacts except . . . </Text>
 							</Body>
                         </ListItem>
 						<ListItem avatar noBorder button style={{marginTop:10}}>

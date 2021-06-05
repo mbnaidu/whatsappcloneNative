@@ -264,6 +264,12 @@ export default class Privacy extends Component {
                             <Text note >My contacts</Text>
                         </Body>
                     </ListItem>
+                    <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Groups')}}>
+                        <Body >
+                            <Text style={{fontSize:18,color:"#075E54"}}>Groups</Text>
+                            <Text note >Everyone</Text>
+                        </Body>
+                    </ListItem>
                 </ScrollView>
 			</Container>
 		);

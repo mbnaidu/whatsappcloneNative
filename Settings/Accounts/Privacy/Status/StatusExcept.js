@@ -3,7 +3,7 @@ import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, F
 import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import styles from '../../../../Styles/First';
 
-export default class Except extends Component {
+export default class StatusExcept extends Component {
 	render() {
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
