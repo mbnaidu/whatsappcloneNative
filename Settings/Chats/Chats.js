@@ -5,38 +5,17 @@ import styles from '../../Styles/First';
 
 export default class Chats extends Component {
     constructor(props) {
-		super(props);
-		this.state = { chosenDate: new Date() };
-		this.setDate = this.setDate.bind(this);
+        super(props);
+        this.state = {
+            isEnabled:false,
+            isEnabled2:true,
+        };
+    }
+    call = () => {
+		this.setState({ isEnabled: !this.state.isEnabled });
 	}
-	state = {
-        selected2: undefined,
-		selected: undefined,
-		selected3: undefined,
-		selected4: undefined,
-	};
-	onValueChange(value) {
-		this.setState({
-		selected: value
-		});
-	}
-    onValueChange2(value) {
-		this.setState({
-		selected2: value
-		});
-	}
-	onValueChange3(value) {
-		this.setState({
-		selected3: value
-		});
-	}
-	onValueChange4(value) {
-		this.setState({
-		selected4: value
-		});
-	}
-    setDate(newDate) {
-		this.setState({ chosenDate: newDate });
+    call2 = () => {
+		this.setState({ isEnabled2: !this.state.isEnabled2 });
 	}
 	render() {
 		StatusBar.setBackgroundColor('#128C7E',true);
@@ -58,67 +37,102 @@ export default class Chats extends Component {
 						</Button>
 					</Right>
 				</Header>
-					<ScrollView>
-                        <ListItem noBorder button>
-                            <Item stackedLabel>
-                                <Icon name='person' type="MaterialIcons" style={{fontSize: 28}}/>
-                                <Label style={{fontWeight:"bold"}}>Contact</Label>
-                                <Input placeholder="Enter contact name"/>
-                            </Item>
-                        </ListItem>
-                        <ListItem noBorder button>
-                            <Item stackedLabel>
-                                <Icon name='insert-drive-file' type="MaterialIcons" style={{fontSize: 28}}/>
-                                <Label style={{fontWeight:"bold"}}>File Name</Label>
-                                <Input placeholder="Enter File name"/>
-                            </Item>
-                        </ListItem>
-                        <View>
-                            <Item picker style={{marginTop:10}}>
-                                <Icon name='unknowfile1' type="AntDesign" style={{fontSize: 28,marginLeft:20}}/>
-                                <Text style={{fontSize:15,fontWeight:"bold"}}> Format : </Text>
-                                <Picker
-                                    mode="dropdown"
-                                    iosIcon={<Icon name="arrow-down" />}
-                                    style={{ width: undefined }}
-                                    placeholder="Select your format"
-                                    placeholderStyle={{ color: "#bfc6ea" }}
-                                    placeholderIconColor="#007aff"
-                                    selectedValue={this.state.selected}
-                                    onValueChange={this.onValueChange.bind(this)}
-                                >
-                                    <Picker.Item label="PDF" value="key0" />
-                                    <Picker.Item label="PNG" value="key1" />
-                                    <Picker.Item label="JPG" value="key2" />
-                                    <Picker.Item label="DOC" value="key3" />
-                                    <Picker.Item label="XLSX" value="key4" />
-                                </Picker>
-                            </Item>
-                        </View>
-                        <View>
-                            <Item picker style={{marginTop:10}}>
-                                <Icon name='contain' type="MaterialCommunityIcons" style={{fontSize: 28,marginLeft:20}}/>
-                                <Text style={{fontSize:15,fontWeight:"bold"}}> Contains : </Text>
-                                <Picker
-                                    mode="dropdown"
-                                    iosIcon={<Icon name="arrow-down" />}
-                                    style={{ width: undefined }}
-                                    placeholder="Select your SIM"
-                                    placeholderStyle={{ color: "#bfc6ea" }}
-                                    placeholderIconColor="#007aff"
-                                    selectedValue={this.state.selected3}
-                                    onValueChange={this.onValueChange3.bind(this)}
-                                >
-                                    <Picker.Item label="Starts with" value="key0" />
-                                    <Picker.Item label="Contains" value="key1" />
-                                    <Picker.Item label="Ends with" value="key2" />
-                                </Picker>
-                            </Item>
-                        </View>
+				<ScrollView>
+                    <Text style={{fontSize: 18,color:"#075E54",margin:10,fontWeight:"bold"}}>Display</Text>
+                    <ListItem avatar noBorder button>
+                        <Left>
+                            <Button transparent>
+                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Display</Text>
+                            <Text note>Light</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem avatar button>
+                        <Left>
+                            <Button transparent>
+                                <Icon name='wallpaper' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Wallpaper</Text>
+                        </Body>
+                    </ListItem>
+                    <Text style={{fontSize: 18,color:"#075E54",margin:10,fontWeight:"bold"}}>Chat settings</Text>
+                    <ListItem avatar noBorder button>
+                        <Left>
+                            <Button transparent>
+                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 0,color:"#128C7E"}}/>
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Enter is send</Text>
+                            <Text note>Enter key will send your message</Text>
+                        </Body>
+                        <Right>
+                        <Switch
+                            trackColor={{false:'#767577', true:"#128C7E"}}
+                            thumbColor={this.state.isEnabled ? '#075E54' : "#767577"}
+                            value={this.state.isEnabled}
+                            onChange={this.call}
+                        >
+                        </Switch>
+                    </Right>
+                    </ListItem>
+                    <ListItem avatar button>
+                        <Left>
+                            <Button transparent>
+                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 0,color:"#128C7E"}}/>
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Media visibility</Text>
+                            <Text note>Show newly downloaded media {`\n`} in your's phone gallery.</Text>
+                        </Body>
+                        <Right>
+                            <Switch
+                                trackColor={{false:'#767577', true:"#128C7E"}}
+                                thumbColor={this.state.isEnabled2 ? '#075E54' : "#767577"}
+                                value={this.state.isEnabled2}
+                                onChange={this.call2}
+                            >
+                            </Switch>
+                        </Right>
+                    </ListItem>
+                    <ListItem avatar noBorder button>
+                        <Left>
+                            <Button transparent>
+                                <Icon name='world' type="Fontisto" style={{fontSize: 28,color:"#128C7E"}}/>
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>App language</Text>
+                            <Text note>Phone's language(English)</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem avatar noBorder button>
+                        <Left>
+                            <Button transparent>
+                                <Icon name='backup' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Chat Backup</Text>
+                        </Body>
+                    </ListItem>
+                    <ListItem avatar noBorder button>
+                        <Left>
+                            <Button transparent>
+                                <Icon name='history' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Chat History</Text>
+                        </Body>
+                    </ListItem>
 				</ScrollView>
-                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('Chat')}}>
-                    <Text style={{color:"#ffffff"}}>SEARCH</Text>
-                </Button>
 			</Container>
 		);
 	}
