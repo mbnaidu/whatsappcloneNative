@@ -37,6 +37,8 @@ import TwoStep from './Settings/Accounts/Verification/TwoStep';
 import Number from './Settings/Accounts/Change/NewNumber';
 import NewNumber from './Settings/Accounts/Change/NewNumber';
 import Chats from './Settings/Chats/Chats';
+import History from './Settings/Chats/History';
+import Backup from './Settings/Chats/Backup';
 
 const Stack = createStackNavigator();
 
@@ -98,6 +100,8 @@ export default class App extends React.Component {
 						<Stack.Screen name="NewNumber" component={NewNumber} options={{ headerShown: false }} />
 					{/* CHATS */}
 						<Stack.Screen name="Chats" component={Chats} options={{ headerShown: false }} />
+						<Stack.Screen name="Backup" component={Backup} options={{ headerShown: false }} />
+						<Stack.Screen name="History" component={History} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
