@@ -65,7 +65,7 @@ export default class Chats extends Component {
                     </Body>
 					<Right>
 						<Button transparent>
-							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 0}}/>
 						</Button>
 					</Right>
 				</Header>
