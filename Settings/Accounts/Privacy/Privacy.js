@@ -25,8 +25,6 @@ export default class Privacy extends Component {
         // ABOUT
             aboutshow: false,
             aboutModalVisible: false,
-        // STATUS
-            status: '',
 	};
     // Last Seen
 	setLastSeenModalVisible = (visible) => {
@@ -263,7 +261,7 @@ export default class Privacy extends Component {
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Status')}}>
                         <Body >
                             <Text style={{fontSize:18,color:"#075E54"}}>Status</Text>
-                            <Text note >ji</Text>
+                            <Text note >My contacts</Text>
                         </Body>
                     </ListItem>
                 </ScrollView>

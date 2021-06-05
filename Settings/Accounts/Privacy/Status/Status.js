@@ -28,7 +28,10 @@ export default class Status extends Component {
 			<Container>
 				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('Privacy')}}>
+						<Button transparent 
+							onPress={()=>{navigate('Privacy', {
+								status:' this.state.aboutStatus'
+							})}}>
 							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 					</Left>
@@ -50,7 +53,7 @@ export default class Status extends Component {
 						<ListItem avatar noBorder button onPress={() => {this.setState({ aboutStatus: 'My contacts' });this.setAboutModalVisible(!aboutModalVisible);}}>
 							<Left>
 								<Radio
-									onPress={() => {navigate('Except');this.setAboutModalVisible(!aboutModalVisible);this.setState({ aboutStatus: 'My contacts' });}}
+									onPress={() => {this.setAboutModalVisible(!aboutModalVisible);this.setState({ aboutStatus: 'My contacts' });}}
 									color={"#808080"}
 									selectedColor={"#075E54"}
 									selected={this.state.aboutStatus == 'My contacts'}
@@ -63,7 +66,7 @@ export default class Status extends Component {
 						<ListItem avatar noBorder button onPress={() => {navigate('Except');this.setState({ aboutStatus: 'My contacts except . . .' });this.setAboutModalVisible(!aboutModalVisible);}}>
 							<Left>
 								<Radio
-									onPress={() => {navigate('Except');this.setState({ aboutStatus: 'My contacts except . . .' });this.setAboutModalVisible(!aboutModalVisible);}}
+									onPress={() => {this.setState({ aboutStatus: 'My contacts except . . .' });this.setAboutModalVisible(!aboutModalVisible);}}
 									color={"#808080"}
 									selectedColor={"#075E54"}
 									selected={this.state.aboutStatus == 'My contacts except . . .'}
@@ -76,7 +79,7 @@ export default class Status extends Component {
 						<ListItem avatar noBorder button onPress={() => {this.setState({ aboutStatus: 'Only share with . . .' });this.setAboutModalVisible(!aboutModalVisible);}}>
 							<Left>
 								<Radio
-									onPress={() => {navigate('Except');this.setState({ aboutStatus: 'Only share with . . .' });this.setAboutModalVisible(!aboutModalVisible);}}
+									onPress={() => {this.setState({ aboutStatus: 'Only share with . . .' });this.setAboutModalVisible(!aboutModalVisible);}}
 									color={"#808080"}
 									selectedColor={"#075E54"}
 									selected={this.state.aboutStatus == 'Only share with . . .'}
