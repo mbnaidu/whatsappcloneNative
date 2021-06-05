@@ -77,7 +77,7 @@ export default class Settings extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button onPress={() =>{navigate('Accounts')}}>
                         <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
+                            <Button transparent>
                                 <Icon name='account-cog' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -86,9 +86,9 @@ export default class Settings extends Component {
                             <Text note>Privacy, security, change number</Text>
                         </Body>
 					</ListItem>
-                    <ListItem avatar noBorder button>
+                    <ListItem avatar noBorder button onPress={() =>{navigate('Chats')}}>
                         <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
+                            <Button transparent>
                                 <Icon name='chat' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -99,7 +99,7 @@ export default class Settings extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button>
                         <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
+                            <Button transparent>
                                 <Icon name='notifications-sharp' type="Ionicons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -110,7 +110,7 @@ export default class Settings extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button>
                         <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
+                            <Button transparent>
                                 <Icon name='data-usage' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -121,7 +121,7 @@ export default class Settings extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button>
                         <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
+                            <Button transparent>
                                 <Icon name='help-circle' type="Feather" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -132,7 +132,7 @@ export default class Settings extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button>
                         <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
+                            <Button transparent>
                                 <Icon name='group-add' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>

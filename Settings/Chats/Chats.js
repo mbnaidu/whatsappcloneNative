@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label } from 'native-base';
 import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
-import styles from '../Styles/First';
+import styles from '../../Styles/First';
 
-export default class Search extends Component {
+export default class Chats extends Component {
     constructor(props) {
 		super(props);
 		this.state = { chosenDate: new Date() };
@@ -45,12 +45,12 @@ export default class Search extends Component {
 			<Container>
 				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('Chat')}}>
+						<Button transparent onPress={()=>{navigate('Settings')}}>
 							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Search</Title>
+                        <Title>Chats</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -80,7 +80,7 @@ export default class Search extends Component {
                                 <Picker
                                     mode="dropdown"
                                     iosIcon={<Icon name="arrow-down" />}
-                                    style={{ width: undefined,height: 50}}
+                                    style={{ width: undefined }}
                                     placeholder="Select your format"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
@@ -102,7 +102,7 @@ export default class Search extends Component {
                                 <Picker
                                     mode="dropdown"
                                     iosIcon={<Icon name="arrow-down" />}
-                                    style={{ width: undefined,height: 50}}
+                                    style={{ width: undefined }}
                                     placeholder="Select your SIM"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"

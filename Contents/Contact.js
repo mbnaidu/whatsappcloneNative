@@ -46,7 +46,7 @@ export default class Contact extends Component {
 				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Chat')}}>
-							<Icon name='close' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 					</Left>
 					<Body>

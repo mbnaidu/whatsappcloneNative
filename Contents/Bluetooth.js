@@ -85,7 +85,7 @@ export default class Bluetooth extends Component {
                                 <Picker
                                     mode="dropdown"
                                     iosIcon={<Icon name="arrow-down" />}
-                                    style={{ width: undefined }}
+                                    style={{ width: undefined,height: 50}}
                                     placeholder="Select your format"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
