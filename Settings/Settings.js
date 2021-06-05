@@ -119,7 +119,7 @@ export default class Settings extends Component {
                             <Text note>Network usage, auto-download</Text>
                         </Body>
 					</ListItem>
-                    <ListItem avatar noBorder button>
+                    <ListItem avatar noBorder button onPress={()=>{navigate('Help')}}>
                         <Left>
                             <Button transparent>
                                 <Icon name='help-circle' type="Feather" style={{fontSize: 28,color:"#075E54"}}/>
@@ -130,7 +130,7 @@ export default class Settings extends Component {
                             <Text note>Help center, contact us, privacy policy</Text>
                         </Body>
 					</ListItem>
-                    <ListItem avatar noBorder button>
+                    <ListItem avatar noBorder button >
                         <Left>
                             <Button transparent>
                                 <Icon name='group-add' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>

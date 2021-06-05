@@ -42,6 +42,7 @@ import Backup from './Settings/Chats/Backup';
 import Choose from './Settings/Chats/Choose';
 import Notifications from './Settings/Notifications';
 import Storage from './Settings/Storage';
+import Help from './Settings/Help';
 
 const Stack = createStackNavigator();
 
@@ -110,6 +111,8 @@ export default class App extends React.Component {
 						<Stack.Screen name="Notifications" component={Notifications} options={{ headerShown: false }} />
 					{/* STORAGE AND DATA */}
 						<Stack.Screen name="Storage" component={Storage} options={{ headerShown: false }} />
+					{/* HELP */}
+						<Stack.Screen name="Help" component={Help} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
