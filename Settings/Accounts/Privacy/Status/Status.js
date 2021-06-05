@@ -47,7 +47,7 @@ export default class Status extends Component {
 					<ScrollView>
 						<ListItem avatar noBorder button style={{marginTop:10}}>
 							<Body >
-								<Text style={{fontSize:18,color:"#075E54",marginBottom:5}}>Who can see my status updates</Text>
+								<Text style={{fontSize:16,color:"#075E54",marginBottom:5}}>Who can see my status updates</Text>
 							</Body>
 						</ListItem>
 						<ListItem avatar noBorder button onPress={() => {this.setState({ aboutStatus: 'My contacts' });this.setAboutModalVisible(!aboutModalVisible);}}>
@@ -89,6 +89,11 @@ export default class Status extends Component {
 								<Text style={{fontSize:17}}>Only share with . . .</Text>
 							</Body>
                         </ListItem>
+						<ListItem avatar noBorder button style={{marginTop:10}}>
+                        <Body>
+                            <Text note>Changes to your privacy settings wont't affect {`\n`} status updates that you've sent already.</Text>
+                        </Body>
+					</ListItem>
 				</ScrollView>
 					<Button full light style={{backgroundColor:"#075E54"}} 
 						onPress={()=>{navigate('Privacy', {
