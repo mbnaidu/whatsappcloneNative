@@ -108,7 +108,7 @@ export default class Settings extends Component {
                             <Text note>Message, group &amp; call tones</Text>
                         </Body>
 					</ListItem>
-                    <ListItem avatar noBorder button>
+                    <ListItem avatar noBorder button onPress={()=>{navigate('Storage')}}>
                         <Left>
                             <Button transparent>
                                 <Icon name='data-usage' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
