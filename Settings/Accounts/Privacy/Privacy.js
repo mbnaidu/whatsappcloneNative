@@ -135,7 +135,7 @@ export default class Privacy extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ profilephotoshow: true });this.setProfilePhotoModalVisible(!profilePhotoModalVisible);}}>
                         <Body >
-                            <Text style={{fontSize:18,color:"#075E54"}}>My contacts</Text>
+                            <Text style={{fontSize:18,color:"#075E54"}}>Profile Photo</Text>
                             <Text note >{this.state.profilePhotoStatus}</Text>
                             {!this.state.profilephotoshow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
