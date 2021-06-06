@@ -8,8 +8,6 @@ export default class Storage extends Component {
         super(props);
         this.state = {
             wifiStatus: 'No media',
-            isEnabled:false,
-            isEnabled2:true,
             mobileStatus: 'No media',
             ringtoneStatus: 'No media',
             callStatus: 'Default',
@@ -41,24 +39,14 @@ export default class Storage extends Component {
     setCallModalVisible = (visible) => {
 		this.setState({ callModalVisible: visible });
 	};
-    call = () => {
-		this.setState({ isEnabled: !this.state.isEnabled });
-	}
-    call2 = () => {
-		this.setState({ isEnabled2: !this.state.isEnabled2 });
-	}
     // Profile Photo
     setWifiModalVisible = (visible) => {
 		this.setState({ wifiModalVisible: visible });
 	};
 	render() {
-        // last seen
+        // MOBILE model
             const { mobileModalVisible } = this.state;
-        // profile photo
-            const { ringtoneModalVisible } = this.state;
-        // about
-            const { callModalVisible } = this.state;
-        // 
+        // WIFI model
             const { wifiModalVisible } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
@@ -71,7 +59,7 @@ export default class Storage extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Storage and Data</Title>
+                        <Title onPress={()=>{navigate('Settings')}}>Storage and Data</Title>
                     </Body>
 					<Right>
 						<Button transparent>
