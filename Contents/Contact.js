@@ -56,7 +56,7 @@ export default class Contact extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Create Contact</Title>
+                        <Title onPress={()=>{navigate('Chat')}}>Create Contact</Title>
                     </Body>
 					<Right>
 						<Button transparent>
