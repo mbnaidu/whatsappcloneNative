@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label, Radio } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, View, ListItem, Switch, Radio } from 'native-base';
+import { Text, Modal, ScrollView } from 'react-native';
 import styles from '../../Styles/First';
 
 export default class Backup extends Component {
@@ -60,7 +60,7 @@ export default class Backup extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Chat backup</Title>
+                        <Title onPress={()=>{navigate('Chats')}}>Chat backup</Title>
                     </Body>
 					<Right>
 						<Button transparent>

@@ -1,55 +1,10 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label, Radio, CheckBox } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail,ListItem, } from 'native-base';
+import { StatusBar, Text, ScrollView } from 'react-native';
 import styles from '../../Styles/First';
 
 export default class Choose extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isEnabled:false,
-            isEnabled2:true,
-            displayStatus: 'Light',
-            profilePhotoStatus: 'My contacts',
-            aboutStatus: 'Nobody',
-        };
-    }
-    state = {
-        // LAST SEEN
-            displayModalVisible: false,
-            displayShow: false,
-        // PROFILE PHOTO
-            profilephotoshow: false,
-            profilePhotoModalVisible: false,
-        // ABOUT
-            aboutshow: false,
-            aboutModalVisible: false,
-	};
-    // Last Seen
-	setDisplayModalVisible = (visible) => {
-		this.setState({ displayModalVisible: visible });
-	};
-    // Profile Photo
-    setProfilePhotoModalVisible = (visible) => {
-		this.setState({ profilePhotoModalVisible: visible });
-	};
-    // About
-    setAboutModalVisible = (visible) => {
-		this.setState({ aboutModalVisible: visible });
-	};
-    call = () => {
-		this.setState({ isEnabled: !this.state.isEnabled });
-	}
-    call2 = () => {
-		this.setState({ isEnabled2: !this.state.isEnabled2 });
-	}
 	render() {
-        // last seen
-            const { displayModalVisible } = this.state;
-        // profile photo
-            const { profilePhotoModalVisible } = this.state;
-        // about
-            const { aboutModalVisible } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
@@ -61,7 +16,7 @@ export default class Choose extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Choose chat</Title>
+                        <Title onPress={()=>{navigate('History')}}>Choose chat</Title>
                     </Body>
 					<Right>
 						<Button transparent>

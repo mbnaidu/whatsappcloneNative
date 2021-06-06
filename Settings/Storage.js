@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label, Radio } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, View, ListItem, Radio } from 'native-base';
+import { StatusBar, Text,Modal,ScrollView } from 'react-native';
 import styles from '../Styles/First';
 
 export default class Storage extends Component {
@@ -9,37 +9,21 @@ export default class Storage extends Component {
         this.state = {
             wifiStatus: 'No media',
             mobileStatus: 'No media',
-            ringtoneStatus: 'No media',
-            callStatus: 'Default',
         };
     }
     state = {
-        // LAST SEEN
+        // Mobile Modal
             mobileModalVisible: false,
             mobileShow: false,
-        // PROFILE PHOTO
+        //Wi-Fi Modal
             wifiShow: false,
             wifiModalVisible: false,
-        // PROFILE PHOTO
-            ringtoneShow: false,
-            ringtoneModalVisible: false,
-        // ABOUT
-            callShow: false,
-            callModalVisible: false,
 	};
-    // Last Seen
+    // Mobile Modal
 	setMobileModalVisible = (visible) => {
 		this.setState({ mobileModalVisible: visible });
 	};
-    // Profile Photo
-    setRingtoneModalVisible = (visible) => {
-		this.setState({ ringtoneModalVisible: visible });
-	};
-    // About
-    setCallModalVisible = (visible) => {
-		this.setState({ callModalVisible: visible });
-	};
-    // Profile Photo
+    //Wi-Fi Modal
     setWifiModalVisible = (visible) => {
 		this.setState({ wifiModalVisible: visible });
 	};

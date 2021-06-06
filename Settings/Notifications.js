@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label, Radio } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, View, ListItem, Radio } from 'native-base';
+import { StatusBar, Text, Modal, ScrollView } from 'react-native';
 import styles from '../Styles/First';
 
 export default class Notifications extends Component {
@@ -16,49 +16,43 @@ export default class Notifications extends Component {
         };
     }
     state = {
-        // LAST SEEN
+        // Notification Modal
             notificationsModalVisible: false,
             notificationsShow: false,
-        // PROFILE PHOTO
+        // Vibrate Modal
             vibrateShow: false,
             vibrateModalVisible: false,
-        // PROFILE PHOTO
+        // Ringtone Modal
             ringtoneShow: false,
             ringtoneModalVisible: false,
-        // ABOUT
+        // Call Modal
             callShow: false,
             callModalVisible: false,
 	};
-    // Last Seen
+    // Notification Modal
 	setNotificationsModalVisible = (visible) => {
 		this.setState({ notificationsModalVisible: visible });
 	};
-    // Profile Photo
+    // Ringtone Mdoal
     setRingtoneModalVisible = (visible) => {
 		this.setState({ ringtoneModalVisible: visible });
 	};
-    // About
+    // Call Modal
     setCallModalVisible = (visible) => {
 		this.setState({ callModalVisible: visible });
 	};
-    call = () => {
-		this.setState({ isEnabled: !this.state.isEnabled });
-	}
-    call2 = () => {
-		this.setState({ isEnabled2: !this.state.isEnabled2 });
-	}
-    // Profile Photo
+    // Vibrate Modal
     setVibrateModalVisible = (visible) => {
 		this.setState({ vibrateModalVisible: visible });
 	};
 	render() {
-        // last seen
+        // Notification Modal
             const { notificationsModalVisible } = this.state;
-        // profile photo
+        // Ringtone Modal
             const { ringtoneModalVisible } = this.state;
-        // about
+        // Call Modal
             const { callModalVisible } = this.state;
-        // 
+        //  Vibrate Modal
             const { vibrateModalVisible } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
@@ -71,7 +65,7 @@ export default class Notifications extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Notifications</Title>
+                        <Title onPress={()=>{navigate('Settings')}}>Notifications</Title>
                     </Body>
 					<Right>
 						<Button transparent>

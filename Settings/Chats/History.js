@@ -1,55 +1,21 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label, Radio, CheckBox } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Title,Footer, Fab, View, ListItem,CheckBox } from 'native-base';
+import { StatusBar, Text, Modal,ScrollView } from 'react-native';
 import styles from '../../Styles/First';
 
 export default class History extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isEnabled:false,
-            isEnabled2:true,
-            displayStatus: 'Light',
-            profilePhotoStatus: 'My contacts',
-            aboutStatus: 'Nobody',
-        };
-    }
     state = {
-        // LAST SEEN
-            displayModalVisible: false,
-            displayShow: false,
-        // PROFILE PHOTO
-            profilephotoshow: false,
-            profilePhotoModalVisible: false,
-        // ABOUT
-            aboutshow: false,
-            aboutModalVisible: false,
+        // Delete Modal
+            deleteModalVisible: false,
+            deleteShow: false,
 	};
-    // Last Seen
-	setDisplayModalVisible = (visible) => {
-		this.setState({ displayModalVisible: visible });
+    // Delete Modal
+	setDeleteModalVisible = (visible) => {
+		this.setState({ deleteModalVisible: visible });
 	};
-    // Profile Photo
-    setProfilePhotoModalVisible = (visible) => {
-		this.setState({ profilePhotoModalVisible: visible });
-	};
-    // About
-    setAboutModalVisible = (visible) => {
-		this.setState({ aboutModalVisible: visible });
-	};
-    call = () => {
-		this.setState({ isEnabled: !this.state.isEnabled });
-	}
-    call2 = () => {
-		this.setState({ isEnabled2: !this.state.isEnabled2 });
-	}
 	render() {
-        // last seen
-            const { displayModalVisible } = this.state;
-        // profile photo
-            const { profilePhotoModalVisible } = this.state;
-        // about
-            const { aboutModalVisible } = this.state;
+        // Delete Modal
+            const { deleteModalVisible } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
@@ -61,7 +27,7 @@ export default class History extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Chat History</Title>
+                        <Title onPress={()=>{navigate('Chats')}}>Chat History</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -80,7 +46,7 @@ export default class History extends Component {
                             <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Export Chat</Text>
                         </Body>
                     </ListItem>
-                    <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ displayShow: true });this.setDisplayModalVisible(!displayModalVisible);}}>
+                    <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ deleteShow: true });this.setDeleteModalVisible(!deleteModalVisible);}}>
                         <Left>
                             <Button transparent>
                                 <Icon name='delete-alert' type="MaterialCommunityIcons" style={{fontSize: 30,color:"#128C7E"}}/>
@@ -89,14 +55,14 @@ export default class History extends Component {
                         <Body>
                             <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Delete all chats</Text>
                         </Body>
-                        {!this.state.displayShow ? (<View></View>) : (
+                        {!this.state.deleteShow ? (<View></View>) : (
                             <View style={styles.centeredView}>
                                 <Modal
                                     animationType="fade"
                                     transparent={true}
-                                    visible={displayModalVisible}
+                                    visible={deleteModalVisible}
                                     onRequestClose={() => {
-                                        this.setDisplayModalVisible(!displayModalVisible);
+                                        this.setDeleteModalVisible(!deleteModalVisible);
                                     }}
                                     >
                                     <View>
@@ -112,8 +78,8 @@ export default class History extends Component {
                                             </Fab>
                                         </View>
                                     </View>
-                                    <Footer style={{backgroundColor:"#ffffff"}} button onPress={() =>{this.setDisplayModalVisible(!displayModalVisible);}}>
-                                        <Text style={{fontSize:16,marginTop:10,marginLeft:300,width:"100%"}} onPress={() =>{this.setDisplayModalVisible(!displayModalVisible);}}>Cancel</Text>
+                                    <Footer style={{backgroundColor:"#ffffff"}} button onPress={() =>{this.setDeleteModalVisible(!deleteModalVisible);}}>
+                                        <Text style={{fontSize:16,marginTop:10,marginLeft:300,width:"100%"}} onPress={() =>{this.setDeleteModalVisible(!deleteModalVisible);}}>Cancel</Text>
                                     </Footer>
                                 </Modal>
 							</View>

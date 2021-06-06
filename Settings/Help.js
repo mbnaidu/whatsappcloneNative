@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label, Radio } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
-import styles from '../Styles/First';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, ListItem } from 'native-base';
+import { StatusBar, Text, ScrollView } from 'react-native';
 
 export default class Help extends Component {
 	render() {
@@ -16,7 +15,7 @@ export default class Help extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Help</Title>
+                        <Title onPress={()=>{navigate('Settings')}}>Help</Title>
                     </Body>
 					<Right>
 						<Button transparent>

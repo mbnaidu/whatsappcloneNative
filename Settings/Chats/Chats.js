@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label, Radio } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, View, ListItem, Switch, Radio } from 'native-base';
+import { StatusBar, Text, Modal, ScrollView } from 'react-native';
 import styles from '../../Styles/First';
 
 export default class Chats extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isEnabled:false,
-            isEnabled2:true,
+            sendEnalbed:false,
+            mediaEnabled:true,
             displayStatus: 'Light',
             fontStatus: 'Medium',
             aboutStatus: 'Large',
@@ -21,9 +21,6 @@ export default class Chats extends Component {
         // PROFILE PHOTO
             fontShow: false,
             fontModalVisible: false,
-        // ABOUT
-            aboutshow: false,
-            aboutModalVisible: false,
 	};
     // Last Seen
 	setDisplayModalVisible = (visible) => {
@@ -33,15 +30,11 @@ export default class Chats extends Component {
     setFontModalVisible = (visible) => {
 		this.setState({ fontModalVisible: visible });
 	};
-    // About
-    setAboutModalVisible = (visible) => {
-		this.setState({ aboutModalVisible: visible });
-	};
-    call = () => {
-		this.setState({ isEnabled: !this.state.isEnabled });
+    send = () => {
+		this.setState({ sendEnalbed: !this.state.sendEnalbed });
 	}
-    call2 = () => {
-		this.setState({ isEnabled2: !this.state.isEnabled2 });
+    media = () => {
+		this.setState({ mediaEnabled: !this.state.mediaEnabled });
 	}
 	render() {
         // last seen
@@ -49,7 +42,6 @@ export default class Chats extends Component {
         // profile photo
             const { fontModalVisible } = this.state;
         // about
-            const { aboutModalVisible } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
@@ -61,7 +53,7 @@ export default class Chats extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Chats</Title>
+                        <Title onPress={()=>{navigate('Settings')}}>Chats</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -149,9 +141,9 @@ export default class Chats extends Component {
                         <Right>
                         <Switch
                             trackColor={{false:'#767577', true:"#128C7E"}}
-                            thumbColor={this.state.isEnabled ? '#075E54' : "#767577"}
-                            value={this.state.isEnabled}
-                            onChange={this.call}
+                            thumbColor={this.state.sendEnalbed ? '#075E54' : "#767577"}
+                            value={this.state.sendEnalbed}
+                            onChange={this.send}
                         >
                         </Switch>
                     </Right>
@@ -169,9 +161,9 @@ export default class Chats extends Component {
                         <Right>
                             <Switch
                                 trackColor={{false:'#767577', true:"#128C7E"}}
-                                thumbColor={this.state.isEnabled2 ? '#075E54' : "#767577"}
-                                value={this.state.isEnabled2}
-                                onChange={this.call2}
+                                thumbColor={this.state.mediaEnabled ? '#075E54' : "#767577"}
+                                value={this.state.mediaEnabled}
+                                onChange={this.media}
                             >
                             </Switch>
                         </Right>
