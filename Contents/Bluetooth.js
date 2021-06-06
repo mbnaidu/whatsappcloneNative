@@ -72,7 +72,7 @@ export default class Bluetooth extends Component {
                     </Card>
                 </ScrollView>
                 <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('Chat')}}>
-                    <Text style={{color:"#ffffff"}}>SEND MESSAGE</Text>
+                    <Text style={{color:"#ffffff",letterSpacing:3}}>SEND MESSAGE</Text>
                 </Button>
 			</Container>
 		);
