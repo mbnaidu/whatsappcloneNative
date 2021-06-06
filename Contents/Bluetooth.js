@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Item, Input,View, Card, Picker, Label } from 'native-base';
+import { Container, Header, Left, Body, Button, Icon, Title, Item, Input,View, Card, Picker, Label } from 'native-base';
 import { StatusBar, Text,ScrollView } from 'react-native';
 import styles from '../Styles/First';
 
