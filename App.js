@@ -45,6 +45,7 @@ import Storage from './Settings/Storage';
 import Help from './Settings/Help';
 import QuickSchedule from './Contents/QuickSchedule';
 import QuickReminder from './Contents/QuickReminder';
+import NewGroup from './Contents/NewGroup';
 
 const Stack = createStackNavigator();
 
@@ -88,6 +89,7 @@ export default class App extends React.Component {
 				<Stack.Screen name="Bluetooth" component={Bluetooth} options={{ headerShown: false }} />
 				<Stack.Screen name="QuickSchedule" component={QuickSchedule} options={{ headerShown: false }} />
 				<Stack.Screen name="QuickReminder" component={QuickReminder} options={{ headerShown: false }} />
+				<Stack.Screen name="NewGroup" component={NewGroup} options={{ headerShown: false }} />
 				{/* SETTINGS */}
 					<Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
 					{/* ACCOUNTS */}
