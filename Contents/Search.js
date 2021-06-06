@@ -1,42 +1,21 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
-import styles from '../Styles/First';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Item, Input, View, ListItem, Picker,Label } from 'native-base';
+import { StatusBar, Text, ScrollView } from 'react-native';
 
 export default class Search extends Component {
-    constructor(props) {
-		super(props);
-		this.state = { chosenDate: new Date() };
-		this.setDate = this.setDate.bind(this);
-	}
 	state = {
-        selected2: undefined,
-		selected: undefined,
-		selected3: undefined,
-		selected4: undefined,
+		contains: undefined,
+		format: undefined,
 	};
-	onValueChange(value) {
+	onContainValueChange(value) {
 		this.setState({
-		selected: value
+		contains: value
 		});
 	}
-    onValueChange2(value) {
+	onFormatValueChange(value) {
 		this.setState({
-		selected2: value
+            format: value
 		});
-	}
-	onValueChange3(value) {
-		this.setState({
-		selected3: value
-		});
-	}
-	onValueChange4(value) {
-		this.setState({
-		selected4: value
-		});
-	}
-    setDate(newDate) {
-		this.setState({ chosenDate: newDate });
 	}
 	render() {
 		StatusBar.setBackgroundColor('#128C7E',true);
@@ -84,8 +63,8 @@ export default class Search extends Component {
                                     placeholder="Select your format"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
-                                    selectedValue={this.state.selected}
-                                    onValueChange={this.onValueChange.bind(this)}
+                                    selectedValue={this.state.format}
+                                    onValueChange={this.onFormatValueChange.bind(this)}
                                 >
                                     <Picker.Item label="PDF" value="key0" />
                                     <Picker.Item label="PNG" value="key1" />
@@ -106,8 +85,8 @@ export default class Search extends Component {
                                     placeholder="Select your SIM"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
-                                    selectedValue={this.state.selected3}
-                                    onValueChange={this.onValueChange3.bind(this)}
+                                    selectedValue={this.state.contains}
+                                    onValueChange={this.onContainValueChange.bind(this)}
                                 >
                                     <Picker.Item label="Starts with" value="key0" />
                                     <Picker.Item label="Contains" value="key1" />
