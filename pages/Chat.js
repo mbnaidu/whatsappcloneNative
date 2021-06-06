@@ -69,102 +69,49 @@ export default class Chat extends Component {
 					<Header noLeft style={styles.chatPageSecondHeader} noBorder>
 					<Body>
 						<Button transparent onPress={() =>{navigate('Group')}}>
-							<Thumbnail
-							square
-							style={{width: 55, height: 55,marginLeft: 13}}
-							source={require('../Assets/addGroup.png')}
-						>
-						</Thumbnail>
+							<Icon name="group-add" type="MaterialIcons" style={{fontSize:39,color:"white"}}/>
 						</Button>
-						{/* <Text style={{color:"snow",fontSize: 16}}>Add Group</Text> */}
 					</Body>
 					<Body>
 						<Button transparent onPress={() =>{navigate('Contact')}}>
-							<Thumbnail
-								square
-								style={{width: 50, height: 50,marginLeft: 20}}
-								source={require('../Assets/addContact.png')}
-							>
-							</Thumbnail>
+							<Icon name="person-add" type="MaterialIcons" style={{fontSize:39,color:"white"}}/>
 						</Button>
-						{/* <Text style={{color:"snow",fontSize: 15,marginRight:5}}>Add Contact</Text> */}
 					</Body>
 					<Body>
 						{!this.state.aeroplanemode ? (
 							<Button transparent onPress={() =>{this.setAeroplanemode()}}>
-								<Thumbnail
-									square
-									style={{width: 60, height: 60,marginLeft: 25}}
-									source={require('../Assets/flight.png')}
-								>
-								</Thumbnail>
+								<Icon name="airplanemode-active" type="MaterialIcons" style={{fontSize: 39,color:"white"}}/>
 							</Button>
 							) : (
 							<Button transparent onPress={() =>{this.setAeroplanemode()}}>
-								<Thumbnail
-									square
-									style={{width: 60, height: 60,marginLeft: 25}}
-									source={require('../Assets/flightOff.png')}
-								>
-								</Thumbnail>
+								<Icon name="airplanemode-off" type="MaterialIcons" style={{fontSize: 39,color:"grey"}}/>
 							</Button>
 						)}
-						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:12}}>Flight Mode</Text> */}
 					</Body>
 					<Body onPress={() =>{navigate('Search')}} >
 						<Button transparent onPress={() =>{navigate('Search')}}>
-							<Thumbnail
-								square
-								style={{width: 47, height: 47,marginLeft: 20}}
-								source={require('../Assets/search.png')}
-							>
-							</Thumbnail>
+							<Icon name="search" type="MaterialIcons" style={{fontSize: 39,color:"white"}}/>
 						</Button>
-						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body onPress={() =>{navigate('Reminder')}} >
 						<Button transparent onPress={() =>{navigate('Reminder')}}>
-							<Thumbnail
-								square
-								style={{width: 50, height: 50,marginLeft: 20}}
-								source={require('../Assets/reminder.png')}
-							>
-							</Thumbnail>
+							<Icon name="calendar" type="Octicons" style={{fontSize: 38,color:"white"}}/>
 						</Button>
-						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body onPress={() =>{navigate('Schedule')}} >
 						<Button transparent onPress={() =>{navigate('Schedule')}}>
-							<Thumbnail
-								square
-								style={{width: 50, height: 50,marginLeft: 20}}
-								source={require('../Assets/message.png')}
-							>
-							</Thumbnail>
+							<Icon name="send" type="MaterialIcons" style={{fontSize: 36,color:"white"}}/>
 						</Button>
-						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body onPress={() =>{navigate('Message')}} >
 						<Button transparent onPress={() =>{navigate('Message')}}>
-							<Thumbnail
-								square
-								style={{width: 50, height: 50,marginLeft: 20}}
-								source={require('../Assets/general.png')}
-							>
-							</Thumbnail>
+							<Icon name="chat" type="MaterialIcons" style={{fontSize: 36,color:"white"}}/>
 						</Button>
-						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 					<Body onPress={() =>{navigate('Bluetooth')}}>
 						<Button transparent onPress={() =>{navigate('Bluetooth')}}>
-							<Thumbnail
-								square
-								style={{width: 45, height: 45,marginLeft: 30}}
-								source={require('../Assets/bluetooth.png')}
-							>
-							</Thumbnail>
+							<Icon name="bluetooth" type="MaterialIcons" style={{fontSize: 36,color:"white"}}/>
 						</Button>
-						{/* <Text style={{color:"snow",fontSize: 15,marginLeft:30,marginTop:10}}>Search</Text> */}
 					</Body>
 				</Header>
 				</ScrollView>
