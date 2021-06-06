@@ -24,7 +24,7 @@ export default class Lock extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Fingerprint lock</Title>
+                        <Title onPress={()=>{navigate('Privacy')}}>Fingerprint lock</Title>
                     </Body>
 					<Right>
 						<Button transparent>

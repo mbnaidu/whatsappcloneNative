@@ -26,7 +26,7 @@ export default class NewNumber extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Change number</Title>
+                        <Title onPress={()=>{navigate('Change')}}>Change number</Title>
                     </Body>
 					<Right>
 						<Button transparent>

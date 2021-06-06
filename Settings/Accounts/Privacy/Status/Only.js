@@ -16,7 +16,7 @@ export default class Only extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Share status with ...</Title>
+                        <Title nPress={()=>{navigate('Status')}}>Share status with ...</Title>
 						<Text style={{color:"#ffffff"}}>No contacts selected</Text>
                     </Body>
 					<Right>

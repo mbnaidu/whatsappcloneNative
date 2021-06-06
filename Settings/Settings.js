@@ -15,7 +15,7 @@ export default class Settings extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Settings</Title>
+                        <Title transparent onPress={()=>{navigate('Chat')}}>Settings</Title>
                     </Body>
                     <Right>
 						<Button transparent>

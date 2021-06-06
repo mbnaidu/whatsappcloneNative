@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label, Radio } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Title,ListItem, Radio } from 'native-base';
+import { StatusBar, Text, ScrollView } from 'react-native';
 
 export default class Groups extends Component {
 	constructor() {
@@ -29,14 +29,12 @@ export default class Groups extends Component {
 				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
 					<Left>
 						<Button transparent 
-							onPress={()=>{navigate('Privacy', {
-								status:' this.state.aboutStatus'
-							})}}>
+							onPress={()=>{navigate('Privacy')}}>
 							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Groups</Title>
+                        <Title onPress={()=>{navigate('Privacy')}}>Groups</Title>
                     </Body>
 					<Right>
 						<Button transparent>

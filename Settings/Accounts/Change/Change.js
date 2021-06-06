@@ -15,7 +15,7 @@ export default class Change extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Change number</Title>
+                        <Title onPress={()=>{navigate('Accounts')}}>Change number</Title>
                     </Body>
 					<Right>
 						<Button transparent>

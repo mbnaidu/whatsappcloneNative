@@ -15,7 +15,7 @@ export default class Verification extends Component {
 						</Button>
 					</Left>
 					<Body  style={{marginRight:108}}>
-                        <Title>Two-step verification</Title>
+                        <Title onPress={()=>{navigate('Accounts')}}>Two-step verification</Title>
                     </Body>
 				</Header>
 					<ScrollView>
