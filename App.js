@@ -44,6 +44,7 @@ import Notifications from './Settings/Notifications';
 import Storage from './Settings/Storage';
 import Help from './Settings/Help';
 import QuickSchedule from './Contents/QuickSchedule';
+import QuickReminder from './Contents/QuickReminder';
 
 const Stack = createStackNavigator();
 
@@ -86,6 +87,7 @@ export default class App extends React.Component {
 				<Stack.Screen name="Message" component={Message} options={{ headerShown: false }} />
 				<Stack.Screen name="Bluetooth" component={Bluetooth} options={{ headerShown: false }} />
 				<Stack.Screen name="QuickSchedule" component={QuickSchedule} options={{ headerShown: false }} />
+				<Stack.Screen name="QuickReminder" component={QuickReminder} options={{ headerShown: false }} />
 				{/* SETTINGS */}
 					<Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
 					{/* ACCOUNTS */}
