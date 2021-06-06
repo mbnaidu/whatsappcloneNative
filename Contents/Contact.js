@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Item, Input, View, Picker, DatePicker, Label } from 'native-base';
+import { StatusBar, Text, ScrollView } from 'react-native';
 import styles from '../Styles/First';
 
 export default class Contact extends Component {
@@ -10,29 +10,35 @@ export default class Contact extends Component {
 		this.setDate = this.setDate.bind(this);
 	}
 	state = {
-        selected2: undefined,
-		selected: undefined,
-		selected3: undefined,
-		selected4: undefined,
+        device:undefined,
+        place1:undefined,
+        place2: undefined,
+		place3: undefined,
+		occasion: undefined,
 	};
-	onValueChange(value) {
+	onDeviceValueChange(value) {
 		this.setState({
-		selected: value
+            device:value
 		});
 	}
-    onValueChange2(value) {
+    onPlace1ValueChange(value) {
 		this.setState({
-		selected2: value
+            place1: value
 		});
 	}
-	onValueChange3(value) {
+	onPlace2ValueChange(value) {
 		this.setState({
-		selected3: value
+            place2: value
 		});
 	}
-	onValueChange4(value) {
+	onPlace3ValueChange(value) {
 		this.setState({
-		selected4: value
+            place3: value
+		});
+	}
+    onOccasionValueChange(value) {
+		this.setState({
+            occasion: value
 		});
 	}
     setDate(newDate) {
@@ -67,8 +73,8 @@ export default class Contact extends Component {
                         placeholder="Select your SIM"
                         placeholderStyle={{ color: "#bfc6ea" }}
                         placeholderIconColor="#007aff"
-                        selectedValue={this.state.selected2}
-                        onValueChange={this.onValueChange2.bind(this)}
+                        selectedValue={this.state.device}
+                        onValueChange={this.onDeviceValueChange.bind(this)}
                     >
                         <Picker.Item label="Device" value="key0" />
                         <Picker.Item label="madhucharliehash@gmail.com" value="key2" />
@@ -116,8 +122,8 @@ export default class Contact extends Component {
                                     placeholder="Select your SIM"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
-                                    selectedValue={this.state.selected}
-                                    onValueChange={this.onValueChange.bind(this)}
+                                    selectedValue={this.state.place1}
+                                    onValueChange={this.onPlace1ValueChange.bind(this)}
                                 >
                                     <Picker.Item label="Place" value="key0" />
                                     <Picker.Item label="Home" value="key1" />
@@ -145,8 +151,8 @@ export default class Contact extends Component {
                                     placeholder="Select your SIM"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
-                                    selectedValue={this.state.selected}
-                                    onValueChange={this.onValueChange.bind(this)}
+                                    selectedValue={this.state.place2}
+                                    onValueChange={this.onPlace2ValueChange.bind(this)}
                                 >
                                     <Picker.Item label="Place" value="key0" />
                                     <Picker.Item label="Home" value="key1" />
@@ -174,8 +180,8 @@ export default class Contact extends Component {
                                     placeholder="Select your SIM"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
-                                    selectedValue={this.state.selected4}
-                                    onValueChange={this.onValueChange4.bind(this)}
+                                    selectedValue={this.state.place3}
+                                    onValueChange={this.onPlace3ValueChange.bind(this)}
                                 >
                                     <Picker.Item label="Work" value="key0" />
                                     <Picker.Item label="Home" value="key1" />
@@ -219,8 +225,8 @@ export default class Contact extends Component {
                                     placeholder="Select your SIM"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
-                                    selectedValue={this.state.selected4}
-                                    onValueChange={this.onValueChange4.bind(this)}
+                                    selectedValue={this.state.occasion}
+                                    onValueChange={this.onOccasionValueChange.bind(this)}
                                 >
                                     <Picker.Item label="Birthday" value="key0" />
                                     <Picker.Item label="Marriage Anniversary" value="key1" />
