@@ -1,43 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
-import styles from '../Styles/First';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, ListItem } from 'native-base';
+import { StatusBar, Text,ScrollView } from 'react-native';
 
 export default class Settings extends Component {
-    constructor(props) {
-		super(props);
-		this.state = { chosenDate: new Date() };
-		this.setDate = this.setDate.bind(this);
-	}
-	state = {
-        selected2: undefined,
-		selected: undefined,
-		selected3: undefined,
-		selected4: undefined,
-	};
-	onValueChange(value) {
-		this.setState({
-		selected: value
-		});
-	}
-    onValueChange2(value) {
-		this.setState({
-		selected2: value
-		});
-	}
-	onValueChange3(value) {
-		this.setState({
-		selected3: value
-		});
-	}
-	onValueChange4(value) {
-		this.setState({
-		selected4: value
-		});
-	}
-    setDate(newDate) {
-		this.setState({ chosenDate: newDate });
-	}
 	render() {
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
