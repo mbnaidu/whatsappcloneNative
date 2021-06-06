@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge, Thumbnail, ListItem, Fab, View } from 'native-base';
-import { ScrollView, StatusBar, Text } from 'react-native';
+import { Container, Header, Button, Left, Right, Icon, Tabs, Tab, TabHeading } from 'native-base';
+import {  StatusBar, Text } from 'react-native';
 import styles from '../Styles/First';
 
 export default class MediaPage extends Component {

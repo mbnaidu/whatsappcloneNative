@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem } from 'native-base';
-import { StatusBar, Text, TextInput,Image, TouchableOpacity, Modal,Pressable, TouchableWithoutFeedback } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Thumbnail, Footer,Content, Fab, View, ListItem } from 'native-base';
+import { StatusBar, Text, TextInput,Image, Modal, TouchableWithoutFeedback } from 'react-native';
 import styles from '../Styles/Second';
 
 export default class ChatPage extends Component {

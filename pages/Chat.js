@@ -8,10 +8,10 @@ import Status from '../Screens/Status';
 export default class Chat extends Component {
 	state = {
 		aeroplanemode:false,
-		modalVisible: false,
+		mainModalVisible: false,
 	};
-	setModalVisible = (visible) => {
-		this.setState({ modalVisible: visible });
+	setMainModalVisible = (visible) => {
+		this.setState({ mainModalVisible: visible });
 	};
 	setAeroplanemode = () =>{
 		this.setState({aeroplanemode:!this.state.aeroplanemode})
@@ -19,7 +19,7 @@ export default class Chat extends Component {
 	render() {
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
-		const { modalVisible } = this.state;
+		const { mainModalVisible } = this.state;
 		return (
 		<Container>
 			<View >
@@ -34,26 +34,26 @@ export default class Chat extends Component {
 						<Button transparent>
 							<Image style={styles.searchIcon} source={require('../Assets/status.png')} style={styles.status}/>
 						</Button>
-						<Button transparent onPress={()=>{this.setModalVisible(!modalVisible)}}>
+						<Button transparent onPress={()=>{this.setMainModalVisible(!mainModalVisible)}}>
 							<Image style={styles.searchIcon} source={require('../Assets/moreVert.png')} style={styles.status}/>
 							<View style={styles.centeredView}>
 								<Modal
 								animationType="fade"
 								transparent={true}
-								visible={modalVisible}
+								visible={mainModalVisible}
 								onRequestClose={() => {
-									this.setModalVisible(!modalVisible);
+									this.setMainModalVisible(!mainModalVisible);
 								}}
 								>
 								<View style={styles.centeredView}>
 									<View style={styles.modalView}>
-										<ListItem noBorder button onPress={() => {this.setModalVisible(!modalVisible);navigate('Settings')}}>
+										<ListItem noBorder button onPress={() => {this.setMainModalVisible(!mainModalVisible);navigate('Settings')}}>
 											<Text style={styles.textStyle}>Settings</Text>
 										</ListItem>
-										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+										<ListItem noBorder button onPress={() => this.setMainModalVisible(!mainModalVisible)}>
 											<Text style={styles.textStyle}>Piegon Web</Text>
 										</ListItem>
-										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+										<ListItem noBorder button onPress={() => this.setMainModalVisible(!mainModalVisible)}>
 											<Text style={styles.textStyle}>Unread Messages</Text>
 										</ListItem>
 									</View>

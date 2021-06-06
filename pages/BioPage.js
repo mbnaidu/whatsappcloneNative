@@ -1,4 +1,4 @@
-import { Body, Button, Card, CardItem, Content, Header, Icon, Left, List, ListItem, Right, Thumbnail } from 'native-base';
+import { Body, Button, Card, CardItem, Icon, Left, ListItem, Right, Thumbnail } from 'native-base';
 import React, { Component } from 'react';
 import {Animated,Platform,StatusBar,StyleSheet,Text,View,RefreshControl, ScrollView, Switch,} from 'react-native';
 
@@ -111,7 +111,7 @@ export default class BioPage extends Component {
                         <Text note>Off</Text>
                     </Body>
                     <Right>
-                        <Icon name='watch' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+                        <Icon name='timer-sand' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#075E54"}}/>
                     </Right>
                 </CardItem>
                 <CardItem header bordered>
@@ -275,9 +275,6 @@ export default class BioPage extends Component {
                     </Button>
                     <Text style={styles.title} onPress={()=>{navigate('ChatPage')}}>Hanuman</Text>
                 </Body>
-                <Right>
-                    <Icon name='more-vert' type="MaterialIcons" style={styles.morevert}/>
-                </Right>
             </View>
             </Animated.View>
         </View>
