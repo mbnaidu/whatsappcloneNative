@@ -136,5 +136,10 @@ export default StyleSheet.create({
         backgroundColor: '#00BCD4', 
         alignItems: 'center', 
         justifyContent: 'center'
-    }
+    },
+    // chat page backgroundColor
+    chatPageSecondHeader:{
+        backgroundColor:"#075E54",
+        height:80,
+    },
 })

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { Container, Header, Left, Body, Right, Button, Icon, Thumbnail, Footer,Content, Fab, View, ListItem } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Modal, TouchableWithoutFeedback } from 'react-native';
+import { StatusBar, Text, TextInput,Image, Modal, TouchableWithoutFeedback, ScrollView } from 'react-native';
 import styles from '../Styles/Second';
 
 export default class ChatPage extends Component {
 	state = {
 		modalVisible: false,
 		modalVisible2: false,
+		online:false,
+		plane:false,
+		entypo:false,
 	};
 	setModalVisible = (visible) => {
 		this.setState({ modalVisible: visible });
@@ -18,6 +21,15 @@ export default class ChatPage extends Component {
 		this.setState({
 			modalVisible2: true,
 		});
+	}
+	setOnline = () =>{
+		this.setState({online:!this.state.online})
+	}
+	setPlane = () =>{
+		this.setState({plane:!this.state.plane})
+	}
+	setEntypo = () =>{
+		this.setState({entypo:!this.state.entypo})
 	}
 	render() {
 		const { modalVisible } = this.state;
@@ -54,10 +66,14 @@ export default class ChatPage extends Component {
 					</Body>
 					<Right>
 						<Button transparent>
-							<Icon name='videocam' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Thumbnail
+								style={{width: 35, height: 35,}}
+								source={require('../Assets/pigeon.png')}
+							>
+							</Thumbnail>
 						</Button>
 						<Button transparent>
-							<Icon name='call' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='search' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 						<Button transparent>
 							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28}} onPress={()=>{this.setModalVisible(!modalVisible)}}/>
@@ -132,24 +148,70 @@ export default class ChatPage extends Component {
 						</Button>
 					</Right>
 				</Header>
-				<Content style={{backgroundColor: '#BFA5A5'}}/>
-				<Footer style={styles.chatFooter}>
-					<Fab style={styles.searchSection} Input>
-						<View style={styles.arrange}>
-							<Image style={styles.searchIcon} source={require('../Assets/smile.png')}/>
-							<TextInput
-								style={styles.input}
-								placeholder="Type a message"
-								underlineColorAndroid="transparent"
-							/>
-							<Icon style={styles.attachment} type="Entypo" name='attachment'/>
-							<Icon style={styles.cameraalt} type="MaterialIcons" name='camera-alt'/>
-						</View>
-					</Fab>
-					<Fab style={styles.speaker}>
-						<Icon name='keyboard-voice' type="MaterialIcons" style={{fontSize: 28}} />
-					</Fab>
-				</Footer>
+				<View>
+					<ScrollView horizontal={true}>
+						<Header noLeft style={styles.chatPageSecondHeader} noBorder>
+							<Body>
+								{!this.state.online ? (
+									<Button transparent onPress={() =>{this.setOnline()}}>
+										<Icon name="lightbulb" type="MaterialCommunityIcons" style={{fontSize: 30,color:"white"}}/>
+									</Button>
+									) : (
+									<Button transparent onPress={() =>{this.setOnline()}}>
+										<Icon name="lightbulb-off" type="MaterialCommunityIcons" style={{fontSize: 30,color:"grey"}}/>
+									</Button>
+								)}
+							</Body>
+							<Body>
+								{!this.state.plane ? (
+									<Button transparent onPress={() =>{this.setPlane()}}>
+										<Icon name="plane" type="FontAwesome5" style={{fontSize: 30,color:"white"}}/>
+									</Button>
+									) : (
+									<Button transparent onPress={() =>{this.setPlane()}}>
+										<Icon name="plane-slash" type="FontAwesome5" style={{fontSize: 30,color:"grey"}}/>
+									</Button>
+								)}
+							</Body>
+							<Body>
+								<Button transparent>
+									<Icon name="call" type="MaterialIcons" style={{fontSize: 30,color:"white"}}/>
+								</Button>
+							</Body>
+							<Body>
+								<Button transparent>
+									<Icon name='videocam' type="MaterialIcons" style={{fontSize: 30,color:"white"}}/>
+								</Button>
+							</Body>
+							<Body>
+								{!this.state.entypo ? (
+									<Button transparent onPress={() =>{this.setEntypo()}}>
+										<Icon name="pin" type="Entypo" style={{fontSize: 30,color:"white"}}/>
+									</Button>
+									) : (
+									<Button transparent onPress={() =>{this.setEntypo()}}>
+										<Icon name="pin" type="Entypo" style={{fontSize: 30,color:"grey"}}/>
+									</Button>
+								)}
+							</Body>
+							<Body>
+								<Button transparent>
+									<Icon name="account-edit" type="MaterialCommunityIcons" style={{fontSize: 32,color:"white"}}/>
+								</Button>
+							</Body>
+							<Body>
+								<Button transparent>
+									<Icon name="delete-alert" type="MaterialCommunityIcons" style={{fontSize: 30,color:"white"}}/>
+								</Button>
+							</Body>
+							<Body>
+								<Button transparent >
+									<Icon name="history" type="MaterialCommunityIcons" style={{fontSize: 30,color:"white"}}/>
+								</Button>
+							</Body>
+						</Header>
+					</ScrollView>
+				</View>
 			</Container>
 		</TouchableWithoutFeedback>
 		);
