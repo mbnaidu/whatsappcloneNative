@@ -1,42 +1,16 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Footer, Item, Input, Content, Fab, View, ListItem, Badge, Switch, Card, CardItem, Picker, DatePicker, Label } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Item, Input,View, Card, Picker, Label } from 'native-base';
+import { StatusBar, Text,ScrollView } from 'react-native';
 import styles from '../Styles/First';
 
 export default class Bluetooth extends Component {
-    constructor(props) {
-		super(props);
-		this.state = { chosenDate: new Date() };
-		this.setDate = this.setDate.bind(this);
-	}
 	state = {
-        selected2: undefined,
-		selected: undefined,
-		selected3: undefined,
-		selected4: undefined,
+        pdf: undefined,
 	};
 	onValueChange(value) {
 		this.setState({
-		selected: value
+			pdf: value
 		});
-	}
-    onValueChange2(value) {
-		this.setState({
-		selected2: value
-		});
-	}
-	onValueChange3(value) {
-		this.setState({
-		selected3: value
-		});
-	}
-	onValueChange4(value) {
-		this.setState({
-		selected4: value
-		});
-	}
-    setDate(newDate) {
-		this.setState({ chosenDate: newDate });
 	}
 	render() {
 		StatusBar.setBackgroundColor('#128C7E',true);
@@ -46,17 +20,12 @@ export default class Bluetooth extends Component {
 				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Chat')}}>
-							<Icon name='close' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Bluetooth Message</Title>
+                        <Title onPress={()=>{navigate('Chat')}}>Bluetooth Message</Title>
                     </Body>
-					<Right>
-						<Button transparent>
-							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28}}/>
-						</Button>
-					</Right>
 				</Header>
                 <ScrollView vertical={true}>
                     <Card>
@@ -89,7 +58,7 @@ export default class Bluetooth extends Component {
                                     placeholder="Select your format"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
-                                    selectedValue={this.state.selected}
+                                    pdfValue={this.state.pdf}
                                     onValueChange={this.onValueChange.bind(this)}
                                 >
                                     <Picker.Item label="PDF" value="key0" />
