@@ -16,9 +16,6 @@ import Bluetooth from './Contents/Bluetooth';
 
 // PAGES
 import Chat from './pages/Chat';
-import ChatPage from './pages/ChatPage';
-import MediaPage from './pages/MediaPage';
-import BioPage from './pages/BioPage';
 import Settings from './Settings/Settings';
 import Accounts from './Settings/Accounts/Accounts';
 import Privacy from './Settings/Accounts/Privacy/Privacy';
@@ -34,7 +31,6 @@ import Location from './Settings/Accounts/Privacy/Location';
 import Lock from './Settings/Accounts/Privacy/Lock';
 import Blocked from './Settings/Accounts/Privacy/Blocked/Blocked';
 import TwoStep from './Settings/Accounts/Verification/TwoStep';
-import Number from './Settings/Accounts/Change/NewNumber';
 import NewNumber from './Settings/Accounts/Change/NewNumber';
 import Chats from './Settings/Chats/Chats';
 import History from './Settings/Chats/History';
@@ -46,6 +42,9 @@ import Help from './Settings/Help';
 import QuickSchedule from './Contents/QuickSchedule';
 import QuickReminder from './Contents/QuickReminder';
 import NewGroup from './Contents/NewGroup';
+import ChatPage from './User/ChatPage';
+import MediaPage from './User/MediaPage';
+import BioPage from './User/BioPage';
 
 const Stack = createStackNavigator();
 
