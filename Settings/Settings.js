@@ -42,7 +42,7 @@ export default class Settings extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button onPress={() =>{navigate('Accounts')}}>
                         <Left>
-                            <Button transparent>
+                            <Button transparent onPress={() =>{navigate('Accounts')}}>
                                 <Icon name='account-cog' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -53,7 +53,7 @@ export default class Settings extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button onPress={() =>{navigate('Chats')}}>
                         <Left>
-                            <Button transparent>
+                            <Button transparent onPress={() =>{navigate('Chats')}}>
                                 <Icon name='chat' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -64,7 +64,7 @@ export default class Settings extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button onPress={()=>{navigate('Notifications')}}>
                         <Left>
-                            <Button transparent >
+                            <Button transparent onPress={()=>{navigate('Notifications')}}>
                                 <Icon name='notifications-sharp' type="Ionicons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -75,7 +75,7 @@ export default class Settings extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button onPress={()=>{navigate('Storage')}}>
                         <Left>
-                            <Button transparent>
+                            <Button transparent onPress={()=>{navigate('Storage')}}>
                                 <Icon name='data-usage' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -86,7 +86,7 @@ export default class Settings extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button onPress={()=>{navigate('Help')}}>
                         <Left>
-                            <Button transparent>
+                            <Button transparent onPress={()=>{navigate('Help')}}>
                                 <Icon name='help-circle' type="Feather" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
