@@ -29,7 +29,7 @@ export default class Search extends Component {
 						</Button>
 					</Left>
 					<Body>
-                        <Title>Search</Title>
+                        <Title onPress={()=>{navigate('Chat')}}>Search</Title>
                     </Body>
 					<Right>
 						<Button transparent>
