@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Thumbnail, Footer,Content, Fab, View, ListItem } from 'native-base';
-import { StatusBar, Text, TextInput,Image, Modal, TouchableWithoutFeedback, ScrollView } from 'react-native';
+import React, { Component, useRef } from 'react';
+import { Container, Header, Left, Body, Right, Button, Icon, Thumbnail, Footer,Content, Fab, View, ListItem, Item, Label, Input, Badge } from 'native-base';
+import { StatusBar, Text, TextInput,Image, Modal, TouchableWithoutFeedback, ScrollView, FlatList, SafeAreaView } from 'react-native';
 import styles from '../Styles/Second';
 
 export default class ChatPage extends Component {
@@ -10,6 +10,23 @@ export default class ChatPage extends Component {
 		online:false,
 		plane:false,
 		entypo:false,
+		messages:[
+			{message:'hi',role:"receiver",time:'03:02 PM',key:'1'},
+			{message:'hello',role:"sender",time:'03:03 PM',key:'2'},
+			{message:'long time',role:"receiver",time:'03:02 PM',key:'3'},
+			{message:'how are you ..?',role:"receiver",time:'03:04 PM',key:'4'},
+			{message:'im fine',role:"sender",time:'03:05 PM',key:'5'},
+			{message:'bye',role:"receiver",time:'03:06 PM',key:'6'},
+			{message:'byr',role:"sender",time:'03:07 PM',key:'7'},
+			{message:'hi',role:"receiver",time:'03:02 PM',key:'8'},
+			{message:'hello',role:"sender",time:'03:03 PM',key:'9'},
+			{message:'long time',role:"receiver",time:'03:02 PM',key:'10'},
+			{message:'how are you ..?',role:"receiver",time:'03:04 PM',key:'11'},
+			{message:'im fine',role:"sender",time:'03:05 PM',key:'12'},
+			{message:'bye',role:"receiver",time:'03:06 PM',key:'13'},
+			{message:'byr',role:"sender",time:'03:07 PM',key:'14'},
+			
+		]
 	};
 	setModalVisible = (visible) => {
 		this.setState({ modalVisible: visible });
@@ -23,6 +40,7 @@ export default class ChatPage extends Component {
 		});
 	}
 	setOnline = () =>{
+		this.setState({ messages:[...this.state.messages,{message:'byr',role:"receiver",time:'03:07 PM',key:'15'}] });
 		this.setState({online:!this.state.online})
 	}
 	setPlane = () =>{
@@ -34,11 +52,11 @@ export default class ChatPage extends Component {
 	render() {
 		const { modalVisible } = this.state;
 		const { modalVisible2 } = this.state;
+		const { messages } = this.state;
 		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
-		<TouchableWithoutFeedback onPress={()=>{this.setModalVisible(false)}}>
-			<Container >
+			<Container>
 				<Header style={styles.headerBackgroundColor} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Chat')}}>
@@ -148,7 +166,6 @@ export default class ChatPage extends Component {
 						</Button>
 					</Right>
 				</Header>
-				<View>
 					<ScrollView horizontal={true}>
 						<Header noLeft style={styles.chatPageSecondHeader} noBorder>
 							<Body>
@@ -211,9 +228,44 @@ export default class ChatPage extends Component {
 							</Body>
 						</Header>
 					</ScrollView>
-				</View>
+					<ScrollView 
+						vertical={true}
+						style={{backgroundColor:"snow"}}
+						ref={ref => {this.scrollView = ref}}
+						onContentSizeChange={() => this.scrollView.scrollToEnd({animated: true})}>
+						{messages.map((m=>{
+							return(
+								<View key={m.key}>
+									{m.role == 'sender' ? (
+										<View>
+											<Text style={[styles.messageSenderBox,{fontWeight:"bold",alignSelf:"flex-end"}]}>{m.message}</Text>
+										</View>
+									) : (
+										<View>
+											<Text style={[styles.messageUserBox,{fontWeight:"bold",alignSelf:"flex-start"}]}>{m.message}</Text>
+										</View>
+									)}
+								</View>
+							)
+						}))}
+					</ScrollView>
+					<Footer style={{backgroundColor:"snow"}}>
+						<View style={styles.searchSection}>
+							<Icon style={styles.emojiicon} name="emoji-emotions" type="MaterialIcons" size={20} color="#808080"/>
+							<TextInput
+								style={styles.input}
+								placeholder="User Nickname"
+								onChangeText={(searchString) => {this.setState({searchString})}}
+								underlineColorAndroid="transparent"
+							/>
+							<Icon name="history" type="MaterialIcons" style={{fontSize:28,color:"black"}}/>
+							<Icon name="history" type="MaterialIcons" style={{fontSize:28,color:"black"}}/>
+						</View>
+							<Button transparent>
+								<Icon name="history" type="MaterialIcons" style={{fontSize:28,color:"black"}}/>
+							</Button>
+					</Footer>
 			</Container>
-		</TouchableWithoutFeedback>
 		);
 	}
 }

@@ -26,7 +26,6 @@ export default StyleSheet.create({
     // search bar
     searchSection: {
         marginBottom:50,
-        right:60,
         width:300,
         height:50,
         alignSelf:"stretch",
@@ -36,7 +35,7 @@ export default StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius:50,
     },
-    searchIcon: {
+    emojiicon: {
         alignSelf:"auto",
         marginLeft:-20,
         marginRight:10,
@@ -142,4 +141,19 @@ export default StyleSheet.create({
         backgroundColor:"#075E54",
         height:80,
     },
+    // message box
+    messageSenderBox:{
+        backgroundColor:"#DCF8C5",
+        marginRight:20,
+        borderRadius:5,
+        padding:10,
+        marginTop:10
+    }, 
+    messageUserBox:{
+        backgroundColor:"white",
+        marginRight:20,
+        borderRadius:5,
+        padding:10,
+        marginTop:10
+    }, 
 })
