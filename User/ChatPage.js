@@ -10,6 +10,8 @@ export default class ChatPage extends Component {
 		online:false,
 		plane:false,
 		entypo:false,
+		send:false,
+		message:'',
 		messages:[
 			{message:'hi',role:"receiver",time:'03:02 PM',key:'1'},
 			{message:'hello',role:"sender",time:'03:03 PM',key:'2'},
@@ -24,7 +26,7 @@ export default class ChatPage extends Component {
 			{message:'how are you ..?',role:"receiver",time:'03:04 PM',key:'11'},
 			{message:'im fine',role:"sender",time:'03:05 PM',key:'12'},
 			{message:'bye',role:"receiver",time:'03:06 PM',key:'13'},
-			{message:'byr',role:"sender",time:'03:07 PM',key:'14'},
+			{message:'byrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyr',role:"sender",time:'03:07 PM',key:'14'},
 			
 		]
 	};
@@ -50,6 +52,7 @@ export default class ChatPage extends Component {
 		this.setState({entypo:!this.state.entypo})
 	}
 	render() {
+		console.log(this.state.message)
 		const { modalVisible } = this.state;
 		const { modalVisible2 } = this.state;
 		const { messages } = this.state;
@@ -171,59 +174,59 @@ export default class ChatPage extends Component {
 							<Body>
 								{!this.state.online ? (
 									<Button transparent onPress={() =>{this.setOnline()}}>
-										<Icon name="lightbulb" type="MaterialCommunityIcons" style={{fontSize: 30,color:"white"}}/>
+										<Icon name="lightbulb" type="MaterialCommunityIcons" style={{fontSize: 30,color:"white",marginBottom: 10,marginBottom: 10}}/>
 									</Button>
 									) : (
 									<Button transparent onPress={() =>{this.setOnline()}}>
-										<Icon name="lightbulb-off" type="MaterialCommunityIcons" style={{fontSize: 30,color:"grey"}}/>
+										<Icon name="lightbulb-off" type="MaterialCommunityIcons" style={{fontSize: 30,color:"grey",marginBottom: 10}}/>
 									</Button>
 								)}
 							</Body>
 							<Body>
 								{!this.state.plane ? (
 									<Button transparent onPress={() =>{this.setPlane()}}>
-										<Icon name="plane" type="FontAwesome5" style={{fontSize: 30,color:"white"}}/>
+										<Icon name="plane" type="FontAwesome5" style={{fontSize: 30,color:"white",marginBottom: 10}}/>
 									</Button>
 									) : (
 									<Button transparent onPress={() =>{this.setPlane()}}>
-										<Icon name="plane-slash" type="FontAwesome5" style={{fontSize: 30,color:"grey"}}/>
+										<Icon name="plane-slash" type="FontAwesome5" style={{fontSize: 30,color:"grey",marginBottom: 10}}/>
 									</Button>
 								)}
 							</Body>
 							<Body>
 								<Button transparent>
-									<Icon name="call" type="MaterialIcons" style={{fontSize: 30,color:"white"}}/>
+									<Icon name="call" type="MaterialIcons" style={{fontSize: 30,color:"white",marginBottom: 10}}/>
 								</Button>
 							</Body>
 							<Body>
 								<Button transparent>
-									<Icon name='videocam' type="MaterialIcons" style={{fontSize: 30,color:"white"}}/>
+									<Icon name='videocam' type="MaterialIcons" style={{fontSize: 30,color:"white",marginBottom: 10}}/>
 								</Button>
 							</Body>
 							<Body>
 								{!this.state.entypo ? (
 									<Button transparent onPress={() =>{this.setEntypo()}}>
-										<Icon name="pin" type="Entypo" style={{fontSize: 30,color:"white"}}/>
+										<Icon name="pin" type="Entypo" style={{fontSize: 30,color:"white",marginBottom: 10}}/>
 									</Button>
 									) : (
 									<Button transparent onPress={() =>{this.setEntypo()}}>
-										<Icon name="pin" type="Entypo" style={{fontSize: 30,color:"grey"}}/>
+										<Icon name="pin" type="Entypo" style={{fontSize: 30,color:"grey",marginBottom: 10}}/>
 									</Button>
 								)}
 							</Body>
 							<Body>
 								<Button transparent>
-									<Icon name="account-edit" type="MaterialCommunityIcons" style={{fontSize: 32,color:"white"}}/>
+									<Icon name="account-edit" type="MaterialCommunityIcons" style={{fontSize: 32,color:"white",marginBottom: 10}}/>
 								</Button>
 							</Body>
 							<Body>
 								<Button transparent>
-									<Icon name="delete-alert" type="MaterialCommunityIcons" style={{fontSize: 30,color:"white"}}/>
+									<Icon name="delete-alert" type="MaterialCommunityIcons" style={{fontSize: 30,color:"white",marginBottom: 10}}/>
 								</Button>
 							</Body>
 							<Body>
 								<Button transparent >
-									<Icon name="history" type="MaterialCommunityIcons" style={{fontSize: 30,color:"white"}}/>
+									<Icon name="history" type="MaterialCommunityIcons" style={{fontSize: 30,color:"white",marginBottom: 10}}/>
 								</Button>
 							</Body>
 						</Header>
@@ -238,7 +241,7 @@ export default class ChatPage extends Component {
 								<View key={m.key}>
 									{m.role == 'sender' ? (
 										<View>
-											<Text style={[styles.messageSenderBox,{fontWeight:"bold",alignSelf:"flex-end"}]}>{m.message}</Text>
+											<Text style={[styles.messageSenderBox,{fontWeight:"bold",alignSelf:"flex-end",marginLeft:90}]}>{m.message}</Text>
 										</View>
 									) : (
 										<View>
@@ -249,22 +252,42 @@ export default class ChatPage extends Component {
 							)
 						}))}
 					</ScrollView>
-					<Footer style={{backgroundColor:"snow"}}>
-						<View style={styles.searchSection}>
-							<Icon style={styles.emojiicon} name="emoji-emotions" type="MaterialIcons" size={20} color="#808080"/>
-							<TextInput
-								style={styles.input}
-								placeholder="User Nickname"
-								onChangeText={(searchString) => {this.setState({searchString})}}
-								underlineColorAndroid="transparent"
-							/>
-							<Icon name="history" type="MaterialIcons" style={{fontSize:28,color:"black"}}/>
-							<Icon name="history" type="MaterialIcons" style={{fontSize:28,color:"black"}}/>
-						</View>
-							<Button transparent>
-								<Icon name="history" type="MaterialIcons" style={{fontSize:28,color:"black"}}/>
-							</Button>
-					</Footer>
+					{this.state.message.length == 0 ? (
+						<Footer style={{backgroundColor:"snow"}}>
+							<View style={styles.searchSection}>
+								<Icon style={styles.emojiicon} name="emoji-emotions" type="MaterialIcons"/>
+								<TextInput
+									style={styles.input}
+									placeholder="Type a message"
+									onChangeText={(searchString) => {this.setState({message:searchString})}}
+									underlineColorAndroid="transparent"
+								/>
+								<Icon name="paperclip" type="Foundation" style={styles.emojiicon}/>
+								<Icon name="camera" type="Ionicons" style={styles.emojiicon}/>
+							</View>
+								<Button transparent>
+									<Icon name="keyboard-voice" type="MaterialIcons" style={styles.voiceIcon}/>
+								</Button>
+						</Footer>
+					) : (
+						<Footer style={{backgroundColor:"snow"}}>
+							<View style={styles.searchSection}>
+								<Icon style={styles.emojiicon} name="emoji-emotions" type="MaterialIcons"/>
+								<TextInput
+									style={styles.input}
+									placeholder="Type a message"
+									onChangeText={(searchString) => {this.setState({message:searchString});this.setState({send:true})}}
+									underlineColorAndroid="transparent"
+								/>
+								<Right>
+									<Icon name="paperclip" type="Foundation" style={styles.emojiicon}/>
+								</Right>
+							</View>
+								<Button transparent>
+									<Icon name="send" type="MaterialIcons" style={styles.onSendEmoji}/>
+								</Button>
+						</Footer>
+					)}
 			</Container>
 		);
 	}

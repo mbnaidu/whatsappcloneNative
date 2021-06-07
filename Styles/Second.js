@@ -25,32 +25,42 @@ export default StyleSheet.create({
     },
     // search bar
     searchSection: {
-        marginBottom:50,
-        width:300,
+        marginLeft:5,
+        flex: 1,
         height:50,
         alignSelf:"stretch",
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
+        backgroundColor: 'white',
         borderRadius:50,
     },
     emojiicon: {
         alignSelf:"auto",
-        marginLeft:-20,
-        marginRight:10,
-        height:30,
-        width:30,
+        color:"#808080",
+        margin:10,
+        fontSize:28
+    },
+    onSendEmoji: {
+        alignSelf:"auto",
+        color:"#075E54",
+        margin:10,
+        fontSize:30,
+        borderRadius:50,
     },
     input: {
-        paddingTop: 10,
-        paddingRight: 10,
-        paddingBottom: 10,
-        paddingLeft: 0,
+        padding:10,
         backgroundColor: '#fff',
         color: '#424242',
-        borderRadius:50,
         fontSize:17,
+        borderRadius:50,
+    },
+    voiceIcon:{
+        padding: 10,
+        borderRadius:50,
+        fontSize:28,
+        color:"white",
+        backgroundColor:'#075E54'
     },
     // speaker
     speaker:{
@@ -147,13 +157,15 @@ export default StyleSheet.create({
         marginRight:20,
         borderRadius:5,
         padding:10,
-        marginTop:10
+        marginTop:10,
+        marginBottom:10
     }, 
     messageUserBox:{
         backgroundColor:"white",
         marginRight:20,
         borderRadius:5,
         padding:10,
-        marginTop:10
+        marginTop:10,
+        marginBottom:10
     }, 
 })
