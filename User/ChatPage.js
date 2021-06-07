@@ -2,6 +2,7 @@ import React, { Component, useRef } from 'react';
 import { Container, Header, Left, Body, Right, Button, Icon, Thumbnail, Footer,Content, Fab, View, ListItem, Item, Label, Input, Badge } from 'native-base';
 import { StatusBar, Text, TextInput,Image, Modal, TouchableWithoutFeedback, ScrollView, FlatList, SafeAreaView } from 'react-native';
 import styles from '../Styles/Second';
+import axios from 'axios';
 
 export default class ChatPage extends Component {
 	state = {
@@ -20,6 +21,19 @@ export default class ChatPage extends Component {
 			
 		]
 	};
+	// UNSAFE_componentWillMount = async () =>{
+	// 	const URL = "http://10.0.2.2.:5000/add";
+	// 	try{
+	// 		const response = await fetch(URL + "/" + 'madhu');
+	// 		if(response.status !== 200) {
+	// 			throw new Error("Couldn't connect to server");
+	// 		}
+	// 		const responseText = await response.text();
+	// 		console.log(responseText);
+	// 	}catch(error){
+	// 		Alert.alert(error.message);
+	// 	}
+	// }
 	UNSAFE_componentWillMount = () =>{
 		setInterval(function(){
 			var a = new Date().getHours();
