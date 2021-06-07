@@ -13,7 +13,18 @@ export default class Chat extends Component {
 	setMainModalVisible = (visible) => {
 		this.setState({ mainModalVisible: visible });
 	};
-	setAeroplanemode = () =>{
+	setAeroplanemode = async () =>{
+		const URL = "http://10.0.2.2.:3000/welcome";
+		try{
+			const response = await fetch(URL + "/" + 'madhu');
+			if(response.status !== 200) {
+				throw new Error("Couldn't connect to server");
+			}
+			const responseText = await response.text();
+			console.log(responseText);
+		}catch(error){
+			Alert.alert(error.message);
+		}
 		this.setState({aeroplanemode:!this.state.aeroplanemode})
 	}
 	render() {
