@@ -42,7 +42,7 @@ export default class ChatPage extends Component {
 		}.bind(this), 1000);
 	}
 	sendData = () =>{
-		this.setState({ messages:[...this.state.messages,{message:this.state.message,role:"sender",time:this.state.curHour+":"+this.state.curMin+" "+this.state.curStatus,key:this.state.curHour+this.state.curMin+this.state.curSec}] });
+		this.setState({ messages:[...this.state.messages,{message:this.state.message,role:"sender",time:this.state.curHour+":"+this.state.curMin+" "+this.state.curStatus,key:this.state.curHour+this.state.curMin+this.state.curSec+this.state.message}] });
 		this.setState({message:''})
 	}
 	setModalVisible = (visible) => {
