@@ -153,6 +153,8 @@ export default StyleSheet.create({
     },
     // message box
     messageSenderBox:{
+        marginLeft:'50%',
+        alignSelf:'flex-end',
         backgroundColor:"#DCF8C5",
         marginRight:20,
         borderRadius:5,
@@ -161,8 +163,9 @@ export default StyleSheet.create({
         marginBottom:10
     }, 
     messageUserBox:{
+        marginRight:'50%',
         backgroundColor:"white",
-        marginRight:20,
+        marginLeft:20,
         borderRadius:5,
         padding:10,
         marginTop:10,

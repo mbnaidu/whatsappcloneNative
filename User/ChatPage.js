@@ -12,24 +12,36 @@ export default class ChatPage extends Component {
 		entypo:false,
 		send:false,
 		message:'',
+		curHour:'',
+		curMin:'',
+		curStatus:'',
 		messages:[
-			{message:'hi',role:"receiver",time:'03:02 PM',key:'1'},
-			{message:'hello',role:"sender",time:'03:03 PM',key:'2'},
-			{message:'long time',role:"receiver",time:'03:02 PM',key:'3'},
-			{message:'how are you ..?',role:"receiver",time:'03:04 PM',key:'4'},
-			{message:'im fine',role:"sender",time:'03:05 PM',key:'5'},
-			{message:'bye',role:"receiver",time:'03:06 PM',key:'6'},
-			{message:'byr',role:"sender",time:'03:07 PM',key:'7'},
-			{message:'hi',role:"receiver",time:'03:02 PM',key:'8'},
-			{message:'hello',role:"sender",time:'03:03 PM',key:'9'},
-			{message:'long time',role:"receiver",time:'03:02 PM',key:'10'},
-			{message:'how are you ..?',role:"receiver",time:'03:04 PM',key:'11'},
-			{message:'im fine',role:"sender",time:'03:05 PM',key:'12'},
-			{message:'bye',role:"receiver",time:'03:06 PM',key:'13'},
-			{message:'byrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyr',role:"sender",time:'03:07 PM',key:'14'},
+			{message:'hi',role:"receiver",time:'03:02 PM',key:'1',time:'7:00 AM'},
+			{message:'hello',role:"sender",time:'03:03 PM',key:'2',time:'7:00 AM'},
+			{message:'long time',role:"receiver",time:'03:02 PM',key:'3',time:'7:00 AM'},
+			{message:'how are you ..?',role:"receiver",time:'03:04 PM',key:'4',time:'7:00 AM'},
+			{message:'im fine',role:"sender",time:'03:05 PM',key:'5',time:'7:00 AM'},
+			{message:'bye',role:"receiver",time:'03:06 PM',key:'6',time:'7:00 AM'},
+			{message:'byr',role:"sender",time:'03:07 PM',key:'7',time:'7:00 AM'},
+			{message:'byrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyr',role:"receiver",time:'03:02 PM',key:'8',time:'7:00 AM'},
+			{message:'hello',role:"sender",time:'03:03 PM',key:'9',time:'7:00 AM'},
+			{message:'long time',role:"receiver",time:'03:02 PM',key:'10',time:'7:00 AM'},
+			{message:'how are you ..?',role:"receiver",time:'03:04 PM',key:'11',time:'7:00 AM'},
+			{message:'im fine',role:"sender",time:'03:05 PM',key:'12',time:'7:00 AM'},
+			{message:'bye',role:"receiver",time:'03:06 PM',key:'13',time:'7:00 AM'},
+			{message:'byrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyrbyr',role:"sender",time:'03:07 PM',key:'14',time:'7:00 AM'},
 			
 		]
 	};
+	sendWithTime = () =>{
+		setInterval(function(){
+			this.setState({
+				curHour: new Date().getHours(),
+				curMin: new Date().getMinutes(),
+			})
+		}.bind(this), 1000);
+		console.log(this.state.curHour,this.state.curMin)
+	}
 	setModalVisible = (visible) => {
 		this.setState({ modalVisible: visible });
 	};
@@ -52,7 +64,6 @@ export default class ChatPage extends Component {
 		this.setState({entypo:!this.state.entypo})
 	}
 	render() {
-		console.log(this.state.message)
 		const { modalVisible } = this.state;
 		const { modalVisible2 } = this.state;
 		const { messages } = this.state;
@@ -240,13 +251,14 @@ export default class ChatPage extends Component {
 							return(
 								<View key={m.key}>
 									{m.role == 'sender' ? (
-										<View>
-											<Text style={[styles.messageSenderBox,{fontWeight:"bold",alignSelf:"flex-end",marginLeft:90}]}>{m.message}</Text>
-										</View>
+											<Body style={[styles.messageSenderBox]}>
+												<Text style={{fontWeight:"bold"}}>{m.message}</Text>
+												<Text note style={{fontSize:12,marginLeft:5,alignSelf:'flex-end'}}>7:00 AM <Icon name="loader" type="Feather" style={{fontSize: 11,fontWeight:"bold"}}/></Text>
+											</Body>
 									) : (
-										<View>
+										<Body  style={{alignItems: 'flex-end',alignSelf:'flex-start'}}>
 											<Text style={[styles.messageUserBox,{fontWeight:"bold",alignSelf:"flex-start"}]}>{m.message}</Text>
-										</View>
+										</Body>
 									)}
 								</View>
 							)
@@ -283,8 +295,8 @@ export default class ChatPage extends Component {
 									<Icon name="paperclip" type="Foundation" style={styles.emojiicon}/>
 								</Right>
 							</View>
-								<Button transparent>
-									<Icon name="send" type="MaterialIcons" style={styles.onSendEmoji}/>
+								<Button transparent onPress={() =>{this.sendWithTime()}}>
+									<Icon name="send" type="MaterialIcons" style={styles.onSendEmoji} />
 								</Button>
 						</Footer>
 					)}
