@@ -1,40 +1,39 @@
-const express =  require('express');
-const router = express.Router();
-let user = require('../Models/user.model')
-router.use(express.json());
-
-
-router.post('/usersignup',(req, res) => {
-    if(!req.body.data.username) res.status(301).send("No username");
-    user.addUser({success: function(data){res.status(200).send(data)},
-                        error:function(err){res.status(200).send(err)},
-                        username:req.body.data.username,
-                        number:req.body.data.number,
-                        messages:req.body.data.messages,
-                    });
-});
-router.post('/finduser',(req, res) => {
-	user.findById(req.body.id)
-        .then(donor => {
-            donor.save()
-                .then(() => res.json(donor))
-                .catch(err => res.status(400).json('Error: ' + err));
-            })
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-router.route('/addUserMessages').post((req, res) => {
-    user.findById(req.body.data.id)
-        .then(donor => {
-            donor.messages.push(req.body.data.m)
-            donor.save()
-                .then(() => res.json(donor))
-                .catch(err => res.status(400).json('Error: ' + err));
-            })
-        .catch(err => res.status(400).json('Error: ' + err));
-});
-router.post('/getallusers',(req, res) => {
-    user.getallusers({success: function(data){res.status(200).send(data)},
-                        error:function(err){res.status(200).send(err)}
-                    });
-});
+const router = require('express').Router();
+const express = require('express')
+let User = require('../models/user.model');
+const app = express()
+router.route('/').get((req, res) => {
+	User.find()
+		.then(users => res.json(users))
+		.catch(err => res.status(400).json('Error: ' + err));
+	});
+	router.get('/usercheck', function(req, res) {
+		User.findOne({username: req.query.username}, function(err, user){
+			if(err) {
+			console.log(err);
+			}
+			var message;
+			if(user) {
+			console.log(user)
+				message = "user exists";
+				console.log(message)
+			} else {
+				message= "user doesn't exist";
+				console.log(message)
+			}
+			res.json({message: message});
+		});
+	});
+router.route('/add').post((req, res) => {
+	console.log(req.body)
+	const username = req.body.username;
+	const number = req.body.number;
+	const newUser = new User({
+		username,
+		number
+	});
+	newUser.save()
+		.then(() => res.json('User added!'))
+		.catch(err => res.status(400).json('Error: ' + err));
+	});
 module.exports = router;

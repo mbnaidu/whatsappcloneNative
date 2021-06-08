@@ -1,43 +1,24 @@
 const mongoose = require('mongoose');
-let userSchema = new mongoose.Schema({
-    username: {
-        type: String,
-    },
-    number: {
-        type:String,
-        unique: true
-    },
-    id:String,
-    messages:Array,
+
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    minlength: 3
+  },
+  number:{
+    type:String,
+    required:true,
+    unique: true,
+  }
+}, {
+  timestamps: true,
 });
 
-let UserModal = mongoose.model('user',userSchema);
-const user = mongoose.model('user', userSchema);
+const User = mongoose.model('User', userSchema);
 
-//Adding new user
-user.addUser = function(handlers) {
-    var user = new UserModal();
-    user.username = handlers.username;
-    user.number = handlers.number;
-    user.id = handlers.id;
-    user.messages = handlers.messages;
-    return user.save(function(err, data){
-        if(!err) {
-            handlers.success(data);
-        } else {
-            handlers.error(err);
-        }
-    })
-};
-
-user.getallusers = function(handlers) {
-    return UserModal.find(function(err, data) {
-        if(!err) {
-            handlers.success(data);
-        } else {
-            handlers.error(err);
-        }
-    })
-}
-
-module.exports = user;
+module.exports = User;
