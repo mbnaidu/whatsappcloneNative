@@ -1,100 +1,53 @@
-import React, { Component, useRef } from 'react';
+import React, { Component, useEffect, useRef, useState } from 'react';
 import { Container, Header, Left, Body, Right, Button, Icon, Thumbnail, Footer,Content, Fab, View, ListItem, Item, Label, Input, Badge } from 'native-base';
 import { StatusBar, Text, TextInput,Image, Modal, TouchableWithoutFeedback, ScrollView, FlatList, SafeAreaView } from 'react-native';
 import styles from '../Styles/Second';
-import axios from 'axios';
+import axios from 'axios'
+import { useNavigation } from '@react-navigation/core';
 
-export default class ChatPage extends Component {
-	state = {
-		modalVisible: false,
-		modalVisible2: false,
-		online:false,
-		plane:false,
-		entypo:false,
-		send:false,
-		message:'',
-		curHour:'',
-		curMin:'',
-		curSec:'',
-		curStatus:'AM',
-		messages:[
-			
-		]
-	};
-	// UNSAFE_componentWillMount = async () =>{
-	// 	const URL = "http://10.0.2.2.:5000/add";
-	// 	try{
-	// 		const response = await fetch(URL + "/" + 'madhu');
-	// 		if(response.status !== 200) {
-	// 			throw new Error("Couldn't connect to server");
-	// 		}
-	// 		const responseText = await response.text();
-	// 		console.log(responseText);
-	// 	}catch(error){
-	// 		Alert.alert(error.message);
-	// 	}
-	// }
-	UNSAFE_componentWillMount = () =>{
-		setInterval(function(){
+
+export default function ChatPage() {
+    const [modalVisible,setModalVisible] = useState(false);
+    const [modalVisible2,setModalVisible2] = useState(false)
+    const navigation = useNavigation();
+    const [online,setOnline] = useState(true);
+    const [plane,setPlane] = useState(true);
+    const [entypo,setEntypo] = useState(true);
+    const scrollViewRef = useRef();
+    const [message,setMessage] = useState('');
+    const [curHour,setCurHour] = useState('');
+    const [curMin,setCurMin] = useState('');
+    const [curStatus,setCurStatus] = useState('');
+    const [curSec,setCurSec] = useState('');
+    const [messages,setMessages] = useState([
+        {message:"hi",id:"2131",time:"7:00 PM"}
+    ])
+    useEffect(() => {
+        setInterval(function(){
 			var a = new Date().getHours();
 			if(a >= 12){
-				this.setState({
-					curStatus:"PM",
-					curHour:a-12,
-					curMin: new Date().getMinutes(),
-					curSec: new Date().getMilliseconds()
-				})
+                setCurStatus("PM");
+                setCurSec(new Date().getMilliseconds());
+                setCurMin(new Date().getMinutes(),);
+                setCurHour(a-12);
 			}
 			else{
-				this.setState({
-					curStatus:"AM",
-					curHour:a,
-					curMin: new Date().getMinutes(),
-					curSec: new Date().getMilliseconds()
-				})
+				setCurStatus("AM");
+                setCurSec(new Date().getMilliseconds());
+                setCurMin(new Date().getMinutes(),);
+                setCurHour(a);
 			}
 		}.bind(this), 1000);
+    }, [])
+    const sendData = () =>{
+        setMessages([...messages,{message:message,role:"sender",time:curHour+":"+curMin+" "+curStatus,key:curHour+curMin+curSec+message}])
 	}
-	sendData = () =>{
-		this.setState({ messages:[...this.state.messages,{message:this.state.message,role:"sender",time:this.state.curHour+":"+this.state.curMin+" "+this.state.curStatus,key:this.state.curHour+this.state.curMin+this.state.curSec+this.state.message}] });
-		const exercise = {
-			message: this.state.message,role:"sender",time:this.state.curHour+":"+this.state.curMin+" "+this.state.curStatus,key:this.state.curHour+this.state.curMin+this.state.curSec+this.state.message
-		}
-		axios.post('http://10.0.2.2.:5000/exercises/add', exercise)
-			.then(res => console.log(res.data));
-		this.setState({message:''})
-	}
-	setModalVisible = (visible) => {
-		this.setState({ modalVisible: visible });
-	};
-	setModalVisible2 = (visible) => {
-		this.setState({ modalVisible2: visible });
-	}
-	swapModals = () =>{
-		this.setState({
-			modalVisible2: true,
-		});
-	}
-	setOnline = () =>{
-		this.setState({online:!this.state.online})
-	}
-	setPlane = () =>{
-		this.setState({plane:!this.state.plane})
-	}
-	setEntypo = () =>{
-		this.setState({entypo:!this.state.entypo})
-	}
-	render() {
-		const { modalVisible } = this.state;
-		const { modalVisible2 } = this.state;
-		const { messages } = this.state;
-		StatusBar.setBackgroundColor('#128C7E',true);
-		const { navigate } = this.props.navigation;
-		return (
-			<Container>
+    StatusBar.setBackgroundColor('#128C7E',true);
+    return (
+        <Container>
 				<Header style={styles.headerBackgroundColor} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('Chat')}}>
+						<Button transparent onPress={()=>{navigation.navigate('Chat')}}>
 							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 							<Thumbnail
 								style={{width: 45, height: 45,}}
@@ -104,7 +57,7 @@ export default class ChatPage extends Component {
 						</Button>
 					</Left>
 					<Body style={styles.chatBody}>
-						<ListItem noBorder button onPress={()=>{navigate('BioPage')}}>
+						<ListItem noBorder button onPress={()=>{navigation.navigate('BioPage')}}>
 							<View>
 								<Text style={styles.chatBodyTextHeading1}>
 									Hanuman
@@ -129,34 +82,34 @@ export default class ChatPage extends Component {
 							<Icon name='search' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 						<Button transparent>
-							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28}} onPress={()=>{this.setModalVisible(!modalVisible)}}/>
+							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28}} onPress={()=>{setModalVisible(!modalVisible)}}/>
 							<View style={styles.centeredView}>
 								<Modal
 								animationType="fade"
 								transparent={true}
 								visible={modalVisible}
 								onRequestClose={() => {
-									this.setModalVisible(!modalVisible);
+									setModalVisible(!modalVisible);
 								}}
 								>
 								<View style={styles.centeredView}>
 									<View style={styles.modalView}>
-										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+										<ListItem noBorder button onPress={() => setModalVisible(!modalVisible)}>
 											<Text style={styles.textStyle}>View contact</Text>
 										</ListItem>
-										<ListItem noBorder button onPress={()=>{this.setModalVisible(!modalVisible);navigate('MediaPage')}}>
+										<ListItem noBorder button onPress={()=>{setModalVisible(!modalVisible);navigation.navigate('MediaPage')}}>
 											<Text style={styles.textStyle}>Media, links, and docs</Text>
 										</ListItem>
-										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+										<ListItem noBorder button onPress={() => setModalVisible(!modalVisible)}>
 											<Text style={styles.textStyle}>Search</Text>
 										</ListItem>
-										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+										<ListItem noBorder button onPress={() => setModalVisible(!modalVisible)}>
 											<Text style={styles.textStyle}>Unmute notifications</Text>
 										</ListItem>
-										<ListItem noBorder button onPress={() => this.setModalVisible(!modalVisible)}>
+										<ListItem noBorder button onPress={() => setModalVisible(!modalVisible)}>
 											<Text style={styles.textStyle}>Wallpaper</Text>
 										</ListItem>
-										<ListItem noBorder button onPress={() => {this.swapModals();this.setModalVisible2(!modalVisible2)}}>
+										<ListItem noBorder button onPress={() => {swapModals();setModalVisible2(!modalVisible2)}}>
 											<Left>
 												<Text style={styles.textStyle}>More</Text>
 											</Left>
@@ -168,24 +121,24 @@ export default class ChatPage extends Component {
 											transparent={true}
 											visible={modalVisible2}
 											onRequestClose={() => {
-												this.setModalVisible2(!modalVisible2);
+												setModalVisible2(!modalVisible2);
 											}}
 											>
 											<View style={styles.centeredView}>
 												<View style={styles.modalView}>
-													<ListItem noBorder button onPress={() => this.setModalVisible2(!modalVisible2)}>
+													<ListItem noBorder button onPress={() => setModalVisible2(!modalVisible2)}>
 														<Text style={styles.textStyle}>Report</Text>
 													</ListItem>
-													<ListItem noBorder button onPress={() => this.setModalVisible2(!modalVisible2)}>
+													<ListItem noBorder button onPress={() => setModalVisible2(!modalVisible2)}>
 														<Text style={styles.textStyle}>Block</Text>
 													</ListItem>
-													<ListItem noBorder button onPress={() => this.setModalVisible2(!modalVisible2)}>
+													<ListItem noBorder button onPress={() => setModalVisible2(!modalVisible2)}>
 														<Text style={styles.textStyle}>Clear chat</Text>
 													</ListItem>
-													<ListItem noBorder button onPress={() => this.setModalVisible2(!modalVisible2)}>
+													<ListItem noBorder button onPress={() => setModalVisible2(!modalVisible2)}>
 														<Text style={styles.textStyle}>Export chat</Text>
 													</ListItem>
-													<ListItem noBorder button onPress={() => this.setModalVisible2(!modalVisible2)}>
+													<ListItem noBorder button onPress={() => setModalVisible2(!modalVisible2)}>
 														<Text style={styles.textStyle}>Add shortcut</Text>
 													</ListItem>
 												</View>
@@ -201,23 +154,24 @@ export default class ChatPage extends Component {
 						</Button>
 					</Right>
 				</Header>
-				<ScrollView horizontal={true} style={{backgroundColor:"snow"}}>
+                <View>
+                    <ScrollView horizontal={true} style={{backgroundColor:"snow"}}>
 					<Header noLeft style={styles.chatPageSecondHeader} noBorder>
-						{!this.state.online ? (
-							<Button transparent onPress={() =>{this.setOnline()}}>
+						{online ? (
+							<Button transparent onPress={() =>{setOnline(!online)}}>
 								<Icon name="lightbulb" type="MaterialCommunityIcons" style={{fontSize: 30,color:"white",marginBottom: 10,marginBottom: 10}}/>
 							</Button>
 							) : (
-							<Button transparent onPress={() =>{this.setOnline()}}>
+							<Button transparent onPress={() =>{setOnline(!online)}}>
 								<Icon name="lightbulb-off" type="MaterialCommunityIcons" style={{fontSize: 30,color:"grey",marginBottom: 10}}/>
 							</Button>
 						)}
-						{!this.state.plane ? (
-							<Button transparent onPress={() =>{this.setPlane()}}>
+						{plane ? (
+							<Button transparent onPress={() =>{setPlane(!plane)}}>
 								<Icon name="plane" type="FontAwesome5" style={{fontSize: 30,color:"white",marginBottom: 10}}/>
 							</Button>
 							) : (
-							<Button transparent onPress={() =>{this.setPlane()}}>
+							<Button transparent onPress={() =>{setPlane(!plane)}}>
 								<Icon name="plane-slash" type="FontAwesome5" style={{fontSize: 30,color:"grey",marginBottom: 10}}/>
 							</Button>
 						)}
@@ -227,12 +181,12 @@ export default class ChatPage extends Component {
 						<Button transparent>
 							<Icon name='videocam' type="MaterialIcons" style={{fontSize: 30,color:"white",marginBottom: 10}}/>
 						</Button>
-						{!this.state.entypo ? (
-							<Button transparent onPress={() =>{this.setEntypo()}}>
+						{entypo ? (
+							<Button transparent onPress={() =>{setEntypo(!entypo)}}>
 								<Icon name="pin" type="Entypo" style={{fontSize: 30,color:"white",marginBottom: 10}}/>
 							</Button>
 							) : (
-							<Button transparent onPress={() =>{this.setEntypo()}}>
+							<Button transparent onPress={() =>{setEntypo(!entypo)}}>
 								<Icon name="pin" type="Entypo" style={{fontSize: 30,color:"grey",marginBottom: 10}}/>
 							</Button>
 						)}
@@ -247,11 +201,12 @@ export default class ChatPage extends Component {
 						</Button>
 					</Header>
 				</ScrollView>
+                </View>
 				<ScrollView 
 					vertical={true}
 					style={{backgroundColor:"snow"}}
-					ref={ref => {this.scrollView = ref}}
-					onContentSizeChange={() => this.scrollView.scrollToEnd({animated: true})}>
+					ref={scrollViewRef}
+                    onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}>
 					{messages.map((m=>{
 						return(
 							<View key={m.key}>
@@ -270,14 +225,14 @@ export default class ChatPage extends Component {
 						)
 					}))}
 				</ScrollView>
-				{this.state.message.length == 0 ? (
+                {message.length == 0 ? (
 					<Footer style={{backgroundColor:"snow"}}>
 						<View style={styles.searchSection}>
 							<Icon style={styles.emojiicon} name="emoji-emotions" type="MaterialIcons"/>
 							<TextInput
 								style={styles.input}
 								placeholder="Type a message"
-								onChangeText={(searchString) => {this.setState({message:searchString})}}
+								onChangeText={(searchString) => {setMessage(searchString)}}
 								underlineColorAndroid="transparent"
 							/>
 							<Icon name="paperclip" type="Foundation" style={styles.emojiicon}/>
@@ -293,20 +248,19 @@ export default class ChatPage extends Component {
 							<Icon style={styles.emojiicon} name="emoji-emotions" type="MaterialIcons"/>
 							<TextInput
 								style={styles.input}
-								defaultValue={this.state.message}
-								onChangeText={(searchString) => {this.setState({message:searchString});this.setState({send:true})}}
+								defaultValue={message}
+								onChangeText={(searchString) => {setMessage(searchString);}}
 								underlineColorAndroid="transparent"
 							/>
 							<Right>
 								<Icon name="paperclip" type="Foundation" style={styles.emojiicon}/>
 							</Right>
 						</View>
-							<Button transparent onPress={() =>{this.sendData()}}>
+							<Button transparent onPress={() =>{sendData()}}>
 								<Icon name="send" type="MaterialIcons" style={styles.onSendEmoji} />
 							</Button>
 					</Footer>
 				)}
-			</Container>
-		);
-	}
+            </Container>
+    )
 }
