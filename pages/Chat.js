@@ -4,10 +4,12 @@ import { ScrollView, StatusBar, Text,Image, Modal } from 'react-native';
 import styles from '../Styles/First';
 import Calls from './Calls';
 import Status from './Status';
+import axios from 'axios';
 
 export default class Chat extends Component {
 	state = {
 		username:'',
+		number:'',
 		loged: true,
 		aeroplanemode:false,
 		mainModalVisible: false,
@@ -17,6 +19,17 @@ export default class Chat extends Component {
 	};
 	setAeroplanemode = () => {
 		this.setState({aeroplanemode:!this.state.aeroplanemode})
+	}
+	setLoged = () =>{
+		const userData = {
+			username : this.state.username,
+			number : this.state.number
+		} 
+		if(this.state.username !== '' && this.state.number !== ''){
+			axios.post('http://10.0.2.2.:5000/users/add', userData)
+				.then(res => console.log(res.data));
+			this.setState({loged : false})
+		}
 	}
 	render() {
 		StatusBar.setBackgroundColor('#128C7E',true);
@@ -36,7 +49,7 @@ export default class Chat extends Component {
 							<Item stackedLabel>
                                 <Icon name='person' type="MaterialIcons" style={{fontSize: 28}}/>
                                 <Label style={{fontWeight:"bold"}}>Username</Label>
-                                <Input placeholder="Enter Username Here. . ." />
+                                <Input placeholder="Enter Username Here. . ." onChangeText={(user) => {this.setState({username:user});}}/>
                             </Item>
                         </Header>
                     </Card>
@@ -45,12 +58,12 @@ export default class Chat extends Component {
 							<Item stackedLabel>
                                 <Icon name='call' type="MaterialIcons" style={{fontSize: 28}}/>
                                 <Label style={{fontWeight:"bold"}}>Contact</Label>
-                                <Input placeholder="Enter Contact Number"/>
+                                <Input placeholder="Enter Contact Number" onChangeText={(num)=>{this.setState({number:num})}}/>
                             </Item>
                         </Header>
                     </Card>
                 </Body>
-                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{this.setState({loged:false})}}>
+                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{this.setLoged()}}>
                     <Text style={{color:"#ffffff",letterSpacing:6,fontWeight:"bold"}}>LOGIN</Text>
                 </Button>
 			</Container>
