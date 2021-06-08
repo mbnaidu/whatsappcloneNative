@@ -8,7 +8,6 @@ router.route('/').get((req, res) => {
 	});
 
 	router.route('/add').post((req, res) => {
-		console.log(req.body)
 	const message = JSON.stringify(req.body);
 	const newExercise = new Exercise({
 		message,
