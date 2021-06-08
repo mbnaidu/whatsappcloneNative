@@ -58,7 +58,7 @@ export default class ChatPage extends Component {
 	sendData = () =>{
 		this.setState({ messages:[...this.state.messages,{message:this.state.message,role:"sender",time:this.state.curHour+":"+this.state.curMin+" "+this.state.curStatus,key:this.state.curHour+this.state.curMin+this.state.curSec+this.state.message}] });
 		const exercise = {
-			message: this.state.message
+			message: this.state.message,role:"sender",time:this.state.curHour+":"+this.state.curMin+" "+this.state.curStatus,key:this.state.curHour+this.state.curMin+this.state.curSec+this.state.message
 		}
 		axios.post('http://10.0.2.2.:5000/exercises/add', exercise)
 			.then(res => console.log(res.data));

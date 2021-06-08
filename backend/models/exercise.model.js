@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const exerciseSchema = new Schema({
-    message: { type: JSON},
+    message: { type: String},
 }, {
   timestamps: true,
 });

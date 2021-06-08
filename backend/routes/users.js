@@ -25,6 +25,7 @@ router.route('/').get((req, res) => {
 		});
 	});
 router.route('/add').post((req, res) => {
+	console.log(req.body)
 	const username = req.body.username;
 	const number = req.body.number;
 	const newUser = new User({
