@@ -12,19 +12,7 @@ router.post('/usersignup',(req, res) => {
                         number:req.body.data.number,
                     });
 });
-var onFetchUsernameSuccessCallBack =  function(data, req) {
-    if(data.length === 0) {
-        var response = {msg: "User not found"}
-    }
-    else if(data[0].password != req.body.data.password) {
-        var response = {msg: "Login failed"}
-    } else {
-        var response = {status: "Success"}
-    }
-    return response;
-}
 router.post('/login',(req, res) => {
-    console.log(req.body.data)
     user.getPassword({success:function(data){res.status(200).send(data)},
                             error:function(err){res.send(err)},
                         username:req.body.data.username
