@@ -1,4 +1,4 @@
-import React, { Component, useRef } from 'react';
+import React, { Component, useEffect, useRef } from 'react';
 import { Container, Header, Left, Body, Right, Button, Icon, Thumbnail, Footer,Content, Fab, View, ListItem, Item, Label, Input, Badge } from 'native-base';
 import { StatusBar, Text, TextInput,Image, Modal, TouchableWithoutFeedback, ScrollView, FlatList, SafeAreaView } from 'react-native';
 import styles from '../Styles/Second';
@@ -6,6 +6,7 @@ import axios from 'axios';
 
 export default class ChatPage extends Component {
 	state = {
+		userId:'',
 		modalVisible: false,
 		modalVisible2: false,
 		online:false,
@@ -17,51 +18,30 @@ export default class ChatPage extends Component {
 		curMin:'',
 		curSec:'',
 		curStatus:'AM',
+		username:'madhu',
+		number:'1213',
 		messages:[
 			
-		]
+		],
 	};
-	// UNSAFE_componentWillMount = async () =>{
-	// 	const URL = "http://10.0.2.2.:5000/add";
-	// 	try{
-	// 		const response = await fetch(URL + "/" + 'madhu');
-	// 		if(response.status !== 200) {
-	// 			throw new Error("Couldn't connect to server");
-	// 		}
-	// 		const responseText = await response.text();
-	// 		console.log(responseText);
-	// 	}catch(error){
-	// 		Alert.alert(error.message);
-	// 	}
-	// }
-	UNSAFE_componentWillMount = () =>{
-		setInterval(function(){
-			var a = new Date().getHours();
-			if(a >= 12){
-				this.setState({
-					curStatus:"PM",
-					curHour:a-12,
-					curMin: new Date().getMinutes(),
-					curSec: new Date().getMilliseconds()
-				})
-			}
-			else{
-				this.setState({
-					curStatus:"AM",
-					curHour:a,
-					curMin: new Date().getMinutes(),
-					curSec: new Date().getMilliseconds()
-				})
-			}
-		}.bind(this), 1000);
-	}
 	sendData = () =>{
 		this.setState({ messages:[...this.state.messages,{message:this.state.message,role:"sender",time:this.state.curHour+":"+this.state.curMin+" "+this.state.curStatus,key:this.state.curHour+this.state.curMin+this.state.curSec+this.state.message}] });
-		const exercise = {
-			message: this.state.message,role:"sender",time:this.state.curHour+":"+this.state.curMin+" "+this.state.curStatus,key:this.state.curHour+this.state.curMin+this.state.curSec+this.state.message
+		const data = {
+			number:this.state.number,
+			m: {
+				message: this.state.message,role:"sender",time:this.state.curHour+":"+this.state.curMin+" "+this.state.curStatus,key:this.state.curHour+this.state.curMin+this.state.curSec+this.state.message
+			},
+			username:this.state.username,
+			id:'60bf06b82c4f4b4ee4841f3f',
 		}
-		axios.post('http://10.0.2.2.:5000/exercises/add', exercise)
-			.then(res => console.log(res.data));
+		if(this.state.message !== ''){
+			axios.post('http://10.0.2.2.:5000/addUserMessages', {data}).then(
+                function(res) {
+                    if(res.data) {
+                    }
+                }
+            )
+		}
 		this.setState({message:''})
 	}
 	setModalVisible = (visible) => {
@@ -84,7 +64,40 @@ export default class ChatPage extends Component {
 	setEntypo = () =>{
 		this.setState({entypo:!this.state.entypo})
 	}
+	// UNSAFE_componentWillMount = () => {
+	// 	axios.post('http://10.0.2.2.:5000/finduser', this.props.route.params).then(
+    //             function(res) {
+    //                 if(res.data) {
+	// 					res.data.messages.map((m)=>{
+	// 						console.log(m.key)
+	// 					})
+    //                 }
+    //             }
+    //         )
+	// }
+	// UNSAFE_componentWillMount = () =>{
+	// 	setInterval(function(){
+	// 		var a = new Date().getHours();
+	// 		if(a > 12){
+	// 			this.setState({
+	// 				curStatus:"PM",
+	// 				curHour:a-12,
+	// 				curMin: new Date().getMinutes(),
+	// 				curSec: new Date().getMilliseconds()
+	// 			})
+	// 		}
+	// 		else if(a<=12){
+	// 			this.setState({
+	// 				curStatus:"AM",
+	// 				curHour:a,
+	// 				curMin: new Date().getMinutes(),
+	// 				curSec: new Date().getMilliseconds()
+	// 			})
+	// 		}
+	// 	}.bind(this), 1000);
+	// }
 	render() {
+
 		const { modalVisible } = this.state;
 		const { modalVisible2 } = this.state;
 		const { messages } = this.state;
@@ -258,7 +271,7 @@ export default class ChatPage extends Component {
 								{m.role == 'sender' ? (
 									<Body style={[styles.messageSenderBox]}>
 										<Text style={{fontWeight:"bold"}}>{m.message}</Text>
-										<Text note style={{fontSize:12,marginLeft:5,alignSelf:'flex-end'}}>{m.time}<Icon name="loader" type="Feather" style={{fontSize: 11,fontWeight:"bold"}}/></Text>
+										<Text note style={{fontSize:12,marginLeft:5,alignSelf:'flex-end'}}>{m.time}<Icon name="checkmark-done-sharp" type="Ionicons" style={{fontSize: 18,color:"#20BADD"}}/></Text>
 									</Body>
 								) : (
 									<Body style={[styles.messageUserBox]}>

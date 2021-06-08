@@ -45,6 +45,8 @@ import NewGroup from './Contents/NewGroup';
 import ChatPage from './User/ChatPage';
 import MediaPage from './User/MediaPage';
 import BioPage from './User/BioPage';
+import NewMessage from './Contents/NewMessage';
+import Trail from './User/Trail';
 
 const Stack = createStackNavigator();
 
@@ -75,11 +77,13 @@ export default class App extends React.Component {
 				options={{ headerShown: false }} 
 				/>
 				{/* PAGES */}
+				<Stack.Screen name="Trail" component={Trail} options={{ headerShown: false }} />
 				<Stack.Screen name="ChatPage" component={ChatPage} options={{ headerShown: false }} />
 				<Stack.Screen name="MediaPage" component={MediaPage} options={{ headerShown: false }} />
 				<Stack.Screen name="BioPage" component={BioPage} options={{ headerShown: false }} />
 				<Stack.Screen name="Group" component={Group} options={{ headerShown: false }} />
 				{/* CONTENTS */}
+				<Stack.Screen name="NewMessage" component={NewMessage} options={{ headerShown: false }} />
 				<Stack.Screen name="Contact" component={Contact} options={{ headerShown: false }} />
 				<Stack.Screen name="Search" component={Search} options={{ headerShown: false }} />
 				<Stack.Screen name="Reminder" component={Reminder} options={{ headerShown: false }} />
