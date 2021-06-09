@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, ListItem, Thumbnail, Badge, Fab } from 'native-base';
-import { ScrollView } from 'react-native';
+import { ScrollView, StatusBar } from 'react-native';
 import styles from '../Styles/First';
 import { useNavigation } from '@react-navigation/core';
 
 export default function Status() {
+	StatusBar.setBackgroundColor('#128C7E',true);
 	const navigation = useNavigation();
 	return (
 		<Container>
