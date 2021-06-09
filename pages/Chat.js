@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/core';
 export default function Chat() {
     const [username,setUsername] = useState('');
     const [number,setNumber] = useState('');
-    const [login,setLogin] = useState(false);
+    const [login,setLogin] = useState(true);
     const [id,setId] = useState('');
     const [mainModalVisible,setMainModalVisible] = useState(false);
 

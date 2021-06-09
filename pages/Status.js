@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, ListItem, Thumbnail, Badge, Fab } from 'native-base';
 import { ScrollView } from 'react-native';
 import styles from '../Styles/First';
+import { useNavigation } from '@react-navigation/core';
 
-
-
-export default class Status extends Component {
-	render() {
-		return (
+export default function Status() {
+	const navigation = useNavigation();
+	return (
 		<Container>
 			<ScrollView>
 				<ListItem avatar noBorder>
@@ -59,10 +58,9 @@ export default class Status extends Component {
 				<Fab position="bottomRight" style={{marginBottom:75,backgroundColor:"#f5f5f5"}}>
 					<Icon name="edit" type="MaterialIcons" style={{color:"#25D366"}}/>
 				</Fab>
-				<Fab position="bottomRight" style={{backgroundColor:"#25D366"}}>
+				<Fab position="bottomRight" style={{backgroundColor:"#25D366"}} onPress={()=>{navigation.navigate('Capture')}}>
 					<Icon name="photo-camera" type="MaterialIcons"/>
 				</Fab>
 		</Container>
-		);
-	}
+	)
 }
