@@ -183,6 +183,9 @@ export default function Chat() {
 										</Right>
 									</ListItem>
 								</ScrollView>
+								<Fab position="bottomRight" style={{backgroundColor:"#25D366"}}>
+									<Icon name="chat" type="MaterialIcons" onPress={()=>{navigation.navigate('NewMessage',{userId:id})}}/>
+								</Fab>
 							</Container>
 						</Tab>
 						<Tab 
@@ -200,9 +203,6 @@ export default function Chat() {
 								<Calls/>
 						</Tab>
 					</Tabs>
-					<Fab position="bottomRight" style={{backgroundColor:"#25D366"}}>
-						<Icon name="chat" type="MaterialIcons" onPress={()=>{navigation.navigate('NewMessage',{userId:id})}}/>
-					</Fab>
             </Container>) : (
                 <Container>
 				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
