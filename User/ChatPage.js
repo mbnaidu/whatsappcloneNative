@@ -11,6 +11,7 @@ export default function ChatPage({route}) {
     const [modalVisible2,setModalVisible2] = useState(false)
     const navigation = useNavigation();
     const [online,setOnline] = useState(true);
+	const [username,setUsername] = useState('')
     const [plane,setPlane] = useState(true);
     const [entypo,setEntypo] = useState(true);
     const scrollViewRef = useRef();
@@ -24,20 +25,6 @@ export default function ChatPage({route}) {
     const [messages,setMessages] = useState([
         {message:"hi",id:"2131",time:"7:00 PM"}
     ])
-	useEffect(() => {
-		const data1 = {
-			senderId : route.params.senderId,
-			userId :userId,
-		} 
-		axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
-                function(res) {
-                    if(res.data) {
-						setChatId(res.data[0]._id);
-						setMessages(res.data[0].messages)
-                    }
-                }
-            )
-	},[])
 	// useEffect(() => {
 	// 	const data = {
 	// 		senderId : route.params.senderId,
@@ -53,6 +40,18 @@ export default function ChatPage({route}) {
 	// },[])
     useEffect(() => {
         setInterval(function(){
+			const data1 = {
+			senderId : route.params.senderId,
+			userId :userId,
+		} 
+		axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
+                function(res) {
+                    if(res.data) {
+						setChatId(res.data[0]._id);
+						setMessages(res.data[0].messages)
+                    }
+                }
+            )
 			var a = new Date().getHours();
 			if(a >= 12){
                 setCurStatus("PM");
@@ -103,7 +102,7 @@ export default function ChatPage({route}) {
 						axios.post('http://192.168.43.212:5000/addMessage', {data}).then(
 								function(res) {
 									if(res.data) {
-										
+										setMessage('')
 									}
 								}
 							)
@@ -129,7 +128,7 @@ export default function ChatPage({route}) {
 						<ListItem noBorder button onPress={()=>{navigation.navigate('BioPage')}}>
 							<View>
 								<Text style={styles.chatBodyTextHeading1}>
-									Hanuman
+									Username
 								</Text>
 							<View>
 								<Text style={styles.chatBodyTextHeading2}>
@@ -326,7 +325,7 @@ export default function ChatPage({route}) {
 								<Icon name="paperclip" type="Foundation" style={styles.emojiicon}/>
 							</Right>
 						</View>
-							<Button transparent onPress={() =>{sendData()}}>
+							<Button transparent onPress={() =>{sendData();}}>
 								<Icon name="send" type="MaterialIcons" style={styles.onSendEmoji} />
 							</Button>
 					</Footer>
