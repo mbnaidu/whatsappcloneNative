@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { StyleSheet, Dimensions, View, Text, TouchableOpacity, SafeAreaView,} from "react-native";
 import { Camera } from "expo-camera";
 import { Video } from "expo-av";
-import { Fab, Icon } from "native-base";
+import { Button, Fab, Icon } from "native-base";
 import * as MediaLibrary from 'expo-media-library';
 import * as Permissions from 'expo-permissions';
 
@@ -34,6 +34,7 @@ export default function Capture() {
     const [isCameraReady, setIsCameraReady] = useState(false);
     const [isVideoRecording, setIsVideoRecording] = useState(false);
     const [videoSource, setVideoSource] = useState(null);
+    const [flashMode,setFlashMode] = useState(false);
     const cameraRef = useRef();
     useEffect(() => {
         (async () => {
@@ -83,6 +84,9 @@ export default function Capture() {
         cameraRef.current.stopRecording();
         }
     };
+    const torch = () => {
+
+    }
     const switchCamera = () => {
         if (isPreview) {
         return;
@@ -122,20 +126,21 @@ export default function Capture() {
     const renderCaptureControl = () => (
         <View style={styles.containerMain}>
             <View style={styles.bottomView}>
-                <View >
-                    <TouchableOpacity
-                        activeOpacity={0.7}
-                        disabled={!isCameraReady}
-                        onLongPress={recordVideo}
-                        onPressOut={stopVideoRecording}
-                        onPress={takePicture}
-                        style={styles.capture}
-                    />
-                </View>
+                <TouchableOpacity
+                    activeOpacity={0.7}
+                    disabled={!isCameraReady}
+                    onLongPress={recordVideo}
+                    onPressOut={stopVideoRecording}
+                    onPress={takePicture}
+                    style={styles.capture}
+                />
+                <Button transparent onPress={()=>{setFlashMode(!flashMode)}} style={{alignSelf:"flex-start",bottom:50,left:40}}>
+                    <Icon name={flashMode ? "flash-on" : "flash-off"} type="MaterialIcons" style={{fontSize: 28,color:"white"}}/>
+                </Button>
+                <Button transparent disabled={!isCameraReady} onPress={switchCamera} style={{alignSelf:"flex-end",bottom:100,right:40}}>
+                    <Icon name="md-camera-reverse-sharp" type="Ionicons" style={{fontSize: 28,color:"white"}}/>
+                </Button>
             </View>
-            <Fab position="bottomRight" style={{backgroundColor:"#25D366"}} disabled={!isCameraReady} onPress={switchCamera}>
-				<Icon name="md-camera-reverse-sharp" type="Ionicons"/>
-			</Fab>
         </View>
     );
     if (hasPermission === null) {
@@ -150,7 +155,7 @@ export default function Capture() {
             ref={cameraRef}
             style={styles.container}
             type={cameraType}
-            flashMode={Camera.Constants.FlashMode.on}
+            flashMode={flashMode ? Camera.Constants.FlashMode.on : Camera.Constants.FlashMode.off}
             onCameraReady={onCameraReady}
             onMountError={(error) => {
             console.log("cammera error", error);
