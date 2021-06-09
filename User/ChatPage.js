@@ -23,50 +23,49 @@ export default function ChatPage({route}) {
 	const [userId,setUserId] = useState(route.params.userId);
 	const [chatId,setChatId] = useState('');
     const [messages,setMessages] = useState([
-        {message:"hi",id:"2131",time:"7:00 PM"}
     ])
-	// useEffect(() => {
-	// 	const data = {
-	// 		senderId : route.params.senderId,
-	// 		userId :userId,
-	// 	} 
-	// 	axios.post('http://192.168.43.212:5000/getChat', {data}).then(
-    //             function(res) {
-    //                 if(res.data) {
-	// 					setChatId(res.data[0]._id)
-    //                 }
-    //             }
-    //         )
-	// },[])
-    // useEffect(() => {
-    //     setInterval(function(){
-	// 		const data1 = {
-	// 		senderId : route.params.senderId,
-	// 		userId :userId,
-	// 	} 
-	// 	axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
-    //             function(res) {
-    //                 if(res.data) {
-	// 					setChatId(res.data[0]._id);
-	// 					setMessages(res.data[0].messages)
-    //                 }
-    //             }
-    //         )
-	// 		var a = new Date().getHours();
-	// 		if(a >= 12){
-    //             setCurStatus("PM");
-    //             setCurSec(new Date().getMilliseconds());
-    //             setCurMin(new Date().getMinutes(),);
-    //             setCurHour(a-12);
-	// 		}
-	// 		else{
-	// 			setCurStatus("AM");
-    //             setCurSec(new Date().getMilliseconds());
-    //             setCurMin(new Date().getMinutes(),);
-    //             setCurHour(a);
-	// 		}
-	// 	}.bind(this), 1000);
-    // }, [])
+	useEffect(() => {
+		const data = {
+			senderId : route.params.senderId,
+			userId :userId,
+		} 
+		axios.post('http://192.168.43.212:5000/getChat', {data}).then(
+                function(res) {
+                    if(res.data) {
+						setChatId(res.data[0]._id)
+                    }
+                }
+            )
+	},[])
+    useEffect(() => {
+        setInterval(function(){
+			const data1 = {
+			senderId : route.params.senderId,
+			userId :userId,
+		} 
+		axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
+                function(res) {
+                    if(res.data) {
+						setChatId(res.data[0]._id);
+						setMessages(res.data[0].messages)
+                    }
+                }
+            )
+			var a = new Date().getHours();
+			if(a >= 12){
+                setCurStatus("PM");
+                setCurSec(new Date().getMilliseconds());
+                setCurMin(new Date().getMinutes(),);
+                setCurHour(a-12);
+			}
+			else{
+				setCurStatus("AM");
+                setCurSec(new Date().getMilliseconds());
+                setCurMin(new Date().getMinutes(),);
+                setCurHour(a);
+			}
+		}.bind(this), 1000);
+    }, [])
     const sendData = () =>{
 		// const data = {
 		// 	senderId : route.params.senderId,
