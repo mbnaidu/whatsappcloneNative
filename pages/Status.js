@@ -46,7 +46,7 @@ export default function Status() {
 				<ListItem avatar noBorder>
 					<Left>
 						<Thumbnail
-							source={{uri:'https://assets.teenvogue.com/photos/55d5ebc8ca15223514647be6/16:9/w_1422,h_800,c_limit/Charlie%20Puth%20-%20Nine%20Track%20Mind%20-%20Album%20Artwork.jpg'}}
+							source={{uri:'file:///data/user/0/host.exp.exponent/cache/ExperienceData/%2540mb_naidu%252Fwhatsappclone/Camera/96640be7-8c7a-474b-b896-a53a76c13105.jpg'}}
 						></Thumbnail>
 					</Left>
 					<Body>
