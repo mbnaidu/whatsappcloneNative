@@ -5,14 +5,18 @@ import { Video } from "expo-av";
 import { Button, Fab, Icon } from "native-base";
 import * as MediaLibrary from 'expo-media-library';
 import * as Permissions from 'expo-permissions';
+import { useNavigation } from '@react-navigation/core';
 
 
     const WINDOW_HEIGHT = Dimensions.get("window").height;
+    const WINDOW_WIDTH = Dimensions.get("window").width;
     const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032);
     const captureSize = Math.floor(WINDOW_HEIGHT * 0.09);
 
 
 export default function Capture() {
+    const navigation = useNavigation();
+    
     // useEffect(() => {
     // (async () => {
     //         const permission = await Permissions.getAsync(Permissions.CAMERA_ROLL);
@@ -103,12 +107,19 @@ export default function Capture() {
         setVideoSource(null);
     };
     const renderCancelPreviewButton = () => (
-        <TouchableOpacity onPress={cancelPreview} style={styles.closeButton}>
-        <View style={[styles.closeCross, { transform: [{ rotate: "45deg" }] }]} />
-        <View
-            style={[styles.closeCross, { transform: [{ rotate: "-45deg" }] }]}
-        />
-        </TouchableOpacity>
+        <View>
+            <TouchableOpacity onPress={cancelPreview} style={styles.closeButton}>
+                <View style={[styles.closeCross, { transform: [{ rotate: "45deg" }] }]} />
+                <View
+                    style={[styles.closeCross, { transform: [{ rotate: "-45deg" }] }]}
+                />
+            </TouchableOpacity>
+            <View style={[styles.textStyle]}>
+                <Button style={{backgroundColor:"#075E54",height:60,width:60,alignSelf:"center",marginLeft:200,borderRadius:50,paddingLeft:1}} onPress={cancelPreview}>
+                    <Icon name="send" type="MaterialIcons" style={{fontSize: 28,color:"white"}}/>
+                </Button>
+            </View>
+        </View>
     );
     const renderVideoPlayer = () => (
         <Video
@@ -214,6 +225,8 @@ export default function Capture() {
         bottom: 25, //Here is the trick
     },
     textStyle: {
+        marginLeft:30,
+        marginTop:WINDOW_HEIGHT-100,
         color: '#fff',
         fontSize: 18,
     },
