@@ -7,7 +7,8 @@ import styles from '../Styles/First';
 
 
 
-export default function NewMessage() {
+export default function NewMessage({route}) {
+    const [userId,setUserId] = useState(route.params.userId)
     const [allUsers,setAllUsers] = useState([]);
     useEffect(() => {
 		axios.post('http://192.168.43.212:5000/getallusers').then(
@@ -45,7 +46,7 @@ export default function NewMessage() {
 				</ListItem>
 				{allUsers.map((user) =>{
                     return(
-                        <ListItem avatar noBorder key={user._id} onPress={() =>{navigation.navigate('ChatPage',{id:user._id})}}>
+                        <ListItem avatar noBorder key={user._id} onPress={() =>{navigation.navigate('ChatPage',{userId:userId,senderId:user._id})}}>
                             <Left>
                                 <Thumbnail
                                     source={{uri:'https://assets.teenvogue.com/photos/55d5ebc8ca15223514647be6/16:9/w_1422,h_800,c_limit/Charlie%20Puth%20-%20Nine%20Track%20Mind%20-%20Album%20Artwork.jpg'}}

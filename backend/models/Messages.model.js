@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 let messagesSchema = new mongoose.Schema({
     userId:String,
+    senderId:String,
     messageId:String,
     message:String,
-    time:String
+    time:String,
+
 });
 
 let messagesModal = mongoose.model('message',messagesSchema);
@@ -13,6 +15,7 @@ const message = mongoose.model('message', messagesSchema);
 message.addMessage = function(handlers) {
     var message = new messagesModal();
     message.userId = handlers.userId;
+    message.senderId = handlers.senderId;
     message.messageId = handlers.messageId;
     message.message = handlers.message;
     message.time = handlers.time;

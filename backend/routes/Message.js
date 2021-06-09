@@ -5,12 +5,14 @@ router.use(express.json());
 
 
 router.post('/addMessage',(req, res) => {
+    console.log(req.body)
     message.addMessage({success: function(data){res.status(200).send(data)},
                         error:function(err){res.status(200).send(err)},
-                        userId:req.body.data.id.userId,
-                        messageId:req.body.data.messageId.messageId,
-                        message:req.body.data.message.message,
-                        time:req.body.data.time.time,
+                        userId:req.body.data.userId,
+                        senderId:req.body.data.senderId,
+                        messageId:req.body.data.messageId,
+                        message:req.body.data.message,
+                        time:req.body.data.time,
                     });
 });
 router.post('/getChats',(req, res) => {

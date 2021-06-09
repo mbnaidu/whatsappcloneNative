@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useNavigation } from '@react-navigation/core';
 
 
-export default function ChatPage() {
+export default function ChatPage({route}) {
     const [modalVisible,setModalVisible] = useState(false);
     const [modalVisible2,setModalVisible2] = useState(false)
     const navigation = useNavigation();
@@ -19,6 +19,7 @@ export default function ChatPage() {
     const [curMin,setCurMin] = useState('');
     const [curStatus,setCurStatus] = useState('');
     const [curSec,setCurSec] = useState('');
+	const [userId,setUserId] = useState(route.params.userId);
     const [messages,setMessages] = useState([
         {message:"hi",id:"2131",time:"7:00 PM"}
     ])
@@ -40,7 +41,22 @@ export default function ChatPage() {
 		}.bind(this), 1000);
     }, [])
     const sendData = () =>{
+		console.log(route.params)
         setMessages([...messages,{message:message,role:"sender",time:curHour+":"+curMin+" "+curStatus,key:curHour+curMin+curSec+message}])
+		const data = {
+			senderId : route.params.senderId,
+			messageId : curHour+curMin+curSec+message,
+			message: message,
+			time:curHour+":"+curMin+" "+curStatus,
+			userId :userId,
+		} 
+		axios.post('http://192.168.43.212:5000/addMessage', {data}).then(
+                function(res) {
+                    if(res.data.length == 0) {
+						console.log(res.data)
+                    }
+                }
+            )
 	}
     StatusBar.setBackgroundColor('#128C7E',true);
     return (
@@ -248,6 +264,7 @@ export default function ChatPage() {
 							<Icon style={styles.emojiicon} name="emoji-emotions" type="MaterialIcons"/>
 							<TextInput
 								style={styles.input}
+								multiline
 								defaultValue={message}
 								onChangeText={(searchString) => {setMessage(searchString);}}
 								underlineColorAndroid="transparent"
