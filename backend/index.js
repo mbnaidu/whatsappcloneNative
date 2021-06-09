@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
-mongoose.connect('mongodb://localhost:27017/whatsappclone', { useNewUrlParser: true, useCreateIndex: true }
+mongoose.connect('mongodb://localhost:27017/a', { useNewUrlParser: true, useCreateIndex: true }
 );
 const connection = mongoose.connection;
 connection.once('open', () => {

@@ -2,10 +2,7 @@ const mongoose = require('mongoose');
 let messagesSchema = new mongoose.Schema({
     userId:String,
     senderId:String,
-    messageId:String,
-    message:String,
-    time:String,
-
+    messages:Array,
 });
 
 let messagesModal = mongoose.model('message',messagesSchema);
@@ -13,27 +10,37 @@ const message = mongoose.model('message', messagesSchema);
 
 //Adding new message
 message.addMessage = function(handlers) {
-    var message = new messagesModal();
-    message.userId = handlers.userId;
-    message.senderId = handlers.senderId;
-    message.messageId = handlers.messageId;
-    message.message = handlers.message;
-    message.time = handlers.time;
-    return message.save(function(err, data){
-        if(!err) {
+    return messagesModal.find({userId: handlers.userId,senderId:handlers.senderId}, {userId:1,senderId:1,_id:1,messages:1},  function(err, data) {
+        if(data.length > 0) {
             handlers.success(data);
         } else {
-            handlers.error(err);
+            handlers.error(err)
         }
     })
-};
-
-message.getChats = function(handlers) {
-    return messagesModal.find(function(err, data) {
-        if(!err) {
+}
+message.getChat = function(handlers) {
+    return messagesModal.find({userId: handlers.userId,senderId:handlers.senderId}, {userId:1,senderId:1,_id:1,messages:1},  function(err, data) {
+        if(data.length > 0) {
             handlers.success(data);
-        } else {
-            handlers.error(err);
+        }
+        else {
+            return messagesModal.find({userId: handlers.senderId,senderId:handlers.userId}, {userId:1,senderId:1,_id:1,messages:1},  function(err, data) {
+                if(data.length > 0) {
+                    handlers.success(data);
+                } else {
+                    var message = new messagesModal();
+                message.userId = handlers.userId;
+                message.senderId = handlers.senderId;
+                message.messages = message.messages;
+                return message.save(function(err, data){
+                    if(!err) {
+                        handlers.success(data);
+                    } else {
+                        handlers.error(err);
+                    }
+                })
+                }
+            })
         }
     })
 }

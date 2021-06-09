@@ -4,7 +4,6 @@ let user = require('../Models/user.model')
 router.use(express.json());
 
 router.post('/usersignup',(req, res) => {
-    console.log(req.body.data)
     if(!req.body.data.username) res.status(301).send("No username");
     user.addUser({success: function(data){res.status(200).send(data)},
                         error:function(err){res.status(200).send(err)},
