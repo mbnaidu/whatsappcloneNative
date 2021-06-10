@@ -5,8 +5,8 @@ import { Video } from "expo-av";
 import { Body, Button, Container, Fab, Icon, ListItem, Thumbnail } from "native-base";
 import * as MediaLibrary from 'expo-media-library';
 import * as Permissions from 'expo-permissions';
-import { useNavigation } from '@react-navigation/core';
 import * as ImagePicker from 'expo-image-picker';
+import { useNavigation } from '@react-navigation/native';
 
 
     const WINDOW_HEIGHT = Dimensions.get("window").height;
@@ -220,7 +220,7 @@ export default function Capture() {
                         onPlaybackStatusUpdate={status => setStatus(() => status)}
                     />
                     </TouchableWithoutFeedback>
-                    <Icon name="send" type="MaterialIcons" style={{fontSize: 38,padding:12,borderRadius:50,backgroundColor:"#075E54",color:"white",alignSelf:"flex-end",margin:30,marginTop:100}}/>
+                    <Icon name="send" type="MaterialIcons" style={{fontSize: 38,padding:12,borderRadius:50,backgroundColor:"#075E54",color:"white",alignSelf:"flex-end",margin:30,marginTop:100}} onPress={() => {navigation.goBack();}}/>
                 </View>
             ) : (
                 <View >
