@@ -206,8 +206,8 @@ export default function Capture() {
         <SafeAreaView style={styles.container}>
             {show ? (<View>
                 {type == 'video' ? (
-                <View >
-                    <Icon name="close" type="MaterialIcons" style={{fontSize: 28,color:"white",alignSelf:"flex-start",margin:30}}/>
+                <View style={{backgroundColor:"#000000"}}>
+                    <Icon name="close" type="MaterialIcons" style={{fontSize: 28,color:"white",alignSelf:"flex-start",margin:30}} onPress={() => {setShow(false)}}/>
                     <TouchableWithoutFeedback onPress={() =>status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()}>
                         <Video
                         ref={video}
@@ -256,7 +256,6 @@ export default function Capture() {
     const styles = StyleSheet.create({
     container: {
         ...StyleSheet.absoluteFillObject,
-        backgroundColor:"black"
     },
     closeButton: {
         position: "absolute",
