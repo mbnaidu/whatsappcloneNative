@@ -1,22 +1,26 @@
 import React, { useState, useRef, useEffect } from "react";
-import { StyleSheet, Dimensions, View, Text, TouchableOpacity, SafeAreaView,} from "react-native";
+import { StyleSheet, Dimensions, View, Text, TouchableOpacity, SafeAreaView, ScrollView, Image, TouchableWithoutFeedback,} from "react-native";
 import { Camera } from "expo-camera";
 import { Video } from "expo-av";
-import { Button, Fab, Icon } from "native-base";
+import { Body, Button, Container, Fab, Icon, ListItem, Thumbnail } from "native-base";
 import * as MediaLibrary from 'expo-media-library';
 import * as Permissions from 'expo-permissions';
 import { useNavigation } from '@react-navigation/core';
+import * as ImagePicker from 'expo-image-picker';
 
 
     const WINDOW_HEIGHT = Dimensions.get("window").height;
     const WINDOW_WIDTH = Dimensions.get("window").width;
     const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032);
     const captureSize = Math.floor(WINDOW_HEIGHT * 0.09);
-
+    var SampleArray = ["ONE", "TWO"] 
 
 export default function Capture() {
+    const video = React.useRef(null);
+    const [status, setStatus] = React.useState({});
     const navigation = useNavigation();
-    
+    const [picked,setPicked] = useState([]);
+    const [show,setShow] = useState(false)
     // useEffect(() => {
     // (async () => {
     //         const permission = await Permissions.getAsync(Permissions.CAMERA_ROLL);
@@ -42,13 +46,18 @@ export default function Capture() {
     const cameraRef = useRef();
     useEffect(() => {
         (async () => {
-            let { status1 } = await MediaLibrary.requestPermissionsAsync()
                 let media = await MediaLibrary.getAssetsAsync({
-                mediaType: ['photo', 'video'],
+                    mediaType: ['photo']
                 })
-                let video = await MediaLibrary.getAssetInfoAsync(media.assets[0])
-
-                console.log(video);
+                let videos = await MediaLibrary.getAssetsAsync({
+                    mediaType: ['video']
+                })
+                for(var i = 0; i < media.assets.length;i++){
+                    picked.push(media.assets[i])
+                }
+                for(var i = 0; i < videos.assets.length;i++){
+                    picked.push(videos.assets[i])
+                }
         const { status } = await Camera.requestPermissionsAsync();
         setHasPermission(status === "granted");
         })();
@@ -138,9 +147,38 @@ export default function Capture() {
         <Text style={styles.recordTitle}>{"Recording..."}</Text>
         </View>
     );
+    const [image, setImage] = useState(null)
+    const [type, setType] = useState(null);
+    const [URI,setURI] = useState(null);
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+        });
+        console.log(mediaTypes)
+        console.log(result.type);
+        setType(result.type);
+        setURI(result.uri);
+        if (!result.cancelled) {
+        setImage(result.uri);
+        }
+    };
     const renderCaptureControl = () => (
         <View style={styles.containerMain}>
             <View style={styles.bottomView}>
+                <View style={{height:100}}>
+					<ScrollView horizontal={true}>
+						{picked.map((m)=>{
+                            return(
+                                <Button transparent onPress={()=>{setShow(true);setURI(m.uri);setType(m.mediaType)}}>
+                                    <Image key={m.uri} source={{ uri: m.uri }} style={{ width: 90, height: 90,marginRight:5 }}/>
+                                </Button>
+                            )
+                        })}
+					</ScrollView>
+                </View>
                 <TouchableOpacity
                     activeOpacity={0.7}
                     disabled={!isCameraReady}
@@ -166,7 +204,35 @@ export default function Capture() {
     }
     return (
         <SafeAreaView style={styles.container}>
-        <Camera
+            {show ? (<View>
+                {type == 'video' ? (
+                <View >
+                    <Icon name="close" type="MaterialIcons" style={{fontSize: 28,color:"white",alignSelf:"flex-start",margin:30}}/>
+                    <TouchableWithoutFeedback onPress={() =>status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()}>
+                        <Video
+                        ref={video}
+                        style={{width:360,height: 220,marginTop:"50%"}}
+                        source={{uri: URI,}}
+                        useNativeControls={true}
+                        resizeMode="contain"
+                        shouldPlay={true}
+                        isLooping={true}
+                        onPlaybackStatusUpdate={status => setStatus(() => status)}
+                    />
+                    </TouchableWithoutFeedback>
+                    <Icon name="send" type="MaterialIcons" style={{fontSize: 38,padding:12,borderRadius:50,backgroundColor:"#075E54",color:"white",alignSelf:"flex-end",margin:30,marginTop:100}}/>
+                </View>
+            ) : (
+                <View >
+                    <Image source={{ uri: URI }} style={{ width: '100%', height: '100%' }} />
+                    <Fab position="bottomRight" style={{backgroundColor:"#075E54"}}>
+                        <Icon name="send" type="MaterialIcons"/>
+                    </Fab>
+                </View>
+            )}
+            </View>) : (
+                <Container>
+                    <Camera
             ref={cameraRef}
             style={styles.container}
             type={cameraType}
@@ -182,12 +248,15 @@ export default function Capture() {
             {isPreview && renderCancelPreviewButton()}
             {!videoSource && !isPreview && renderCaptureControl()}
         </View>
+                </Container>
+            )}
         </SafeAreaView>
     );
     }
     const styles = StyleSheet.create({
     container: {
         ...StyleSheet.absoluteFillObject,
+        backgroundColor:"black"
     },
     closeButton: {
         position: "absolute",
@@ -267,5 +336,14 @@ export default function Capture() {
     text: {
         alignSelf:"flex-start",
         color: "#fff",
+    },
+    video: {
+        justifyContent: 'center',
+        width: 360,
+        height: 390,
+        marginBottom:-10
+    },
+    buttons: {
+        backgroundColor: "green",
     },
     });
