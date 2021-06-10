@@ -152,24 +152,23 @@ export default function Capture() {
     const [URI,setURI] = useState(null);
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
         });
-        console.log(mediaTypes)
-        console.log(result.type);
+        setShow(true)
         setType(result.type);
         setURI(result.uri);
-        if (!result.cancelled) {
-        setImage(result.uri);
-        }
     };
     const renderCaptureControl = () => (
         <View style={styles.containerMain}>
             <View style={styles.bottomView}>
                 <View style={{height:100}}>
-					<ScrollView horizontal={true}>
+                    <Button style={{bottom:25,alignItems:"center",alignSelf:"center",alignContent:"center"}} transparent onPress={()=>{pickImage()}}>
+                        <Icon name='chevron-small-up' type="Entypo" style={{fontSize: 28,color:"white"}}/>
+                    </Button>
+					<ScrollView horizontal={true} style={{bottom:20}}>
 						{picked.map((m)=>{
                             return(
                                 <Button transparent onPress={()=>{setShow(true);setURI(m.uri);setType(m.mediaType)}}>
@@ -204,10 +203,12 @@ export default function Capture() {
     }
     return (
         <SafeAreaView style={styles.container}>
-            {show ? (<View>
+            {show ? (<View style={{backgroundColor:"black"}}>
                 {type == 'video' ? (
-                <View style={{backgroundColor:"#000000"}}>
-                    <Icon name="close" type="MaterialIcons" style={{fontSize: 28,color:"white",alignSelf:"flex-start",margin:30}} onPress={() => {setShow(false)}}/>
+                <View >
+                    <Button style={{margin:30}}  transparent onPress={() => {setShow(false)}}>
+                        <Icon name="close" type="MaterialIcons" style={{fontSize: 28,color:"white",alignSelf:"flex-start"}} />
+                    </Button>
                     <TouchableWithoutFeedback onPress={() =>status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()}>
                         <Video
                         ref={video}
