@@ -47,6 +47,7 @@ import MediaPage from './User/MediaPage';
 import BioPage from './User/BioPage';
 import NewMessage from './Contents/NewMessage';
 import Capture from './pages/Capture';
+import Album from './pages/Album';
 
 const Stack = createStackNavigator();
 
@@ -77,6 +78,7 @@ export default class App extends React.Component {
 				options={{ headerShown: false }} 
 				/>
 				{/* PAGES */}
+				<Stack.Screen name="Album" component={Album} options={{ headerShown: false }} />
 				<Stack.Screen name="Capture" component={Capture} options={{ headerShown: false }} />
 				<Stack.Screen name="NewMessage" component={NewMessage} options={{ headerShown: false }} />
 				<Stack.Screen name="ChatPage" component={ChatPage} options={{ headerShown: false }} />

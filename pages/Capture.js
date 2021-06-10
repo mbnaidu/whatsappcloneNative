@@ -42,6 +42,13 @@ export default function Capture() {
     const cameraRef = useRef();
     useEffect(() => {
         (async () => {
+            let { status1 } = await MediaLibrary.requestPermissionsAsync()
+                let media = await MediaLibrary.getAssetsAsync({
+                mediaType: ['photo', 'video'],
+                })
+                let video = await MediaLibrary.getAssetInfoAsync(media.assets[0])
+
+                console.log(video);
         const { status } = await Camera.requestPermissionsAsync();
         setHasPermission(status === "granted");
         })();
@@ -88,9 +95,6 @@ export default function Capture() {
         cameraRef.current.stopRecording();
         }
     };
-    const torch = () => {
-
-    }
     const switchCamera = () => {
         if (isPreview) {
         return;

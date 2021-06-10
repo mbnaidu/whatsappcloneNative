@@ -56,7 +56,7 @@ export default function Status() {
 					</Body>
 				</ListItem>
 			</ScrollView>
-				<Fab position="bottomRight" style={{marginBottom:75,backgroundColor:"#f5f5f5"}}>
+				<Fab position="bottomRight" style={{marginBottom:75,backgroundColor:"#f5f5f5"}} onPress={()=>{navigation.navigate('Album')}}>
 					<Icon name="edit" type="MaterialIcons" style={{color:"#25D366"}}/>
 				</Fab>
 				<Fab position="bottomRight" style={{backgroundColor:"#25D366"}} onPress={()=>{navigation.navigate('Capture')}}>
