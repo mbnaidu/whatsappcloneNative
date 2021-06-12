@@ -20,7 +20,6 @@ export default class Status extends Component {
 		this.setState({ aboutModalVisible: visible });
 	};
 	render() {
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		// status
 		const { aboutModalVisible } = this.state;

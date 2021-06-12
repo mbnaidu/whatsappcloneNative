@@ -8,9 +8,6 @@ import axios from 'axios';
 import { useNavigation } from '@react-navigation/core';
 
 export default function Chat() {
-    const [username,setUsername] = useState('');
-    const [number,setNumber] = useState('');
-    const [login,setLogin] = useState(false);
     const [id,setId] = useState('');
     const [mainModalVisible,setMainModalVisible] = useState(false);
 
@@ -27,7 +24,6 @@ export default function Chat() {
 							function(res) {
 								if(res.data) {
 									setId(res.data._id);
-                                    setLogin(true);
 								}
 							}
 						)
@@ -35,7 +31,6 @@ export default function Chat() {
 					else{
 						{res.data.map((m)=>{
 							setId(m._id);
-                            setLogin(true);
 						})}
 					}
                 }
@@ -44,8 +39,7 @@ export default function Chat() {
     const navigation = useNavigation();
     return (
         <Container>
-			<StatusBar backgroundColor="#075E54"/>
-            {login ? (<Container>
+				<Container>
 					<View >
 						<Header noLeft style={styles.headerBackgroundColor} noBorder>
 							<Body>
@@ -203,36 +197,7 @@ export default function Chat() {
 								<Calls/>
 						</Tab>
 					</Tabs>
-            </Container>) : (
-                <Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
-					<Title style={{alignSelf:"center"}}>PIGEON</Title >
-				</Header>
-                <Body style={{marginTop:"50%"}}>
-                    <Card>
-						<Header noLeft style={styles.newcontactheader} noBorder>
-							<Item stackedLabel>
-                                <Icon name='person' type="MaterialIcons" style={{fontSize: 28}}/>
-                                <Label style={{fontWeight:"bold"}}>Username</Label>
-                                <Input placeholder="Enter Username Here. . ." onChangeText={(user) => {setUsername(user)}}/>
-                            </Item>
-                        </Header>
-                    </Card>
-                    <Card>
-                        <Header noLeft style={styles.newcontactheader} noBorder>
-							<Item stackedLabel>
-                                <Icon name='call' type="MaterialIcons" style={{fontSize: 28}}/>
-                                <Label style={{fontWeight:"bold"}}>Contact</Label>
-                                <Input placeholder="Enter Contact Number" onChangeText={(num)=>{setNumber(num)}}/>
-                            </Item>
-                        </Header>
-                    </Card>
-                </Body>
-                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{checkUser()}}>
-                    <Text style={{color:"#ffffff",letterSpacing:6,fontWeight:"bold"}}>SIGN UP</Text>
-                </Button>
-			</Container>
-            )}
+            </Container>
         </Container>
     )
 }

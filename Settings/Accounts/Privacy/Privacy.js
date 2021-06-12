@@ -39,7 +39,6 @@ export default class Privacy extends Component {
 		this.setState({ aboutModalVisible: visible });
 	};
 	render() {
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
         // last seen
             const { lastSeenModalVisible } = this.state;

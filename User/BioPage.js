@@ -208,7 +208,6 @@ export default class BioPage extends Component {
         outputRange: [0, 0, -8],
         extrapolate: 'clamp',
         });
-        StatusBar.setBackgroundColor('#128C7E',true);
         return (
         <View style={styles.fill}>
             <Animated.ScrollView

@@ -5,7 +5,6 @@ import styles from '../Styles/First';
 import { useNavigation } from '@react-navigation/core';
 
 export default function Status() {
-	StatusBar.setBackgroundColor('#128C7E',true);
 	const navigation = useNavigation();
 	return (
 		<Container>

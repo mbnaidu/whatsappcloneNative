@@ -5,7 +5,6 @@ import styles from '../Styles/First';
 
 export default class NewGroup extends Component {
 	render() {
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 				<Container style={{backgroundColor:"#"}}>

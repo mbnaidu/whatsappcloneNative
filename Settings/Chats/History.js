@@ -16,7 +16,6 @@ export default class History extends Component {
 	render() {
         // Delete Modal
             const { deleteModalVisible } = this.state;
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>

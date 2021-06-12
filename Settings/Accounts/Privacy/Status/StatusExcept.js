@@ -4,7 +4,6 @@ import { StatusBar, Text, ScrollView } from 'react-native';
 
 export default class StatusExcept extends Component {
 	render() {
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>

@@ -32,7 +32,6 @@ export default class Storage extends Component {
             const { mobileModalVisible } = this.state;
         // WIFI model
             const { wifiModalVisible } = this.state;
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>

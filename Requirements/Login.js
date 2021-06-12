@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import {Label,Card,Button,ListItem,Icon,Input,Picker,Item,View, } from 'native-base'
 import {Text,Image,Keyboard,TouchableWithoutFeedback} from 'react-native'
-import styles from '../RequirementsStyles/login'
+import styles from '../Styles/RequirementsStyles/login'
 
 const Login = ({navigation}) => {
     const [country,setCountry] = useState('India');
-    const [code,setCode] = useState('+91')
+    const [code,setCode] = useState('+91');
+    const [number,setNumber] = useState(0);
     return (
         <TouchableWithoutFeedback onPress={() =>{Keyboard.dismiss();}}>
             <View style={styles.container}>
@@ -37,11 +38,11 @@ const Login = ({navigation}) => {
                     <ListItem avatar button style={{marginTop:10}}>
                         <Item floatingLabel>
                             <Label style={{color:"white",fontWeight:"bold"}}>Phone Number</Label>
-                        <Input keyboardType={'number-pad'}/>
+                        <Input keyboardType={'number-pad'} onChangeText={text=>{setNumber(text)}}/>
                         </Item>
                     </ListItem>
                 </Card>
-                <Button style={styles.button} onPress={() =>{navigation.navigate('Login')}}>
+                <Button style={styles.button} onPress={() =>{navigation.navigate('Profile')}}>
                         <Text style={styles.buttontext}>NEXT</Text>
                 </Button>
             </View>

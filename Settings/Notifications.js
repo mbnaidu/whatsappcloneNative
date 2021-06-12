@@ -54,7 +54,6 @@ export default class Notifications extends Component {
             const { callModalVisible } = this.state;
         //  Vibrate Modal
             const { vibrateModalVisible } = this.state;
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>

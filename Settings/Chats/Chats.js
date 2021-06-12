@@ -42,7 +42,6 @@ export default class Chats extends Component {
         // profile photo
             const { fontModalVisible } = this.state;
         // about
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>

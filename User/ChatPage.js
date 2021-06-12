@@ -109,7 +109,6 @@ export default function ChatPage({route}) {
                 }
             )
 	}
-    StatusBar.setBackgroundColor('#128C7E',true);
     return (
         <Container>
 				<Header style={styles.headerBackgroundColor} button>

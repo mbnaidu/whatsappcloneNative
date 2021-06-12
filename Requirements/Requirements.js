@@ -1,7 +1,7 @@
 import { Button, Card,CardItem, Body, Right} from 'native-base';
 import React, { useEffect, useState } from 'react'
 import { Image, Linking, ActivityIndicator, View, Text, } from 'react-native'
-import styles from '../RequirementsStyles/requirements';
+import styles from '../Styles/RequirementsStyles/requirements';
 import { Camera } from 'expo-camera';
 import * as Contacts from 'expo-contacts';
 import * as ImagePicker from 'expo-image-picker';

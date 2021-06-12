@@ -13,7 +13,6 @@ export default class Lock extends Component {
 		this.setState({ isEnabled: !this.state.isEnabled });
 	}
 	render() {
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>

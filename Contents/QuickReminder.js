@@ -13,7 +13,6 @@ export default class QuickReminder extends Component {
 		});
 	}
 	render() {
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 				<Container style={{backgroundColor:"#"}}>

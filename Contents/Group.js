@@ -22,7 +22,6 @@ export default class Group extends Component {
 	render() {
 		const { modalVisible } = this.state;
 		const {show} = this.state;
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 			<Container >

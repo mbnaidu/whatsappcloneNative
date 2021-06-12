@@ -45,7 +45,6 @@ export default class Contact extends Component {
 		this.setState({ chosenDate: newDate });
 	}
 	render() {
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>

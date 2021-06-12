@@ -18,7 +18,6 @@ export default class QuickSchedule extends Component {
 	}
 	render() {
 		const {show} = this.state;
-		StatusBar.setBackgroundColor('#128C7E',true);
 		const { navigate } = this.props.navigation;
 		return (
 				<Container style={{backgroundColor:"#"}}>
