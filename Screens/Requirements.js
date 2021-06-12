@@ -1,10 +1,10 @@
 import { Button, Card,CardItem, Body, Right} from 'native-base';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, Linking, ActivityIndicator, View, Text, } from 'react-native'
 import styles from '../Styles/requirements';
 import { Camera } from 'expo-camera';
 import * as Contacts from 'expo-contacts';
-
+import * as ImagePicker from 'expo-image-picker';
 
 
 const Requirements = () => {
@@ -23,8 +23,14 @@ const Requirements = () => {
         }
     }
 
-    const medias = () => {
-        setMedia(!media)
+    const medias = async () => {
+        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if(status === 'granted'){
+            setMedia(true);
+        }
+        else{
+            setMedia(false)
+        }
     }
 
     const cameras = async () => {
@@ -80,9 +86,7 @@ const Requirements = () => {
                             Media
                         </Text>
                     </Body>
-                    <Right>
-                        <Text>{media ? "✔️" : "❌"}</Text>
-                    </Right>
+                    <Text style={styles.text}>{media ? "✔️" : "❌"}</Text>
                 </CardItem>
             </Card>
             <Card style={styles.card} >
