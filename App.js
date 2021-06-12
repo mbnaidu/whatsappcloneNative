@@ -15,7 +15,7 @@ import Message from './Contents/Message';
 import Bluetooth from './Contents/Bluetooth';
 
 // PAGES
-import Chat from './pages/Chat';
+import Chat from './Screens/Chat';
 import Settings from './Settings/Settings';
 import Accounts from './Settings/Accounts/Accounts';
 import Privacy from './Settings/Accounts/Privacy/Privacy';
@@ -46,7 +46,8 @@ import ChatPage from './User/ChatPage';
 import MediaPage from './User/MediaPage';
 import BioPage from './User/BioPage';
 import NewMessage from './Contents/NewMessage';
-import Capture from './pages/Capture';
+import Capture from './Screens/Capture';
+import Requirements from './Screens/Requirements';
 
 const Stack = createStackNavigator();
 
@@ -71,12 +72,9 @@ export default class App extends React.Component {
 		return (
 		<NavigationContainer>
 			<Stack.Navigator>
-				<Stack.Screen
-				name="Chat"
-				component={Chat}
-				options={{ headerShown: false }} 
-				/>
+				<Stack.Screen name="Requirements" component={Requirements}options={{ headerShown: false }} />
 				{/* PAGES */}
+				<Stack.Screen name="Chat" component={Chat}options={{ headerShown: false }} />
 				<Stack.Screen name="Capture" component={Capture} options={{ headerShown: false }} />
 				<Stack.Screen name="NewMessage" component={NewMessage} options={{ headerShown: false }} />
 				<Stack.Screen name="ChatPage" component={ChatPage} options={{ headerShown: false }} />

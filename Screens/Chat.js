@@ -10,7 +10,7 @@ import { useNavigation } from '@react-navigation/core';
 export default function Chat() {
     const [username,setUsername] = useState('');
     const [number,setNumber] = useState('');
-    const [login,setLogin] = useState(true);
+    const [login,setLogin] = useState(false);
     const [id,setId] = useState('');
     const [mainModalVisible,setMainModalVisible] = useState(false);
 
@@ -41,10 +41,10 @@ export default function Chat() {
                 }
             )
 	}
-    StatusBar.setBackgroundColor('#128C7E',true);
     const navigation = useNavigation();
     return (
         <Container>
+			<StatusBar backgroundColor="#075E54"/>
             {login ? (<Container>
 					<View >
 						<Header noLeft style={styles.headerBackgroundColor} noBorder>
