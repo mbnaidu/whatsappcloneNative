@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Item, Input, View, Picker, DatePicker, Label } from 'native-base';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Item, Input, View, Picker, ListItem, Label } from 'native-base';
 import { StatusBar, Text, ScrollView } from 'react-native';
 import styles from '../Styles/First';
 
@@ -195,24 +195,13 @@ export default class Contact extends Component {
                                 <Input placeholder="Website Link"/>
                             </Item>
                         </Header>
-                        <Header noLeft style={styles.newcontactheader} noBorder>
-                            <Icon name="calendar-today" type="MaterialIcons" style={{fontSize:28,marginTop:15,marginRight:10}}/>
-                            <DatePicker
-                                defaultDate={new Date(2018, 4, 4)}
-                                minimumDate={new Date(2018, 1, 1)}
-                                maximumDate={new Date(2018, 12, 31)}
-                                locale={"en"}
-                                timeZoneOffsetInMinutes={undefined}
-                                modalTransparent={false}
-                                animationType={"fade"}
-                                androidMode={"default"}
-                                placeHolderText="Select date"
-                                textStyle={{ color: "green" }}
-                                placeHolderTextStyle={{ color: "#000000" }}
-                                onDateChange={this.setDate}
-                                disabled={false}
-                            />
-                        </Header>
+                            <ListItem noBorder button>
+                            <Item stackedLabel>
+                                <Icon name='calendar-today' type="MaterialIcons" style={{fontSize: 28}}/>
+                                <Label style={{fontWeight:"bold"}}>Occasion date</Label>
+                                <Input placeholder="Enter date"/>
+                            </Item>
+                        </ListItem>
                         <View>
                             <Item picker>
                                 <Icon name='place' type="MaterialIcons" style={{fontSize: 28,marginLeft:10}}/>
