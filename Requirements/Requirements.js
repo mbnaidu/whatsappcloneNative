@@ -1,14 +1,14 @@
 import { Button, Card,CardItem, Body, Right} from 'native-base';
 import React, { useEffect, useState } from 'react'
 import { Image, Linking, ActivityIndicator, View, Text, } from 'react-native'
-import styles from '../Styles/requirements';
+import styles from '../RequirementsStyles/requirements';
 import { Camera } from 'expo-camera';
 import * as Contacts from 'expo-contacts';
 import * as ImagePicker from 'expo-image-picker';
 
 
-const Requirements = () => {
-    const [agree,setAgree] = useState(true);
+const Requirements = ({navigation}) => {
+    const [agree,setAgree] = useState(false);
     const [contact,setContact] = useState(false);
     const [camera,setCamera] = useState(false);
     const [media,setMedia] = useState(false);
@@ -46,7 +46,7 @@ const Requirements = () => {
     if(!agree){
         return (
         <View style={styles.container}>
-            <Button style={styles.circle} transparent >
+            <Button style={[styles.circle,{marginBottom: 20}]} transparent >
                 <Image style={styles.icon} source={require('../Assets/pigeon.png')}/>
             </Button>
             <Text style={styles.text}>Welcome to PIEGEON</Text>
@@ -66,7 +66,7 @@ const Requirements = () => {
     else{
         return (
         <View style={styles.container}>
-            <Text style={styles.text}>Allow all to continue</Text>
+            {contact && media && camera ? <Text></Text> : (<Text style={styles.text}>Allow all to continue</Text>) }
             <Card style={styles.card} >
                 <CardItem button onPress={() =>{contacts()}}>
                     <Body>
@@ -74,9 +74,7 @@ const Requirements = () => {
                             Contacts
                         </Text>
                     </Body>
-                    <Right>
-                        <Text>{contact ? "✔️" : "❌"}</Text>
-                    </Right>
+                    <Text style={styles.text}>{contact ? "✔️" : "❌"}</Text>
                 </CardItem>
             </Card>
             <Card style={styles.card} >
@@ -96,11 +94,18 @@ const Requirements = () => {
                             Camera
                         </Text>
                     </Body>
-                    <Right>
-                        <Text>{camera ? "✔️" : "❌"}</Text>
-                    </Right>
+                    <Text style={styles.text}>{camera ? "✔️" : "❌"}</Text>
                 </CardItem>
             </Card>
+            {contact && media && camera ? 
+                (
+                    <Button style={styles.signupButton} onPress={() =>{navigation.navigate('Login')}}>
+                        <Text style={styles.buttontext}>NEXT</Text>
+                    </Button>
+                )
+                : 
+                <Text></Text>
+            }
         </View>
     )
     }

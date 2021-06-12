@@ -23,6 +23,14 @@ export default StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    signupButton: {
+        marginTop:50,
+        padding:20,
+        backgroundColor:"#04D9CF",
+        alignSelf:"center",
+        alignItems: "center",
+        justifyContent: "center",
+    },
     card: {
         padding:20,
         backgroundColor:"#04D9CF",

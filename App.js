@@ -47,7 +47,8 @@ import MediaPage from './User/MediaPage';
 import BioPage from './User/BioPage';
 import NewMessage from './Contents/NewMessage';
 import Capture from './Screens/Capture';
-import Requirements from './Screens/Requirements';
+import Requirements from './Requirements/Requirements';
+import Login from './Requirements/Login';
 
 const Stack = createStackNavigator();
 
@@ -73,6 +74,7 @@ export default class App extends React.Component {
 		<NavigationContainer>
 			<Stack.Navigator>
 				<Stack.Screen name="Requirements" component={Requirements}options={{ headerShown: false }} />
+				<Stack.Screen name="Login" component={Login}options={{ headerShown: false }} />
 				{/* PAGES */}
 				<Stack.Screen name="Chat" component={Chat}options={{ headerShown: false }} />
 				<Stack.Screen name="Capture" component={Capture} options={{ headerShown: false }} />
