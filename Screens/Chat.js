@@ -135,13 +135,13 @@ export default function Chat() {
 						</ScrollView>
 					</View>
                     <Tabs initialPage={0}
-						tabBarBackgroundColor="#075E54"
+						tabBarBackgroundColor="#04D9CF"
 						tabContainerStyle={{elevation:0}}
 						tabBarUnderlineStyle={styles.tabBarUnderline}
 					>
 						<Tab 
 							heading={
-							<TabHeading style={{backgroundColor:"#075E54"}}>
+							<TabHeading style={{backgroundColor:"#04D9CF"}}>
 								<Text style={styles.textColor}>CHATS </Text>
 								<Badge style={styles.badge}>
 									<Text style={styles.badgeText}>2</Text>
@@ -184,14 +184,14 @@ export default function Chat() {
 						</Tab>
 						<Tab 
 							heading={
-								<TabHeading style={{backgroundColor:"#075E54"}}>
+								<TabHeading style={{backgroundColor:"#04D9CF"}}>
 									<Text style={styles.textColor}>STATUS</Text>
 								</TabHeading>}>
 								<Status/>
 						</Tab>
 						<Tab 
 							heading={
-								<TabHeading style={{backgroundColor:"#075E54"}}>
+								<TabHeading style={{backgroundColor:"#04D9CF"}}>
 									<Text style={styles.textColor}>CALLS</Text>
 								</TabHeading>}>
 								<Calls/>

@@ -8,17 +8,17 @@ export default StyleSheet.create({
     },
     createContact:{
         fontSize:18,
-        color:"#075E54"
+        color:"#04D9CF"
     },
     createContactSearchIcon:{
         fontSize:18,
-        color:"#075E54"
+        color:"#04D9CF"
     },
     headerBackgroundColor:{
-        backgroundColor:"#075E54"
+        backgroundColor:"#04D9CF"
     },
     chatPageSecondHeader:{
-        backgroundColor:"#075E54",
+        backgroundColor:"#04D9CF",
         height:80,
     },
     tabBarUnderline:{
@@ -67,7 +67,7 @@ export default StyleSheet.create({
     badgeText:{
         alignSelf:"center",
         fontSize:12,
-        color:"#075E54"
+        color:"#04D9CF"
     },
     //Chat Page
     badgeChats:{
@@ -153,7 +153,7 @@ export default StyleSheet.create({
         alignSelf:"flex-start"
     },
     mediaSubHeaderText:{
-        color:"#075E54",fontSize:16,fontWeight:'bold',
+        color:"#04D9CF",fontSize:16,fontWeight:'bold',
     },
     // newGroup Header  
     newgroupheader:{
