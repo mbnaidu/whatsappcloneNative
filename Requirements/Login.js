@@ -2,11 +2,24 @@ import React, { useState } from 'react'
 import {Label,Card,Button,ListItem,Icon,Input,Picker,Item,View, } from 'native-base'
 import {Text,Image,Keyboard,TouchableWithoutFeedback} from 'react-native'
 import styles from '../Styles/RequirementsStyles/login'
+import axios from 'axios'
 
 const Login = ({navigation}) => {
     const [country,setCountry] = useState('India');
     const [code,setCode] = useState('+91');
     const [number,setNumber] = useState(0);
+    const signup = () => {
+        const data = {
+            number: number
+        }
+        axios.post('http://192.168.43.212:5000/usersignup', {data}).then(
+            function(res) {
+                if(res.data) {
+                    console.log(res.data)
+                }
+            }
+		)
+    }
     return (
         <TouchableWithoutFeedback onPress={() =>{Keyboard.dismiss();}}>
             <View style={styles.container}>
@@ -42,7 +55,7 @@ const Login = ({navigation}) => {
                         </Item>
                     </ListItem>
                 </Card>
-                <Button style={styles.button} onPress={() =>{navigation.navigate('Profile')}}>
+                <Button style={styles.button} onPress={() =>{signup()}}>
                         <Text style={styles.buttontext}>NEXT</Text>
                 </Button>
             </View>
