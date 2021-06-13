@@ -3,8 +3,9 @@ import {Label,Card,Button,ListItem,Right,Input,Picker,Item,View,Thumbnail, } fro
 import {Text,Image,Keyboard,TouchableWithoutFeedback} from 'react-native'
 import styles from '../Styles/RequirementsStyles/profile'
 import * as ImagePicker from 'expo-image-picker';
+import axios from 'axios';
 
-const Profile = ({navigation}) => {
+const Profile = ({route,navigation}) => {
     const [username,setUsername] = useState('');
     const [type,setType] = useState('');
     const [URI,setURI] = useState('https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png');
@@ -18,6 +19,19 @@ const Profile = ({navigation}) => {
         setType(result.type);
         setURI(result.uri);
     };
+    const profile = () => {
+        const data = {
+            id: route.params.id,
+            username: username
+        }
+        axios.post('http://192.168.43.212:5000/profile', {data}).then(
+            function(res) {
+                if(res.data) {
+                    navigation.navigate('Chat')
+                }
+            }
+        )
+    }
     return (
         <TouchableWithoutFeedback onPress={() =>{Keyboard.dismiss();}}>
             <View style={styles.container}>
@@ -41,7 +55,7 @@ const Profile = ({navigation}) => {
                     </Item>
                 </ListItem>
             </Card>
-            <Button style={styles.button} onPress={() =>{navigation.navigate('Chat',{username:username})}}>
+            <Button style={styles.button} onPress={() =>{profile()}}>
                     <Text style={styles.buttontext}>NEXT</Text>
             </Button>
             </View>

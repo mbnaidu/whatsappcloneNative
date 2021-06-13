@@ -5,6 +5,7 @@ import styles from '../Styles/RequirementsStyles/requirements';
 import { Camera } from 'expo-camera';
 import * as Contacts from 'expo-contacts';
 import * as ImagePicker from 'expo-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Requirements = ({navigation}) => {
@@ -12,6 +13,16 @@ const Requirements = ({navigation}) => {
     const [contact,setContact] = useState(false);
     const [camera,setCamera] = useState(false);
     const [media,setMedia] = useState(false);
+    useEffect(() => {
+        (async () => {
+        try {
+                    const jsonValue = await AsyncStorage.getItem('@storage_Key')
+                    return jsonValue != null ?navigation.navigate('Chat',{id: jsonValue}) : null;
+                } catch(e) {
+                    console.warn(e)
+                }
+        })();
+    }, []);
 
     const contacts = async () => {
         const { status } = await Contacts.requestPermissionsAsync();

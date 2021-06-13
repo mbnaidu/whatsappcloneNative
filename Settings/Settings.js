@@ -1,20 +1,28 @@
 import React, { Component } from 'react';
 import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, ListItem } from 'native-base';
 import { StatusBar, Text,ScrollView } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default class Settings extends Component {
-	render() {
-		const { navigate } = this.props.navigation;
+
+export default function Settings({navigation}) {
+        const logout = async () => {
+            try {
+                const delte = await AsyncStorage.clear();
+                navigation.navigate('Requirements')
+            } catch (e) {
+                console.warn(e)
+            }
+        }
 		return (
 			<Container>
 				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('Chat')}}>
+						<Button transparent onPress={()=>{navigation.navigate('Chat')}}>
 							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title transparent onPress={()=>{navigate('Chat')}}>Settings</Title>
+                        <Title transparent onPress={()=>{navigation.navigate('Chat')}}>Settings</Title>
                     </Body>
                     <Right>
 						<Button transparent>
@@ -39,9 +47,9 @@ export default class Settings extends Component {
                             </Button>
                         </Right>
 					</ListItem>
-                    <ListItem avatar noBorder button onPress={() =>{navigate('Accounts')}}>
+                    <ListItem avatar noBorder button onPress={() =>{navigation.navigate('Accounts')}}>
                         <Left>
-                            <Button transparent onPress={() =>{navigate('Accounts')}}>
+                            <Button transparent onPress={() =>{navigation.navigate('Accounts')}}>
                                 <Icon name='account-cog' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -50,9 +58,9 @@ export default class Settings extends Component {
                             <Text note>Privacy, security, change number</Text>
                         </Body>
 					</ListItem>
-                    <ListItem avatar noBorder button onPress={() =>{navigate('Chats')}}>
+                    <ListItem avatar noBorder button onPress={() =>{navigation.navigate('Chats')}}>
                         <Left>
-                            <Button transparent onPress={() =>{navigate('Chats')}}>
+                            <Button transparent onPress={() =>{navigation.navigate('Chats')}}>
                                 <Icon name='chat' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -61,9 +69,9 @@ export default class Settings extends Component {
                             <Text note>Theme, wallpapers, chat history</Text>
                         </Body>
 					</ListItem>
-                    <ListItem avatar noBorder button onPress={()=>{navigate('Notifications')}}>
+                    <ListItem avatar noBorder button onPress={()=>{navigation.navigate('Notifications')}}>
                         <Left>
-                            <Button transparent onPress={()=>{navigate('Notifications')}}>
+                            <Button transparent onPress={()=>{navigation.navigate('Notifications')}}>
                                 <Icon name='notifications-sharp' type="Ionicons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -72,9 +80,9 @@ export default class Settings extends Component {
                             <Text note>Message, group &amp; call tones</Text>
                         </Body>
 					</ListItem>
-                    <ListItem avatar noBorder button onPress={()=>{navigate('Storage')}}>
+                    <ListItem avatar noBorder button onPress={()=>{navigation.navigate('Storage')}}>
                         <Left>
-                            <Button transparent onPress={()=>{navigate('Storage')}}>
+                            <Button transparent onPress={()=>{navigation.navigate('Storage')}}>
                                 <Icon name='data-usage' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -83,9 +91,9 @@ export default class Settings extends Component {
                             <Text note>Network usage, auto-download</Text>
                         </Body>
 					</ListItem>
-                    <ListItem avatar noBorder button onPress={()=>{navigate('Help')}}>
+                    <ListItem avatar noBorder button onPress={()=>{navigation.navigate('Help')}}>
                         <Left>
-                            <Button transparent onPress={()=>{navigate('Help')}}>
+                            <Button transparent onPress={()=>{navigation.navigate('Help')}}>
                                 <Icon name='help-circle' type="Feather" style={{fontSize: 28,color:"#075E54"}}/>
                             </Button>
                         </Left>
@@ -104,6 +112,16 @@ export default class Settings extends Component {
                             <Title style={{color:"#075E54"}}>Invite a friend</Title>
                         </Body>
 					</ListItem>
+                    <ListItem avatar noBorder button onPress={() =>{logout()}}>
+                        <Left>
+                            <Button transparent>
+                                <Icon name='logout' type="SimpleLineIcons" style={{fontSize: 28,color:"#075E54"}}/>
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Title style={{color:"#075E54",marginTop:10}}>Logout</Title>
+                        </Body>
+					</ListItem>
 				</ScrollView>
                 <Button full light style={{backgroundColor:"#ffffff"}} >
                     <Body>
@@ -112,6 +130,5 @@ export default class Settings extends Component {
                     </Body>
                 </Button>
 			</Container>
-		);
-	}
+        )
 }

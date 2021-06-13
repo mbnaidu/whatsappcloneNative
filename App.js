@@ -50,8 +50,11 @@ import Capture from './Screens/Capture';
 import Requirements from './Requirements/Requirements';
 import Login from './Requirements/Login';
 import Profile from './Requirements/Profile';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createStackNavigator();
+
+
 
 export default class App extends React.Component {
 	state = {
