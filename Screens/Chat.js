@@ -1,42 +1,16 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge, Thumbnail, ListItem, Fab, View, Card, Label, Input, Item} from 'native-base';
-import { ScrollView, StatusBar, Text,Image, Modal } from 'react-native';
+import { ScrollView, StatusBar, Text,Image, Modal, TouchableWithoutFeedback} from 'react-native';
 import styles from '../Styles/First';
 import Calls from './Calls';
 import Status from './Status';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/core';
 
-export default function Chat() {
-    const [id,setId] = useState('');
-    const [mainModalVisible,setMainModalVisible] = useState(false);
 
+export default function Chat({navigation}) {
+    const [mainModalVisible,setMainModalVisible] = useState(false);
     const [aeroplanemode,setAeroplanemode] = useState(false);
-    const checkUser = () =>{
-		const data = {
-			username : username,
-			number : number,
-		} 
-		axios.post('http://192.168.43.212:5000/login', {data}).then(
-                function(res) {
-                    if(res.data.length == 0) {
-						axios.post('http://192.168.43.212:5000/usersignup', {data}).then(
-							function(res) {
-								if(res.data) {
-									setId(res.data._id);
-								}
-							}
-						)
-                    }
-					else{
-						{res.data.map((m)=>{
-							setId(m._id);
-						})}
-					}
-                }
-            )
-	}
-    const navigation = useNavigation();
     return (
         <Container>
 				<Container>
@@ -135,13 +109,13 @@ export default function Chat() {
 						</ScrollView>
 					</View>
                     <Tabs initialPage={0}
-						tabBarBackgroundColor="#04D9CF"
+						tabBarBackgroundColor="#05F8EC"
 						tabContainerStyle={{elevation:0}}
 						tabBarUnderlineStyle={styles.tabBarUnderline}
 					>
 						<Tab 
 							heading={
-							<TabHeading style={{backgroundColor:"#04D9CF"}}>
+							<TabHeading style={{backgroundColor:"#05F8EC"}}>
 								<Text style={styles.textColor}>CHATS </Text>
 								<Badge style={styles.badge}>
 									<Text style={styles.badgeText}>2</Text>
@@ -157,7 +131,7 @@ export default function Chat() {
 											<Icon
 												type="MaterialIcons"
 												name="nightlight-round"
-												style={{color:"#193674"}}
+												style={{color:"#000000"}}
 											/>
 											<Icon
 												type="MaterialIcons"
@@ -170,28 +144,30 @@ export default function Chat() {
 											<Text note>Hi</Text>
 										</Body>
 										<Right>
-											<Text note style={{color:"#25D366"}}>3:23 pm</Text>
+											<Text note style={{color:"#05F8EC"}}>3:23 pm</Text>
 											<Badge style={styles.badgeChats}>
 												<Text style={styles.badgeChatsText}>1</Text>
 											</Badge>
 										</Right>
 									</ListItem>
 								</ScrollView>
-								<Fab position="bottomRight" style={{backgroundColor:"#25D366"}}>
-									<Icon name="chat" type="MaterialIcons" onPress={()=>{navigation.navigate('NewMessage',{userId:id})}}/>
-								</Fab>
+								<TouchableWithoutFeedback onPress={()=>{navigation.navigate('NewMessage')}}>
+									<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigation.navigate('NewMessage')}}>
+										<Icon name="chat" type="MaterialIcons" onPress={()=>{navigation.navigate('NewMessage')}}/>
+									</Fab>
+								</TouchableWithoutFeedback>
 							</Container>
 						</Tab>
 						<Tab 
 							heading={
-								<TabHeading style={{backgroundColor:"#04D9CF"}}>
+								<TabHeading style={{backgroundColor:"#05F8EC"}}>
 									<Text style={styles.textColor}>STATUS</Text>
 								</TabHeading>}>
 								<Status/>
 						</Tab>
 						<Tab 
 							heading={
-								<TabHeading style={{backgroundColor:"#04D9CF"}}>
+								<TabHeading style={{backgroundColor:"#05F8EC"}}>
 									<Text style={styles.textColor}>CALLS</Text>
 								</TabHeading>}>
 								<Calls/>
