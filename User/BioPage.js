@@ -18,6 +18,7 @@ export default class BioPage extends Component {
         isEnabled:false,
         };
     }
+    
     call = () => {
 		this.setState({ isEnabled: !this.state.isEnabled });
 	}
