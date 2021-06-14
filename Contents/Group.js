@@ -28,17 +28,17 @@ export default class Group extends Component {
 				<Header style={styles.headerBackgroundColor} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Chat')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
 						<ListItem noBorder button onPress={()=>{navigate('Chat')}}>
 							<View>
-								<Text style={{color:"#ffffff",fontSize:17}}>
+								<Text style={{color:"#000000",fontSize:17}}>
 									New Group
 								</Text>
 							<View>
-								<Text style={{color:"#ffffff",fontSize:12}}>
+								<Text style={{color:"#000000",fontSize:12}}>
 									Add paritcipants
 								</Text>
 							</View>
@@ -47,7 +47,7 @@ export default class Group extends Component {
 					</Body>
 					<Right>
 						<Button transparent>
-							<Icon name='search' type="MaterialIcons" style={{fontSize: 28}} onPress={()=>{this.setModalVisible(!modalVisible);}}/>
+							<Icon name='search' type="MaterialIcons" style={{fontSize: 28,color:"black"}} onPress={()=>{this.setModalVisible(!modalVisible);}}/>
 							<View style={styles.centeredView}>
 								<Modal
 									animationType="fade"
@@ -59,7 +59,7 @@ export default class Group extends Component {
 									>
 									<View style={{backgroundColor:"#FFFF"}}>
 										<Item>
-											<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}} onPress={()=>{this.setModalVisible(!modalVisible)}}/>
+											<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}} onPress={()=>{this.setModalVisible(!modalVisible)}}/>
 											<Input placeholder="Search" />
 										</Item>
 									</View>
@@ -104,7 +104,7 @@ export default class Group extends Component {
 					</ScrollView>
 				</Container>
 				<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} button onPress={()=>{navigate('NewGroup')}}>
-					<Icon name="arrow-forward" type="MaterialIcons" button onPress={()=>{navigate('NewGroup')}}/>
+					<Icon name="arrow-forward" type="MaterialIcons" style={{color:"black"}} button onPress={()=>{navigate('NewGroup')}}/>
 				</Fab>
 			</Container>
 		);

@@ -24,15 +24,15 @@ export default class QuickSchedule extends Component {
 					<Header style={styles.headerBackgroundColor} >
 						<Left>
 							<Button transparent onPress={()=>{navigate('Schedule')}}>
-								<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+								<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 						</Left>
 						<Body>
-							<Text style={{color:"#ffffff",fontSize:18,fontWeight:"bold"}}  onPress={()=>{navigate('Schedule')}}>Quick Schedule</Text>
+							<Text style={{color:"#000000",fontSize:18,fontWeight:"bold"}}  onPress={()=>{navigate('Schedule')}}>Quick Schedule</Text>
 						</Body>
 						<Right>
 						<Button transparent>
-							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28}} />
+							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28,color:"black"}} />
 						</Button>
 					</Right>
 					</Header>
@@ -69,8 +69,8 @@ export default class QuickSchedule extends Component {
 								</Picker>
 						</Item>
 					</View>
-					<Fab position="bottomRight" style={{backgroundColor:"#075E54"}}  onPress={()=>{navigate('Schedule')}}>
-						<Icon name="check" type="MaterialIcons" style={{fontSize:28}}/>
+					<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}}  onPress={()=>{navigate('Schedule')}}>
+						<Icon name="check" type="MaterialIcons" style={{fontSize:28,color:"#000000"}}/>
 					</Fab>
 				</Container>
 		);

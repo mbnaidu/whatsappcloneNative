@@ -51,15 +51,15 @@ export default class Contact extends Component {
 				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Chat')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Chat')}}>Create Contact</Title>
+                        <Title onPress={()=>{navigate('Chat')}} style={{color:"#000000"}}>Create Contact</Title>
                     </Body>
 					<Right>
 						<Button transparent>
-							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Right>
 				</Header>
@@ -225,7 +225,7 @@ export default class Contact extends Component {
                         </View>
                     </ScrollView>
                 <Button full light style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigate('Chat')}}>
-                    <Text style={{color:"#ffffff"}}>Save</Text>
+                    <Text style={{color:"black",letterSpacing:3,fontWeight:"bold"}}>Save</Text>
                 </Button>
 			</Container>
 		);

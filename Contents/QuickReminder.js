@@ -19,15 +19,15 @@ export default class QuickReminder extends Component {
 					<Header style={styles.headerBackgroundColor} >
 						<Left>
 							<Button transparent onPress={()=>{navigate('Reminder')}}>
-								<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+								<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 						</Left>
 						<Body>
-							<Text onPress={()=>{navigate('Reminder')}} style={{color:"#ffffff",fontSize:18,fontWeight:"bold"}}>Quick Reminder</Text>
+							<Text onPress={()=>{navigate('Reminder')}} style={{color:"#000000",fontSize:18,fontWeight:"bold"}}>Quick Reminder</Text>
 						</Body>
 						<Right>
 							<Button transparent>
-								<Image source={require('../Assets/ellipsis.png')} style={styles.ellipsis}/>
+								<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 						</Right>
 					</Header>
@@ -64,8 +64,8 @@ export default class QuickReminder extends Component {
 								</Picker>
 						</Item>
 					</View>
-					<Fab position="bottomRight" style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('Reminder')}}>
-						<Icon name="check" type="MaterialIcons" style={{fontSize:28}}  onPress={()=>{navigate('Reminder')}}/>
+					<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigate('Reminder')}}>
+						<Icon name="check" type="MaterialIcons" style={{fontSize:28,color:"#000000"}}  onPress={()=>{navigate('Reminder')}}/>
 					</Fab>
 				</Container>
 		);

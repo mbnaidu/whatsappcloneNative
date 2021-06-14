@@ -12,15 +12,15 @@ export default function Search({navigation}) {
 				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigation.navigate('Chat')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigation.navigate('Chat')}}>Search</Title>
+                        <Title onPress={()=>{navigation.navigate('Chat')}} style={{color:"#000000"}}>Search</Title>
                     </Body>
 					<Right>
 						<Button transparent>
-							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Right>
 				</Header>
@@ -83,7 +83,7 @@ export default function Search({navigation}) {
                         </View>
 				</ScrollView>
                 <Button full light style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigation.navigate('Chat')}}>
-                    <Text style={{color:"#ffffff"}}>SEARCH</Text>
+                    <Text style={{color:"#000000",letterSpacing:3,fontWeight:"bold"}}>SEARCH</Text>
                 </Button>
 			</Container>
     )

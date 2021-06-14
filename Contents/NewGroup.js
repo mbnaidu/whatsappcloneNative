@@ -11,12 +11,12 @@ export default class NewGroup extends Component {
 					<Header style={styles.headerBackgroundColor} button>
 						<Left>
 							<Button transparent onPress={()=>{navigate('Group')}}>
-								<Icon name='close' type="MaterialIcons" style={{fontSize: 28}}/>
+								<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 							</Button>
 						</Left>
 						<Body>
 							<ListItem noBorder button onPress={()=>{navigate('Group')}}>
-									<Title >
+									<Title style={{color:"black"}}>
 										Added paritcipants
 									</Title>
 							</ListItem>
@@ -53,8 +53,8 @@ export default class NewGroup extends Component {
 							</Left>
 						</ListItem>
 					</View>
-					<Fab position="bottomRight" style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('Chat')}}>
-						<Icon name="check" type="MaterialIcons" button onPress={()=>{navigate('Chat')}}/>
+					<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigate('Chat')}}>
+						<Icon name="check" type="MaterialIcons" style={{color:"black"}} button onPress={()=>{navigate('Chat')}}/>
 					</Fab>
 				</Container>
 		);

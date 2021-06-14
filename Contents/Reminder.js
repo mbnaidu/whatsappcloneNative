@@ -20,18 +20,18 @@ export default class Reminder extends Component {
 				<Header style={styles.headerBackgroundColor} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Chat')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Chat')}}>All Reminders</Title>
+                        <Title onPress={()=>{navigate('Chat')}} style={{color:"black"}}>All Reminders</Title>
 					</Body>
 					<Right>
 						<Button transparent>
-							<Icon name='search' type="MaterialIcons" style={{fontSize: 28}} />
+							<Icon name='search' type="MaterialIcons" style={{fontSize: 28,color:"black"}} />
 						</Button>
 						<Button transparent>
-							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28}} />
+							<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28,color:"black"}} />
 						</Button>
 					</Right>
 				</Header>
@@ -55,82 +55,82 @@ export default class Reminder extends Component {
 								<Picker.Item label="Finished" value="key4" />
 							</Picker>
 						</Item>
-						<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+						<ListItem style={{backgroundColor:"#05F8EC",margin:30}}  transparent >
 							<Button transparent>
-								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 							<Body>
-								<Title>Reminder 1</Title>
-								<Text style={{color:"#ffffff"}}>Wednesday March 21 2020 </Text>
+								<Title style={{color:"#000000"}}>Reminder 1</Title>
+								<Text style={{color:"#000000"}}>Wednesday March 21 2020 </Text>
 							</Body>
 						</ListItem>
-						<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+						<ListItem style={{backgroundColor:"#05F8EC",margin:30}}  transparent >
 							<Button transparent>
-								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 							<Body>
-								<Title>Reminder 2</Title>
-								<Text style={{color:"#ffffff"}}>Today</Text>
+								<Title style={{color:"#000000"}}>Reminder 2</Title>
+								<Text style={{color:"#000000"}}>Today</Text>
 							</Body>
 						</ListItem>
-						<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+						<ListItem style={{backgroundColor:"#05F8EC",margin:30}}  transparent >
 							<Button transparent>
-								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 							<Body>
-								<Title>Reminder 1</Title>
-								<Text style={{color:"#ffffff"}}>Wednesday March 21 2020 </Text>
+								<Title style={{color:"#000000"}}>Reminder 1</Title>
+								<Text style={{color:"#000000"}}>Wednesday March 21 2020 </Text>
 							</Body>
 						</ListItem>
-						<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+						<ListItem style={{backgroundColor:"#05F8EC",margin:30}}  transparent >
 							<Button transparent>
-								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 							<Body>
-								<Title>Reminder 2</Title>
-								<Text style={{color:"#ffffff"}}>Today</Text>
+								<Title style={{color:"#000000"}}>Reminder 2</Title>
+								<Text style={{color:"#000000"}}>Today</Text>
 							</Body>
 						</ListItem>
-						<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+						<ListItem style={{backgroundColor:"#05F8EC",margin:30}}  transparent >
 							<Button transparent>
-								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 							<Body>
-								<Title>Reminder 1</Title>
-								<Text style={{color:"#ffffff"}}>Wednesday March 21 2020 </Text>
+								<Title style={{color:"#000000"}}>Reminder 1</Title>
+								<Text style={{color:"#000000"}}>Wednesday March 21 2020 </Text>
 							</Body>
 						</ListItem>
-						<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+						<ListItem style={{backgroundColor:"#05F8EC",margin:30}}  transparent >
 							<Button transparent>
-								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 							<Body>
-								<Title>Reminder 2</Title>
-								<Text style={{color:"#ffffff"}}>Today</Text>
+								<Title style={{color:"#000000"}}>Reminder 2</Title>
+								<Text style={{color:"#000000"}}>Today</Text>
 							</Body>
 						</ListItem>
-						<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+						<ListItem style={{backgroundColor:"#05F8EC",margin:30}}  transparent >
 							<Button transparent>
-								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 							<Body>
-								<Title>Reminder 1</Title>
-								<Text style={{color:"#ffffff"}}>Wednesday March 21 2020 </Text>
+								<Title style={{color:"#000000"}}>Reminder 1</Title>
+								<Text style={{color:"#000000"}}>Wednesday March 21 2020 </Text>
 							</Body>
 						</ListItem>
-						<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+						<ListItem style={{backgroundColor:"#05F8EC",margin:30}}  transparent >
 							<Button transparent>
-								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 							<Body>
-								<Title>Reminder 2</Title>
-								<Text style={{color:"#ffffff"}}>Today</Text>
+								<Title style={{color:"#000000"}}>Reminder 2</Title>
+								<Text style={{color:"#000000"}}>Today</Text>
 							</Body>
 						</ListItem>
 					</ScrollView>
 				</Container>
-				<Fab position="bottomRight" style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('QuickReminder')}}>
-					<Icon name="add" type="MaterialIcons" button onPress={()=>{navigate('QuickReminder')}}/>
+				<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigate('QuickReminder')}}>
+					<Icon name="add" type="MaterialIcons" style={{fontSize: 28,color:"#000000"}} button onPress={()=>{navigate('QuickReminder')}}/>
 				</Fab>
 			</Container>
 		);

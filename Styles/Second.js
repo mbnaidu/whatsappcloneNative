@@ -3,19 +3,22 @@ import {StyleSheet} from 'react-native';
 export default StyleSheet.create({
     // Chat Header
     chatBody:{
-        paddingLeft:30,
+        backgroundColor:"#05F8EC",
+        width:30,
     },
     chatBodyTextHeading1:{
-        color:"snow",
+        marginLeft:10,
+        color:"black",
         fontWeight:"bold",
         fontSize:18,
     },
     chatBodyTextHeading2:{
-        color:"snow",
+        marginLeft:10,
+        color:"black",
         fontSize:11,
     },
     headerBackgroundColor:{
-        backgroundColor:"#075E54"
+        backgroundColor:"#05F8EC"
     },
     // Chat Footer
     chatFooter:{
@@ -37,13 +40,13 @@ export default StyleSheet.create({
     },
     emojiicon: {
         alignSelf:"auto",
-        color:"#808080",
+        color:"#05F8EC",
         margin:10,
         fontSize:28
     },
     onSendEmoji: {
         alignSelf:"auto",
-        color:"#075E54",
+        color:"#05F8EC",
         margin:10,
         fontSize:30,
         borderRadius:50,
@@ -59,13 +62,13 @@ export default StyleSheet.create({
         padding: 10,
         borderRadius:50,
         fontSize:28,
-        color:"white",
-        backgroundColor:'#075E54'
+        color:"black",
+        backgroundColor:'#05F8EC'
     },
     // speaker
     speaker:{
         marginBottom: 45,
-        backgroundColor:"#075E54"
+        backgroundColor:"#05F8EC"
     },
     attachment:{
         color:"#AEA3A3",
@@ -126,7 +129,7 @@ export default StyleSheet.create({
     },
     // bioHeader
     bioHeader: {
-        backgroundColor:"#075E54"
+        backgroundColor:"#05F8EC"
     },
     // Bio Page
     MainContainer :{
@@ -148,7 +151,7 @@ export default StyleSheet.create({
     },
     // chat page backgroundColor
     chatPageSecondHeader:{
-        backgroundColor:"#075E54",
+        backgroundColor:"#05F8EC",
         height:80,
     },
     // message box

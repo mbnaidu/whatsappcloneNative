@@ -16,14 +16,14 @@ export default class Bluetooth extends Component {
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Chat')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color: '#000000'}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Chat')}}>Bluetooth Message</Title>
+                        <Title onPress={()=>{navigate('Chat')}} style={{color: '#000000'}}>Bluetooth Message</Title>
                     </Body>
 				</Header>
                 <ScrollView vertical={true}>
@@ -70,8 +70,8 @@ export default class Bluetooth extends Component {
                         </View>
                     </Card>
                 </ScrollView>
-                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('Chat')}}>
-                    <Text style={{color:"#ffffff",letterSpacing:3}}>SEND MESSAGE</Text>
+                <Button full light style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigate('Chat')}}>
+                    <Text style={{color:"#000000",letterSpacing:3,fontWeight:"bold"}}>SEND MESSAGE</Text>
                 </Button>
 			</Container>
 		);

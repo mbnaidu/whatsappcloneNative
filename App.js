@@ -46,7 +46,6 @@ import NewGroup from './Contents/NewGroup';
 import ChatPage from './User/ChatPage';
 import MediaPage from './User/MediaPage';
 import BioPage from './User/BioPage';
-import NewMessage from './Contents/NewMessage';
 import Capture from './Screens/Capture';
 import Requirements from './Requirements/Requirements';
 import Login from './Requirements/Login';
@@ -86,7 +85,6 @@ export default class App extends React.Component {
 				<Stack.Screen name="TypeStatus" component={TypeStatus}options={{ headerShown: false }} />
 				<Stack.Screen name="Chat" component={Chat}options={{ headerShown: false, }} />
 				<Stack.Screen name="Capture" component={Capture} options={{ headerShown: false }} />
-				<Stack.Screen name="NewMessage" component={NewMessage} options={{ headerShown: false }} />
 				<Stack.Screen name="ChatPage" component={ChatPage} options={{ headerShown: false }} />
 				<Stack.Screen name="MediaPage" component={MediaPage} options={{ headerShown: false }} />
 				<Stack.Screen name="BioPage" component={BioPage} options={{ headerShown: false }} />

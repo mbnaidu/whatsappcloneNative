@@ -11,40 +11,40 @@ export default class Schedule extends Component {
 				<Header style={styles.headerBackgroundColor} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Chat')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
-                    <Title  onPress={()=>{navigate('Chat')}} style={{marginTop:13}}>Scheduled Messages</Title>
+                    <Title  onPress={()=>{navigate('Chat')}} style={{marginTop:13,color:"black"}}>Scheduled Messages</Title>
 					<Right>
 						<Button transparent>
-							<Icon name='search' type="MaterialIcons" style={{fontSize: 28}} />
+							<Icon name='search' type="MaterialIcons" style={{fontSize: 28,color:"black"}} />
 						</Button>
 					</Right>
 				</Header>
 				<Container>
 					<ScrollView vertical={true}>
-						<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+						<ListItem style={{backgroundColor:"#05F8EC",margin:30}}  transparent >
                             <Button transparent>
-                                <Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+                                <Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
                             </Button>
                             <Body>
-                                <Title>Reminder 1</Title>
-                                <Text style={{color:"#ffffff"}}>Wednesday March 21 2020 </Text>
+                                <Title style={{color:"#000000"}}>Reminder 1</Title>
+                                <Text style={{color:"#000000"}}>Wednesday March 21 2020 </Text>
                             </Body>
 						</ListItem>
-						<ListItem style={{backgroundColor:"#075E54",margin:30}}  transparent >
+						<ListItem style={{backgroundColor:"#05F8EC",margin:30}}  transparent >
 							<Button transparent>
-								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#ffffff"}}/>
+								<Icon name='delete-forever' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 							</Button>
 							<Body>
-								<Title>Reminder 2</Title>
-								<Text style={{color:"#ffffff"}}>Today</Text>
+								<Title style={{color:"#000000"}}>Reminder 2</Title>
+								<Text style={{color:"#000000"}}>Today</Text>
 							</Body>
 						</ListItem>
 					</ScrollView>
 				</Container>
-				<Fab position="bottomRight" style={{backgroundColor:"#075E54"}}  onPress={()=>{navigate('QuickSchedule')}}>
-					<Icon name="add" type="MaterialIcons" button onPress={()=>{navigate('QuickSchedule')}}/>
+				<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}}  onPress={()=>{navigate('QuickSchedule')}}>
+					<Icon name="add" type="MaterialIcons" style={{fontSize:28,color:"#000000"}}button onPress={()=>{navigate('QuickSchedule')}}/>
 				</Fab>
 			</Container>
 		);
