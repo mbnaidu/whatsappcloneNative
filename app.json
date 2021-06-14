@@ -1,8 +1,8 @@
 {
-  "name": "whatsappclone",
-  "displayName": "whatsappclone",
+  "name": "Piegeon",
+  "displayName": "Piegeon",
   "expo": {
-    "name": "whatsappclone",
+    "name": "Piegeon",
     "slug": "whatsappclone",
     "version": "1.0.0",
     "android": {

@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge, Thumbnail, ListItem, Fab, View, Card, Label, Input, Item} from 'native-base';
-import { ScrollView, StatusBar, Text,Image, Modal, TouchableWithoutFeedback} from 'react-native';
+import { ScrollView, StatusBar, Text,Image, Modal, TouchableWithoutFeedback, Alert, BackHandler} from 'react-native';
 import styles from '../Styles/First';
 import Calls from './Calls';
 import Status from './Status';
@@ -9,6 +9,19 @@ import { useNavigation } from '@react-navigation/core';
 
 
 export default function Chat({navigation}) {
+	useEffect(() => {
+		const backAction = () => {
+			BackHandler.exitApp() 
+		};
+
+		const backHandler = BackHandler.addEventListener(
+		"hardwareBackPress",
+		backAction
+		);
+
+		return () => backHandler.remove();
+	}, []);
+
     const [mainModalVisible,setMainModalVisible] = useState(false);
     const [aeroplanemode,setAeroplanemode] = useState(false);
     return (

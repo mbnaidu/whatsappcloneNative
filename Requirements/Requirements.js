@@ -13,11 +13,13 @@ const Requirements = ({navigation}) => {
     const [contact,setContact] = useState(false);
     const [camera,setCamera] = useState(false);
     const [media,setMedia] = useState(false);
+    const [login,setLogin] = useState('k');
     useEffect(() => {
         (async () => {
         try {
-                    const jsonValue = await AsyncStorage.getItem('@storage_Key')
-                    return jsonValue != null ?navigation.navigate('Chat',{id: jsonValue}) : null;
+                    const jsonValue = await AsyncStorage.getItem('@storage_Key');
+                    setLogin(jsonValue)
+                    return jsonValue != null ? navigation.navigate('Chat',{id: jsonValue}) : null;
                 } catch(e) {
                     console.warn(e)
                 }
@@ -68,9 +70,11 @@ const Requirements = ({navigation}) => {
                     -    Terms of services &amp; privacy policy
                 </Text>
             </Text>
-            <Button style={styles.button} onPress={() =>{setAgree(true)}}>
+            {login !== 'k' ? (
+                <Button style={styles.button} onPress={() =>{setAgree(true)}}>
                 <Text style={styles.buttontext}>Agree &amp; Continue</Text>
             </Button>
+            ) : <View></View>}
         </View>
     )
     }

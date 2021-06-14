@@ -13,7 +13,7 @@ export default function NewMessage({navigation}) {
     // It will be executed before rendering
 
     useEffect(() => {
-        setTimeout(() => setSpinner(true), 300)
+        setTimeout(() => setSpinner(true), 500)
     }, []);
     const [allContacts,setAllContacts] = useState([]);
 	useEffect(() => {
