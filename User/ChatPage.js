@@ -11,7 +11,7 @@ export default function ChatPage({route}) {
     const [modalVisible2,setModalVisible2] = useState(false)
     const navigation = useNavigation();
     const [online,setOnline] = useState(true);
-	const [username,setUsername] = useState('')
+	const [username,setUsername] = useState(route.params.username)
     const [plane,setPlane] = useState(true);
     const [entypo,setEntypo] = useState(true);
     const scrollViewRef = useRef();
@@ -20,37 +20,37 @@ export default function ChatPage({route}) {
     const [curMin,setCurMin] = useState('');
     const [curStatus,setCurStatus] = useState('');
     const [curSec,setCurSec] = useState('');
-	const [userId,setUserId] = useState(route.params.userId);
+	// const [userId,setUserId] = useState(route.params.userId);
 	const [chatId,setChatId] = useState('');
     const [messages,setMessages] = useState([
     ])
-	useEffect(() => {
-		const data = {
-			senderId : route.params.senderId,
-			userId :userId,
-		} 
-		axios.post('http://192.168.43.212:5000/getChat', {data}).then(
-                function(res) {
-                    if(res.data) {
-						setChatId(res.data[0]._id)
-                    }
-                }
-            )
-	},[])
+	// useEffect(() => {
+	// 	const data = {
+	// 		senderId : route.params.senderId,
+	// 		userId :userId,
+	// 	} 
+	// 	axios.post('http://192.168.43.212:5000/getChat', {data}).then(
+    //             function(res) {
+    //                 if(res.data) {
+	// 					setChatId(res.data[0]._id)
+    //                 }
+    //             }
+    //         )
+	// },[])
     useEffect(() => {
         setInterval(function(){
-			const data1 = {
-			senderId : route.params.senderId,
-			userId :userId,
-		} 
-		axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
-                function(res) {
-                    if(res.data) {
-						setChatId(res.data[0]._id);
-						setMessages(res.data[0].messages)
-                    }
-                }
-            )
+		// 	const data1 = {
+		// 	senderId : route.params.senderId,
+		// 	userId :userId,
+		// } 
+		// axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
+        //         function(res) {
+        //             if(res.data) {
+		// 				setChatId(res.data[0]._id);
+		// 				setMessages(res.data[0].messages)
+        //             }
+        //         }
+        //     )
 			var a = new Date().getHours();
 			if(a >= 12){
                 setCurStatus("PM");
@@ -66,48 +66,51 @@ export default function ChatPage({route}) {
 			}
 		}.bind(this), 1000);
     }, [])
-    const sendData = () =>{
-		// const data = {
-		// 	senderId : route.params.senderId,
-		// 	messageId : curHour+curMin+curSec+message,
-		// 	message: message,
-		// 	time:curHour+":"+curMin+" "+curStatus,
-		// 	userId :userId,
-		// } 
-		// axios.post('http://192.168.43.212:5000/addMessage', {data}).then(
-        //         function(res) {
-        //             if(res.data.length == 0) {
-		// 				console.log(res.data)
-        //             }
-        //         }
-        //     )
-		const data1 = {
-			senderId : route.params.senderId,
-			userId :userId,
-		} 
-		axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
-                function(res) {
-                    if(res.data) {
-						const data = {
-							chatId:res.data[0]._id,
-							message: { 
-								message:message,
-								messageId: curHour+curMin+curSec+message,
-								senderId : route.params.senderId,
-								userId :userId,
-								time:curHour+":"+curMin+" "+curStatus,
-							},
-						} 
-						axios.post('http://192.168.43.212:5000/addMessage', {data}).then(
-								function(res) {
-									if(res.data) {
-										setMessage('')
-									}
-								}
-							)
-                    }
-                }
-            )
+    // const sendData = () =>{
+	// 	// const data = {
+	// 	// 	senderId : route.params.senderId,
+	// 	// 	messageId : curHour+curMin+curSec+message,
+	// 	// 	message: message,
+	// 	// 	time:curHour+":"+curMin+" "+curStatus,
+	// 	// 	userId :userId,
+	// 	// } 
+	// 	// axios.post('http://192.168.43.212:5000/addMessage', {data}).then(
+    //     //         function(res) {
+    //     //             if(res.data.length == 0) {
+	// 	// 				console.log(res.data)
+    //     //             }
+    //     //         }
+    //     //     )
+	// 	const data1 = {
+	// 		senderId : route.params.senderId,
+	// 		userId :userId,
+	// 	} 
+	// 	axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
+    //             function(res) {
+    //                 if(res.data) {
+	// 					const data = {
+	// 						chatId:res.data[0]._id,
+	// 						message: { 
+	// 							message:message,
+	// 							messageId: curHour+curMin+curSec+message,
+	// 							senderId : route.params.senderId,
+	// 							userId :userId,
+	// 							time:curHour+":"+curMin+" "+curStatus,
+	// 						},
+	// 					} 
+	// 					axios.post('http://192.168.43.212:5000/addMessage', {data}).then(
+	// 							function(res) {
+	// 								if(res.data) {
+	// 									setMessage('')
+	// 								}
+	// 							}
+	// 						)
+    //                 }
+    //             }
+    //         )
+	// }
+	const sendData= () => {
+		setMessages([...messages,{message:message,type:"sender",time:curHour+":"+curMin,id:curHour+curMin+curSec+message+"sender"},{message:message,type:"receiver",time:curHour+":"+curMin,id:curHour+curMin+curSec+message+"return"}])
 	}
     return (
         <Container>
@@ -123,10 +126,10 @@ export default function ChatPage({route}) {
 						</Button>
 					</Left>
 					<Body style={styles.chatBody}>
-						<ListItem noBorder button onPress={()=>{navigation.navigate('BioPage')}}>
+						<ListItem noBorder button onPress={()=>{navigation.navigate('BioPage',{username:username})}}>
 							<View>
-								<Text style={styles.chatBodyTextHeading1}>
-									Username
+								<Text style={styles.chatBodyTextHeading1} numberOfLines={1}>
+									{username}
 								</Text>
 							<View>
 								<Text style={styles.chatBodyTextHeading2}>
@@ -275,8 +278,8 @@ export default function ChatPage({route}) {
                     onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}>
 					{messages.map((m=>{
 						return(
-							<View key={m.key}>
-								{m.userId == userId ? (
+							<View key={m.id}>
+								{m.type == 'sender' ? (
 									<Body style={[styles.messageSenderBox]}>
 										<Text style={{fontWeight:"bold"}}>{m.message}</Text>
 										<Text note style={{fontSize:12,marginLeft:5,alignSelf:'flex-end'}}>{m.time}<Icon name="loader" type="Feather" style={{fontSize: 11,fontWeight:"bold"}}/></Text>
@@ -315,7 +318,6 @@ export default function ChatPage({route}) {
 							<TextInput
 								style={styles.input}
 								multiline
-								defaultValue={message}
 								onChangeText={(searchString) => {setMessage(searchString);}}
 								underlineColorAndroid="transparent"
 							/>

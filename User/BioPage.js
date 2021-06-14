@@ -18,7 +18,6 @@ export default class BioPage extends Component {
         isEnabled:false,
         };
     }
-    
     call = () => {
 		this.setState({ isEnabled: !this.state.isEnabled });
 	}
@@ -273,7 +272,6 @@ export default class BioPage extends Component {
                     <Button transparent onPress={()=>{navigate('ChatPage')}}>
                         <Icon name='arrow-back' type="MaterialIcons" style={styles.arrow}/>
                     </Button>
-                    <Text style={styles.title} onPress={()=>{navigate('ChatPage')}}>Hanuman</Text>
                 </Body>
             </View>
             </Animated.View>

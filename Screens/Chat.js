@@ -175,7 +175,7 @@ export default function Chat({navigation}) {
 											keyExtractor={item => item.id} 
 											renderItem={({item}) => 
 											<View style={styles.listcontainer}>
-												<ListItem noBorder button>
+												<ListItem noBorder button onPress={() =>{navigation.navigate('ChatPage',{username:item.name})}}>
 													<Thumbnail
 														source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
 													></Thumbnail>
