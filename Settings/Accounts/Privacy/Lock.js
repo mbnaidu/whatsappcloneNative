@@ -16,14 +16,14 @@ export default class Lock extends Component {
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Privacy')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Privacy')}}>Fingerprint lock</Title>
+                        <Title onPress={()=>{navigate('Privacy')}} style={{color:"#000000"}}>Fingerprint lock</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -34,13 +34,13 @@ export default class Lock extends Component {
 				<ScrollView>
 					<ListItem avatar noBorder button style={{marginTop:10}}>
 						<Body >
-							<Text style={{fontSize:18,color:"#075E54",marginBottom:5}}>Unlock with fingerprint</Text>
+							<Text style={{fontSize:18,color:"black",marginBottom:5}}>Unlock with fingerprint</Text>
 							<Text note >When enabled, you'll need to use {`\n`} fingerprint to open Piegon. You can still{`\n`}answer calls if Piegeon is locked.</Text>
 						</Body>
 						<Right>
 							<Switch
 								trackColor={{false:'#767577', true:"#128C7E"}}
-								thumbColor={this.state.isEnabled ? '#075E54' : "#767577"}
+								thumbColor={this.state.isEnabled ? '#05F8EC' : "#767577"}
 								value={this.state.isEnabled}
 								onChange={this.call}
 							>

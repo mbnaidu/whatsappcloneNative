@@ -57,14 +57,14 @@ export default class Notifications extends Component {
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Settings')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Settings')}}>Notifications</Title>
+                        <Title onPress={()=>{navigate('Settings')}} style={{color:"#000000"}}>Notifications</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -73,15 +73,15 @@ export default class Notifications extends Component {
 					</Right>
 				</Header>
 				<ScrollView>
-                    <Text style={{fontSize: 18,color:"#075E54",margin:10,fontWeight:"bold"}}>Messages</Text>
+                    <Text style={{fontSize: 18,color:"black",margin:10,fontWeight:"bold"}}>Messages</Text>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ notificationsShow: true });this.setNotificationsModalVisible(!notificationsModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='notification' type="AntDesign" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='notification' type="AntDesign" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Notifications</Text>
+                            <Text style={{fontSize:16,color:"black",fontWeight:"bold"}}>Notifications</Text>
                             <Text note >{this.state.notificationsStatus}</Text>
                             {!this.state.notificationsShow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -100,7 +100,7 @@ export default class Notifications extends Component {
                                                     <Radio
                                                         onPress={() => {this.setNotificationsModalVisible(!notificationsModalVisible);this.setState({ notificationsStatus: 'Default' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.notificationsStatus == 'Default'}
                                                     />
                                                 </Left>
@@ -118,11 +118,11 @@ export default class Notifications extends Component {
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ vibrateShow: true });this.setVibrateModalVisible(!vibrateModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                    <Icon name='volume-vibrate' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                    <Icon name='volume-vibrate' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                                 </Button>
                             </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Vibrate</Text>
+                            <Text style={{fontSize:16,color:"black",fontWeight:"bold"}}>Vibrate</Text>
                             <Text note >{this.state.vibrateStatus}</Text>
                             {!this.state.vibrateShow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -141,7 +141,7 @@ export default class Notifications extends Component {
                                                     <Radio
                                                         onPress={() => {this.setVibrateModalVisible(!vibrateModalVisible);this.setState({ vibrateStatus: 'Off' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.vibrateStatus == 'Off'}
                                                     />
                                                 </Left>
@@ -154,7 +154,7 @@ export default class Notifications extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ vibrateStatus: 'Default' });this.setVibrateModalVisible(!vibrateModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.vibrateStatus == 'Default'}
                                                     />
                                                 </Left>
@@ -167,7 +167,7 @@ export default class Notifications extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ vibrateStatus: 'Short' });this.setVibrateModalVisible(!vibrateModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.vibrateStatus == 'Short'}
                                                     />
                                                 </Left>
@@ -180,7 +180,7 @@ export default class Notifications extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ vibrateStatus: 'Long' });this.setVibrateModalVisible(!vibrateModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.vibrateStatus == 'Long'}
                                                     />
                                                 </Left>
@@ -195,15 +195,15 @@ export default class Notifications extends Component {
                             )}
                         </Body>
 					</ListItem>
-                    <Text style={{fontSize: 18,color:"#075E54",margin:10,fontWeight:"bold"}}>Calls</Text>
+                    <Text style={{fontSize: 18,color:"black",margin:10,fontWeight:"bold"}}>Calls</Text>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ ringtoneShow: true });this.setRingtoneModalVisible(!ringtoneModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='folder-music' type="Entypo" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='folder-music' type="Entypo" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Ringtone</Text>
+                            <Text style={{fontSize: 16,color:"black",fontWeight:"bold"}}>Ringtone</Text>
                             <Text note >{this.state.ringtoneStatus}</Text>
                             {!this.state.ringtoneShow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -222,7 +222,7 @@ export default class Notifications extends Component {
                                                     <Radio
                                                         onPress={() => {this.setRingtoneModalVisible(!ringtoneModalVisible);this.setState({ ringtoneStatus: 'Default' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.ringtoneStatus == 'Default'}
                                                     />
                                                 </Left>
@@ -240,11 +240,11 @@ export default class Notifications extends Component {
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ callShow:true });this.setCallModalVisible(!callModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='volume-vibrate' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='volume-vibrate' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Vibrate</Text>
+                            <Text style={{fontSize: 16,color:"black",fontWeight:"bold"}}>Vibrate</Text>
                             <Text note >{this.state.callStatus}</Text>
                             {!this.state.callShow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -263,7 +263,7 @@ export default class Notifications extends Component {
                                                     <Radio
                                                         onPress={() => {this.setCallModalVisible(!callModalVisible);this.setState({ callStatus: 'Default' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.callStatus == 'Default'}
                                                     />
                                                 </Left>
@@ -276,7 +276,7 @@ export default class Notifications extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ callStatus: 'Short' });this.setCallModalVisible(!callModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.callStatus == 'Short'}
                                                     />
                                                 </Left>
@@ -289,7 +289,7 @@ export default class Notifications extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ callStatus: 'Medium' });this.setCallModalVisible(!callModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.callStatus == 'Medium'}
                                                     />
                                                 </Left>
@@ -302,7 +302,7 @@ export default class Notifications extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ callStatus: 'Long' });this.setCallModalVisible(!callModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.callStatus == 'Long'}
                                                     />
                                                 </Left>

@@ -35,14 +35,14 @@ export default class Storage extends Component {
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Settings')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Settings')}}>Storage and Data</Title>
+                        <Title onPress={()=>{navigate('Settings')}} style={{color:"#000000"}}>Storage and Data</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -54,28 +54,28 @@ export default class Storage extends Component {
                     <ListItem avatar button>
                         <Left>
                             <Button transparent>
-                                <Icon name='storage' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='storage' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Manage storage</Text>
+                            <Text style={{fontSize: 16,color:"black",fontWeight:"bold"}}>Manage storage</Text>
                             <Text note >1.0 GB</Text>
                         </Body>
                     </ListItem>
                     <ListItem avatar noBorder button>
                         <Body>
-                            <Text style={{fontSize: 14,color:"#075E54",fontWeight:"bold",marginBottom:10}}>Media auto-download</Text>
+                            <Text style={{fontSize: 14,color:"black",fontWeight:"bold",marginBottom:10}}>Media auto-download</Text>
                             <Text note >  Voice messages are always automatically{`\n`}  downloaded</Text>
                         </Body>
                     </ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ mobileShow: true });this.setMobileModalVisible(!mobileModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='mobile1' type="AntDesign" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='mobile1' type="AntDesign" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>When using mobile data</Text>
+                            <Text style={{fontSize:16,color:"black",fontWeight:"bold"}}>When using mobile data</Text>
                             <Text note >{this.state.mobileStatus}</Text>
                             {!this.state.mobileShow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -94,7 +94,7 @@ export default class Storage extends Component {
                                                     <Radio
                                                         onPress={() => {this.setMobileModalVisible(!mobileModalVisible);this.setState({ mobileStatus: 'No media' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.mobileStatus == 'No media'}
                                                     />
                                                 </Left>
@@ -107,7 +107,7 @@ export default class Storage extends Component {
                                                     <Radio
                                                         onPress={() => {this.setMobileModalVisible(!mobileModalVisible);this.setState({ mobileStatus: 'Photos' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.mobileStatus == 'Photos'}
                                                     />
                                                 </Left>
@@ -120,7 +120,7 @@ export default class Storage extends Component {
                                                     <Radio
                                                         onPress={() => {this.setMobileModalVisible(!mobileModalVisible);this.setState({ mobileStatus: 'Audio' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.mobileStatus == 'Audio'}
                                                     />
                                                 </Left>
@@ -133,7 +133,7 @@ export default class Storage extends Component {
                                                     <Radio
                                                         onPress={() => {this.setMobileModalVisible(!mobileModalVisible);this.setState({ mobileStatus: 'Videos' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.mobileStatus == 'Videos'}
                                                     />
                                                 </Left>
@@ -146,7 +146,7 @@ export default class Storage extends Component {
                                                     <Radio
                                                         onPress={() => {this.setMobileModalVisible(!mobileModalVisible);this.setState({ mobileStatus: 'Documents' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.mobileStatus == 'Documents'}
                                                     />
                                                 </Left>
@@ -164,11 +164,11 @@ export default class Storage extends Component {
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ wifiShow: true });this.setWifiModalVisible(!wifiModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                    <Icon name='wifi-logo' type="Fontisto" style={{fontSize: 28,color:"#128C7E"}}/>
+                                    <Icon name='wifi-logo' type="Fontisto" style={{fontSize: 28,color:"#05F8EC"}}/>
                                 </Button>
                             </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>When connected on Wi-Fi</Text>
+                            <Text style={{fontSize:16,color:"black",fontWeight:"bold"}}>When connected on Wi-Fi</Text>
                             <Text note >{this.state.wifiStatus}</Text>
                             {!this.state.wifiShow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -187,7 +187,7 @@ export default class Storage extends Component {
                                                     <Radio
                                                         onPress={() => {this.setWifiModalVisible(!wifiModalVisible);this.setState({ wifiStatus: 'No media' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.wifiStatus == 'No media'}
                                                     />
                                                 </Left>
@@ -200,7 +200,7 @@ export default class Storage extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ wifiStatus: 'Photos' });this.setWifiModalVisible(!wifiModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.wifiStatus == 'Photos'}
                                                     />
                                                 </Left>
@@ -213,7 +213,7 @@ export default class Storage extends Component {
                                                     <Radio
                                                         onPress={() => {this.setWifiModalVisible(!wifiModalVisible);this.setState({ wifiStatus: 'Audio' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.wifiStatus == 'Audio'}
                                                     />
                                                 </Left>
@@ -226,7 +226,7 @@ export default class Storage extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ wifiStatus: 'Videos' });this.setWifiModalVisible(!wifiModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.wifiStatus == 'Videos'}
                                                     />
                                                 </Left>
@@ -239,7 +239,7 @@ export default class Storage extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ wifiStatus: 'Documents' });this.setWifiModalVisible(!wifiModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.wifiStatus == 'Documents'}
                                                     />
                                                 </Left>

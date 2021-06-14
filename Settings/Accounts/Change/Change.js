@@ -2,19 +2,18 @@ import React, { Component } from 'react';
 import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail,ListItem } from 'native-base';
 import { StatusBar, Text,ScrollView } from 'react-native';
 
-export default class Change extends Component {
-	render() {
-		const { navigate } = this.props.navigation;
-		return (
+
+export default function Change({navigation}) {
+	return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('Accounts')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+						<Button transparent onPress={()=>{navigation.navigate('Accounts')}}>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Accounts')}}>Change number</Title>
+                        <Title onPress={()=>{navigation.navigate('Accounts')}} style={{color:"#000000"}}>Change number</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -33,7 +32,7 @@ export default class Change extends Component {
 					</Body>
                     <ListItem avatar button style={{marginTop:10}}>
                         <Body>
-                            <Text style={{fontSize:18,color:"#075E54",marginBottom:5}}>Changing your phone number will migrate{`\n`}your account info, groups &amp; settings.</Text>
+                            <Text style={{fontSize:18,color:"black",marginBottom:5}}>Changing your phone number will migrate{`\n`}your account info, groups &amp; settings.</Text>
                         </Body>
 					</ListItem>
 					<ListItem avatar noBorder button style={{marginTop:10}}>
@@ -47,10 +46,9 @@ export default class Change extends Component {
                         </Body>
 					</ListItem>
 				</ScrollView>
-                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('NewNumber')}}>
-                    <Text style={{color:"#ffffff",letterSpacing:3}}>NEXT</Text>
+                <Button full light style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigation.navigate('NewNumber')}}>
+                    <Text style={{color:"black",letterSpacing:3,fontWeight:"bold"}}>NEXT</Text>
                 </Button>
 			</Container>
 		);
-	}
 }

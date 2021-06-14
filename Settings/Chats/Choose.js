@@ -1,59 +1,70 @@
-import React, { Component } from 'react';
-import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail,ListItem, } from 'native-base';
-import { StatusBar, Text, ScrollView } from 'react-native';
+import React, { Component, useEffect, useState } from 'react';
+import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail, Fab, ListItem,CheckBox,Badge } from 'native-base';
+import { View, Text, FlatList } from 'react-native';
+import * as Contacts from 'expo-contacts';
 import styles from '../../Styles/First';
 
-export default class Choose extends Component {
-	render() {
-		const { navigate } = this.props.navigation;
-		return (
+
+export default function Choose({navigation}) {
+	const [allContacts,setAllContacts] = useState([]);
+	useEffect(() => {
+    (async () => {
+		const { status } = await Contacts.requestPermissionsAsync();
+		if (status === 'granted') {
+			const { data } = await Contacts.getContactsAsync({
+			fields: [Contacts.Fields.PhoneNumbers],
+			});
+
+			if (data.length > 0) {
+			setAllContacts(data)
+			}
+		}
+		})();
+	}, []);
+	return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('History')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+						<Button transparent onPress={()=>{navigation.navigate('History')}}>
+							<Icon name='close' type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('History')}}>Choose chat</Title>
+                        <Title onPress={()=>{navigation.navigate('History')}} style={{color:"#000000"}}>Send chat to...</Title>
+						<Text style={{color:"#000000"}}>No contacts selected</Text>
                     </Body>
 					<Right>
 						<Button transparent>
-							<Icon name='search' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='search' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
+						</Button>
+                        <Button transparent>
+							<Icon name='playlist-check' type="MaterialCommunityIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Right>
 				</Header>
-				<ScrollView>
-				<ListItem itemDivider >
-					<Text>Frequently Contacted</Text>
-				</ListItem>
-				<ListItem avatar noBorder>
-					<Left>
-						<Thumbnail
-							source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
-						></Thumbnail>
-					</Left>
-					<Body>
-						<Text style={styles.firstText}>Hanuman</Text>
-						<Text note>PUTHINATOR</Text>
-					</Body>
-				</ListItem>
-				<ListItem itemDivider style={styles.viewedUpdate}>
-					<Text>Recent chats</Text>
-				</ListItem>
-				<ListItem avatar noBorder>
-					<Left>
-						<Thumbnail
-							source={{uri:'https://assets.teenvogue.com/photos/55d5ebc8ca15223514647be6/16:9/w_1422,h_800,c_limit/Charlie%20Puth%20-%20Nine%20Track%20Mind%20-%20Album%20Artwork.jpg'}}
-						></Thumbnail>
-					</Left>
-					<Body>
-						<Text style={styles.firstText}>Vinay</Text>
-						<Text note >Hey there! I am using Piegon</Text>
-					</Body>
-				</ListItem>
-			</ScrollView>
+				<Container>
+					<FlatList
+						keyExtractor={item => item.id} 
+						renderItem={({item}) => 
+						<View style={styles.listcontainer}>
+							<ListItem noBorder button >
+								<Thumbnail
+									source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
+								></Thumbnail>
+								<Body>
+									<Text style={{fontFamily:"notoserif"}}>  {item.name}</Text>
+								</Body>
+								<Right>
+						<CheckBox color="red"  style={{marginRight:25}}/>
+						</Right>
+							</ListItem>
+						</View>}
+						data={allContacts} 
+						/> 
+				</Container>
+                <Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigation.navigate('History')}}>
+					<Icon name="check" type="MaterialIcons" style={{fontSize:28,color:"#000000"}}/>
+				</Fab>
 			</Container>
 		);
-	}
 }

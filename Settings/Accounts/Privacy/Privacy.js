@@ -48,14 +48,14 @@ export default class Privacy extends Component {
             const { aboutModalVisible } = this.state;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Accounts')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Accounts')}}>Privacy</Title>
+                        <Title onPress={()=>{navigate('Accounts')}} style={{color:"#000000"}}>Privacy</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -66,13 +66,13 @@ export default class Privacy extends Component {
 				<ScrollView>
                     <ListItem avatar noBorder button style={{marginTop:10}}>
                         <Body >
-                            <Text style={{fontSize:18,color:"#075E54",marginBottom:5}}>Who can see my personal info</Text>
+                            <Text style={{fontSize:18,color:"#05F8EC",marginBottom:5}}>Who can see my personal info</Text>
                             <Text note >If you don't share your last seen, you won't be able {`\n`}to see other people's Last seen</Text>
                         </Body>
 					</ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ lastseenshow: true });this.setLastSeenModalVisible(!lastSeenModalVisible);}}>
                         <Body >
-                            <Text style={{fontSize:18,color:"#075E54"}}>Last seen</Text>
+                            <Text style={{fontSize:18,color:"#05F8EC"}}>Last seen</Text>
                             <Text note >{this.state.lastSeenStatus}</Text>
                             {!this.state.lastseenshow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -91,7 +91,7 @@ export default class Privacy extends Component {
                                                     <Radio
                                                         onPress={() => {this.setLastSeenModalVisible(!lastSeenModalVisible);this.setState({ lastSeenStatus: 'Everyone' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.lastSeenStatus == 'Everyone'}
                                                     />
                                                 </Left>
@@ -104,7 +104,7 @@ export default class Privacy extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ lastSeenStatus: 'My contacts' });this.setLastSeenModalVisible(!lastSeenModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.lastSeenStatus == 'My contacts'}
                                                     />
                                                 </Left>
@@ -117,7 +117,7 @@ export default class Privacy extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ lastSeenStatus: 'Nobody' });this.setLastSeenModalVisible(!lastSeenModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.lastSeenStatus == 'Nobody'}
                                                     />
                                                 </Left>
@@ -134,7 +134,7 @@ export default class Privacy extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ profilephotoshow: true });this.setProfilePhotoModalVisible(!profilePhotoModalVisible);}}>
                         <Body >
-                            <Text style={{fontSize:18,color:"#075E54"}}>Profile Photo</Text>
+                            <Text style={{fontSize:18,color:"#05F8EC"}}>Profile Photo</Text>
                             <Text note >{this.state.profilePhotoStatus}</Text>
                             {!this.state.profilephotoshow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -153,7 +153,7 @@ export default class Privacy extends Component {
                                                     <Radio
                                                         onPress={() => {this.setProfilePhotoModalVisible(!profilePhotoModalVisible);this.setState({ profilePhotoStatus: 'Everyone' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.profilePhotoStatus == 'Everyone'}
                                                     />
                                                 </Left>
@@ -166,7 +166,7 @@ export default class Privacy extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ profilePhotoStatus: 'My contacts' });this.setProfilePhotoModalVisible(!profilePhotoModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.profilePhotoStatus == 'My contacts'}
                                                     />
                                                 </Left>
@@ -179,7 +179,7 @@ export default class Privacy extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ profilePhotoStatus: 'Nobody' });this.setProfilePhotoModalVisible(!profilePhotoModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.profilePhotoStatus == 'Nobody'}
                                                     />
                                                 </Left>
@@ -197,7 +197,7 @@ export default class Privacy extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ aboutshow:true });this.setAboutModalVisible(!aboutModalVisible);}}>
                         <Body >
-                            <Text style={{fontSize:18,color:"#075E54"}}>About</Text>
+                            <Text style={{fontSize:18,color:"#05F8EC"}}>About</Text>
                             <Text note >{this.state.aboutStatus}</Text>
                             {!this.state.aboutshow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -216,7 +216,7 @@ export default class Privacy extends Component {
                                                     <Radio
                                                         onPress={() => {this.setAboutModalVisible(!aboutModalVisible);this.setState({ aboutStatus: 'Everyone' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.aboutStatus == 'Everyone'}
                                                     />
                                                 </Left>
@@ -229,7 +229,7 @@ export default class Privacy extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ aboutStatus: 'My contacts' });this.setAboutModalVisible(!aboutModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.aboutStatus == 'My contacts'}
                                                     />
                                                 </Left>
@@ -242,7 +242,7 @@ export default class Privacy extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ aboutStatus: 'Nobody' });this.setAboutModalVisible(!aboutModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.aboutStatus == 'Nobody'}
                                                     />
                                                 </Left>
@@ -259,31 +259,31 @@ export default class Privacy extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Status')}}>
                         <Body >
-                            <Text style={{fontSize:18,color:"#075E54"}}>Status</Text>
+                            <Text style={{fontSize:18,color:"#05F8EC"}}>Status</Text>
                             <Text note >My contacts</Text>
                         </Body>
                     </ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Groups')}}>
                         <Body >
-                            <Text style={{fontSize:18,color:"#075E54"}}>Groups</Text>
+                            <Text style={{fontSize:18,color:"#05F8EC"}}>Groups</Text>
                             <Text note >Everyone</Text>
                         </Body>
                     </ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Location')}}>
                         <Body >
-                            <Text style={{fontSize:18,color:"#075E54"}}>Live Location</Text>
+                            <Text style={{fontSize:18,color:"#05F8EC"}}>Live Location</Text>
                             <Text note >None</Text>
                         </Body>
                     </ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Blocked')}}>
                         <Body >
-                            <Text style={{fontSize:18,color:"#075E54"}}>Blocked Contacts</Text>
+                            <Text style={{fontSize:18,color:"#05F8EC"}}>Blocked Contacts</Text>
                             <Text note >3</Text>
                         </Body>
                     </ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Lock')}}>
                         <Body >
-                            <Text style={{fontSize:18,color:"#075E54"}}>Fingerprint lock</Text>
+                            <Text style={{fontSize:18,color:"#05F8EC"}}>Fingerprint lock</Text>
                             <Text note >Disabled</Text>
                         </Body>
                     </ListItem>

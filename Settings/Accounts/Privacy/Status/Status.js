@@ -25,15 +25,15 @@ export default class Status extends Component {
 		const { aboutModalVisible } = this.state;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent 
 							onPress={()=>{navigate('Privacy')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Privacy')}}>Status privacy</Title>
+                        <Title onPress={()=>{navigate('Privacy')}} style={{color:"#000000"}}>Status privacy</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -44,7 +44,7 @@ export default class Status extends Component {
 					<ScrollView>
 						<ListItem avatar noBorder button style={{marginTop:10}}>
 							<Body >
-								<Text style={{fontSize:16,color:"#075E54",marginBottom:5}}>Who can see my status updates</Text>
+								<Text style={{fontSize:16,color:"#05F8EC",marginBottom:5}}>Who can see my status updates</Text>
 							</Body>
 						</ListItem>
 						<ListItem avatar noBorder button onPress={() => {this.setState({ aboutStatus: 'My contacts' });this.setAboutModalVisible(!aboutModalVisible);}}>
@@ -52,7 +52,7 @@ export default class Status extends Component {
 								<Radio
 									onPress={() => {this.setAboutModalVisible(!aboutModalVisible);this.setState({ aboutStatus: 'My contacts' });}}
 									color={"#808080"}
-									selectedColor={"#075E54"}
+									selectedColor={"#05F8EC"}
 									selected={this.state.aboutStatus == 'My contacts'}
 								/>
 							</Left>
@@ -65,7 +65,7 @@ export default class Status extends Component {
 								<Radio
 									onPress={() => {this.setState({ aboutStatus: 'My contacts except . . .' });this.setAboutModalVisible(!aboutModalVisible);}}
 									color={"#808080"}
-									selectedColor={"#075E54"}
+									selectedColor={"#05F8EC"}
 									selected={this.state.aboutStatus == 'My contacts except . . .'}
 								/>
 							</Left>
@@ -78,7 +78,7 @@ export default class Status extends Component {
 								<Radio
 									onPress={() => {navigate('Only');this.setState({ aboutStatus: 'Only share with . . .' });this.setAboutModalVisible(!aboutModalVisible);}}
 									color={"#808080"}
-									selectedColor={"#075E54"}
+									selectedColor={"#05F8EC"}
 									selected={this.state.aboutStatus == 'Only share with . . .'}
 								/>
 							</Left>
@@ -92,11 +92,11 @@ export default class Status extends Component {
                         </Body>
 					</ListItem>
 				</ScrollView>
-					<Button full light style={{backgroundColor:"#075E54"}} 
+					<Button full light style={{backgroundColor:"#05F8EC"}} 
 						onPress={()=>{navigate('Privacy', {
 							status: this.state.aboutStatus
 					})}}>
-                    <Text style={{color:"#ffffff"}}>DONE</Text>
+                    <Text style={{color:"#000000"}}>DONE</Text>
                 </Button>
 			</Container>
 		);

@@ -45,14 +45,14 @@ export default class Chats extends Component {
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Settings')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Settings')}}>Chats</Title>
+                        <Title onPress={()=>{navigate('Settings')}} style={{color:"#000000"}}>Chats</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -61,15 +61,15 @@ export default class Chats extends Component {
 					</Right>
 				</Header>
 				<ScrollView>
-                    <Text style={{fontSize: 18,color:"#075E54",margin:10,fontWeight:"bold"}}>Display</Text>
+                    <Text style={{fontSize: 18,color:"black",margin:10,fontWeight:"bold"}}>Display</Text>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ displayShow: true });this.setDisplayModalVisible(!displayModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Display</Text>
+                            <Text style={{fontSize:16,color:"black",fontWeight:"bold"}}>Display</Text>
                             <Text note >{this.state.displayStatus}</Text>
                             {!this.state.displayShow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -88,7 +88,7 @@ export default class Chats extends Component {
                                                     <Radio
                                                         onPress={() => {this.setDisplayModalVisible(!displayModalVisible);this.setState({ displayStatus: 'Light' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.displayStatus == 'Light'}
                                                     />
                                                 </Left>
@@ -101,7 +101,7 @@ export default class Chats extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ displayStatus: 'Dark' });this.setDisplayModalVisible(!displayModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.displayStatus == 'Dark'}
                                                     />
                                                 </Left>
@@ -119,28 +119,28 @@ export default class Chats extends Component {
                     <ListItem avatar button>
                         <Left>
                             <Button transparent>
-                                <Icon name='wallpaper' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='wallpaper' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Wallpaper</Text>
+                            <Text style={{fontSize: 16,color:"black",fontWeight:"bold"}}>Wallpaper</Text>
                         </Body>
                     </ListItem>
-                    <Text style={{fontSize: 18,color:"#075E54",margin:10,fontWeight:"bold"}}>Chat settings</Text>
+                    <Text style={{fontSize: 18,color:"black",margin:10,fontWeight:"bold"}}>Chat settings</Text>
                     <ListItem avatar noBorder button>
                         <Left>
                             <Button transparent>
-                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 0,color:"#128C7E"}}/>
+                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 0,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Enter is send</Text>
+                            <Text style={{fontSize: 16,color:"#05F8EC",fontWeight:"bold"}}>Enter is send</Text>
                             <Text note>Enter key will send your message</Text>
                         </Body>
                         <Right>
                         <Switch
-                            trackColor={{false:'#767577', true:"#128C7E"}}
-                            thumbColor={this.state.sendEnalbed ? '#075E54' : "#767577"}
+                            trackColor={{false:'#767577', true:"#05F8EC"}}
+                            thumbColor={this.state.sendEnalbed ? '#05F8EC' : "#767577"}
                             value={this.state.sendEnalbed}
                             onChange={this.send}
                         >
@@ -150,17 +150,17 @@ export default class Chats extends Component {
                     <ListItem avatar noBorder button>
                         <Left>
                             <Button transparent>
-                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 0,color:"#128C7E"}}/>
+                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 0,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Media visibility</Text>
+                            <Text style={{fontSize: 16,color:"#05F8EC",fontWeight:"bold"}}>Media visibility</Text>
                             <Text note>Show newly downloaded media {`\n`} in your's phone gallery.</Text>
                         </Body>
                         <Right>
                             <Switch
-                                trackColor={{false:'#767577', true:"#128C7E"}}
-                                thumbColor={this.state.mediaEnabled ? '#075E54' : "#767577"}
+                                trackColor={{false:'#767577', true:"#05F8EC"}}
+                                thumbColor={this.state.mediaEnabled ? '#05F8EC' : "#767577"}
                                 value={this.state.mediaEnabled}
                                 onChange={this.media}
                             >
@@ -170,11 +170,11 @@ export default class Chats extends Component {
                     <ListItem avatar button style={{marginTop:10}} onPress={()=>{this.setState({ fontShow: true });this.setFontModalVisible(!fontModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 0,color:"#128C7E"}}/>
+                                <Icon name='theme-light-dark' type="MaterialCommunityIcons" style={{fontSize: 0,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Font Size</Text>
+                            <Text style={{fontSize: 16,color:"#05F8EC",fontWeight:"bold"}}>Font Size</Text>
                             <Text note >{this.state.fontStatus}</Text>
                             {!this.state.fontShow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -193,7 +193,7 @@ export default class Chats extends Component {
                                                     <Radio
                                                         onPress={() => {this.setFontModalVisible(!fontModalVisible);this.setState({ fontStatus: 'Small' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.fontStatus == 'Small'}
                                                     />
                                                 </Left>
@@ -206,7 +206,7 @@ export default class Chats extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ fontStatus: 'Medium' });this.setFontModalVisible(!fontModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.fontStatus == 'Medium'}
                                                     />
                                                 </Left>
@@ -219,7 +219,7 @@ export default class Chats extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ fontStatus: 'Large' });this.setFontModalVisible(!fontModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"#05F8EC"}
                                                         selected={this.state.fontStatus == 'Large'}
                                                     />
                                                 </Left>
@@ -238,21 +238,21 @@ export default class Chats extends Component {
                     <ListItem avatar noBorder button onPress={()=>{navigate('Backup')}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='backup' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='backup' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Chat Backup</Text>
+                            <Text style={{fontSize: 16,color:"#05F8EC",fontWeight:"bold"}}>Chat Backup</Text>
                         </Body>
                     </ListItem>
                     <ListItem avatar noBorder button onPress={()=>{navigate('History')}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='history' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='history' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Chat History</Text>
+                            <Text style={{fontSize: 16,color:"#05F8EC",fontWeight:"bold"}}>Chat History</Text>
                         </Body>
                     </ListItem>
 				</ScrollView>

@@ -19,14 +19,14 @@ export default class History extends Component {
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Chats')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Chats')}}>Chat History</Title>
+                        <Title onPress={()=>{navigate('Chats')}} style={{color:"#000000"}}>Chat History</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -38,21 +38,21 @@ export default class History extends Component {
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{navigate('Choose')}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='send' type="FontAwesome" style={{fontSize: 30,color:"#128C7E"}}/>
+                                <Icon name='send' type="FontAwesome" style={{fontSize: 30,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Export Chat</Text>
+                            <Text style={{fontSize:16,color:"black",fontWeight:"bold"}}>Export Chat</Text>
                         </Body>
                     </ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ deleteShow: true });this.setDeleteModalVisible(!deleteModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='delete-alert' type="MaterialCommunityIcons" style={{fontSize: 30,color:"#128C7E"}}/>
+                                <Icon name='delete-alert' type="MaterialCommunityIcons" style={{fontSize: 30,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Delete all chats</Text>
+                            <Text style={{fontSize:16,color:"black",fontWeight:"bold"}}>Delete all chats</Text>
                         </Body>
                         {!this.state.deleteShow ? (<View></View>) : (
                             <View style={styles.centeredView}>

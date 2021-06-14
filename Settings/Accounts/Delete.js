@@ -2,25 +2,24 @@ import React, { Component } from 'react';
 import { Container, Header, Left, Body, Button, Icon, Title, Item, Input, Fab, View, ListItem,Label } from 'native-base';
 import { StatusBar, Text, ScrollView } from 'react-native';
 
-export default class Delete extends Component {
-	render() {
-		const { navigate } = this.props.navigation;
-		return (
+
+export default function Delete({navigation}) {
+    return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('Accounts')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+						<Button transparent onPress={()=>{navigation.navigate('Accounts')}}>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body style={{marginRight:150}}>
-                        <Title  onPress={()=>{navigate('Accounts')}}>Delete my account</Title>
+                        <Title  onPress={()=>{navigation.navigate('Accounts')}} style={{color:"#000000"}}>Delete my account</Title>
                     </Body>
 				</Header>
 					<ScrollView>
-                    <ListItem avatar noBorder button onPress={() =>{navigate('Accounts')}}>
+                    <ListItem avatar noBorder button onPress={() =>{navigation.navigate('Accounts')}}>
                         <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
+                            <Button transparent onPress={()=>{navigation.navigate('Chat')}}>
                                 <Icon name='alert' type="Foundation" style={{fontSize: 28,color:"red"}}/>
                             </Button>
                         </Left>
@@ -49,14 +48,14 @@ export default class Delete extends Component {
 					</ListItem>
                     <ListItem avatar noBorder button>
                         <Left>
-                            <Button transparent onPress={()=>{navigate('Chat')}}>
-                                <Icon name='sign-out' type="Octicons" style={{fontSize: 28,color:"#075E54"}}/>
+                            <Button transparent onPress={()=>{navigation.navigate('Chat')}}>
+                                <Icon name='sign-out' type="Octicons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
                             <Text style={{fontSize:18}}>Change number instead</Text>
-                            <Button style={{backgroundColor:"#075E54",padding:30,marginTop:10}} onPress={() =>{navigate('Change')}}>
-                                <Text style={{color:"#ffffff"}}>CHANGE NUMBER</Text>
+                            <Button style={{backgroundColor:"#05F8EC",padding:30,marginTop:10}} onPress={() =>{navigation.navigate('Change')}}>
+                                <Text style={{color:"black"}}>CHANGE NUMBER</Text>
                             </Button>
                         </Body>
                     </ListItem>
@@ -75,10 +74,9 @@ export default class Delete extends Component {
                         </Body>
                     </ListItem>
 				</ScrollView>
-                <Fab position="bottomRight" style={{backgroundColor:"red"}} onPress={() =>{navigate('Chat')}}>
-					<Icon name="delete" type="MaterialIcons"/>
+                <Fab position="bottomRight" style={{backgroundColor:"red"}} onPress={() =>{navigation.navigate('Chat')}}>
+					<Icon name="delete" type="MaterialIcons" style={{color:"#ffffff",fontSize:28}}/>
 				</Fab>
 			</Container>
 		);
-	}
 }

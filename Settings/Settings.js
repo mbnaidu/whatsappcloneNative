@@ -15,14 +15,14 @@ export default function Settings({navigation}) {
         }
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigation.navigate('Chat')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title transparent onPress={()=>{navigation.navigate('Chat')}}>Settings</Title>
+                        <Title transparent onPress={()=>{navigation.navigate('Chat')}} style={{color:"black"}}>Settings</Title>
                     </Body>
                     <Right>
 						<Button transparent>
@@ -43,14 +43,14 @@ export default function Settings({navigation}) {
                         </Body>
                         <Right>
                             <Button transparent>
-                                <Icon name='qrcode' type="AntDesign" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='qrcode' type="AntDesign" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Right>
 					</ListItem>
                     <ListItem avatar noBorder button onPress={() =>{navigation.navigate('Accounts')}}>
                         <Left>
                             <Button transparent onPress={() =>{navigation.navigate('Accounts')}}>
-                                <Icon name='account-cog' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='account-cog' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
@@ -61,7 +61,7 @@ export default function Settings({navigation}) {
                     <ListItem avatar noBorder button onPress={() =>{navigation.navigate('Chats')}}>
                         <Left>
                             <Button transparent onPress={() =>{navigation.navigate('Chats')}}>
-                                <Icon name='chat' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='chat' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
@@ -72,7 +72,7 @@ export default function Settings({navigation}) {
                     <ListItem avatar noBorder button onPress={()=>{navigation.navigate('Notifications')}}>
                         <Left>
                             <Button transparent onPress={()=>{navigation.navigate('Notifications')}}>
-                                <Icon name='notifications-sharp' type="Ionicons" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='notifications-sharp' type="Ionicons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
@@ -83,7 +83,7 @@ export default function Settings({navigation}) {
                     <ListItem avatar noBorder button onPress={()=>{navigation.navigate('Storage')}}>
                         <Left>
                             <Button transparent onPress={()=>{navigation.navigate('Storage')}}>
-                                <Icon name='data-usage' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='data-usage' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
@@ -94,7 +94,7 @@ export default function Settings({navigation}) {
                     <ListItem avatar noBorder button onPress={()=>{navigation.navigate('Help')}}>
                         <Left>
                             <Button transparent onPress={()=>{navigation.navigate('Help')}}>
-                                <Icon name='help-circle' type="Feather" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='help-circle' type="Feather" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
@@ -105,21 +105,21 @@ export default function Settings({navigation}) {
                     <ListItem avatar noBorder button >
                         <Left>
                             <Button transparent>
-                                <Icon name='group-add' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='group-add' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Title style={{color:"#075E54"}}>Invite a friend</Title>
+                            <Title style={{color:"#05F8EC"}}>Invite a friend</Title>
                         </Body>
 					</ListItem>
                     <ListItem avatar noBorder button onPress={() =>{logout()}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='logout' type="SimpleLineIcons" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='logout' type="SimpleLineIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Title style={{color:"#075E54",marginTop:10}}>Logout</Title>
+                            <Title style={{color:"#05F8EC",marginTop:10}}>Logout</Title>
                         </Body>
 					</ListItem>
 				</ScrollView>

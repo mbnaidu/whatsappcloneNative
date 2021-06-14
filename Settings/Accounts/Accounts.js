@@ -7,14 +7,14 @@ export default class Accounts extends Component {
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Settings')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Settings')}}>Accounts</Title>
+                        <Title onPress={()=>{navigate('Settings')}} style={{color:"#000000"}}>Accounts</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -26,7 +26,7 @@ export default class Accounts extends Component {
                     <ListItem avatar noBorder button onPress={() =>{navigate('Privacy')}}>
                         <Left>
                             <Button transparent onPress={()=>{navigate('Privacy')}}>
-                                <Icon name='security' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='security' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body style={{marginTop:10}}>
@@ -36,7 +36,7 @@ export default class Accounts extends Component {
                     <ListItem avatar noBorder button onPress={() =>{navigate('Verification')}}>
                         <Left>
                             <Button transparent onPress={()=>{navigate('Verification')}}>
-                                <Icon name='verified-user' type="MaterialIcons" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='verified-user' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body style={{marginTop:10}}>
@@ -46,7 +46,7 @@ export default class Accounts extends Component {
                     <ListItem avatar noBorder button onPress={() =>{navigate('Change')}}>
                         <Left>
                             <Button transparent onPress={()=>{navigate('Change')}}>
-                                <Icon name='exchange' type="FontAwesome" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='exchange' type="FontAwesome" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body style={{marginTop:10}}>
@@ -56,7 +56,7 @@ export default class Accounts extends Component {
                     <ListItem avatar noBorder button onPress={() =>{navigate('Delete')}}>
                         <Left>
                             <Button transparent onPress={()=>{navigate('Delete')}}>
-                                <Icon name='delete-alert' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#075E54"}}/>
+                                <Icon name='delete-alert' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body style={{marginTop:10}}>

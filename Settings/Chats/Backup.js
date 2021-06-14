@@ -53,14 +53,14 @@ export default class Backup extends Component {
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Chats')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Chats')}}>Chat backup</Title>
+                        <Title onPress={()=>{navigate('Chats')}} style={{color:"#000000"}}>Chat backup</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -72,11 +72,11 @@ export default class Backup extends Component {
                     <ListItem avatar button style={{marginTop:10}} >
                         <Left>
                             <Button transparent>
-                                <Icon name='backup' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='backup' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Last backup</Text>
+                            <Text style={{fontSize:16,color:"black",fontWeight:"bold"}}>Last backup</Text>
                             <Text note >Back up your messages and media to Google{`\n`}Drive. You can restore them when you{`\n`}reinstall Piegeon. Your messages will also{`\n`}back up to your phone's internal storage.</Text>
                             <View style={{marginTop:10}}>
                                 <Text style={{fontSize: 15,marginTop:3,fontFamily:"Roboto_medium"}}>Local: 2:15 AM</Text>
@@ -84,8 +84,8 @@ export default class Backup extends Component {
                                 <Text style={{fontSize: 15,marginTop:3,fontFamily:"Roboto_medium"}}>Size: 700 MB</Text>
                             </View>
                             <View>
-                                <Button style={{backgroundColor:"#075E54",padding:30,margin:20}}>
-                                    <Text style={{color:"#ffffff"}}>BACK UP</Text>
+                                <Button style={{backgroundColor:"#05F8EC",padding:30,margin:20}}>
+                                    <Text style={{color:"black"}}>BACK UP</Text>
                                 </Button>
                             </View>
                         </Body>
@@ -93,22 +93,22 @@ export default class Backup extends Component {
                     <ListItem avatar noBorder button>
                         <Left>
                             <Button transparent>
-                                <Icon name='google-drive' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='google-drive' type="MaterialCommunityIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold",marginBottom:10}}>Google Drive settings</Text>
+                            <Text style={{fontSize: 16,color:"black",fontWeight:"bold",marginBottom:10}}>Google Drive settings</Text>
                             <Text note>Messages and media backed up in Google{`\n`}Drive are not protected by Piegeon{`\n`}end-to-end Encryption</Text>
                         </Body>
                     </ListItem>
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ driveShow: true });this.setDriveModalVisible(!driveModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='add-to-drive' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='add-to-drive' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Back up to Google Drive</Text>
+                            <Text style={{fontSize:16,color:"black",fontWeight:"bold"}}>Back up to Google Drive</Text>
                             <Text note >{this.state.driveStatus}</Text>
                             {!this.state.driveShow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -127,7 +127,7 @@ export default class Backup extends Component {
                                                     <Radio
                                                         onPress={() => {this.setDriveModalVisible(!driveModalVisible);this.setState({ driveStatus: 'Daily' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.driveStatus == 'Daily'}
                                                     />
                                                 </Left>
@@ -140,7 +140,7 @@ export default class Backup extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ driveStatus: 'Never' });this.setDriveModalVisible(!driveModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.driveStatus == 'Never'}
                                                     />
                                                 </Left>
@@ -153,7 +153,7 @@ export default class Backup extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ driveStatus: 'Monthly' });this.setDriveModalVisible(!driveModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.driveStatus == 'Monthly'}
                                                     />
                                                 </Left>
@@ -166,7 +166,7 @@ export default class Backup extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ driveStatus: 'Weekly' });this.setDriveModalVisible(!driveModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.driveStatus == 'Weekly'}
                                                     />
                                                 </Left>
@@ -175,7 +175,7 @@ export default class Backup extends Component {
                                                 </Body>
                                             </ListItem>
                                             <ListItem noBorder button>
-                                                <Text style={{color:"#075E54",fontWeight:"bold",margin:10,alignSelf:"flex-end",textAlignVertical:'bottom'}} onPress={() => {this.setDriveModalVisible(!driveModalVisible);}}>Cancel</Text>
+                                                <Text style={{color:"black",fontWeight:"bold",margin:10,alignSelf:"flex-end",textAlignVertical:'bottom'}} onPress={() => {this.setDriveModalVisible(!driveModalVisible);}}>Cancel</Text>
                                             </ListItem>
                                         </View>
                                     </View>
@@ -187,11 +187,11 @@ export default class Backup extends Component {
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ accountShow: true });this.setAccountModalVisible(!accountModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='google' type="Fontisto" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='google' type="Fontisto" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Google Account</Text>
+                            <Text style={{fontSize:16,color:"black",fontWeight:"bold"}}>Google Account</Text>
                             <Text note >{this.state.accountStatus}</Text>
                             {!this.state.accountShow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -210,7 +210,7 @@ export default class Backup extends Component {
                                                     <Radio
                                                         onPress={() => {this.setAccountModalVisible(!accountModalVisible);this.setState({ accountStatus: '18pa1a1213@vishnu.edu.in' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.accountStatus == '18pa1a1213@vishnu.edu.in'}
                                                     />
                                                 </Left>
@@ -223,7 +223,7 @@ export default class Backup extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ accountStatus: 'madhucharliehash@gmail.com' });this.setAccountModalVisible(!accountModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.accountStatus == 'madhucharliehash@gmail.com'}
                                                     />
                                                 </Left>
@@ -236,7 +236,7 @@ export default class Backup extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ accountStatus: 'Add account' });this.setAccountModalVisible(!accountModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.accountStatus == 'Add account'}
                                                     />
                                                 </Left>
@@ -255,11 +255,11 @@ export default class Backup extends Component {
                     <ListItem avatar noBorder button style={{marginTop:10}} onPress={()=>{this.setState({ backupShow:true });this.setBackupModalVisible(!backupModalVisible);}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='backup' type="MaterialIcons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='backup' type="MaterialIcons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize:16,color:"#075E54",fontWeight:"bold"}}>Back up over</Text>
+                            <Text style={{fontSize:16,color:"black",fontWeight:"bold"}}>Back up over</Text>
                             <Text note >{this.state.backupStatus}</Text>
                             {!this.state.backupShow ? (<View></View>) : (
                                 <View style={styles.centeredView}>
@@ -278,7 +278,7 @@ export default class Backup extends Component {
                                                     <Radio
                                                         onPress={() => {this.setBackupModalVisible(!backupModalVisible);this.setState({ backupStatus: 'Wi-Fi' });}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.backupStatus == 'Wi-Fi'}
                                                     />
                                                 </Left>
@@ -291,7 +291,7 @@ export default class Backup extends Component {
                                                     <Radio
                                                         onPress={() => {this.setState({ backupStatus: 'Wi-Fi or cellular' });this.setBackupModalVisible(!backupModalVisible);}}
                                                         color={"#808080"}
-                                                        selectedColor={"#075E54"}
+                                                        selectedColor={"black"}
                                                         selected={this.state.backupStatus == 'Wi-Fi or cellular'}
                                                     />
                                                 </Left>
@@ -309,16 +309,16 @@ export default class Backup extends Component {
                     <ListItem avatar noBorder button style={{marginBottom: 20}}>
                         <Left>
                             <Button transparent>
-                                <Icon name='file-media' type="Octicons" style={{fontSize: 28,color:"#128C7E"}}/>
+                                <Icon name='file-media' type="Octicons" style={{fontSize: 28,color:"#05F8EC"}}/>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{fontSize: 16,color:"#075E54",fontWeight:"bold"}}>Include videos</Text>
+                            <Text style={{fontSize: 16,color:"black",fontWeight:"bold"}}>Include videos</Text>
                         </Body>
                         <Right>
                             <Switch
-                                trackColor={{false:'#767577', true:"#128C7E"}}
-                                thumbColor={this.state.isEnabled2 ? '#075E54' : "#767577"}
+                                trackColor={{false:'#767577', true:"#05F8EC"}}
+                                thumbColor={this.state.isEnabled2 ? 'black' : "#767577"}
                                 value={this.state.isEnabled2}
                                 onChange={this.call2}
                             >

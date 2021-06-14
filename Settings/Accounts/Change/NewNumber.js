@@ -4,28 +4,17 @@ import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, TouchableW
 import styles from '../../../Styles/First';
 
 
-
-export default class NewNumber extends Component {
-	state = {
-        selected2: undefined,
-	};
-	onValueChange2(value) {
-		this.setState({
-		selected2: value
-		});
-	}
-	render() {
-		const { navigate } = this.props.navigation;
-		return (
-			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+export default function NewNumber({navigation}) {
+	return (
+		<Container>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('Change')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+						<Button transparent onPress={()=>{navigation.navigate('Change')}}>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Change')}}>Change number</Title>
+                        <Title onPress={()=>{navigation.navigate('Change')}} style={{color:"#000000"}}>Change number</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -49,10 +38,9 @@ export default class NewNumber extends Component {
                         </Item>
                     </Header>
 				</Body>
-                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('Change')}}>
-                    <Text style={{color:"#ffffff",letterSpacing:3}}>NEXT</Text>
+                <Button full light style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigation.navigate('Change')}}>
+                    <Text style={{color:"black",letterSpacing:3,fontWeight:"bold"}}>NEXT</Text>
                 </Button>
 			</Container>
-		);
-	}
+	)
 }

@@ -8,22 +8,6 @@ import * as SQLite from "expo-sqlite";
 import * as Contacts from 'expo-contacts';
 
 
-
-function openDatabase() {
-	const db = SQLite.openDatabase("db.db");
-	return db;
-}
-function showDatabase() {
-	db.transaction(
-		(tx) => {
-			tx.executeSql("select * from contacts", [], (_, { rows }) =>
-				console.warn(JSON.stringify(rows))
-			);
-		},
-		null,
-		);
-}
-	const db = openDatabase();
 export default function Chat({navigation}) {
 	const [allContacts,setAllContacts] = useState([]);
 	useEffect(() => {
@@ -40,24 +24,6 @@ export default function Chat({navigation}) {
 		}
 		})();
 	}, []);
-	React.useEffect(() => {
-		db.transaction((tx) => {
-		tx.executeSql(
-			"create table if not exists contacts (id integer primary key not null, value text);"
-		);
-		});
-	}, []);
-	const add = (text) => {
-		if (text === null || text === "") {
-		return false;
-		}
-		db.transaction(
-		(tx) => {
-			tx.executeSql("insert into contacts (value) values (?)", [text]);
-		},
-		null,
-		);
-	};
     const [mainModalVisible,setMainModalVisible] = useState(false);
     const [aeroplanemode,setAeroplanemode] = useState(false);
     return (

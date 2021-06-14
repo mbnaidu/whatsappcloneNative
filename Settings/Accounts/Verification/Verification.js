@@ -7,14 +7,14 @@ export default class Verification extends Component {
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Accounts')}}>
-							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
+							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 						</Button>
 					</Left>
 					<Body  style={{marginRight:108}}>
-                        <Title onPress={()=>{navigate('Accounts')}}>Two-step verification</Title>
+                        <Title onPress={()=>{navigate('Accounts')}} style={{color:"#000000"}}>Two-step verification</Title>
                     </Body>
 				</Header>
 					<ScrollView>
@@ -32,8 +32,8 @@ export default class Verification extends Component {
                         </Body>
 					</ListItem>
 				</ScrollView>
-                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('TwoStep')}}>
-                    <Text style={{color:"#ffffff",letterSpacing:3}}>ENABLE</Text>
+                <Button full light style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigate('TwoStep')}}>
+                    <Text style={{color:"black",letterSpacing:3,fontWeight:"bold"}}>ENABLE</Text>
                 </Button>
 			</Container>
 		);
