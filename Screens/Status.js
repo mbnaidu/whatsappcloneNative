@@ -55,11 +55,11 @@ export default function Status() {
 					</Body>
 				</ListItem>
 			</ScrollView>
-				<Fab position="bottomRight" style={{marginBottom:75,backgroundColor:"#f5f5f5"}} onPress={()=>{navigation.navigate('Album')}}>
-					<Icon name="edit" type="MaterialIcons" style={{color:"#25D366"}}/>
+				<Fab position="bottomRight" style={{marginBottom:75,backgroundColor:"#05F8EC"}} onPress={()=>{navigation.navigate('TypeStatus')}}>
+					<Icon name="edit" type="MaterialIcons" style={{color:"#000000"}}/>
 				</Fab>
-				<Fab position="bottomRight" style={{backgroundColor:"#25D366"}} onPress={()=>{navigation.navigate('Capture')}}>
-					<Icon name="photo-camera" type="MaterialIcons"/>
+				<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigation.navigate('Capture')}}>
+					<Icon name="photo-camera" type="MaterialIcons" style={{fontSize: 28,color:"#000000"}}/>
 				</Fab>
 		</Container>
 	)

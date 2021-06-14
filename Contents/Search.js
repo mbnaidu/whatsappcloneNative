@@ -1,34 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Container, Header, Left, Body, Right, Button, Icon, Title, Item, Input, View, ListItem, Picker,Label } from 'native-base';
 import { StatusBar, Text, ScrollView } from 'react-native';
 
-export default class Search extends Component {
-	state = {
-		contains: undefined,
-		format: undefined,
-	};
-	onContainValueChange(value) {
-		this.setState({
-		contains: value
-		});
-	}
-	onFormatValueChange(value) {
-		this.setState({
-            format: value
-		});
-	}
-	render() {
-		const { navigate } = this.props.navigation;
-		return (
-			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+
+
+export default function Search({navigation}) {
+    const [format,setFormat] = useState(undefined);
+    const [contains,setContains] = useState(undefined);
+    return (
+        <Container>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
-						<Button transparent onPress={()=>{navigate('Chat')}}>
+						<Button transparent onPress={()=>{navigation.navigate('Chat')}}>
 							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
 						</Button>
 					</Left>
 					<Body>
-                        <Title onPress={()=>{navigate('Chat')}}>Search</Title>
+                        <Title onPress={()=>{navigation.navigate('Chat')}}>Search</Title>
                     </Body>
 					<Right>
 						<Button transparent>
@@ -62,8 +50,8 @@ export default class Search extends Component {
                                     placeholder="Select your format"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
-                                    selectedValue={this.state.format}
-                                    onValueChange={this.onFormatValueChange.bind(this)}
+                                    selectedValue={format}
+                                    onValueChange={value => {setFormat(value)}}
                                 >
                                     <Picker.Item label="PDF" value="key0" />
                                     <Picker.Item label="PNG" value="key1" />
@@ -84,8 +72,8 @@ export default class Search extends Component {
                                     placeholder="Select your SIM"
                                     placeholderStyle={{ color: "#bfc6ea" }}
                                     placeholderIconColor="#007aff"
-                                    selectedValue={this.state.contains}
-                                    onValueChange={this.onContainValueChange.bind(this)}
+                                    selectedValue={contains}
+                                    onValueChange={value => {setContains(value)}}
                                 >
                                     <Picker.Item label="Starts with" value="key0" />
                                     <Picker.Item label="Contains" value="key1" />
@@ -94,10 +82,9 @@ export default class Search extends Component {
                             </Item>
                         </View>
 				</ScrollView>
-                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('Chat')}}>
+                <Button full light style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigation.navigate('Chat')}}>
                     <Text style={{color:"#ffffff"}}>SEARCH</Text>
                 </Button>
 			</Container>
-		);
-	}
+    )
 }

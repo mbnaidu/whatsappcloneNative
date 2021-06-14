@@ -5,22 +5,8 @@ import styles from '../Styles/First';
 import Calls from './Calls';
 import Status from './Status';
 import axios from 'axios';
-import { useNavigation } from '@react-navigation/core';
-import { openDatabase } from 'react-native-sqlite-storage';
 
 export default function Chat({navigation}) {
-	useEffect(() => {
-		const backAction = () => {
-			BackHandler.exitApp() 
-		};
-		var db = SQLite.openDatabase({name : "sqlite.db", createFromLocation : "~sqlite.db"});
-		const backHandler = BackHandler.addEventListener(
-		"hardwareBackPress",
-		backAction
-		);
-
-		return () => backHandler.remove();
-	}, []);
 
     const [mainModalVisible,setMainModalVisible] = useState(false);
     const [aeroplanemode,setAeroplanemode] = useState(false);
@@ -37,10 +23,10 @@ export default function Chat({navigation}) {
 									<Image style={styles.searchIcon} source={require('../Assets/pigeon.png')} style={styles.pigeon}/>
 								</Button>
 								<Button transparent>
-									<Image style={styles.searchIcon} source={require('../Assets/status.png')} style={styles.status}/>
+									<Icon name='data-usage' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 								</Button>
 								<Button transparent onPress={()=>{setMainModalVisible(!mainModalVisible)}}>
-									<Image style={styles.searchIcon} source={require('../Assets/moreVert.png')} style={styles.status}/>
+									<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 									<View style={styles.centeredView}>
 										<Modal
 										animationType="fade"
@@ -74,18 +60,18 @@ export default function Chat({navigation}) {
 							<Header noLeft style={styles.chatPageSecondHeader} noBorder>
 							<Body>
 								<Button transparent onPress={() =>{navigation.navigate('Group')}}>
-									<Icon name="group-add" type="MaterialIcons" style={{fontSize:39,color:"white"}}/>
+									<Icon name="group-add" type="MaterialIcons" style={{fontSize:39,color:"black"}}/>
 								</Button>
 							</Body>
 							<Body>
 								<Button transparent onPress={() =>{navigation.navigate('Contact')}}>
-									<Icon name="person-add" type="MaterialIcons" style={{fontSize:39,color:"white"}}/>
+									<Icon name="person-add" type="MaterialIcons" style={{fontSize:39,color:"black"}}/>
 								</Button>
 							</Body>
 							<Body>
 								{!aeroplanemode ? (
 									<Button transparent onPress={() =>{setAeroplanemode(!aeroplanemode)}}>
-										<Icon name="airplanemode-active" type="MaterialIcons" style={{fontSize: 39,color:"white"}}/>
+										<Icon name="airplanemode-active" type="MaterialIcons" style={{fontSize: 39,color:"black"}}/>
 									</Button>
 									) : (
 									<Button transparent onPress={() =>{setAeroplanemode(!aeroplanemode)}}>
@@ -95,27 +81,27 @@ export default function Chat({navigation}) {
 							</Body>
 							<Body onPress={() =>{navigation.navigate('Search')}} >
 								<Button transparent onPress={() =>{navigation.navigate('Search')}}>
-									<Icon name="search" type="MaterialIcons" style={{fontSize: 39,color:"white"}}/>
+									<Icon name="search" type="MaterialIcons" style={{fontSize: 39,color:"black"}}/>
 								</Button>
 							</Body>
 							<Body onPress={() =>{navigation.navigate('Reminder')}} >
 								<Button transparent onPress={() =>{navigation.navigate('Reminder')}}>
-									<Icon name="calendar" type="Octicons" style={{fontSize: 38,color:"white"}}/>
+									<Icon name="calendar" type="Octicons" style={{fontSize: 38,color:"black"}}/>
 								</Button>
 							</Body>
 							<Body onPress={() =>{navigation.navigate('Schedule')}} >
 								<Button transparent onPress={() =>{navigation.navigate('Schedule')}}>
-									<Icon name="send" type="MaterialIcons" style={{fontSize: 36,color:"white"}}/>
+									<Icon name="send" type="MaterialIcons" style={{fontSize: 36,color:"black"}}/>
 								</Button>
 							</Body>
 							<Body onPress={() =>{navigation.navigate('Message')}} >
 								<Button transparent onPress={() =>{navigation.navigate('Message')}}>
-									<Icon name="chat" type="MaterialIcons" style={{fontSize: 36,color:"white"}}/>
+									<Icon name="chat" type="MaterialIcons" style={{fontSize: 36,color:"black"}}/>
 								</Button>
 							</Body>
 							<Body onPress={() =>{navigation.navigate('Bluetooth')}}>
 								<Button transparent onPress={() =>{navigation.navigate('Bluetooth')}}>
-									<Icon name="bluetooth" type="MaterialIcons" style={{fontSize: 36,color:"white"}}/>
+									<Icon name="bluetooth" type="MaterialIcons" style={{fontSize: 36,color:"black"}}/>
 								</Button>
 							</Body>
 						</Header>
@@ -129,7 +115,7 @@ export default function Chat({navigation}) {
 						<Tab 
 							heading={
 							<TabHeading style={{backgroundColor:"#05F8EC"}}>
-								<Text style={styles.textColor}>CHATS </Text>
+								<Text style={[styles.textColor,{color:"black"}]}>CHATS </Text>
 								<Badge style={styles.badge}>
 									<Text style={styles.badgeText}>2</Text>
 								</Badge>
@@ -173,7 +159,7 @@ export default function Chat({navigation}) {
 						</Tab>
 						<Tab 
 							heading={
-								<TabHeading style={{backgroundColor:"#05F8EC"}}>
+								<TabHeading style={{backgroundColor:"#05F8EC"}} >
 									<Text style={styles.textColor}>STATUS</Text>
 								</TabHeading>}>
 								<Status/>

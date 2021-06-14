@@ -4,7 +4,7 @@ export default StyleSheet.create({
     // appbar
     appTitle:{
         fontSize:22,
-        color:"snow"
+        color:"black"
     },
     createContact:{
         fontSize:18,
@@ -22,7 +22,8 @@ export default StyleSheet.create({
         height:80,
     },
     tabBarUnderline:{
-        height:2
+        height:2,
+        backgroundColor:"black"
     },
     // first Text
     firstText:{
@@ -32,7 +33,7 @@ export default StyleSheet.create({
     // tabColorText
     textColor:{
         fontWeight:"bold",
-        color:"snow",
+        color:"black",
         fontSize:15,
     },
     // pigeon png
@@ -42,6 +43,7 @@ export default StyleSheet.create({
     },
     // status png
     status:{
+        color:"#000000",
         width:24,
         height:24,
     },
@@ -66,8 +68,8 @@ export default StyleSheet.create({
     },
     badgeText:{
         alignSelf:"center",
-        fontSize:12,
-        color:"#05F8EC"
+        fontSize:13,
+        color:"black"
     },
     //Chat Page
     badgeChats:{

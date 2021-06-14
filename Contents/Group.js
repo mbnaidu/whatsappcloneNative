@@ -103,7 +103,7 @@ export default class Group extends Component {
 						</ListItem>
 					</ScrollView>
 				</Container>
-				<Fab position="bottomRight" style={{backgroundColor:"#075E54"}} button onPress={()=>{navigate('NewGroup')}}>
+				<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} button onPress={()=>{navigate('NewGroup')}}>
 					<Icon name="arrow-forward" type="MaterialIcons" button onPress={()=>{navigate('NewGroup')}}/>
 				</Fab>
 			</Container>

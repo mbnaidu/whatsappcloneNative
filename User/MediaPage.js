@@ -22,7 +22,7 @@ export default class MediaPage extends Component {
 			<Tabs initialPage={0}
 				tabBarBackgroundColor="#075E54"
 				tabContainerStyle={{elevation:0}}
-				tabBarUnderlineStyle={{ backgroundColor: "#075E54" }}
+				tabBarUnderlineStyle={{ backgroundColor: "#000000" }}
 			>
 				<Tab 
 					heading={

@@ -48,7 +48,7 @@ export default class Contact extends Component {
 		const { navigate } = this.props.navigation;
 		return (
 			<Container>
-				<Header style={{backgroundColor:"#075E54",width:"100%"}} button>
+				<Header style={{backgroundColor:"#05F8EC",width:"100%"}} button>
 					<Left>
 						<Button transparent onPress={()=>{navigate('Chat')}}>
 							<Icon name='arrow-back' type="MaterialIcons" style={{fontSize: 28}}/>
@@ -224,7 +224,7 @@ export default class Contact extends Component {
                             </Item>
                         </View>
                     </ScrollView>
-                <Button full light style={{backgroundColor:"#075E54"}} onPress={()=>{navigate('Chat')}}>
+                <Button full light style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigate('Chat')}}>
                     <Text style={{color:"#ffffff"}}>Save</Text>
                 </Button>
 			</Container>

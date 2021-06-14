@@ -52,6 +52,7 @@ import Requirements from './Requirements/Requirements';
 import Login from './Requirements/Login';
 import Profile from './Requirements/Profile';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import TypeStatus from './Contents/TypeStatus';
 
 const Stack = createStackNavigator();
 
@@ -78,11 +79,12 @@ export default class App extends React.Component {
 		return (
 		<NavigationContainer>
 			<Stack.Navigator>
-				<Stack.Screen name="Requirements" component={Requirements}options={{ headerShown: false }} />
+				<Stack.Screen name="Requirements" component={Requirements}options={{ headerShown: false, }} />
 				<Stack.Screen name="Login" component={Login}options={{ headerShown: false }} />
 				<Stack.Screen name="Profile" component={Profile}options={{ headerShown: false }} />
 				{/* PAGES */}
-				<Stack.Screen name="Chat" component={Chat}options={{ headerShown: false }} />
+				<Stack.Screen name="TypeStatus" component={TypeStatus}options={{ headerShown: false }} />
+				<Stack.Screen name="Chat" component={Chat}options={{ headerShown: false, }} />
 				<Stack.Screen name="Capture" component={Capture} options={{ headerShown: false }} />
 				<Stack.Screen name="NewMessage" component={NewMessage} options={{ headerShown: false }} />
 				<Stack.Screen name="ChatPage" component={ChatPage} options={{ headerShown: false }} />
