@@ -32,7 +32,7 @@ export default class Calls extends Component {
 					</Body>
 					<Right>
 						<Icon
-							style={{color:"#075E54",fontSize:30,marginTop:10}}
+							style={{color:"#05F8EC",fontSize:30,marginTop:10}}
 							name="call"
 							type="MaterialIcons"
 						/>
@@ -62,15 +62,15 @@ export default class Calls extends Component {
 					</Body>
 					<Right>
 						<Icon
-							style={{color:"#075E54",fontSize:30,marginTop:10}}
+							style={{color:"#05F8EC",fontSize:30,marginTop:10}}
 							name="videocam"
 							type="MaterialIcons"
 						/>
 					</Right>
 				</ListItem>
 			</ScrollView>
-			<Fab position="bottomRight" style={{backgroundColor:"#25D366"}}>
-				<Icon name="add-call" type="MaterialIcons"/>
+			<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}}>
+				<Icon name="add-call" type="MaterialIcons" style={{color:"#000000",fontSize:28}}/>
 			</Fab>
 		</Container>
 		);
