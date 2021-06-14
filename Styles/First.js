@@ -73,7 +73,7 @@ export default StyleSheet.create({
     },
     //Chat Page
     badgeChats:{
-        backgroundColor:"#25D366",
+        backgroundColor:"#05F8EC",
         height:28,
         width:28,
         justifyContent:"center",
@@ -86,7 +86,7 @@ export default StyleSheet.create({
         justifyContent:"center",
         alignSelf:"center",
         textAlign:"center",
-        color:"snow"
+        color:"black"
     },
     // Status Page
     addStatusIcon:{
@@ -106,8 +106,8 @@ export default StyleSheet.create({
         marginLeft:55,
         bottom:-10,
         width:25,
-        fontSize:23,
-        marginBottom:10,
+        fontSize:21,
+        marginBottom:25,
     },
     aeroplanemodeoff: {
         color:"#000000",
