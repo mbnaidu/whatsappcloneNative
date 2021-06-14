@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {  View } from 'react-native';
 
+
 // CONTENTS
 import Group from './Contents/Group';
 import Contact from './Contents/Contact';

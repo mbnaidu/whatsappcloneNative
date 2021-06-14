@@ -6,14 +6,14 @@ import Calls from './Calls';
 import Status from './Status';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/core';
-
+import { openDatabase } from 'react-native-sqlite-storage';
 
 export default function Chat({navigation}) {
 	useEffect(() => {
 		const backAction = () => {
 			BackHandler.exitApp() 
 		};
-
+		var db = SQLite.openDatabase({name : "sqlite.db", createFromLocation : "~sqlite.db"});
 		const backHandler = BackHandler.addEventListener(
 		"hardwareBackPress",
 		backAction
