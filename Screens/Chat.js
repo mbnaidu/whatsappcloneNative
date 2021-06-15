@@ -8,7 +8,7 @@ import * as SQLite from "expo-sqlite";
 import * as Contacts from 'expo-contacts';
 
 
-export default function Chat({navigation}) {
+export default function Chat({navigation,route}) {
 	const [allContacts,setAllContacts] = useState([]);
 	useEffect(() => {
     (async () => {
@@ -75,7 +75,7 @@ export default function Chat({navigation}) {
 						<ScrollView horizontal={true}>
 							<Header noLeft style={styles.chatPageSecondHeader} noBorder>
 							<Body>
-								<Button transparent onPress={() =>{navigation.navigate('Group')}}>
+								<Button transparent onPress={() =>{navigation.navigate('Group',{id:route.params.id})}}>
 									<Icon name="group-add" type="MaterialIcons" style={{fontSize:39,color:"black"}}/>
 								</Button>
 							</Body>

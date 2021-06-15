@@ -27,7 +27,7 @@ const Profile = ({route,navigation}) => {
         axios.post('http://192.168.43.212:5000/profile', {data}).then(
             function(res) {
                 if(res.data) {
-                    navigation.navigate('Chat')
+                    navigation.navigate('Chat',{id:route.params.id})
                 }
             }
         )

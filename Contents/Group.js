@@ -4,7 +4,7 @@ import { StatusBar, Text, TextInput,Image, Keyboard, Modal,Pressable, FlatList, 
 import styles from '../Styles/First';
 import * as Contacts from 'expo-contacts';
 
-export default function Group({navigation}) {
+export default function Group({navigation,route}) {
 	const [modalVisible,setModalVisible] = useState(false);
 	const [allContacts,setAllContacts] = useState([]);
 	const [selected,setSelected] = useState([]);
@@ -15,7 +15,6 @@ export default function Group({navigation}) {
 				const { data } = await Contacts.getContactsAsync({
 				fields: [Contacts.Fields.PhoneNumbers],
 				});
-
 				if (data.length > 0) {
 				setAllContacts(data)
 				}
@@ -111,8 +110,8 @@ export default function Group({navigation}) {
 						data={allContacts} 
 					/> 
 				</Container>
-				<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} button onPress={()=>{navigation.navigate('NewGroup',{list:selected})}}>
-					<Icon name="arrow-forward" type="MaterialIcons" style={{color:"black"}} button onPress={()=>{navigation.navigate('NewGroup',{list:selected})}}/>
+				<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} button onPress={()=>{navigation.navigate('NewGroup',{list:selected,id:route.params.id})}}>
+					<Icon name="arrow-forward" type="MaterialIcons" style={{color:"black"}} button onPress={()=>{navigation.navigate('NewGroup',{list:selected,id:route.params.id})}}/>
 				</Fab>
 			</Container>
 		)

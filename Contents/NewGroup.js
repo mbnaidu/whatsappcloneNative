@@ -3,6 +3,7 @@ import { Container, Header, Left, Body, Right, Button, Icon, Title, Thumbnail,In
 import { ScrollView, Text, TouchableWithoutFeedback} from 'react-native';
 import styles from '../Styles/First';
 import * as ImagePicker from 'expo-image-picker';
+import axios from 'axios';
 
 
 export default function NewGroup({navigation,route}) {
@@ -18,6 +19,19 @@ export default function NewGroup({navigation,route}) {
         setType(result.type);
         setURI(result.uri);
     };
+	const groups = () => {
+        const data = {
+            id: route.params.id,
+			groups:route.params.list
+        }
+        axios.post('http://192.168.43.212:5000/creategroup', {data}).then(
+            function(res) {
+                if(res.data) {
+                    console.warn(res.data)
+                }
+            }
+        )
+    }
 	return (
 		<Container style={{backgroundColor:"#"}}>
 			<Header style={styles.headerBackgroundColor} button>
@@ -67,8 +81,8 @@ export default function NewGroup({navigation,route}) {
 						})}
 				</View>
 			</ScrollView>
-			<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} onPress={()=>{navigation.navigate('Chat')}}>
-				<Icon name="check" type="MaterialIcons" style={{color:"black"}} button onPress={()=>{navigation.navigate('Chat')}}/>
+			<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} onPress={()=>{groups()}}>
+				<Icon name="check" type="MaterialIcons" style={{color:"black"}} button onPress={()=>{groups()}}/>
 			</Fab>
 		</Container>
 	)
