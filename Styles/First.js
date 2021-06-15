@@ -130,11 +130,13 @@ export default StyleSheet.create({
         fontSize:23,
         marginBottom:10,
         borderRadius:50,
+        alignContent:"center",
         backgroundColor:"#828385",
         borderWidth:2,
         borderColor:'#ffffff'
     },
     removeText:{
+        alignSelf:"center",
         color:"#000000",
         marginTop: 10,
         fontWeight:"bold",
