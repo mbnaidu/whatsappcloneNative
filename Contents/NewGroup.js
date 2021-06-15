@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 export default function NewGroup({navigation,route}) {
-	const [groupName,setGroupName] = useState([]);
+	const [groupName,setGroupName] = useState('');
 	const [type,setType] = useState('');
     const [URI,setURI] = useState('https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png');
     const pickImage = async () => {
@@ -31,17 +31,18 @@ export default function NewGroup({navigation,route}) {
         axios.post('http://192.168.43.212:5000/creategroup', {data}).then(
             function(res) {
                 if(res.data) {
-					const datas = {
-						groupid:res.data,
-						userid:route.params.id,
-					}
-                    axios.post('http://192.168.43.212:5000/group', {datas}).then(
-						function(res) {
-							if(res.data) {
-								console.warn(res.data)
-							}
-						}
-					)
+					console.log('group id',res.data[0],'persons',res.data[1],'admin',res.data[2]);
+					// const datas = {
+					// 	groupid:res.data,
+					// 	userid:route.params.id,
+					// }
+                    // axios.post('http://192.168.43.212:5000/group', {datas}).then(
+					// 	function(res) {
+					// 		if(res.data) {
+					// 			console.warn(res.data)
+					// 		}
+					// 	}
+					// )
                 }
             }
         )
