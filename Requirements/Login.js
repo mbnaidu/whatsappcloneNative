@@ -74,7 +74,7 @@ const Login = ({navigation}) => {
                     <ListItem avatar button style={{marginTop:10}}>
                         <Item floatingLabel>
                             <Label style={{color:"white",fontWeight:"bold"}}>Phone Number</Label>
-                        <Input keyboardType={'number-pad'} onChangeText={text=>{setNumber(text)}}/>
+                        <Input onChangeText={text=>{setNumber(text)}}/>
                         </Item>
                     </ListItem>
                 </Card>

@@ -6,6 +6,7 @@ import Calls from './Calls';
 import Status from './Status';
 import * as SQLite from "expo-sqlite";
 import * as Contacts from 'expo-contacts';
+import axios from 'axios';
 
 
 export default function Chat({navigation,route}) {
@@ -26,6 +27,37 @@ export default function Chat({navigation,route}) {
 	}, []);
     const [mainModalVisible,setMainModalVisible] = useState(false);
     const [aeroplanemode,setAeroplanemode] = useState(false);
+	const Item = (item) =>{
+		return(
+			<View style={styles.listcontainer}>
+				<ListItem noBorder button onPress={() =>{navigation.navigate('ChatPage',{username:item.data.name})}} > 
+					<Thumbnail
+						source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
+					></Thumbnail>
+					<Icon
+						type="MaterialIcons"
+						name="nightlight-round"
+						style={{color:"#000000",fontSize:16,marginBottom:30}}
+					/>
+					<Icon
+						type="MaterialIcons"
+						name="airplanemode-on"
+						style={styles.aeroplanemodeon}
+					/>
+					<Body>
+						<Text>  {item.data.name}</Text>
+						<Text style={{fontFamily:"sans-serif-light"}}>  {item.data.phoneNumbers[0].number}</Text>
+					</Body>
+					<Right>
+						<Text note style={{color:"black"}}>3:23 pm</Text>
+						<Badge style={styles.badgeChats}>
+							<Text style={styles.badgeChatsText}>1</Text>
+						</Badge>
+					</Right>
+				</ListItem>
+			</View>
+		)
+	}
     return (
         <Container>
 				<Container>
@@ -137,54 +169,28 @@ export default function Chat({navigation,route}) {
 								</Badge>
 							</TabHeading>}>
 							<Container>
-									<FlatList
-											keyExtractor={item => item.id} 
-											renderItem={({item}) => 
-											<View style={styles.listcontainer}>
-												<ListItem noBorder button onPress={() =>{navigation.navigate('ChatPage',{username:item.name})}}>
-													<Thumbnail
-														source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
-													></Thumbnail>
-													<Icon
-														type="MaterialIcons"
-														name="nightlight-round"
-														style={{color:"#000000",fontSize:16,marginBottom:30}}
-													/>
-													<Icon
-														type="MaterialIcons"
-														name="airplanemode-on"
-														style={styles.aeroplanemodeon}
-													/>
-													<Body>
-														<Text style={{fontFamily:"notoserif"}}>  {item.name}</Text>
-														<Text style={{fontFamily:"sans-serif-light"}}>  message</Text>
-													</Body>
-													<Right>
-											<Text note style={{color:"black"}}>3:23 pm</Text>
-											<Badge style={styles.badgeChats}>
-												<Text style={styles.badgeChatsText}>1</Text>
-											</Badge>
-										</Right>
-												</ListItem>
-											</View>}
-											data={allContacts} 
-											
-										/> 
-							</Container>
+								<FlatList
+									keyExtractor={item => item.id} 
+									renderItem={({item}) => item.phoneNumbers !== undefined ? <Item data={item}/> : <View></View>}
+									data={allContacts} 
+								/> 
+						</Container>
 						</Tab>
 						<Tab 
 							heading={
 								<TabHeading style={{backgroundColor:"#05F8EC"}} >
 									<Text style={styles.textColor}>STATUS</Text>
-								</TabHeading>}>
-								<Status/>
+								</TabHeading>}
+							>
+							<Status/>
 						</Tab>
 						<Tab 
 							heading={
 								<TabHeading style={{backgroundColor:"#05F8EC"}}>
 									<Text style={styles.textColor}>CALLS</Text>
-								</TabHeading>}>
-								<Calls/>
+								</TabHeading>}
+							>
+							<Calls/>
 						</Tab>
 					</Tabs>
             </Container>
