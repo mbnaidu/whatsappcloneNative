@@ -7,6 +7,7 @@ import axios from 'axios';
 
 
 export default function NewGroup({navigation,route}) {
+	const [groupName,setGroupName] = useState([]);
 	const [type,setType] = useState('');
     const [URI,setURI] = useState('https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png');
     const pickImage = async () => {
@@ -22,12 +23,25 @@ export default function NewGroup({navigation,route}) {
 	const groups = () => {
         const data = {
             id: route.params.id,
-			groups:route.params.list
+			groups:{
+				persons:route.params.list,
+				groupname:groupName
+			}
         }
         axios.post('http://192.168.43.212:5000/creategroup', {data}).then(
             function(res) {
                 if(res.data) {
-                    console.warn(res.data)
+					const datas = {
+						groupid:res.data,
+						userid:route.params.id,
+					}
+                    axios.post('http://192.168.43.212:5000/group', {datas}).then(
+						function(res) {
+							if(res.data) {
+								console.warn(res.data)
+							}
+						}
+					)
                 }
             }
         )
@@ -55,7 +69,7 @@ export default function NewGroup({navigation,route}) {
 					</TouchableWithoutFeedback>
 					<View style={{marginTop:18}}>
 						<Body style={{marginLeft:20}}>
-							<Input placeholder="Type group subject here.." style={{ borderBottomColor: '#000', borderBottomWidth: 1,marginBottom:23 }}/>
+							<Input placeholder="Type group subject here.." style={{ borderBottomColor: '#000', borderBottomWidth: 1,marginBottom:23 }} onChangeText={(txt)=>{setGroupName(txt)}}/>
 						</Body>
 					</View>
 					<Right>
