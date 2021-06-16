@@ -262,7 +262,7 @@ export default class GroupBioPage extends Component {
             >
             <View style={styles.bioHeader}>
                 <Body>
-                    <Button transparent onPress={()=>{navigate('ChatPage')}}>
+                    <Button transparent onPress={()=>{navigate('GroupPage')}}>
                         <Icon name='arrow-back' type="MaterialIcons" style={styles.arrow}/>
                     </Button>
                 </Body>

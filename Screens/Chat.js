@@ -7,11 +7,11 @@ import Status from './Status';
 import * as SQLite from "expo-sqlite";
 import * as Contacts from 'expo-contacts';
 import axios from 'axios';
+import GroupTab from './GroupTab';
 
 
 export default function Chat({navigation,route}) {
 	const [allContacts,setAllContacts] = useState([]);
-	const [groups,setGroups] = useState([]);
 	useEffect(() => {
     (async () => {
 		const { status } = await Contacts.requestPermissionsAsync();
@@ -26,29 +26,6 @@ export default function Chat({navigation,route}) {
 		}
 		})();
 	}, []);
-	useEffect(() => {
-        const data = {
-            id: route.params.id,
-        }
-        axios.post('http://192.168.43.212:5000/getgroups', {data}).then(
-            function(res) {
-                if(res.data) {
-					res.data.groups.map((m)=>{
-						const data1 = {
-							id:m
-						}
-						axios.post('http://192.168.43.212:5000/getallgroups',{data1}).then(
-							function(res) {
-								if(res.data) {
-									setGroups([...groups, res.data])
-								}
-							}
-						)
-					})
-                }
-            }
-        )
-	},[])
     const [mainModalVisible,setMainModalVisible] = useState(false);
     const [aeroplanemode,setAeroplanemode] = useState(false);
 	const Item = (item) =>{
@@ -82,29 +59,7 @@ export default function Chat({navigation,route}) {
 			</View>
 		)
 	}
-	// data.data.groups[0].groupname  data.data.groups[0].persons
-	const Group = (data) =>{
-		return(
-			<View>
-				<View style={styles.listcontainer}>
-				<ListItem noBorder button onPress={() =>{navigation.navigate('GroupPage',{groupname:data.data.groups[0].groupname,persons:data.data.groups[0].persons})}}> 
-					<Thumbnail
-						source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
-					></Thumbnail>
-					<Body>
-						<Text>  {data.data.groups[0].groupname}</Text>
-					</Body>
-					<Right>
-						<Text note style={{color:"black"}}>3:23 pm</Text>
-						<Badge style={styles.badgeChats}>
-							<Text style={styles.badgeChatsText}>1</Text>
-						</Badge>
-					</Right>
-				</ListItem>
-			</View>
-			</View>
-		)
-	}
+	
     return (
         <Container>
 				<Container>
@@ -218,11 +173,6 @@ export default function Chat({navigation,route}) {
 							<Container>
 								<FlatList
 									keyExtractor={item => item.id} 
-									renderItem={({item}) => <Group data={item}/> }
-									data={groups} 
-								/> 
-								<FlatList
-									keyExtractor={item => item.id} 
 									renderItem={({item}) => item.phoneNumbers !== undefined ? <Item data={item}/> : <View></View>}
 									data={allContacts} 
 								/> 
@@ -231,10 +181,10 @@ export default function Chat({navigation,route}) {
 						<Tab 
 							heading={
 								<TabHeading style={{backgroundColor:"#05F8EC"}} >
-									<Text style={styles.textColor}>STATUS</Text>
+									<Text style={styles.textColor}>GROUPS</Text>
 								</TabHeading>}
 							>
-							<Status/>
+							<GroupTab screenProps={route.params.id}/>
 						</Tab>
 						<Tab 
 							heading={
