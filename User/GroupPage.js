@@ -20,8 +20,10 @@ export default function GroupPage({route}) {
     const [curMin,setCurMin] = useState('');
     const [curStatus,setCurStatus] = useState('');
     const [curSec,setCurSec] = useState('');
+	const [persons,setPersons] = useState('');
 	// const [userId,setUserId] = useState(route.params.userId);
 	const [chatId,setChatId] = useState('');
+	const [groupname,setGroupName] = useState('');
     const [messages,setMessages] = useState([
     ])
 	// useEffect(() => {
@@ -109,6 +111,19 @@ export default function GroupPage({route}) {
     //             }
     //         )
 	// }
+	useEffect(() => {
+		const data1 = {
+							id:route.params.groupid
+						}
+						axios.post('http://192.168.43.212:5000/getallgroups',{data1}).then(
+							function(res) {
+								if(res.data) {
+									setGroupName(res.data.groups[0].groupname)
+									setPersons(res.data.groups[0].persons)
+								}
+							}
+						)
+	},[])
 	const sendData= () => {
 		setMessages([...messages,{message:message,type:"sender",time:curHour+":"+curMin+" "+curStatus,id:curHour+curMin+curSec+message+"sender"},{message:message,type:"receiver",time:curHour+":"+curMin+" "+curStatus,id:curHour+curMin+curSec+message+"return"}])
 		setMessage('');
@@ -129,8 +144,8 @@ export default function GroupPage({route}) {
 					<Body>
 						<ListItem noBorder button >
 							<View>
-								<Text style={styles.chatBodyTextHeading1} numberOfLines={1} onPress={()=>{navigation.navigate('GroupBioPage',{groupname:username,persons:route.params.persons})}} >
-									{username}
+								<Text style={styles.chatBodyTextHeading1} numberOfLines={1} onPress={()=>{navigation.navigate('GroupBioPage',{admin:route.params.admin,groupid:route.params.groupid,persons:persons})}} >
+									{groupname}
 								</Text>
 							<View>
 							</View>

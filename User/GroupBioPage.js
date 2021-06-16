@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Badge, Body, Button, Card, CardItem, Icon, Left, ListItem, Right, Thumbnail } from 'native-base';
 import React, { Component } from 'react';
 import {Animated,Platform,StatusBar,StyleSheet,Text,View,RefreshControl, ScrollView, Switch,} from 'react-native';
@@ -130,21 +131,21 @@ export default class GroupBioPage extends Component {
                 {this.props.route.params.persons.map((m)=>{
                     return(
                         <ListItem noBorder button key={m.id}> 
-					<Left>
-                        <Thumbnail
-						source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
-					></Thumbnail>
-                    </Left>
-					<Body>
-						<Text>  {m.name}</Text>
-                        <Text note>{m.number} </Text>
-					</Body>
-				</ListItem>
+                            <Left>
+                                <Thumbnail
+                                source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
+                            ></Thumbnail>
+                            </Left>
+                            <Body>
+                                <Text>  {m.name}</Text>
+                                <Text note>{m.number} </Text>
+                            </Body>
+                        </ListItem>
                     )
                 })}
             </ScrollView>
             <Card>
-                <CardItem header bordered>
+                <CardItem header bordered button onPress={() =>{this.exitGroup()}}>
                     <Left>
                         <Icon name="block" type="MaterialIcons" style={{fontSize: 28,color:"#C70039"}}/>
                     </Left>
@@ -154,17 +155,73 @@ export default class GroupBioPage extends Component {
                 </CardItem>
             </Card>
             <Card>
-                <CardItem header bordered>
+                <CardItem header bordered button onPress={() =>{this.deletegroupforeveryone()}}>
                     <Left>
                         <Icon name="thumb-down" type="MaterialIcons" style={{fontSize: 28,color:"#C70039"}}/>
                     </Left>
                         <Body>
-                        <Text style={{color:"#C70039",fontWeight:"bold",alignSelf:"baseline"}}>Report Group</Text>
+                        <Text style={{color:"#C70039",fontWeight:"bold",alignSelf:"baseline"}}>Delete Group</Text>
                     </Body>
                 </CardItem>
             </Card>
         </View>
         );
+    }
+    exitGroup (){
+        const data = {
+            number: this.props.route.params.admin,
+            groupid: this.props.route.params.groupid
+        }
+        axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
+            function(res) {
+                if(res.data) { 
+                    console.warn(res.data)
+                }})
+    }
+    deletegroupforeveryone (){
+        this.props.route.params.persons.map((m)=>{
+            const data = {
+                number: m.number,
+                groupid: this.props.route.params.groupid
+            }
+            axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
+                function(res) {
+                    if(res.data) { 
+                        
+                    }})
+        })
+         const data = {
+            number: this.props.route.params.admin,
+            groupid: this.props.route.params.groupid
+        }
+        axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
+            function(res) {
+                if(res.data) { 
+                    console.warn(res.data)
+                }})
+    const data1 = {
+            deletegroupid: this.props.route.params.groupid,
+        }
+        axios.post('http://192.168.43.212:5000/deletegroup', {data1}).then(
+            function(res) {
+                if(res.data === 'Exercise deleted.') { 
+                    this.props.route.params.persons.map((m)=>{
+                        this.deletegroupforeveryone(m.number,this.props.route.params.groupid)
+                    })
+                }})
+    }
+
+    deletegroup (){
+        const data = {
+            deletegroupid: this.props.route.params.groupid,
+        }
+        axios.post('http://192.168.43.212:5000/deletegroup', {data}).then(
+            function(res) {
+                if(res.data === 'Exercise deleted.') { 
+                    this.props.route.params.persons.map((m)=>{
+                        this.deletegroupforeveryone(m.number,this.props.route.params.groupid)
+                    })
+                }})
     }
     render() {
         const { navigate } = this.props.navigation;
