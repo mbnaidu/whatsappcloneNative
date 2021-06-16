@@ -72,7 +72,7 @@ export default function Chat({navigation,route}) {
 								<Button transparent onPress={() =>{showDatabase()}}>
 									<Image style={styles.searchIcon} source={require('../Assets/pigeon.png')} style={styles.pigeon}/>
 								</Button>
-								<Button transparent>
+								<Button transparent onPress={() =>{navigation.navigate('StatusTab')}}>
 									<Icon name='data-usage' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 								</Button>
 								<Button transparent onPress={()=>{setMainModalVisible(!mainModalVisible)}}>

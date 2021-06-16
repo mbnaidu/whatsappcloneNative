@@ -54,6 +54,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import TypeStatus from './Contents/TypeStatus';
 import GroupPage from './User/GroupPage';
 import GroupBioPage from './User/GroupBioPage';
+import StatusTab from './Screens/StatusTab';
 
 const Stack = createStackNavigator();
 
@@ -91,6 +92,7 @@ export default class App extends React.Component {
 				<Stack.Screen name="MediaPage" component={MediaPage} options={{ headerShown: false }} />
 				<Stack.Screen name="BioPage" component={BioPage} options={{ headerShown: false }} />
 				<Stack.Screen name="Group" component={Group} options={{ headerShown: false }} />
+				<Stack.Screen name="StatusTab" component={StatusTab} options={{ headerShown: false }} />
 				{/* CONTENTS */}
 				<Stack.Screen name="GroupPage" component={GroupPage} options={{ headerShown: false }} />
 				<Stack.Screen name="Contact" component={Contact} options={{ headerShown: false }} />

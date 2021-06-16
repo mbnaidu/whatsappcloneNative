@@ -28,9 +28,9 @@ export default function TypeStatus({navigation}) {
                             </TouchableWithoutFeedback>
 						</Button>
                 </View>
-                <TouchableWithoutFeedback onPress={()=>{navigation.navigate('Chat')}}>
-                    <Fab position="bottomRight" style={{backgroundColor:"#000000"}} onPress={()=>{navigation.navigate('Chat')}}>
-                        <Icon name="send" type="MaterialIcons" style={{fontSize: 28,color:color}}onPress={()=>{navigation.navigate('Chat')}}/>
+                <TouchableWithoutFeedback onPress={()=>{navigation.navigate('StatusTab')}}>
+                    <Fab position="bottomRight" style={{backgroundColor:"#000000"}} onPress={()=>{navigation.navigate('StatusTab')}}>
+                        <Icon name="send" type="MaterialIcons" style={{fontSize: 28,color:color}}onPress={()=>{navigation.navigate('StatusTab')}}/>
                     </Fab>
 				</TouchableWithoutFeedback>
 			</Container>
