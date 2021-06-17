@@ -9,7 +9,7 @@ import * as SQLite from "expo-sqlite";
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("2.db");
+	const db = SQLite.openDatabase("3.db");
 	return db;
 	}
 	const db = openDatabase();
@@ -17,19 +17,19 @@ function openDatabase() {
 
 export default function GroupTab({screenProps}) {
 		const [items, setItems] = React.useState(null);
-    const [groups,setGroups] = useState([]);
-    useEffect(() => {
-        const data = {
-            id: screenProps,
-        }
-        axios.post('http://192.168.43.212:5000/getgroups', {data}).then(
-            function(res) {
-                if(res.data) {
-					setGroups(res.data)
-                }
-            }
-        )
-	},[])
+    // const [groups,setGroups] = useState([]);
+    // useEffect(() => {
+    //     const data = {
+    //         id: screenProps,
+    //     }
+    //     axios.post('http://192.168.43.212:5000/getgroups', {data}).then(
+    //         function(res) {
+    //             if(res.data) {
+	// 				setGroups(res.data)
+    //             }
+    //         }
+    //     )
+	// },[])
 	React.useEffect(() => {
 		db.transaction((tx) => {
 		tx.executeSql("select * from totalgroups", [], (_, { rows: { _array } }) => setItems(_array)
@@ -64,7 +64,7 @@ export default function GroupTab({screenProps}) {
 				</View>)}
 			</ScrollView> */}
 			<ScrollView>
-				{items === null ? <ActivityIndicator large color="red" /> : (
+				{items === null ? <ActivityIndicator large color="red" style={{marginTop:"50%"}}/> : (
 					items.map((m)=>{
 					return(
 						<ListItem key={m.id} noBorder button onPress={() =>{navigation.navigate('GroupPage',{groupid:m.id,admin:groups.number,groupname:m.name})}}> 

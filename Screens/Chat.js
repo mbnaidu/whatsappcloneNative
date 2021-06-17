@@ -28,6 +28,37 @@ export default function Chat({navigation,route}) {
 	}, []);
     const [mainModalVisible,setMainModalVisible] = useState(false);
     const [aeroplanemode,setAeroplanemode] = useState(false);
+	const Item = (item) =>{
+		return(
+			<View style={styles.listcontainer}>
+				<ListItem noBorder button onPress={() =>{navigation.navigate('ChatPage',{username:item.data.name})}} > 
+					<Thumbnail
+						source={require('../Assets/userProfile.png')}
+					></Thumbnail>
+					<Icon
+						type="MaterialIcons"
+						name="nightlight-round"
+						style={{color:"#000000",fontSize:16,marginBottom:30}}
+					/>
+					<Icon
+						type="MaterialIcons"
+						name="airplanemode-on"
+						style={styles.aeroplanemodeon}
+					/>
+					<Body>
+						<Text>  {item.data.name}</Text>
+						<Text style={{fontFamily:"sans-serif-light"}}>  {item.data.phoneNumbers[0].number}</Text>
+					</Body>
+					<Right>
+						<Text note style={{color:"black"}}>3:23 pm</Text>
+						<Badge style={styles.badgeChats}>
+							<Text style={styles.badgeChatsText}>1</Text>
+						</Badge>
+					</Right>
+				</ListItem>
+			</View>
+		)
+	}
     return (
         <Container>
 				<Container>
@@ -114,39 +145,13 @@ export default function Chat({navigation,route}) {
 									<Text style={styles.badgeText}>2</Text>
 								</Badge>
 							</TabHeading>}>
-							<ScrollView>
-								{allContacts.map((m)=>{
-									return(
-										<ListItem key={m.id} noBorder button onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}} > 
-											<Thumbnail
-											button
-											onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}} 
-												source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
-											></Thumbnail>
-											<Icon
-												type="MaterialIcons"
-												name="nightlight-round"
-												style={{color:"#000000",fontSize:16,marginBottom:30}}
-											/>
-											<Icon
-												type="MaterialIcons"
-												name="airplanemode-on"
-												style={styles.aeroplanemodeon}
-											/>
-											<Body onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}} >
-												<Text onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}} >  {m.name}</Text>
-												<Text onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}}  style={{fontFamily:"sans-serif-light"}}>  {m.phoneNumbers === undefined ? <ActivityIndicator large color="red"/> : m.phoneNumbers[0].number}</Text>
-											</Body>
-											<Right>
-												<Text note style={{color:"black"}}>3:23 pm</Text>
-												<Badge style={styles.badgeChats}>
-													<Text style={styles.badgeChatsText}>1</Text>
-												</Badge>
-											</Right>
-										</ListItem>
-									)
-								})}
-							</ScrollView>
+							<Container>
+								<FlatList
+								keyExtractor={item => item.id} 
+								renderItem={({item}) => item.phoneNumbers !== undefined ? <Item data={item}/> : <View></View>}
+								data={allContacts} 
+								/> 
+							</Container>
 						</Tab>
 						<Tab 
 							heading={

@@ -25,19 +25,19 @@ export default function Group({navigation,route}) {
 			setSelected(selected.filter((item) => item.id != id).map(({id, name, number}) => ({id, name, number})))
 		}
 		const Select = (item) =>{
-		return(
-			<View style={styles.listcontainer}>
-				<ListItem noBorder button onPress={() =>{setSelected([...selected,{name:item.data.name,id:item.data.id,number:item.data.phoneNumbers[0].number}])}}> 
-					<Thumbnail
-						source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
-					></Thumbnail>
-					<Body>
-						<Text onPress={() =>{setSelected([...selected,{name:item.data.name,id:item.data.id,number:item.data.phoneNumbers[0].number}])}}>  {item.data.name}</Text>
-					</Body>
-				</ListItem>
-			</View>
-		)
-	}
+			return(
+				<View style={styles.listcontainer}>
+					<ListItem noBorder button onPress={() =>{setSelected([...selected,{name:item.data.name,id:item.data.id,number:item.data.phoneNumbers[0].number}])}}> 
+						<Thumbnail
+							source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
+						></Thumbnail>
+						<Body>
+							<Text onPress={() =>{setSelected([...selected,{name:item.data.name,id:item.data.id,number:item.data.phoneNumbers[0].number}])}}>  {item.data.name}</Text>
+						</Body>
+					</ListItem>
+				</View>
+			)
+		}
 		return (
 			<Container >
 				<Header style={styles.headerBackgroundColor} button>
