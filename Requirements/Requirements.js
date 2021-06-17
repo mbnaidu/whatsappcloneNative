@@ -19,7 +19,7 @@ const Requirements = ({navigation}) => {
         try {
                     const jsonValue = await AsyncStorage.getItem('@storage_Key');
                     setLogin(jsonValue)
-                    return jsonValue != null ? navigation.navigate('Trail',{id: jsonValue}) : null;
+                    return jsonValue != null ? navigation.navigate('Chat',{id: jsonValue}) : null;
                 } catch(e) {
                     console.warn(e)
                 }

@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import { Container, Header, Title, Button, Left, Right, Body, Icon, Tabs, Tab, TabHeading, Badge, Thumbnail, ListItem, Fab, View, Card, Label, Input, Item} from 'native-base';
-import { ScrollView, Text,Image, Modal, TouchableWithoutFeedback, Alert, FlatList} from 'react-native';
+import { ScrollView, Text,Image, Modal, ActivityIndicator, Alert, FlatList} from 'react-native';
 import styles from '../Styles/First';
 import Calls from './Calls';
 import Status from './Status';
@@ -170,13 +170,39 @@ export default function Chat({navigation,route}) {
 									<Text style={styles.badgeText}>2</Text>
 								</Badge>
 							</TabHeading>}>
-							<Container>
-								<FlatList
-									keyExtractor={item => item.id} 
-									renderItem={({item}) => item.phoneNumbers !== undefined ? <Item data={item}/> : <View></View>}
-									data={allContacts} 
-								/> 
-						</Container>
+							<ScrollView>
+								{allContacts.map((m)=>{
+									return(
+										<ListItem noBorder button onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}} > 
+											<Thumbnail
+											button
+											onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}} 
+												source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
+											></Thumbnail>
+											<Icon
+												type="MaterialIcons"
+												name="nightlight-round"
+												style={{color:"#000000",fontSize:16,marginBottom:30}}
+											/>
+											<Icon
+												type="MaterialIcons"
+												name="airplanemode-on"
+												style={styles.aeroplanemodeon}
+											/>
+											<Body onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}} >
+												<Text onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}} >  {m.name}</Text>
+												<Text onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}}  style={{fontFamily:"sans-serif-light"}}>  {m.phoneNumbers === undefined ? <ActivityIndicator large color="red"/> : m.phoneNumbers[0].number}</Text>
+											</Body>
+											<Right>
+												<Text note style={{color:"black"}}>3:23 pm</Text>
+												<Badge style={styles.badgeChats}>
+													<Text style={styles.badgeChatsText}>1</Text>
+												</Badge>
+											</Right>
+										</ListItem>
+									)
+								})}
+							</ScrollView>
 						</Tab>
 						<Tab 
 							heading={
