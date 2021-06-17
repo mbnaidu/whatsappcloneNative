@@ -3,10 +3,14 @@
   "displayName": "Piegeon",
   "expo": {
     "name": "Piegeon",
-    "slug": "whatsappclone",
+    "slug": "Piegeon",
     "version": "1.0.0",
     "android": {
-      "package": "com.yourcompany.piegeon",
+      "adaptiveIcon": {
+        "foregroundImage": "./Assets/pigeon.png", 
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.yourcompany.pigeon",
       "versionCode": 1
     },
     "assetBundlePatterns": [
