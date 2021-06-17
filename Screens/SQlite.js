@@ -60,7 +60,7 @@ function openDatabase() {
 	);
 	}
 
-	export default function SQLite() {
+	export default function sqite() {
 	const [text, setText] = React.useState(null);
 	const [forceUpdate, forceUpdateId] = useForceUpdate();
 

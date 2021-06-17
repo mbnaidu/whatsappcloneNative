@@ -4,8 +4,14 @@ import { StatusBar, Text, TextInput,Image, Modal, TouchableWithoutFeedback, Scro
 import styles from '../Styles/Second';
 import axios from 'axios'
 import { useNavigation } from '@react-navigation/core';
+import * as SQLite from "expo-sqlite";
 
 
+function openDatabase() {
+	const db = SQLite.openDatabase("2.db");
+	return db;
+	}
+	const db = openDatabase();
 export default function GroupPage({route}) {
     const [modalVisible,setModalVisible] = useState(false);
     const [modalVisible2,setModalVisible2] = useState(false)
@@ -26,6 +32,12 @@ export default function GroupPage({route}) {
 	const [groupname,setGroupName] = useState('');
     const [messages,setMessages] = useState([
     ])
+
+	React.useEffect(() => {
+		db.transaction((tx) => {
+		tx.executeSql(`select * from ${route.params.groupname}`, [], (_, { rows: { _array } }) => setPersons(_array));
+		});
+	},[]);
 	// useEffect(() => {
 	// 	const data = {
 	// 		senderId : route.params.senderId,
@@ -111,19 +123,19 @@ export default function GroupPage({route}) {
     //             }
     //         )
 	// }
-	useEffect(() => {
-		const data1 = {
-							id:route.params.groupid
-						}
-						axios.post('http://192.168.43.212:5000/getallgroups',{data1}).then(
-							function(res) {
-								if(res.data) {
-									setGroupName(res.data.groups[0].groupname)
-									setPersons(res.data.groups[0].persons)
-								}
-							}
-						)
-	},[])
+	// useEffect(() => {
+	// 	const data1 = {
+	// 						id:route.params.groupid
+	// 					}
+	// 					axios.post('http://192.168.43.212:5000/getallgroups',{data1}).then(
+	// 						function(res) {
+	// 							if(res.data) {
+	// 								setGroupName(res.data.groups[0].groupname)
+	// 								setPersons(res.data.groups[0].persons)
+	// 							}
+	// 						}
+	// 					)
+	// },[])
 	const sendData= () => {
 		setMessages([...messages,{message:message,type:"sender",time:curHour+":"+curMin+" "+curStatus,id:curHour+curMin+curSec+message+"sender"},{message:message,type:"receiver",time:curHour+":"+curMin+" "+curStatus,id:curHour+curMin+curSec+message+"return"}])
 		setMessage('');
@@ -144,8 +156,8 @@ export default function GroupPage({route}) {
 					<Body>
 						<ListItem noBorder button >
 							<View>
-								<Text style={styles.chatBodyTextHeading1} numberOfLines={1} onPress={()=>{navigation.navigate('GroupBioPage',{admin:route.params.admin,groupid:route.params.groupid,persons:persons})}} >
-									{groupname}
+								<Text style={styles.chatBodyTextHeading1} numberOfLines={1} onPress={()=>{navigation.navigate('GroupBioPage',{admin:route.params.admin,groupid:route.params.groupid,persons:persons,groupname:route.params.groupname})}} >
+									{route.params.groupname}
 								</Text>
 							<View>
 							</View>

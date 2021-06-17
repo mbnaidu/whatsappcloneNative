@@ -31,26 +31,9 @@ export default function Group({navigation,route}) {
 					<Thumbnail
 						source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
 					></Thumbnail>
-					<Icon
-						type="MaterialIcons"
-						name="nightlight-round"
-						style={{color:"#000000",fontSize:16,marginBottom:30}}
-					/>
-					<Icon
-						type="MaterialIcons"
-						name="airplanemode-on"
-						style={styles.aeroplanemodeon}
-					/>
 					<Body>
-						<Text>  {item.data.name}</Text>
-						<Text style={{fontFamily:"sans-serif-light"}}>  {item.data.phoneNumbers[0].number}</Text>
+						<Text onPress={() =>{setSelected([...selected,{name:item.data.name,id:item.data.id,number:item.data.phoneNumbers[0].number}])}}>  {item.data.name}</Text>
 					</Body>
-					<Right>
-						<Text note style={{color:"black"}}>3:23 pm</Text>
-						<Badge style={styles.badgeChats}>
-							<Text style={styles.badgeChatsText}>1</Text>
-						</Badge>
-					</Right>
 				</ListItem>
 			</View>
 		)
@@ -129,7 +112,7 @@ export default function Group({navigation,route}) {
 					keyExtractor={item => item.id} 
 					renderItem={({item}) => item.phoneNumbers !== undefined ? <Select data={item}/> : <View></View>}
 					data={allContacts} 
-								/> 
+					/> 
 				</Container>
 				<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} button onPress={()=>{navigation.navigate('NewGroup',{list:selected,id:route.params.id})}}>
 					<Icon name="arrow-forward" type="MaterialIcons" style={{color:"black"}} button onPress={()=>{navigation.navigate('NewGroup',{list:selected,id:route.params.id})}}/>

@@ -56,6 +56,7 @@ import GroupPage from './User/GroupPage';
 import GroupBioPage from './User/GroupBioPage';
 import StatusTab from './Screens/StatusTab';
 import Trail from './Screens/Trail';
+import SQLite from './Screens/SQlite';
 
 const Stack = createStackNavigator();
 
@@ -110,6 +111,7 @@ export default class App extends React.Component {
 				{/* SETTINGS */}
 					<Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
 					{/* ACCOUNTS */}
+					<Stack.Screen name="SQLite" component={SQLite} options={{ headerShown: false }} />
 						<Stack.Screen name="Accounts" component={Accounts} options={{ headerShown: false }} />
 						<Stack.Screen name="Privacy" component={Privacy} options={{ headerShown: false }} />
 						<Stack.Screen name="Verification" component={Verification} options={{ headerShown: false }} />

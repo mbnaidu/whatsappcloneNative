@@ -28,38 +28,6 @@ export default function Chat({navigation,route}) {
 	}, []);
     const [mainModalVisible,setMainModalVisible] = useState(false);
     const [aeroplanemode,setAeroplanemode] = useState(false);
-	const Item = (item) =>{
-		return(
-			<View style={styles.listcontainer}>
-				<ListItem noBorder button onPress={() =>{navigation.navigate('ChatPage',{username:item.data.name})}} > 
-					<Thumbnail
-						source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
-					></Thumbnail>
-					<Icon
-						type="MaterialIcons"
-						name="nightlight-round"
-						style={{color:"#000000",fontSize:16,marginBottom:30}}
-					/>
-					<Icon
-						type="MaterialIcons"
-						name="airplanemode-on"
-						style={styles.aeroplanemodeon}
-					/>
-					<Body>
-						<Text>  {item.data.name}</Text>
-						<Text style={{fontFamily:"sans-serif-light"}}>  {item.data.phoneNumbers[0].number}</Text>
-					</Body>
-					<Right>
-						<Text note style={{color:"black"}}>3:23 pm</Text>
-						<Badge style={styles.badgeChats}>
-							<Text style={styles.badgeChatsText}>1</Text>
-						</Badge>
-					</Right>
-				</ListItem>
-			</View>
-		)
-	}
-	
     return (
         <Container>
 				<Container>
@@ -75,32 +43,8 @@ export default function Chat({navigation,route}) {
 								<Button transparent onPress={() =>{navigation.navigate('StatusTab')}}>
 									<Icon name='data-usage' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
 								</Button>
-								<Button transparent onPress={()=>{setMainModalVisible(!mainModalVisible)}}>
+								<Button transparent onPress={()=>{navigation.navigate('Settings')}}>
 									<Icon name='more-vert' type="MaterialIcons" style={{fontSize: 28,color:"black"}}/>
-									<View style={styles.centeredView}>
-										<Modal
-										animationType="fade"
-										transparent={true}
-										visible={mainModalVisible}
-										onRequestClose={() => {
-											setMainModalVisible(!mainModalVisible);
-										}}
-										>
-										<View style={styles.centeredView}>
-											<View style={styles.modalView}>
-												<ListItem noBorder button onPress={() => {setMainModalVisible(!mainModalVisible);navigation.navigate('Settings')}}>
-													<Text style={styles.textStyle}>Settings</Text>
-												</ListItem>
-												<ListItem noBorder button onPress={() => setMainModalVisible(!mainModalVisible)}>
-													<Text style={styles.textStyle}>Piegon Web</Text>
-												</ListItem>
-												<ListItem noBorder button onPress={() => setMainModalVisible(!mainModalVisible)}>
-													<Text style={styles.textStyle}>Unread Messages</Text>
-												</ListItem>
-											</View>
-										</View>
-										</Modal>
-									</View>
 								</Button>
 							</Right>
 						</Header>
@@ -173,7 +117,7 @@ export default function Chat({navigation,route}) {
 							<ScrollView>
 								{allContacts.map((m)=>{
 									return(
-										<ListItem noBorder button onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}} > 
+										<ListItem key={m.id} noBorder button onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}} > 
 											<Thumbnail
 											button
 											onPress={() =>{navigation.navigate('ChatPage',{username:m.name})}} 

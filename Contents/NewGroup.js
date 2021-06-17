@@ -4,11 +4,23 @@ import { ScrollView, Text, TouchableWithoutFeedback} from 'react-native';
 import styles from '../Styles/First';
 import * as ImagePicker from 'expo-image-picker';
 import axios from 'axios';
+import * as SQLite from "expo-sqlite";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
+function openDatabase() {
+	const db = SQLite.openDatabase("2.db");
+	return db;
+	}
+	const db = openDatabase();
 
 export default function NewGroup({navigation,route}) {
 	const [groupName,setGroupName] = useState('');
+	const [group,setGroup] = React.useState(null);
+	const [forceUpdate, forceUpdateId] = useForceUpdate();
+	const [forceUpdate1, forceUpdateId1] = useForceUpdate1();
 	const [type,setType] = useState('');
+	const [totalGroups,setTotalGroups] = useState();
     const [URI,setURI] = useState('https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png');
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -60,6 +72,40 @@ export default function NewGroup({navigation,route}) {
             }
         )
     }
+	React.useEffect(() => {
+		db.transaction((tx) => {
+		tx.executeSql(
+			"create table if not exists totalgroups (id integer primary key not null, name text);"
+		);
+		});
+	}, []);
+	
+	const offlinegroups = async () =>{
+		db.transaction(
+			(tx) => {
+				tx.executeSql("insert into totalgroups (name) values (?)", [groupName]);
+			},
+			null,
+			forceUpdate1
+			);
+		db.transaction(
+			(tx) => {
+				tx.executeSql(`create table if not exists ${groupName} (id integer primary key not null,phoneNumber int,name text)`);
+			},
+			);
+			route.params.list.map((m)=>{
+				db.transaction(
+					(tx) => {
+						tx.executeSql(`insert into  ${groupName} (phoneNumber, name) values (?, ?)`, [m.number,m.name]);
+						tx.executeSql(`select * from  ${groupName}`, [], (_, { rows: { _array } }) => setGroup(_array)
+						);
+					},
+					null,
+					forceUpdate
+					);
+				})
+				navigation.navigate('Chat')
+	}
 	return (
 		<Container style={{backgroundColor:"#"}}>
 			<Header style={styles.headerBackgroundColor} button>
@@ -109,9 +155,17 @@ export default function NewGroup({navigation,route}) {
 						})}
 				</View>
 			</ScrollView>
-			<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} onPress={()=>{groups()}}>
-				<Icon name="check" type="MaterialIcons" style={{color:"black"}} button onPress={()=>{groups()}}/>
+			<Fab position="bottomRight" style={{backgroundColor:"#05F8EC"}} onPress={()=>{offlinegroups()}}>
+				<Icon name="check" type="MaterialIcons" style={{color:"black"}} button onPress={()=>{offlinegroups()}}/>
 			</Fab>
 		</Container>
 	)
+	function useForceUpdate() {
+		const [value, setValue] = useState(0);
+		return [() => setValue(value + 1), value];
+	}
+function useForceUpdate1() {
+		const [value, setValue] = useState(0);
+		return [() => setValue(value + 1), value];
+	}
 }

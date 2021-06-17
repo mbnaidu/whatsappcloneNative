@@ -11,75 +11,29 @@ function openDatabase() {
 	return db;
 	}
 	const db = openDatabase();
-	function Items() {
-		const [items, setItems] = React.useState(null);
-
-		React.useEffect(() => {
-			db.transaction((tx) => {
-			tx.executeSql(
-				`select * from items`,
-				[],
-				(_, { rows: { _array } }) => setItems(_array)
-			);
-			});
-		}, []);
-	if (items === null || items.length === 0) {
-		return null;
-	}
-	return (
-		<View style={styles.sectionContainer}>
-		<Text style={styles.sectionHeading}>Contacts</Text>
-		{items.map((m) => (
-			<TouchableOpacity
-			key={m.id}
-			style={{
-				backgroundColor:"#fff",
-				borderColor: "#000",
-				borderWidth: 1,
-				padding: 8,
-			}}
-			>
-			<Text style={{ color:"#000" }}>{JSON.stringify(m)}</Text>
-			</TouchableOpacity>
-		))}
-		</View>
-	);
-	}
-
 	export default function Trail() {
 	const [text, setText] = React.useState(null);
 	const [forceUpdate, forceUpdateId] = useForceUpdate();
-	const [allContacts,setAllContacts] = useState([]);
-	useEffect(() => {
-    (async () => {
-			const { data } = await Contacts.getContactsAsync({
-			fields: [Contacts.Fields.PhoneNumbers],
-			});
-			if (data.length > 0) {
-				setAllContacts(data[2])
-			}
-		})();
-	}, []);
+	const [items, setItems] = React.useState(null);
 	React.useEffect(() => {
 		db.transaction((tx) => {
 		tx.executeSql(
 			"create table if not exists items (id integer primary key not null, phoneNumber int, name text);"
 		);
+		tx.executeSql("select * from items", [], (_, { rows: { _array } }) => setItems(_array)
+			);
 		});
 	}, []);
-
 	const add = (text) => {
 		// is text empty?
 		if (text === null || text === "") {
 		return false;
 		}
-
 		db.transaction(
 		(tx) => {
 			tx.executeSql("insert into items (phoneNumber, name) values (?, ?)", [7981960932,text]);
-			// tx.executeSql("select * from items", [], (_, { rows }) =>
-			// console.log(JSON.stringify(rows))
-			// );
+			tx.executeSql("select * from items", [], (_, { rows: { _array } }) => setItems(_array)
+			);
 		},
 		null,
 		forceUpdate
@@ -89,17 +43,6 @@ function openDatabase() {
 	return (
 		<View style={styles.container}>
 		<Text style={styles.heading}>SQLite Example</Text>
-
-		{Platform.OS === "web" ? (
-			<View
-			style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-			>
-			<Text style={styles.heading}>
-				Expo SQlite is not supported on web!
-			</Text>
-			</View>
-		) : (
-			<>
 			<View style={styles.flexRow}>
 				<TextInput
 				onChangeText={(text) => setText(text)}
@@ -113,14 +56,8 @@ function openDatabase() {
 				/>
 			</View>
 			<ScrollView style={styles.listArea}>
-				<Items
-				key={`forceupdate-todo-${forceUpdateId}`}
-				/>
-				{/* <Text>{JSON.stringify(allContacts.phoneNumbers[0].number)}</Text>
-				<Text>{JSON.stringify(allContacts.phoneNumbers[0].id)}</Text> */}
+				<Text>{JSON.stringify(items)}</Text>
 			</ScrollView>
-			</>
-		)}
 		</View>
 	);
 }

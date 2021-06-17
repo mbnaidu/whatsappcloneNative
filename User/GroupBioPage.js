@@ -2,7 +2,14 @@ import axios from 'axios';
 import { Badge, Body, Button, Card, CardItem, Icon, Left, ListItem, Right, Thumbnail } from 'native-base';
 import React, { Component } from 'react';
 import {Animated,Platform,StatusBar,StyleSheet,Text,View,RefreshControl, ScrollView, Switch,} from 'react-native';
+import * as SQLite from "expo-sqlite";
 
+
+function openDatabase() {
+	const db = SQLite.openDatabase("2.db");
+	return db;
+	}
+	const db = openDatabase();
 const HEADER_MAX_HEIGHT = 300;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 73;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
@@ -131,21 +138,24 @@ export default class GroupBioPage extends Component {
                 {this.props.route.params.persons.map((m)=>{
                     return(
                         <ListItem noBorder button key={m.id}> 
-                            <Left>
                                 <Thumbnail
                                 source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
                             ></Thumbnail>
-                            </Left>
                             <Body>
                                 <Text>  {m.name}</Text>
                                 <Text note>{m.number} </Text>
                             </Body>
+                            <Right>
+                                <Button transparent onPress={() =>{this.offlineExitGroup(m.id)}}>
+                                    <Icon name="remove-user" type="Entypo" style={{fontSize:28,color:"#C70039"}}/>
+                                </Button>
+                            </Right>
                         </ListItem>
                     )
                 })}
             </ScrollView>
             <Card>
-                <CardItem header bordered button onPress={() =>{this.exitGroup()}}>
+                <CardItem header bordered button >
                     <Left>
                         <Icon name="block" type="MaterialIcons" style={{fontSize: 28,color:"#C70039"}}/>
                     </Left>
@@ -155,7 +165,7 @@ export default class GroupBioPage extends Component {
                 </CardItem>
             </Card>
             <Card>
-                <CardItem header bordered button onPress={() =>{this.deletegroupforeveryone()}}>
+                <CardItem header bordered button onPress={() =>{this.offlineDeletegroupforeveryone()}}>
                     <Left>
                         <Icon name="thumb-down" type="MaterialIcons" style={{fontSize: 28,color:"#C70039"}}/>
                     </Left>
@@ -167,62 +177,79 @@ export default class GroupBioPage extends Component {
         </View>
         );
     }
-    exitGroup (){
-        const data = {
-            number: this.props.route.params.admin,
-            groupid: this.props.route.params.groupid
-        }
-        axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
-            function(res) {
-                if(res.data) { 
-                    console.warn(res.data)
-                }})
+    offlineExitGroup (id)  {
+        db.transaction(
+            (tx) => {
+                tx.executeSql(`delete from ${this.props.route.params.groupname} where id = ?;`, [id]);
+            },
+        )
+        this.props.navigation.navigate('Chat')
     }
-    deletegroupforeveryone (){
-        this.props.route.params.persons.map((m)=>{
-            const data = {
-                number: m.number,
-                groupid: this.props.route.params.groupid
-            }
-            axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
-                function(res) {
-                    if(res.data) { 
+    offlineDeletegroupforeveryone ()  {
+        db.transaction(
+            (tx) => {
+                tx.executeSql(`DROP TABLE ${this.props.route.params.groupname}`);
+                tx.executeSql(`delete from totalgroups where id = ?;`, [this.props.route.params.groupid]);
+            },
+        )
+        this.props.navigation.navigate('Chat')
+    }
+    // exitGroup (){
+    //     const data = {
+    //         number: this.props.route.params.admin,
+    //         groupid: this.props.route.params.groupid
+    //     }
+    //     axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
+    //         function(res) {
+    //             if(res.data) { 
+    //                 console.warn(res.data)
+    //             }})
+    // }
+    // deletegroupforeveryone (){
+    //     this.props.route.params.persons.map((m)=>{
+    //         const data = {
+    //             number: m.number,
+    //             groupid: this.props.route.params.groupid
+    //         }
+    //         axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
+    //             function(res) {
+    //                 if(res.data) { 
                         
-                    }})
-        })
-         const data = {
-            number: this.props.route.params.admin,
-            groupid: this.props.route.params.groupid
-        }
-        axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
-            function(res) {
-                if(res.data) { 
-                    console.warn(res.data)
-                }})
-    const data1 = {
-            deletegroupid: this.props.route.params.groupid,
-        }
-        axios.post('http://192.168.43.212:5000/deletegroup', {data1}).then(
-            function(res) {
-                if(res.data === 'Exercise deleted.') { 
-                    this.props.route.params.persons.map((m)=>{
-                        this.deletegroupforeveryone(m.number,this.props.route.params.groupid)
-                    })
-                }})
-    }
+    //                 }})
+    //     })
+    //      const data = {
+    //         number: this.props.route.params.admin,
+    //         groupid: this.props.route.params.groupid
+    //     }
+    //     axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
+    //         function(res) {
+    //             if(res.data) { 
+    //                 console.warn(res.data)
+    //             }})
+    // const data1 = {
+    //         deletegroupid: this.props.route.params.groupid,
+    //     }
+    //     axios.post('http://192.168.43.212:5000/deletegroup', {data1}).then(
+    //         function(res) {
+    //             if(res.data === 'Exercise deleted.') { 
+    //                 this.props.route.params.persons.map((m)=>{
+    //                     this.deletegroupforeveryone(m.number,this.props.route.params.groupid)
+    //                 })
+    //             }})
+    // }
 
-    deletegroup (){
-        const data = {
-            deletegroupid: this.props.route.params.groupid,
-        }
-        axios.post('http://192.168.43.212:5000/deletegroup', {data}).then(
-            function(res) {
-                if(res.data === 'Exercise deleted.') { 
-                    this.props.route.params.persons.map((m)=>{
-                        this.deletegroupforeveryone(m.number,this.props.route.params.groupid)
-                    })
-                }})
-    }
+    // deletegroup (){
+    //     const data = {
+    //         deletegroupid: this.props.route.params.groupid,
+    //     }
+    //     axios.post('http://192.168.43.212:5000/deletegroup', {data}).then(
+    //         function(res) {
+    //             if(res.data === 'Exercise deleted.') { 
+    //                 this.props.route.params.persons.map((m)=>{
+    //                     this.deletegroupforeveryone(m.number,this.props.route.params.groupid)
+    //                 })
+    //             }})
+    // }
     render() {
         const { navigate } = this.props.navigation;
         // Because of content inset the scroll value will be negative on iOS so bring
