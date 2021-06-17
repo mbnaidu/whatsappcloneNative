@@ -55,6 +55,7 @@ import TypeStatus from './Contents/TypeStatus';
 import GroupPage from './User/GroupPage';
 import GroupBioPage from './User/GroupBioPage';
 import StatusTab from './Screens/StatusTab';
+import Trail from './Screens/Trail';
 
 const Stack = createStackNavigator();
 
@@ -84,7 +85,8 @@ export default class App extends React.Component {
 				<Stack.Screen name="Requirements" component={Requirements}options={{ headerShown: false, }} />
 				<Stack.Screen name="Login" component={Login}options={{ headerShown: false }} />
 				<Stack.Screen name="Profile" component={Profile}options={{ headerShown: false }} />
-				{/* PAGES */}
+				{/* SCREENS */}
+				<Stack.Screen name="Trail" component={Trail}options={{ headerShown: false }} />
 				<Stack.Screen name="TypeStatus" component={TypeStatus}options={{ headerShown: false }} />
 				<Stack.Screen name="Chat" component={Chat}options={{ headerShown: false, }} />
 				<Stack.Screen name="Capture" component={Capture} options={{ headerShown: false }} />
