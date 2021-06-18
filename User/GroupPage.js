@@ -8,10 +8,44 @@ import * as SQLite from "expo-sqlite";
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("3.db");
+	const db = SQLite.openDatabase("8.db");
 	return db;
 	}
 	const db = openDatabase();
+	function Items(groupname) {
+	const [items, setItems] = React.useState(null);
+
+	React.useEffect(() => {
+		db.transaction((tx) => {
+		tx.executeSql(
+			`select * from ${groupMessagesName}`,
+			[],
+			(_, { rows: { _array } }) => setItems(_array)
+		);
+		});
+	}, []);
+	if (items === null || items.length === 0) {
+		return null;
+	}
+	return (
+		<View style={styles.sectionContainer}>
+		{items.map((m) => (
+			<TouchableOpacity
+			key={m.id}
+			style={{
+				backgroundColor:"#fff",
+				borderColor: "#000",
+				borderWidth: 1,
+				padding: 8,
+			}}
+			>
+			<Text style={{ color:"#000" }}>{m.message}</Text>
+			</TouchableOpacity>
+		))}
+		</View>
+	);
+	}
+
 export default function GroupPage({route}) {
     const [modalVisible,setModalVisible] = useState(false);
     const [modalVisible2,setModalVisible2] = useState(false)
@@ -32,10 +66,21 @@ export default function GroupPage({route}) {
 	const [groupname,setGroupName] = useState('');
     const [messages,setMessages] = useState([
     ])
-
+	const [exactTime,setExactTime] = useState('');
+	const [groupMessges,setGroupMessges] = useState(null)
 	React.useEffect(() => {
 		db.transaction((tx) => {
 		tx.executeSql(`select * from ${route.params.groupname}`, [], (_, { rows: { _array } }) => setPersons(_array));
+		tx.executeSql(
+			`create table if not exists ${groupMessagesName}(id integer primary key not null, message text, time text ,role text)`
+		);
+		});
+		
+	},[]);
+	React.useEffect(() => {
+		db.transaction((tx) => {
+		tx.executeSql(`select * from ${groupMessagesName}`, [], (_, { rows: { _array } }) => setGroupMessges(_array)
+			);
 		});
 	},[]);
 	// useEffect(() => {
@@ -71,12 +116,14 @@ export default function GroupPage({route}) {
                 setCurSec(new Date().getMilliseconds());
                 setCurMin(new Date().getMinutes(),);
                 setCurHour(a-12);
+				setExactTime(curHour+":"+curMin+" "+curStatus)
 			}
 			else{
 				setCurStatus("AM");
                 setCurSec(new Date().getMilliseconds());
                 setCurMin(new Date().getMinutes(),);
                 setCurHour(a);
+				setExactTime(curHour+":"+curMin+" "+curStatus)
 			}
 		}.bind(this), 1000);
     }, [])
@@ -140,6 +187,25 @@ export default function GroupPage({route}) {
 		setMessages([...messages,{message:message,type:"sender",time:curHour+":"+curMin+" "+curStatus,id:curHour+curMin+curSec+message+"sender"},{message:message,type:"receiver",time:curHour+":"+curMin+" "+curStatus,id:curHour+curMin+curSec+message+"return"}])
 		setMessage('');
 	}
+	const [groupMessagesName, setGroupMessagesName] = React.useState(route.params.groupname+"group");
+	const [forceUpdate, forceUpdateId] = useForceUpdate();
+	const add = (text) => {
+		// is text empty?
+		if (text === null || text === "") {
+		return false;
+		}
+		
+		db.transaction(
+		(tx) => {
+			tx.executeSql(`insert into ${groupMessagesName} (message, time, role) values (?, ?, ?)`, [text,exactTime,"sender"]);
+			tx.executeSql(`select * from ${groupMessagesName}`, [],
+			(_, { rows: { _array } }) => setGroupMessges(_array)
+			);
+		},
+		null,
+		forceUpdate
+		);
+	};
     return (
         <Container>
 				<Header style={styles.headerBackgroundColor} button>
@@ -301,10 +367,11 @@ export default function GroupPage({route}) {
 					style={{backgroundColor:"snow"}}
 					ref={scrollViewRef}
                     onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}>
-					{messages.map((m=>{
+					{groupMessges === null ? (<View></View>) : (
+						groupMessges.map((m=>{
 						return(
 							<View key={m.id}>
-								{m.type == 'sender' ? (
+								{m.id%2 === 0 ? (
 									<Body style={[styles.messageSenderBox]}>
 										<Text style={{fontWeight:"bold"}}>{m.message}</Text>
 										<Text note style={{fontSize:12,marginLeft:5,alignSelf:'flex-end'}}>{m.time}<Icon name="ios-checkmark-done-sharp" type="Ionicons" style={{fontSize: 18,color:"#05F8EC"}}/></Text>
@@ -317,8 +384,18 @@ export default function GroupPage({route}) {
 								)}
 							</View>
 						)
-					}))}
+					}))
+					)}
 				</ScrollView>
+				{/* <ScrollView style={styles.listArea}>
+					{groupMessges === null ? <View></View> : (
+						groupMessges.map((m)=>{
+						return(
+							<Text key={m.id}>{JSON.stringify(m)}</Text>
+						)
+					})
+					)}
+				</ScrollView> */}
                 {message.length == 0 ? (
 					<Footer style={{backgroundColor:"snow"}}>
 						<View style={styles.searchSection}>
@@ -343,18 +420,22 @@ export default function GroupPage({route}) {
 							<TextInput
 								style={styles.input}
 								multiline
-								onChangeText={(searchString) => {setMessage(searchString);}}
+								onChangeText={(text) => setMessage(text)}
 								underlineColorAndroid="transparent"
 							/>
 							<Right>
 								<Icon name="paperclip" type="Foundation" style={styles.emojiicon}/>
 							</Right>
 						</View>
-							<Button transparent onPress={() =>{sendData();}}>
+							<Button transparent onPress={() =>{add(message);}}>
 								<Icon name="send" type="MaterialIcons" style={styles.onSendEmoji} />
 							</Button>
 					</Footer>
 				)}
             </Container>
     )
+}
+function useForceUpdate() {
+	const [value, setValue] = useState(0);
+	return [() => setValue(value + 1), value];
 }

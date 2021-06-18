@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import { Container, Header, Title, View, Footer, FooterTab, Button, Left, Right, Body, Icon, Text, ListItem, Thumbnail, Badge, Fab } from 'native-base';
-import { ScrollView, ActivityIndicator } from 'react-native';
+import { ScrollView, ActivityIndicator,RefreshControl } from 'react-native';
 import styles from '../Styles/First';
 import { useNavigation } from '@react-navigation/core';
 import axios from 'axios';
@@ -9,12 +9,14 @@ import * as SQLite from "expo-sqlite";
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("3.db");
+	const db = SQLite.openDatabase("8.db");
 	return db;
 	}
 	const db = openDatabase();
 
-
+const wait = (timeout) => {
+	return new Promise(resolve => setTimeout(resolve, timeout));
+}
 export default function GroupTab({screenProps}) {
 		const [items, setItems] = React.useState(null);
     // const [groups,setGroups] = useState([]);
@@ -37,6 +39,12 @@ export default function GroupTab({screenProps}) {
 		});
 	},);
 	const navigation = useNavigation();
+	const [refreshing, setRefreshing] = React.useState(false);
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    wait(1000).then(() => setRefreshing(false));
+  }, []);
 	return (
 		<Container>
             {/* <ScrollView>
@@ -63,11 +71,21 @@ export default function GroupTab({screenProps}) {
 					<ActivityIndicator size="large" color="green"/>
 				</View>)}
 			</ScrollView> */}
-			<ScrollView>
-				{items === null ? <ActivityIndicator large color="red" style={{marginTop:"50%"}}/> : (
+			<ScrollView
+				refreshControl={
+					<RefreshControl
+						refreshing={refreshing}
+						onRefresh={onRefresh}
+					/>
+				}
+				>
+				{items === null || items.length === 0 ? <View>
+					<ActivityIndicator large color="red" style={{marginTop:"50%"}}/> 
+					<Text style={{alignSelf:"center"}}>Pull down to refresh</Text>
+				</View> : (
 					items.map((m)=>{
 					return(
-						<ListItem key={m.id} noBorder button onPress={() =>{navigation.navigate('GroupPage',{groupid:m.id,admin:groups.number,groupname:m.name})}}> 
+						<ListItem key={m.id} noBorder button onPress={() =>{navigation.navigate('GroupPage',{groupid:m.id,groupname:m.name})}}> 
 								<Thumbnail
 									source={{uri:'https://wallpapercave.com/wp/wp1842514.jpg'}}
 								></Thumbnail>

@@ -6,7 +6,7 @@ import * as SQLite from "expo-sqlite";
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("3.db");
+	const db = SQLite.openDatabase("8.db");
 	return db;
 	}
 	const db = openDatabase();
