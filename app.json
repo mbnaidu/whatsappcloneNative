@@ -1,14 +1,14 @@
 {
-  "name": "Piegeon",
-  "displayName": "Piegeon",
+  "name": "Pigeon",
+  "displayName": "Pigeon",
   "expo": {
-    "name": "Piegeon",
-    "slug": "Piegeon",
+    "name": "Pigeon",
+    "slug": "Pigeon",
     "version": "1.0.0",
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./Assets/pigeon.png", 
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#000000"
       },
       "package": "com.yourcompany.pigeon",
       "versionCode": 1
