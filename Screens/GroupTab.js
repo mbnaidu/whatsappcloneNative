@@ -9,7 +9,7 @@ import * as SQLite from "expo-sqlite";
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("8.db");
+	const db = SQLite.openDatabase("9.db");
 	return db;
 	}
 	const db = openDatabase();
@@ -79,8 +79,8 @@ export default function GroupTab({screenProps}) {
 					/>
 				}
 				>
-				{items === null || items.length === 0 ? <View>
-					<ActivityIndicator large color="red" style={{marginTop:"50%"}}/> 
+				{items === null || items.length === 0 ? <View style={{marginTop:"50%"}}>
+					<Text style={{alignSelf:"center"}}>No data</Text>
 					<Text style={{alignSelf:"center"}}>Pull down to refresh</Text>
 				</View> : (
 					items.map((m)=>{

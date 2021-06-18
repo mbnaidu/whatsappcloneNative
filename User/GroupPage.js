@@ -8,7 +8,7 @@ import * as SQLite from "expo-sqlite";
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("8.db");
+	const db = SQLite.openDatabase("9.db");
 	return db;
 	}
 	const db = openDatabase();
@@ -197,10 +197,11 @@ export default function GroupPage({route}) {
 		
 		db.transaction(
 		(tx) => {
-			tx.executeSql(`insert into ${groupMessagesName} (message, time, role) values (?, ?, ?)`, [text,exactTime,"sender"]);
+			tx.executeSql(`insert into ${groupMessagesName} (message, time, role) values (?, ?, ?)`, [text,curHour+":"+curMin+" "+curStatus,"sender"]);
 			tx.executeSql(`select * from ${groupMessagesName}`, [],
 			(_, { rows: { _array } }) => setGroupMessges(_array)
 			);
+			setMessage('')
 		},
 		null,
 		forceUpdate

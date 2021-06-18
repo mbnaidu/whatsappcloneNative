@@ -9,7 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("8.db");
+	const db = SQLite.openDatabase("9.db");
 	return db;
 	}
 	const db = openDatabase();

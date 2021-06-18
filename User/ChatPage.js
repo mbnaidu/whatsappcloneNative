@@ -4,7 +4,15 @@ import { StatusBar, Text, TextInput,Image, Modal, TouchableWithoutFeedback, Scro
 import styles from '../Styles/Second';
 import axios from 'axios'
 import { useNavigation } from '@react-navigation/core';
+import * as SQLite from "expo-sqlite";
 
+
+
+function openDatabase() {
+	const db = SQLite.openDatabase("9.db");
+	return db;
+	}
+	const db = openDatabase();
 
 export default function ChatPage({route}) {
     const [modalVisible,setModalVisible] = useState(false);
@@ -113,6 +121,39 @@ export default function ChatPage({route}) {
 		setMessages([...messages,{message:message,type:"sender",time:curHour+":"+curMin+" "+curStatus,id:curHour+curMin+curSec+message+"sender"},{message:message,type:"receiver",time:curHour+":"+curMin+" "+curStatus,id:curHour+curMin+curSec+message+"return"}])
 		setMessage('');
 	}
+	const [forceUpdate, forceUpdateId] = useForceUpdate();
+	const [chatMessages,setChatMessages] = useState(null)
+	React.useEffect(() => {
+		db.transaction((tx) => {
+		tx.executeSql(
+			`create table if not exists ${route.params.username.replace(/\s+/g, '')} (id integer primary key not null, message text, time text ,role text)`
+		);
+		tx.executeSql(
+			`select * from ${route.params.username.replace(/\s+/g, '')}`, [], (_, { rows: { _array } }) => setChatMessages(_array)
+			);
+		});
+		
+	},[]);
+	const add = (text) => {
+		// is text empty?
+		if (text === null || text === "") {
+		return false;
+		}
+		db.transaction(
+		(tx) => {
+			tx.executeSql(`insert into ${route.params.username.replace(/\s+/g, '')} (message, time, role) values (?, ?, ?)`, [text,curHour+":"+curMin+" "+curStatus,"sender"]);
+			tx.executeSql(`select * from ${route.params.username.replace(/\s+/g, '')}`, [],
+			(_, { rows: { _array } }) => setChatMessages(_array)
+			);
+			tx.executeSql(`select * from ${route.params.username.replace(/\s+/g, '')}`, [], (_, { rows }) =>
+				console.log(JSON.stringify(rows))
+			);
+			setMessage('')
+		},
+		null,
+		forceUpdate
+		);
+	};
     return (
         <Container>
 				<Header style={styles.headerBackgroundColor} button>
@@ -277,10 +318,11 @@ export default function ChatPage({route}) {
 					style={{backgroundColor:"snow"}}
 					ref={scrollViewRef}
                     onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}>
-					{messages.map((m=>{
+					{chatMessages === null ? <View></View> : (
+						chatMessages.map((m=>{
 						return(
 							<View key={m.id}>
-								{m.type == 'sender' ? (
+								{m.id%2 === 0 ? (
 									<Body style={[styles.messageSenderBox]}>
 										<Text style={{fontWeight:"bold"}}>{m.message}</Text>
 										<Text note style={{fontSize:12,marginLeft:5,alignSelf:'flex-end'}}>{m.time}<Icon name="ios-checkmark-done-sharp" type="Ionicons" style={{fontSize: 18,color:"#05F8EC"}}/></Text>
@@ -293,7 +335,8 @@ export default function ChatPage({route}) {
 								)}
 							</View>
 						)
-					}))}
+					}))
+					)}
 				</ScrollView>
                 {message.length == 0 ? (
 					<Footer style={{backgroundColor:"snow"}}>
@@ -326,11 +369,15 @@ export default function ChatPage({route}) {
 								<Icon name="paperclip" type="Foundation" style={styles.emojiicon}/>
 							</Right>
 						</View>
-							<Button transparent onPress={() =>{sendData();}}>
+							<Button transparent onPress={() =>{add(message);}}>
 								<Icon name="send" type="MaterialIcons" style={styles.onSendEmoji} />
 							</Button>
 					</Footer>
 				)}
             </Container>
     )
+}
+function useForceUpdate() {
+	const [value, setValue] = useState(0);
+	return [() => setValue(value + 1), value];
 }
