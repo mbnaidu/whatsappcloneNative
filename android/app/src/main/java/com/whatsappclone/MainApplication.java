@@ -27,7 +27,7 @@ import expo.modules.updates.UpdatesController;
 
 import com.facebook.react.bridge.JSIModulePackage;
 import com.swmansion.reanimated.ReanimatedJSIModulePackage;
-
+import com.twiliorn.library.TwilioPackage;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
@@ -87,7 +87,14 @@ public class MainApplication extends Application implements ReactApplication {
   public ReactNativeHost getReactNativeHost() {
     return mReactNativeHost;
   }
-
+  @Override
+  protected List getPackages() {
+    @SuppressWarnings("UnnecessaryLocalVariable")
+    List packages = new PackageList(this).getPackages();
+    //  add the following code
+    packages.add(new TwilioPackage());
+    return packages;
+  }
   @Override
   public void onCreate() {
     super.onCreate();
