@@ -11,7 +11,7 @@ export default function QuickSchedule({navigation,route}) {
 	var presentYear = new Date().getFullYear();
 	var presentMonth = new Date().getMonth();
 	var presentDate = new Date().getDate();
-	const [message,setMessage] = useState('');
+	const [message,setMessage] = useState(null);
 	const [chatId,setChatId] = useState(null);
 	React.useEffect(() => {
 		const data = {
@@ -20,17 +20,8 @@ export default function QuickSchedule({navigation,route}) {
 		axios.post('http://192.168.29.85:5000/messagecheck', {data}).then(
                 function(res) {
                     if(res.data) {
-						const data1 = {
-							senderId : route.params.senderid,
-							receiverId: res.data._id
-						} 
-						axios.post('http://192.168.29.85:5000/createchat', {data1}).then(
-								function(res) {
-									if(res.data) {
-										setChatId(res.data[0]._id)
-									}
-								}
-							)
+						setTo(res.data._id);
+						setFrom(route.params.senderid)
                     }
                 }
             )
@@ -38,8 +29,10 @@ export default function QuickSchedule({navigation,route}) {
 	const [date, setDate] = useState(new Date());
 	const [mode, setMode] = useState('date');
 	const [show, setShow] = useState(false);
-	const [sendDate,setSendDate] = useState('Set Upcoming Dates!');
-	const [sendTime,setSendTime] = useState('Set Time!');
+	const [sendDate,setSendDate] = useState(null);
+	const [sendTime,setSendTime] = useState(null);
+	const [from,setFrom] = useState(null);
+	const [to,setTo] = useState(null);
 	const onChange = (event, selectedDate) => {
 		const currentDate = selectedDate || date;
 		setShow(Platform.OS === 'ios');
@@ -61,23 +54,31 @@ export default function QuickSchedule({navigation,route}) {
 		showMode('time');
 	};
 	const sendSpecialMessage = () => {
-		// const data = {
-		// 	chatId:chatId,
-		// 	message: { 
-		// 		message:message,
-		// 		messageId: curHour+curMin+curSec+message,
-		// 		userId : route.params.senderid,
-		// 		receiverId :route.params.receiverid,
-		// 		time:curHour+":"+curMin+" "+curStatus,
-		// 	},
-		// } 
-		// axios.post('http://192.168.29.85:5000/setspecialmessage', {data}).then(
-		// 	function(res) {
-		// 		if(res.data) {
-		// 			console.warn(res.data)
-		// 		}
-		// 	}
-		// )
+		const data = {
+			from:from,
+			to:to,
+			special: { 
+				message:message,
+				date:sendDate,
+				time:sendTime,
+				from:from,
+				to:to
+			},
+		} 
+		axios.post('http://192.168.29.85:5000/setspecialmessagefrom', {data}).then(
+			function(res) {
+				if(res.data) {
+					console.warn("success from")
+				}
+			}
+		)
+		axios.post('http://192.168.29.85:5000/setspecialmessageto', {data}).then(
+			function(res) {
+				if(res.data) {
+					console.warn('success to')
+				}
+			}
+		)
 	}
 	return (
 		<Container style={{backgroundColor:"#"}}>
@@ -112,13 +113,13 @@ export default function QuickSchedule({navigation,route}) {
 			<ListItem noBorder button>
 				<Icon name='calendar-clock' type="MaterialCommunityIcons" style={{fontSize: 32}}/>
 				<Body style={{alignItems: "center"}} onPress={showDatepicker}>
-					<Text style={{letterSpacing:3,fontWeight:"bold",fontSize: 18}} onPress={showDatepicker}>{sendDate}</Text>
+					<Text style={{letterSpacing:3,fontWeight:"bold",fontSize: 18}} onPress={showDatepicker}>{sendDate !== null ? sendDate : 'Set Upcoming Dates !'}</Text>
 				</Body>
 			</ListItem>
 			<ListItem noBorder button>
 				<Icon name='timer-sand' type="MaterialCommunityIcons" style={{fontSize: 32}}/>
 				<Body style={{alignItems: "center"}} transparent onPress={showTimepicker}>
-					<Text style={{letterSpacing:3,fontWeight:"bold",fontSize: 18}} transparent onPress={showTimepicker}>{sendTime}</Text>
+					<Text style={{letterSpacing:3,fontWeight:"bold",fontSize: 18}} transparent onPress={showTimepicker}>{sendTime !== null ? sendTime : 'Set Time!'}</Text>
 				</Body>
 			</ListItem>
 			{show && (
