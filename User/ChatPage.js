@@ -117,6 +117,18 @@ export default function ChatPage({route}) {
         //         }
         //     )
 	}
+	React.useEffect(() => {
+		const data = {
+			number : route.params.receiverid,
+		} 
+		axios.post('http://192.168.29.85:5000/messagecheck', {data}).then(
+                function(res) {
+                    if(res.data) {
+						// console.warn(res.data.special);
+                    }
+                }
+            )
+	},[]);
 	const [forceUpdate, forceUpdateId] = useForceUpdate();
 	const [chatMessages,setChatMessages] = useState(null)
 	React.useEffect(() => {

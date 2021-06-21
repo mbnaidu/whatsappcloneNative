@@ -19,7 +19,6 @@ export default function Chat({navigation,route}) {
 			const { data } = await Contacts.getContactsAsync({
 			fields: [Contacts.Fields.PhoneNumbers],
 			});
-
 			if (data.length > 0) {
 			setAllContacts(data)
 			}

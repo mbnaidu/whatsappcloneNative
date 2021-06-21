@@ -68,14 +68,13 @@ export default function QuickSchedule({navigation,route}) {
 		axios.post('http://192.168.29.85:5000/setspecialmessagefrom', {data}).then(
 			function(res) {
 				if(res.data) {
-					console.warn("success from")
-				}
-			}
-		)
-		axios.post('http://192.168.29.85:5000/setspecialmessageto', {data}).then(
-			function(res) {
-				if(res.data) {
-					console.warn('success to')
+					axios.post('http://192.168.29.85:5000/setspecialmessageto', {data}).then(
+						function(res) {
+							if(res.data) {
+								navigation.navigate('Schedule')
+							}
+						}
+					)
 				}
 			}
 		)
