@@ -31,7 +31,7 @@ export default function Chat({navigation,route}) {
 	const Item = (item) =>{
 		return(
 			<View style={styles.listcontainer}>
-				<ListItem noBorder button onPress={() =>{navigation.navigate('ChatPage',{username:item.data.name})}} > 
+				<ListItem noBorder button onPress={() =>{navigation.navigate('ChatPage',{username:item.data.name,senderid:route.params.id,receiverid:item.data.phoneNumbers[0].number})}} > 
 					<Thumbnail
 						source={require('../Assets/userProfile.png')}
 					></Thumbnail>
@@ -114,8 +114,8 @@ export default function Chat({navigation,route}) {
 									<Icon name="calendar" type="Octicons" style={{fontSize: 38,color:"black"}}/>
 								</Button>
 							</Body>
-							<Body onPress={() =>{navigation.navigate('Schedule')}} >
-								<Button transparent onPress={() =>{navigation.navigate('Schedule')}}>
+							<Body >
+								<Button transparent onPress={() =>{navigation.navigate('Schedule',{id:route.params.id})}}>
 									<Icon name="send" type="MaterialIcons" style={{fontSize: 36,color:"black"}}/>
 								</Button>
 							</Body>

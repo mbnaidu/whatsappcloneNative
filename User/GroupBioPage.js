@@ -6,7 +6,7 @@ import * as SQLite from "expo-sqlite";
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("11.db");
+	const db = SQLite.openDatabase("13.db");
 	return db;
 	}
 	const db = openDatabase();
@@ -199,7 +199,7 @@ export default class GroupBioPage extends Component {
     //         number: this.props.route.params.admin,
     //         groupid: this.props.route.params.groupid
     //     }
-    //     axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
+    //     axios.post('http://192.168.29.85:5000/exitgrouptoall', {data}).then(
     //         function(res) {
     //             if(res.data) { 
     //                 console.warn(res.data)
@@ -211,7 +211,7 @@ export default class GroupBioPage extends Component {
     //             number: m.number,
     //             groupid: this.props.route.params.groupid
     //         }
-    //         axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
+    //         axios.post('http://192.168.29.85:5000/exitgrouptoall', {data}).then(
     //             function(res) {
     //                 if(res.data) { 
                         
@@ -221,7 +221,7 @@ export default class GroupBioPage extends Component {
     //         number: this.props.route.params.admin,
     //         groupid: this.props.route.params.groupid
     //     }
-    //     axios.post('http://192.168.43.212:5000/exitgrouptoall', {data}).then(
+    //     axios.post('http://192.168.29.85:5000/exitgrouptoall', {data}).then(
     //         function(res) {
     //             if(res.data) { 
     //                 console.warn(res.data)
@@ -229,7 +229,7 @@ export default class GroupBioPage extends Component {
     // const data1 = {
     //         deletegroupid: this.props.route.params.groupid,
     //     }
-    //     axios.post('http://192.168.43.212:5000/deletegroup', {data1}).then(
+    //     axios.post('http://192.168.29.85:5000/deletegroup', {data1}).then(
     //         function(res) {
     //             if(res.data === 'Exercise deleted.') { 
     //                 this.props.route.params.persons.map((m)=>{
@@ -242,7 +242,7 @@ export default class GroupBioPage extends Component {
     //     const data = {
     //         deletegroupid: this.props.route.params.groupid,
     //     }
-    //     axios.post('http://192.168.43.212:5000/deletegroup', {data}).then(
+    //     axios.post('http://192.168.29.85:5000/deletegroup', {data}).then(
     //         function(res) {
     //             if(res.data === 'Exercise deleted.') { 
     //                 this.props.route.params.persons.map((m)=>{

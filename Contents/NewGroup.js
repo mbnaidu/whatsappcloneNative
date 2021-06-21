@@ -9,7 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("11.db");
+	const db = SQLite.openDatabase("13.db");
 	return db;
 	}
 	const db = openDatabase();
@@ -40,7 +40,7 @@ export default function NewGroup({navigation,route}) {
 				groupname:groupName
 			}
         }
-        axios.post('http://192.168.43.212:5000/creategroup', {data}).then(
+        axios.post('http://192.168.29.85:5000/creategroup', {data}).then(
             function(res) {
                 if(res.data) {
 					// console.log('group id',res.data[0],'persons',res.data[1],'admin',res.data[2]);
@@ -48,7 +48,7 @@ export default function NewGroup({navigation,route}) {
 						groupid:res.data[0],
 						userid:res.data[2],
 					}
-                    axios.post('http://192.168.43.212:5000/admingroup', {datas}).then(
+                    axios.post('http://192.168.29.85:5000/admingroup', {datas}).then(
 						function(res) {
 							if(res.data) {
 								// console.warn(res.data)
@@ -60,7 +60,7 @@ export default function NewGroup({navigation,route}) {
 							groupid:res.data[0],
 							number:m.number,
 						}
-						axios.post('http://192.168.43.212:5000/usercheck', {data1}).then(
+						axios.post('http://192.168.29.85:5000/usercheck', {data1}).then(
 							function(res) {
 								if(res.data) {
 									// console.warn(res.data)

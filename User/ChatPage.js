@@ -9,7 +9,7 @@ import * as SQLite from "expo-sqlite";
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("11.db");
+	const db = SQLite.openDatabase("13.db");
 	return db;
 	}
 	const db = openDatabase();
@@ -37,7 +37,7 @@ export default function ChatPage({route}) {
 	// 		senderId : route.params.senderId,
 	// 		userId :userId,
 	// 	} 
-	// 	axios.post('http://192.168.43.212:5000/getChat', {data}).then(
+	// 	axios.post('http://192.168.29.85:5000/getChat', {data}).then(
     //             function(res) {
     //                 if(res.data) {
 	// 					setChatId(res.data[0]._id)
@@ -51,7 +51,7 @@ export default function ChatPage({route}) {
 		// 	senderId : route.params.senderId,
 		// 	userId :userId,
 		// } 
-		// axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
+		// axios.post('http://192.168.29.85:5000/getChat', {data1}).then(
         //         function(res) {
         //             if(res.data) {
 		// 				setChatId(res.data[0]._id);
@@ -74,52 +74,48 @@ export default function ChatPage({route}) {
 			}
 		}.bind(this), 1000);
     }, [])
-    // const sendData = () =>{
-	// 	// const data = {
-	// 	// 	senderId : route.params.senderId,
-	// 	// 	messageId : curHour+curMin+curSec+message,
-	// 	// 	message: message,
-	// 	// 	time:curHour+":"+curMin+" "+curStatus,
-	// 	// 	userId :userId,
-	// 	// } 
-	// 	// axios.post('http://192.168.43.212:5000/addMessage', {data}).then(
-    //     //         function(res) {
-    //     //             if(res.data.length == 0) {
-	// 	// 				console.log(res.data)
-    //     //             }
-    //     //         }
-    //     //     )
-	// 	const data1 = {
-	// 		senderId : route.params.senderId,
-	// 		userId :userId,
-	// 	} 
-	// 	axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
-    //             function(res) {
-    //                 if(res.data) {
-	// 					const data = {
-	// 						chatId:res.data[0]._id,
-	// 						message: { 
-	// 							message:message,
-	// 							messageId: curHour+curMin+curSec+message,
-	// 							senderId : route.params.senderId,
-	// 							userId :userId,
-	// 							time:curHour+":"+curMin+" "+curStatus,
-	// 						},
-	// 					} 
-	// 					axios.post('http://192.168.43.212:5000/addMessage', {data}).then(
-	// 							function(res) {
-	// 								if(res.data) {
-	// 									setMessage('')
-	// 								}
-	// 							}
-	// 						)
-    //                 }
-    //             }
-    //         )
-	// }
-	const sendData= () => {
-		setMessages([...messages,{message:message,type:"sender",time:curHour+":"+curMin+" "+curStatus,id:curHour+curMin+curSec+message+"sender"},{message:message,type:"receiver",time:curHour+":"+curMin+" "+curStatus,id:curHour+curMin+curSec+message+"return"}])
-		setMessage('');
+    const sendData = () =>{
+		// const data = {
+		// 	senderId : route.params.senderId,
+		// 	messageId : curHour+curMin+curSec+message,
+		// 	message: message,
+		// 	time:curHour+":"+curMin+" "+curStatus,
+		// 	userId :userId,
+		// } 
+		// axios.post('http://192.168.29.85:5000/addMessage', {data}).then(
+        //         function(res) {
+        //             if(res.data.length == 0) {
+		// 				console.log(res.data)
+        //             }
+        //         }
+        //     )
+		// const data1 = {
+		// 	senderId : route.params.senderId,
+		// 	userId :userId,
+		// } 
+		// axios.post('http://192.168.29.85:5000/getChat', {data1}).then(
+        //         function(res) {
+        //             if(res.data) {
+		// 				const data = {
+		// 					chatId:res.data[0]._id,
+		// 					message: { 
+		// 						message:message,
+		// 						messageId: curHour+curMin+curSec+message,
+		// 						senderId : route.params.senderId,
+		// 						userId :userId,
+		// 						time:curHour+":"+curMin+" "+curStatus,
+		// 					},
+		// 				} 
+		// 				axios.post('http://192.168.29.85:5000/addMessage', {data}).then(
+		// 						function(res) {
+		// 							if(res.data) {
+		// 								setMessage('')
+		// 							}
+		// 						}
+		// 					)
+        //             }
+        //         }
+        //     )
 	}
 	const [forceUpdate, forceUpdateId] = useForceUpdate();
 	const [chatMessages,setChatMessages] = useState(null)
@@ -128,6 +124,26 @@ export default function ChatPage({route}) {
 		tx.executeSql(
 			`create table if not exists ${route.params.username.replace(/\s+/g, '')} (id integer primary key not null, message text, time text ,role text)`
 		);
+		const data = {
+			number : route.params.receiverid,
+		} 
+		axios.post('http://192.168.29.85:5000/messagecheck', {data}).then(
+                function(res) {
+                    if(res.data) {
+						const data1 = {
+							senderId : route.params.senderid,
+							receiverId: res.data._id
+						} 
+						axios.post('http://192.168.29.85:5000/createchat', {data1}).then(
+								function(res) {
+									if(res.data) {
+										setChatId(res.data[0]._id)
+									}
+								}
+							)
+                    }
+                }
+            )
 		tx.executeSql(
 			`select * from ${route.params.username.replace(/\s+/g, '')}`, [], (_, { rows: { _array } }) => setChatMessages(_array)
 			);
@@ -137,17 +153,12 @@ export default function ChatPage({route}) {
 	const add = (text) => {
 		// is text empty?
 		if (text === null || text === "") {
-		return false;
+			return false;
 		}
 		db.transaction(
 		(tx) => {
 			tx.executeSql(`insert into ${route.params.username.replace(/\s+/g, '')} (message, time, role) values (?, ?, ?)`, [text,curHour+":"+curMin+" "+curStatus,"sender"]);
-			tx.executeSql(`select * from ${route.params.username.replace(/\s+/g, '')}`, [],
-			(_, { rows: { _array } }) => setChatMessages(_array)
-			);
-			tx.executeSql(`select * from ${route.params.username.replace(/\s+/g, '')}`, [], (_, { rows }) =>
-				console.log(JSON.stringify(rows))
-			);
+			tx.executeSql(`select * from ${route.params.username.replace(/\s+/g, '')}`, [], (_, { rows: { _array } }) => setChatMessages(_array));
 			setMessage('')
 		},
 		null,
@@ -369,7 +380,7 @@ export default function ChatPage({route}) {
 								<Icon name="paperclip" type="Foundation" style={styles.emojiicon}/>
 							</Right>
 						</View>
-							<Button transparent onPress={() =>{add(message);}}>
+							<Button transparent onPress={() =>{add(message)}}>
 								<Icon name="send" type="MaterialIcons" style={styles.onSendEmoji} />
 							</Button>
 					</Footer>

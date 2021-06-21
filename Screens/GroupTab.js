@@ -9,7 +9,7 @@ import * as SQLite from "expo-sqlite";
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("11.db");
+	const db = SQLite.openDatabase("13.db");
 	return db;
 	}
 	const db = openDatabase();
@@ -24,7 +24,7 @@ export default function GroupTab({screenProps}) {
     //     const data = {
     //         id: screenProps,
     //     }
-    //     axios.post('http://192.168.43.212:5000/getgroups', {data}).then(
+    //     axios.post('http://192.168.29.85:5000/getgroups', {data}).then(
     //         function(res) {
     //             if(res.data) {
 	// 				setGroups(res.data)

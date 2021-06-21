@@ -8,7 +8,7 @@ import * as SQLite from "expo-sqlite";
 
 
 function openDatabase() {
-	const db = SQLite.openDatabase("11.db");
+	const db = SQLite.openDatabase("13.db");
 	return db;
 	}
 	const db = openDatabase();
@@ -88,7 +88,7 @@ export default function GroupPage({route}) {
 	// 		senderId : route.params.senderId,
 	// 		userId :userId,
 	// 	} 
-	// 	axios.post('http://192.168.43.212:5000/getChat', {data}).then(
+	// 	axios.post('http://192.168.29.85:5000/getChat', {data}).then(
     //             function(res) {
     //                 if(res.data) {
 	// 					setChatId(res.data[0]._id)
@@ -102,7 +102,7 @@ export default function GroupPage({route}) {
 		// 	senderId : route.params.senderId,
 		// 	userId :userId,
 		// } 
-		// axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
+		// axios.post('http://192.168.29.85:5000/getChat', {data1}).then(
         //         function(res) {
         //             if(res.data) {
 		// 				setChatId(res.data[0]._id);
@@ -135,7 +135,7 @@ export default function GroupPage({route}) {
 	// 	// 	time:curHour+":"+curMin+" "+curStatus,
 	// 	// 	userId :userId,
 	// 	// } 
-	// 	// axios.post('http://192.168.43.212:5000/addMessage', {data}).then(
+	// 	// axios.post('http://192.168.29.85:5000/addMessage', {data}).then(
     //     //         function(res) {
     //     //             if(res.data.length == 0) {
 	// 	// 				console.log(res.data)
@@ -146,7 +146,7 @@ export default function GroupPage({route}) {
 	// 		senderId : route.params.senderId,
 	// 		userId :userId,
 	// 	} 
-	// 	axios.post('http://192.168.43.212:5000/getChat', {data1}).then(
+	// 	axios.post('http://192.168.29.85:5000/getChat', {data1}).then(
     //             function(res) {
     //                 if(res.data) {
 	// 					const data = {
@@ -159,7 +159,7 @@ export default function GroupPage({route}) {
 	// 							time:curHour+":"+curMin+" "+curStatus,
 	// 						},
 	// 					} 
-	// 					axios.post('http://192.168.43.212:5000/addMessage', {data}).then(
+	// 					axios.post('http://192.168.29.85:5000/addMessage', {data}).then(
 	// 							function(res) {
 	// 								if(res.data) {
 	// 									setMessage('')
@@ -174,7 +174,7 @@ export default function GroupPage({route}) {
 	// 	const data1 = {
 	// 						id:route.params.groupid
 	// 					}
-	// 					axios.post('http://192.168.43.212:5000/getallgroups',{data1}).then(
+	// 					axios.post('http://192.168.29.85:5000/getallgroups',{data1}).then(
 	// 						function(res) {
 	// 							if(res.data) {
 	// 								setGroupName(res.data.groups[0].groupname)
