@@ -103,8 +103,8 @@ export default function Chat({navigation,route}) {
 									</Button>
 								)}
 							</Body>
-							<Body onPress={() =>{navigation.navigate('Search')}} >
-								<Button transparent onPress={() =>{navigation.navigate('Search')}}>
+							<Body onPress={() =>{navigation.navigate('SearchBar')}} >
+								<Button transparent onPress={() =>{navigation.navigate('SearchBar')}}>
 									<Icon name="search" type="MaterialIcons" style={{fontSize: 39,color:"black"}}/>
 								</Button>
 							</Body>
