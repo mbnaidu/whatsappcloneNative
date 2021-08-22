@@ -24,26 +24,26 @@ const Login = ({navigation}) => {
         const data = {
             number: number
         }
-        axios.post('http://192.168.29.85:5000/login', {data}).then(
-                function(res) {
-                    if(res.data.length == 0) {
-						axios.post('http://192.168.29.85:5000/signup', {data}).then(
-							function(res) {
-								if(res.data) {
-                                    navigation.navigate('Profile',{id:res.data})
-                                    storeData(res.data)
-								}
-							}
-						)
-                    }
-					else{
-                        navigation.navigate('Profile',{id:res.data[0]._id})
-                        storeData(res.data[0]._id)
-					}
-                }
-            )
-        // navigation.navigate('Profile',{id:number})
-        //                 storeData(number)
+        // axios.post('http://192.168.29.85:5000/login', {data}).then(
+        //         function(res) {
+        //             if(res.data.length == 0) {
+		// 				axios.post('http://192.168.29.85:5000/signup', {data}).then(
+		// 					function(res) {
+		// 						if(res.data) {
+        //                             navigation.navigate('Profile',{id:res.data})
+        //                             storeData(res.data)
+		// 						}
+		// 					}
+		// 				)
+        //             }
+		// 			else{
+        //                 navigation.navigate('Profile',{id:res.data[0]._id})
+        //                 storeData(res.data[0]._id)
+		// 			}
+        //         }
+        //     )
+        navigation.navigate('Profile',{id:number})
+                        storeData(number)
     }
     return (
         <TouchableWithoutFeedback onPress={() =>{Keyboard.dismiss();}}>

@@ -20,18 +20,18 @@ const Profile = ({route,navigation}) => {
         setURI(result.uri);
     };
     const profile = () => {
-        const data = {
-            id: route.params.id,
-            username: username
-        }
-        axios.post('http://192.168.29.85:5000/profile', {data}).then(
-            function(res) {
-                if(res.data) {
-                    navigation.navigate('Chat',{id:route.params.id})
-                }
-            }
-        )
-        // navigation.navigate('Chat',{id:route.params.id})
+        // const data = {
+        //     id: route.params.id,
+        //     username: username
+        // }
+        // axios.post('http://192.168.29.85:5000/profile', {data}).then(
+        //     function(res) {
+        //         if(res.data) {
+        //             navigation.navigate('Chat',{id:route.params.id})
+        //         }
+        //     }
+        // )
+        navigation.navigate('Chat',{id:route.params.id})
     }
     return (
         <TouchableWithoutFeedback onPress={() =>{Keyboard.dismiss();}}>
